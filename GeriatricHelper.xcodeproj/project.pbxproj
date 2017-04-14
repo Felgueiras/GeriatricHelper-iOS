@@ -1,0 +1,452 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2217A7B068C3958B34FC5DE9 /* Pods_GeriatricHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA09AF322E24D40665776C4 /* Pods_GeriatricHelper.framework */; };
+		2B21ABBB1E9FEE3A001D6F66 /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B21ABB91E9FEE3A001D6F66 /* GroceryItem.swift */; };
+		2B21ABBC1E9FEE3A001D6F66 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B21ABBA1E9FEE3A001D6F66 /* User.swift */; };
+		2B21ABC11E9FEE7B001D6F66 /* PatientsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B21ABBE1E9FEE7B001D6F66 /* PatientsListTableViewController.swift */; };
+		2B21ABC21E9FEE7B001D6F66 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B21ABBF1E9FEE7B001D6F66 /* LoginViewController.swift */; };
+		2B21ABC31E9FEE7B001D6F66 /* OnlineUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B21ABC01E9FEE7B001D6F66 /* OnlineUsersTableViewController.swift */; };
+		2B6B56FA1E9FECD000445937 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B56F91E9FECD000445937 /* AppDelegate.swift */; };
+		2B6B56FC1E9FECD000445937 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B56FB1E9FECD000445937 /* ViewController.swift */; };
+		2B6B57011E9FECD000445937 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B6B57001E9FECD000445937 /* Assets.xcassets */; };
+		2B6B57041E9FECD000445937 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B6B57021E9FECD000445937 /* LaunchScreen.storyboard */; };
+		2B6B570C1E9FED2400445937 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B6B570B1E9FED2400445937 /* GoogleService-Info.plist */; };
+		2BA319C21E9FF01E00E7A5C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BA319C11E9FF01E00E7A5C9 /* Images.xcassets */; };
+		2BA319C51E9FF03100E7A5C9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BA319C31E9FF03100E7A5C9 /* LaunchScreen.xib */; };
+		2BA319C61E9FF03100E7A5C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BA319C41E9FF03100E7A5C9 /* Main.storyboard */; };
+		2BA319C91EA03B2000E7A5C9 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA319C81EA03B2000E7A5C9 /* Patient.swift */; };
+		2BB42A041EA045E6002C421C /* PatientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB42A031EA045E6002C421C /* PatientProfileViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2B21ABB91E9FEE3A001D6F66 /* GroceryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
+		2B21ABBA1E9FEE3A001D6F66 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2B21ABBE1E9FEE7B001D6F66 /* PatientsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsListTableViewController.swift; sourceTree = "<group>"; };
+		2B21ABBF1E9FEE7B001D6F66 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2B21ABC01E9FEE7B001D6F66 /* OnlineUsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineUsersTableViewController.swift; sourceTree = "<group>"; };
+		2B6B56F61E9FECD000445937 /* GeriatricHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeriatricHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B6B56F91E9FECD000445937 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2B6B56FB1E9FECD000445937 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2B6B57001E9FECD000445937 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2B6B57031E9FECD000445937 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2B6B57051E9FECD000445937 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B6B570B1E9FED2400445937 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2BA319C01E9FEFE000E7A5C9 /* GeriatricHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GeriatricHelper.entitlements; sourceTree = "<group>"; };
+		2BA319C11E9FF01E00E7A5C9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2BA319C31E9FF03100E7A5C9 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		2BA319C41E9FF03100E7A5C9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		2BA319C81EA03B2000E7A5C9 /* Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
+		2BB42A031EA045E6002C421C /* PatientProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientProfileViewController.swift; sourceTree = "<group>"; };
+		306436849054F0814DE81659 /* Pods-GeriatricHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeriatricHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeriatricHelper/Pods-GeriatricHelper.release.xcconfig"; sourceTree = "<group>"; };
+		3D9ED9CE99D7543CD64D9D6C /* Pods-GeriatricHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeriatricHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeriatricHelper/Pods-GeriatricHelper.debug.xcconfig"; sourceTree = "<group>"; };
+		4EA09AF322E24D40665776C4 /* Pods_GeriatricHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeriatricHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2B6B56F31E9FECD000445937 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2217A7B068C3958B34FC5DE9 /* Pods_GeriatricHelper.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D30FADB03B44052958F2311 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3D9ED9CE99D7543CD64D9D6C /* Pods-GeriatricHelper.debug.xcconfig */,
+				306436849054F0814DE81659 /* Pods-GeriatricHelper.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		279AA8AABB22F35CEC7F32C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4EA09AF322E24D40665776C4 /* Pods_GeriatricHelper.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2B21ABB81E9FEE0C001D6F66 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2B21ABB91E9FEE3A001D6F66 /* GroceryItem.swift */,
+				2BA319C81EA03B2000E7A5C9 /* Patient.swift */,
+				2B21ABBA1E9FEE3A001D6F66 /* User.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		2B21ABBD1E9FEE68001D6F66 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2B21ABBE1E9FEE7B001D6F66 /* PatientsListTableViewController.swift */,
+				2B21ABBF1E9FEE7B001D6F66 /* LoginViewController.swift */,
+				2B21ABC01E9FEE7B001D6F66 /* OnlineUsersTableViewController.swift */,
+				2BB42A031EA045E6002C421C /* PatientProfileViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		2B6B56ED1E9FECD000445937 = {
+			isa = PBXGroup;
+			children = (
+				2B6B56F81E9FECD000445937 /* GeriatricHelper */,
+				2B6B56F71E9FECD000445937 /* Products */,
+				1D30FADB03B44052958F2311 /* Pods */,
+				279AA8AABB22F35CEC7F32C2 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		2B6B56F71E9FECD000445937 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2B6B56F61E9FECD000445937 /* GeriatricHelper.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2B6B56F81E9FECD000445937 /* GeriatricHelper */ = {
+			isa = PBXGroup;
+			children = (
+				2BA319C71E9FF03B00E7A5C9 /* Views */,
+				2BA319C01E9FEFE000E7A5C9 /* GeriatricHelper.entitlements */,
+				2B21ABBD1E9FEE68001D6F66 /* Controllers */,
+				2B21ABB81E9FEE0C001D6F66 /* Models */,
+				2B6B56F91E9FECD000445937 /* AppDelegate.swift */,
+				2B6B56FB1E9FECD000445937 /* ViewController.swift */,
+				2B6B57001E9FECD000445937 /* Assets.xcassets */,
+				2BA319C11E9FF01E00E7A5C9 /* Images.xcassets */,
+				2B6B57021E9FECD000445937 /* LaunchScreen.storyboard */,
+				2B6B57051E9FECD000445937 /* Info.plist */,
+				2B6B570B1E9FED2400445937 /* GoogleService-Info.plist */,
+			);
+			path = GeriatricHelper;
+			sourceTree = "<group>";
+		};
+		2BA319C71E9FF03B00E7A5C9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2BA319C31E9FF03100E7A5C9 /* LaunchScreen.xib */,
+				2BA319C41E9FF03100E7A5C9 /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2B6B56F51E9FECD000445937 /* GeriatricHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B6B57081E9FECD000445937 /* Build configuration list for PBXNativeTarget "GeriatricHelper" */;
+			buildPhases = (
+				DFCF437431186299AC32CF75 /* [CP] Check Pods Manifest.lock */,
+				2B6B56F21E9FECD000445937 /* Sources */,
+				2B6B56F31E9FECD000445937 /* Frameworks */,
+				2B6B56F41E9FECD000445937 /* Resources */,
+				D1175A85A9E3C90E044DF7C6 /* [CP] Embed Pods Frameworks */,
+				4A09544A0206185FD4AB3D7B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GeriatricHelper;
+			productName = GeriatricHelper;
+			productReference = 2B6B56F61E9FECD000445937 /* GeriatricHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2B6B56EE1E9FECD000445937 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = felgueiras;
+				TargetAttributes = {
+					2B6B56F51E9FECD000445937 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = 4EQ98X4V3L;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 2B6B56F11E9FECD000445937 /* Build configuration list for PBXProject "GeriatricHelper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2B6B56ED1E9FECD000445937;
+			productRefGroup = 2B6B56F71E9FECD000445937 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2B6B56F51E9FECD000445937 /* GeriatricHelper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2B6B56F41E9FECD000445937 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BA319C51E9FF03100E7A5C9 /* LaunchScreen.xib in Resources */,
+				2B6B57041E9FECD000445937 /* LaunchScreen.storyboard in Resources */,
+				2BA319C21E9FF01E00E7A5C9 /* Images.xcassets in Resources */,
+				2BA319C61E9FF03100E7A5C9 /* Main.storyboard in Resources */,
+				2B6B570C1E9FED2400445937 /* GoogleService-Info.plist in Resources */,
+				2B6B57011E9FECD000445937 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4A09544A0206185FD4AB3D7B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeriatricHelper/Pods-GeriatricHelper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1175A85A9E3C90E044DF7C6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeriatricHelper/Pods-GeriatricHelper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DFCF437431186299AC32CF75 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2B6B56F21E9FECD000445937 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B21ABC21E9FEE7B001D6F66 /* LoginViewController.swift in Sources */,
+				2B21ABBC1E9FEE3A001D6F66 /* User.swift in Sources */,
+				2B6B56FC1E9FECD000445937 /* ViewController.swift in Sources */,
+				2B21ABC11E9FEE7B001D6F66 /* PatientsListTableViewController.swift in Sources */,
+				2BB42A041EA045E6002C421C /* PatientProfileViewController.swift in Sources */,
+				2B21ABC31E9FEE7B001D6F66 /* OnlineUsersTableViewController.swift in Sources */,
+				2BA319C91EA03B2000E7A5C9 /* Patient.swift in Sources */,
+				2B21ABBB1E9FEE3A001D6F66 /* GroceryItem.swift in Sources */,
+				2B6B56FA1E9FECD000445937 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2B6B57021E9FECD000445937 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B6B57031E9FECD000445937 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2B6B57061E9FECD000445937 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2B6B57071E9FECD000445937 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2B6B57091E9FECD000445937 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D9ED9CE99D7543CD64D9D6C /* Pods-GeriatricHelper.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GeriatricHelper/GeriatricHelper.entitlements;
+				DEVELOPMENT_TEAM = 4EQ98X4V3L;
+				INFOPLIST_FILE = GeriatricHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.felgueiras.GeriatricHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		2B6B570A1E9FECD000445937 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 306436849054F0814DE81659 /* Pods-GeriatricHelper.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GeriatricHelper/GeriatricHelper.entitlements;
+				DEVELOPMENT_TEAM = 4EQ98X4V3L;
+				INFOPLIST_FILE = GeriatricHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.felgueiras.GeriatricHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2B6B56F11E9FECD000445937 /* Build configuration list for PBXProject "GeriatricHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B6B57061E9FECD000445937 /* Debug */,
+				2B6B57071E9FECD000445937 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2B6B57081E9FECD000445937 /* Build configuration list for PBXNativeTarget "GeriatricHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B6B57091E9FECD000445937 /* Debug */,
+				2B6B570A1E9FECD000445937 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2B6B56EE1E9FECD000445937 /* Project object */;
+}
