@@ -44,6 +44,7 @@ class LoginViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    print("2")
     
     // 1 - add a state change listener for auth.
     FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
