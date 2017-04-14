@@ -36,6 +36,7 @@ class OnlineUsersTableViewController: UITableViewController {
   // MARK: UIViewController Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    print(1)
     // 1 - get online users - child added
     usersRef.observe(.childAdded, with: { snap in
       // 2 - get email (cast to String)
