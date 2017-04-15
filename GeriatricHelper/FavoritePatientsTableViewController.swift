@@ -1,42 +1,77 @@
+/*
+ * Copyright (c) 2015 Razeware LLC
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class PatientsListTableViewController: UITableViewController {
+class FavoritePatientsTableViewController: UITableViewController {
     
     // MARK: Constants
     let listToUsers = "ListToUsers"
     
     // MARK: Properties
-    // patient
     var patients: [Patient] = []
-    // logged in user
     var user: User!
-    // number of online users
     var userCountBarButtonItem: UIBarButtonItem!
     // Firebase reference to database
     let ref = FIRDatabase.database().reference()
     
-    // segue to display a patient's profile
-    let SeguePatientViewController = "ViewPatientProfile"
-
-    
+    // check the users who area online - "online" users table
+    //    let usersRef = FIRDatabase.database().reference(withPath: "online")
     
     
     
     // MARK: UIViewController Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         tableView.allowsMultipleSelectionDuringEditing = false
         
-//        userCountBarButtonItem = UIBarButtonItem(title: "1",
-//                                                 style: .plain,
-//                                                 target: self,
-//                                                 action: #selector(userCountButtonDidTouch))
-//        userCountBarButtonItem.tintColor = UIColor.white
-//        navigationItem.leftBarButtonItem = userCountBarButtonItem
-
+        userCountBarButtonItem = UIBarButtonItem(title: "1",
+                                                 style: .plain,
+                                                 target: self,
+                                                 action: #selector(userCountButtonDidTouch))
+        userCountBarButtonItem.tintColor = UIColor.white
+        navigationItem.leftBarButtonItem = userCountBarButtonItem
+        
+        user = User(uid: "FakeId", email: "hungry@person.food")
+        
+        // observe - value event type = listen for every change in data in the DB
+        // 1 - order by completion
+        //        ref.queryOrdered(byChild: "completed").observe(.value, with: { snapshot in
+        //            var newItems: [GroceryItem] = []
+        //
+        //            for item in snapshot.children {
+        //                let groceryItem = GroceryItem(snapshot: item as! FIRDataSnapshot)
+        //                newItems.append(groceryItem)
+        //            }
+        //
+        //            self.patients = newItems
+        //            self.tableView.reloadData()
+        //        })
         
         // add a state change listener - save the user
         FIRAuth.auth()!.addStateDidChangeListener { auth, user in
@@ -46,11 +81,15 @@ class PatientsListTableViewController: UITableViewController {
             // reference the user
             let userID = FIRAuth.auth()?.currentUser?.uid
             
-            // get all patients
-            self.ref.child("users").child(userID!).child("patients").observe(.value, with: {snapshot in
+            // reference the patients
+            let patientsRef = self.ref.child("users").child(userID!).child("patients")
+            // make query - retrieve favorite patients
+            
+            patientsRef.queryOrdered(byChild: "favorite").queryEqual(toValue: true) .observe(.value, with: { snapshot in
                 // Get user value
                 let value = snapshot.value as? NSDictionary
                 let username = value?["name"] as? String ?? ""
+                // let user = User.init(username: username)
                 
                 
                 // 3
@@ -62,15 +101,32 @@ class PatientsListTableViewController: UITableViewController {
                 }
                 self.tableView.reloadData()
                 
-                // ...
-            }) { (error) in
-                print(error.localizedDescription)
-            }
+            })
+        
             
+            
+            
+            //            // 1 - get ref to current user
+            //            let currentUserRef = self.usersRef.child(self.user.uid)
+            //            // 2 - save the current user's email into ref
+            //            currentUserRef.setValue(self.user.email)
+            //            // 3  This removes the value at the reference’s location after the connection to Firebase closes, for instance when a user quits
+            //            // your app
+            //            currentUserRef.onDisconnectRemoveValue()
         }
+        
+        // get the number of users online
+        //        usersRef.observe(.value, with: { snapshot in
+        //            if snapshot.exists() {
+        //                self.userCountBarButtonItem?.title = snapshot.childrenCount.description
+        //            } else {
+        //                self.userCountBarButtonItem?.title = "0"
+        //            }
+        //        })
     }
     
     // MARK: UITableView Delegate methods
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return patients.count
     }
@@ -82,7 +138,7 @@ class PatientsListTableViewController: UITableViewController {
         cell.textLabel?.text = patient.name
         cell.detailTextLabel?.text = patient.name
         
-//        toggleCellCheckbox(cell, isCompleted: patient.favorite)
+        toggleCellCheckbox(cell, isCompleted: patient.favorite)
         
         return cell
     }
@@ -100,50 +156,34 @@ class PatientsListTableViewController: UITableViewController {
         }
     }
     
-    // select a row
+    // FIREBASE IMPLEMENTATION
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 1 - get cell
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         // 2 - get grocery item
-        let selectedPatient = patients[indexPath.row]
+        let groceryItem = patients[indexPath.row]
         // 3 - toogle ckmpletion
-//        let toggledCompletion = !groceryItem.favorite
-//        // 4 - update
-//        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
-//        // 5 - tell Firebase "I updated my field called completed"
-//        groceryItem.ref?.updateChildValues([
-//            "completed": toggledCompletion
-//            ])
-        
-//        // Perform Segue - go to patient's profile
-//        performSegue(withIdentifier: SeguePatientViewController, sender: self)
-//        tableView.deselectRow(at: indexPath, animated: true)
+        let toggledCompletion = !groceryItem.favorite
+        // 4 - update
+        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
+        // 5 - tell Firebase "I updated my field called completed"
+        groceryItem.ref?.updateChildValues([
+            "completed": toggledCompletion
+            ])
     }
     
-    // prepare for the segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SeguePatientViewController {
-            if let indexPath = tableView.indexPathForSelectedRow,
-                let patient = patients[indexPath.row] as? Patient  {
-                let destinationViewController = segue.destination as! PatientProfileViewController
-                // set the author
-                destinationViewController.patient = patient
-            }
+    // changeUI depending on item being completed or not
+    func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
+        if !isCompleted {
+            cell.accessoryType = .none
+            cell.textLabel?.textColor = UIColor.black
+            cell.detailTextLabel?.textColor = UIColor.black
+        } else {
+            cell.accessoryType = .checkmark
+            cell.textLabel?.textColor = UIColor.gray
+            cell.detailTextLabel?.textColor = UIColor.gray
         }
     }
-    
-//    // changeUI depending on item being completed or not
-//    func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
-//        if !isCompleted {
-//            cell.accessoryType = .none
-//            cell.textLabel?.textColor = UIColor.black
-//            cell.detailTextLabel?.textColor = UIColor.black
-//        } else {
-//            cell.accessoryType = .checkmark
-//            cell.textLabel?.textColor = UIColor.gray
-//            cell.detailTextLabel?.textColor = UIColor.gray
-//        }
-//    }
     
     // MARK: Add Item
     

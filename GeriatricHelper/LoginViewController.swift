@@ -50,7 +50,8 @@ class LoginViewController: UIViewController {
       // 2 - if a user is logged in, or upon log in ---
       if user != nil {
         // 3 --- perform a segue
-        self.performSegue(withIdentifier: self.loginToList, sender: nil)
+//        self.performSegue(withIdentifier: self.loginToList, sender: nil)
+        self.performSegue(withIdentifier: "mySegueIdentifier", sender: nil)
       }
     }
   }

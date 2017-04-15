@@ -2,14 +2,16 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class PatientsListTableViewController: UITableViewController {
+class SessionsTableViewController: UITableViewController {
     
     // MARK: Constants
     let listToUsers = "ListToUsers"
     
+    var patient: Patient!
+    
     // MARK: Properties
     // patient
-    var patients: [Patient] = []
+    var sessions: [Session] = []
     // logged in user
     var user: User!
     // number of online users
@@ -17,25 +19,15 @@ class PatientsListTableViewController: UITableViewController {
     // Firebase reference to database
     let ref = FIRDatabase.database().reference()
     
-    // segue to display a patient's profile
-    let SeguePatientViewController = "ViewPatientProfile"
+    // segue to display a session's scales
+    let SeguePatientViewController = "ViewSessionScales"
 
-    
-    
-    
     
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.allowsMultipleSelectionDuringEditing = false
-        
-//        userCountBarButtonItem = UIBarButtonItem(title: "1",
-//                                                 style: .plain,
-//                                                 target: self,
-//                                                 action: #selector(userCountButtonDidTouch))
-//        userCountBarButtonItem.tintColor = UIColor.white
-//        navigationItem.leftBarButtonItem = userCountBarButtonItem
 
         
         // add a state change listener - save the user
@@ -46,19 +38,40 @@ class PatientsListTableViewController: UITableViewController {
             // reference the user
             let userID = FIRAuth.auth()?.currentUser?.uid
             
-            // get all patients
-            self.ref.child("users").child(userID!).child("patients").observe(.value, with: {snapshot in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                let username = value?["name"] as? String ?? ""
-                
-                
-                // 3
+            /**
+             let patientsRef = self.ref.child("users").child(userID!).child("patients")
+             // make query - retrieve favorite patients
+             
+             patientsRef.queryOrdered(byChild: "favorite").queryEqual(toValue: true) .observe(.value, with: { snapshot in
+             // Get user value
+             let value = snapshot.value as? NSDictionary
+             let username = value?["name"] as? String ?? ""
+             // let user = User.init(username: username)
+             
+             
+             // 3
+             for item in snapshot.children {
+             // 4
+             let patient = Patient(snapshot: item as! FIRDataSnapshot)
+             //                    print(patient)
+             self.patients.append(patient)
+             }
+             self.tableView.reloadData()
+             
+             })
+ **/
+            
+            // sessions node reference
+             let sessionsRef = self.ref.child("users").child(userID!).child("sessions")
+            
+            // get every session
+            sessionsRef.observe(.value, with: { snapshot in
+
                 for item in snapshot.children {
-                    // 4
-                    let patient = Patient(snapshot: item as! FIRDataSnapshot)
-                    //                    print(patient)
-                    self.patients.append(patient)
+                    let session = Session(snapshot: item as! FIRDataSnapshot)
+                                        print(session)
+                    self.sessions.append(session)
+                    print(session.guid)
                 }
                 self.tableView.reloadData()
                 
@@ -72,15 +85,18 @@ class PatientsListTableViewController: UITableViewController {
     
     // MARK: UITableView Delegate methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return patients.count
+        return sessions.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-        let patient = patients[indexPath.row]
+        let session = sessions[indexPath.row]
         
-        cell.textLabel?.text = patient.name
-        cell.detailTextLabel?.text = patient.name
+        //TODO convert from timestamp to date
+        var date = NSDate(timeIntervalSince1970: Double(session.date))
+        
+        cell.textLabel?.text = String(describing: date)
+        cell.detailTextLabel?.text = session.patientID
         
 //        toggleCellCheckbox(cell, isCompleted: patient.favorite)
         
@@ -95,7 +111,7 @@ class PatientsListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // groceryItem is a Snapshot instance
-            let groceryItem = patients[indexPath.row]
+            let groceryItem = sessions[indexPath.row]
             groceryItem.ref?.removeValue()
         }
     }
@@ -105,7 +121,7 @@ class PatientsListTableViewController: UITableViewController {
         // 1 - get cell
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         // 2 - get grocery item
-        let selectedPatient = patients[indexPath.row]
+        let selectedPatient = sessions[indexPath.row]
         // 3 - toogle ckmpletion
 //        let toggledCompletion = !groceryItem.favorite
 //        // 4 - update
@@ -124,26 +140,14 @@ class PatientsListTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SeguePatientViewController {
             if let indexPath = tableView.indexPathForSelectedRow,
-                let patient = patients[indexPath.row] as? Patient  {
-                let destinationViewController = segue.destination as! PatientProfileViewController
-                // set the author
-                destinationViewController.patient = patient
+                let session = sessions[indexPath.row] as? Session  {
+                let destinationViewController = segue.destination as! SessionScalesViewController
+                // set the session
+                destinationViewController.session = session
+                print("Session guid is\(session.guid)")
             }
         }
     }
-    
-//    // changeUI depending on item being completed or not
-//    func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
-//        if !isCompleted {
-//            cell.accessoryType = .none
-//            cell.textLabel?.textColor = UIColor.black
-//            cell.detailTextLabel?.textColor = UIColor.black
-//        } else {
-//            cell.accessoryType = .checkmark
-//            cell.textLabel?.textColor = UIColor.gray
-//            cell.detailTextLabel?.textColor = UIColor.gray
-//        }
-//    }
     
     // MARK: Add Item
     
@@ -182,9 +186,4 @@ class PatientsListTableViewController: UITableViewController {
         
         present(alert, animated: true, completion: nil)
     }
-    
-    func userCountButtonDidTouch() {
-        performSegue(withIdentifier: listToUsers, sender: nil)
-    }
-    
 }

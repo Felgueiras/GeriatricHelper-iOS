@@ -22,50 +22,53 @@
 
 import Foundation
 import Firebase
-    import FirebaseDatabase
-
-struct Patient {
-
+import FirebaseDatabase
     
-    enum gender {
-        case male
-        case female
-    }
+
+struct GeriatricScale {
     
     let key: String
-    let favorite: Bool
+    let area: String
+    let alreadyOpened: Bool
+    let completed: Bool
+    let description: String
     let guid: String
-    let name: String
-//    let gender: gender
+    let scaleName: String
+    let sessionID: String
+    let type: String
     let ref: FIRDatabaseReference?
-    let processNumber: String
+
     
-//    init(name: String,  key: String = "") {
-//        self.key = key
-//        self.name = name
-//        self.addedByUser = addedByUser
-//        self.completed = completed
-//        self.ref = nil
-//    }
     
-    // initialize Patient from snapshot
+    // initialize GeriatricScale from snapshot
     init(snapshot: FIRDataSnapshot) {
+        ref = snapshot.ref
         key = snapshot.key
         let snapshotValue = snapshot.value as! [String: AnyObject]
-        name = snapshotValue["name"] as! String
-        ref = snapshot.ref
-        processNumber = snapshotValue["processNumber"] as! String
-        favorite = snapshotValue["favorite"] as! Bool
-        guid = snapshotValue["guid"] as! String
         
+        // assign properties
+        area = snapshotValue["area"] as! String
+        alreadyOpened = snapshotValue["alreadyOpened"] as! Bool
+        completed = snapshotValue["completed"] as! Bool
+        description = snapshotValue["description"] as! String
+        guid = snapshotValue["guid"] as! String
+        scaleName = snapshotValue["scaleName"] as! String
+        sessionID = snapshotValue["sessionID"] as! String
+        type = snapshotValue["type"] as! String
     }
     
     // convert into NSDisctionary - needed for Firebase
     func toAnyObject() -> Any {
         return [
-            "name": name,
-            "favorite": favorite,
-            "processNumber": processNumber
+            "area": area,
+            "key": key,
+            "alreadyOpened": alreadyOpened,
+            "completed": completed,
+            "description": description,
+            "guid": guid,
+            "scaleName": scaleName,
+            "sessionID": sessionID,
+            "type": type
         ]
     }
     

@@ -9,13 +9,30 @@
 import UIKit
 
 class PatientProfileViewController: UIViewController {
-
+    
+    //MARK: properties
+    var patient: Patient!
+    
+    @IBOutlet weak var patientName: UILabel!
+    
+    // segue to display a patient's profile
+    let ViewPatientSessions = "ViewPatientSessions"
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        
+        // setup views to display patient's info
+        patientName.text = patient.name
+        
+        // set title
+        self.title = patient.name
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -36,15 +53,26 @@ class PatientProfileViewController: UIViewController {
             fatalError("The MealViewController is not inside a navigation controller.")
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    // prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == ViewPatientSessions {
+            let destinationViewController = segue.destination as! PatientSessionsTableViewController
+            // set the author
+            destinationViewController.patient = patient
+            
+        }
     }
-    */
-
+    
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

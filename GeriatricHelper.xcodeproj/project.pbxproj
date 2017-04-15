@@ -8,11 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		2217A7B068C3958B34FC5DE9 /* Pods_GeriatricHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA09AF322E24D40665776C4 /* Pods_GeriatricHelper.framework */; };
+		2B14B3011EA0D57400F08C05 /* FavoritePatientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B14B3001EA0D57400F08C05 /* FavoritePatientsTableViewController.swift */; };
 		2B21ABBB1E9FEE3A001D6F66 /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B21ABB91E9FEE3A001D6F66 /* GroceryItem.swift */; };
 		2B21ABBC1E9FEE3A001D6F66 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B21ABBA1E9FEE3A001D6F66 /* User.swift */; };
 		2B21ABC11E9FEE7B001D6F66 /* PatientsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B21ABBE1E9FEE7B001D6F66 /* PatientsListTableViewController.swift */; };
 		2B21ABC21E9FEE7B001D6F66 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B21ABBF1E9FEE7B001D6F66 /* LoginViewController.swift */; };
 		2B21ABC31E9FEE7B001D6F66 /* OnlineUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B21ABC01E9FEE7B001D6F66 /* OnlineUsersTableViewController.swift */; };
+		2B424FEC1EA2A3470010E4F8 /* PatientSessionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B424FEB1EA2A3470010E4F8 /* PatientSessionsTableViewController.swift */; };
+		2B424FEE1EA2A47E0010E4F8 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B424FED1EA2A47E0010E4F8 /* Session.swift */; };
+		2B424FF01EA2AE930010E4F8 /* SessionScalesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B424FEF1EA2AE930010E4F8 /* SessionScalesViewController.swift */; };
+		2B424FF21EA2AFE50010E4F8 /* GeriatricScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B424FF11EA2AFE50010E4F8 /* GeriatricScale.swift */; };
+		2B424FF41EA2BE5D0010E4F8 /* SessionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B424FF31EA2BE5D0010E4F8 /* SessionsTableViewController.swift */; };
 		2B6B56FA1E9FECD000445937 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B56F91E9FECD000445937 /* AppDelegate.swift */; };
 		2B6B56FC1E9FECD000445937 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B56FB1E9FECD000445937 /* ViewController.swift */; };
 		2B6B57011E9FECD000445937 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B6B57001E9FECD000445937 /* Assets.xcassets */; };
@@ -23,14 +29,22 @@
 		2BA319C61E9FF03100E7A5C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BA319C41E9FF03100E7A5C9 /* Main.storyboard */; };
 		2BA319C91EA03B2000E7A5C9 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA319C81EA03B2000E7A5C9 /* Patient.swift */; };
 		2BB42A041EA045E6002C421C /* PatientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB42A031EA045E6002C421C /* PatientProfileViewController.swift */; };
+		2BE0426A1EA2C2A1002D485D /* ScalesQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE042691EA2C2A1002D485D /* ScalesQuestionsViewController.swift */; };
+		2BE0426C1EA2C33A002D485D /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE0426B1EA2C33A002D485D /* Question.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B14B3001EA0D57400F08C05 /* FavoritePatientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritePatientsTableViewController.swift; sourceTree = "<group>"; };
 		2B21ABB91E9FEE3A001D6F66 /* GroceryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
 		2B21ABBA1E9FEE3A001D6F66 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2B21ABBE1E9FEE7B001D6F66 /* PatientsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsListTableViewController.swift; sourceTree = "<group>"; };
 		2B21ABBF1E9FEE7B001D6F66 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2B21ABC01E9FEE7B001D6F66 /* OnlineUsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineUsersTableViewController.swift; sourceTree = "<group>"; };
+		2B424FEB1EA2A3470010E4F8 /* PatientSessionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientSessionsTableViewController.swift; sourceTree = "<group>"; };
+		2B424FED1EA2A47E0010E4F8 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		2B424FEF1EA2AE930010E4F8 /* SessionScalesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionScalesViewController.swift; sourceTree = "<group>"; };
+		2B424FF11EA2AFE50010E4F8 /* GeriatricScale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeriatricScale.swift; sourceTree = "<group>"; };
+		2B424FF31EA2BE5D0010E4F8 /* SessionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsTableViewController.swift; sourceTree = "<group>"; };
 		2B6B56F61E9FECD000445937 /* GeriatricHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeriatricHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B6B56F91E9FECD000445937 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B6B56FB1E9FECD000445937 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,6 +58,8 @@
 		2BA319C41E9FF03100E7A5C9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2BA319C81EA03B2000E7A5C9 /* Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		2BB42A031EA045E6002C421C /* PatientProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientProfileViewController.swift; sourceTree = "<group>"; };
+		2BE042691EA2C2A1002D485D /* ScalesQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalesQuestionsViewController.swift; sourceTree = "<group>"; };
+		2BE0426B1EA2C33A002D485D /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		306436849054F0814DE81659 /* Pods-GeriatricHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeriatricHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeriatricHelper/Pods-GeriatricHelper.release.xcconfig"; sourceTree = "<group>"; };
 		3D9ED9CE99D7543CD64D9D6C /* Pods-GeriatricHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeriatricHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeriatricHelper/Pods-GeriatricHelper.debug.xcconfig"; sourceTree = "<group>"; };
 		4EA09AF322E24D40665776C4 /* Pods_GeriatricHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeriatricHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +99,9 @@
 			children = (
 				2B21ABB91E9FEE3A001D6F66 /* GroceryItem.swift */,
 				2BA319C81EA03B2000E7A5C9 /* Patient.swift */,
+				2B424FED1EA2A47E0010E4F8 /* Session.swift */,
+				2B424FF11EA2AFE50010E4F8 /* GeriatricScale.swift */,
+				2BE0426B1EA2C33A002D485D /* Question.swift */,
 				2B21ABBA1E9FEE3A001D6F66 /* User.swift */,
 			);
 			name = Models;
@@ -91,12 +110,33 @@
 		2B21ABBD1E9FEE68001D6F66 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2B21ABBE1E9FEE7B001D6F66 /* PatientsListTableViewController.swift */,
+				2BE042681EA2C287002D485D /* Scales */,
+				2B424FF61EA2BEEC0010E4F8 /* Sessions */,
+				2B424FF51EA2BEDD0010E4F8 /* Patients */,
 				2B21ABBF1E9FEE7B001D6F66 /* LoginViewController.swift */,
 				2B21ABC01E9FEE7B001D6F66 /* OnlineUsersTableViewController.swift */,
-				2BB42A031EA045E6002C421C /* PatientProfileViewController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		2B424FF51EA2BEDD0010E4F8 /* Patients */ = {
+			isa = PBXGroup;
+			children = (
+				2BB42A031EA045E6002C421C /* PatientProfileViewController.swift */,
+				2B14B3001EA0D57400F08C05 /* FavoritePatientsTableViewController.swift */,
+				2B21ABBE1E9FEE7B001D6F66 /* PatientsListTableViewController.swift */,
+				2B424FEB1EA2A3470010E4F8 /* PatientSessionsTableViewController.swift */,
+			);
+			name = Patients;
+			sourceTree = "<group>";
+		};
+		2B424FF61EA2BEEC0010E4F8 /* Sessions */ = {
+			isa = PBXGroup;
+			children = (
+				2B424FEF1EA2AE930010E4F8 /* SessionScalesViewController.swift */,
+				2B424FF31EA2BE5D0010E4F8 /* SessionsTableViewController.swift */,
+			);
+			name = Sessions;
 			sourceTree = "<group>";
 		};
 		2B6B56ED1E9FECD000445937 = {
@@ -120,6 +160,7 @@
 		2B6B56F81E9FECD000445937 /* GeriatricHelper */ = {
 			isa = PBXGroup;
 			children = (
+				2BA319C41E9FF03100E7A5C9 /* Main.storyboard */,
 				2BA319C71E9FF03B00E7A5C9 /* Views */,
 				2BA319C01E9FEFE000E7A5C9 /* GeriatricHelper.entitlements */,
 				2B21ABBD1E9FEE68001D6F66 /* Controllers */,
@@ -139,9 +180,16 @@
 			isa = PBXGroup;
 			children = (
 				2BA319C31E9FF03100E7A5C9 /* LaunchScreen.xib */,
-				2BA319C41E9FF03100E7A5C9 /* Main.storyboard */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		2BE042681EA2C287002D485D /* Scales */ = {
+			isa = PBXGroup;
+			children = (
+				2BE042691EA2C2A1002D485D /* ScalesQuestionsViewController.swift */,
+			);
+			name = Scales;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,15 +324,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B424FF01EA2AE930010E4F8 /* SessionScalesViewController.swift in Sources */,
 				2B21ABC21E9FEE7B001D6F66 /* LoginViewController.swift in Sources */,
 				2B21ABBC1E9FEE3A001D6F66 /* User.swift in Sources */,
+				2BE0426C1EA2C33A002D485D /* Question.swift in Sources */,
 				2B6B56FC1E9FECD000445937 /* ViewController.swift in Sources */,
+				2B14B3011EA0D57400F08C05 /* FavoritePatientsTableViewController.swift in Sources */,
 				2B21ABC11E9FEE7B001D6F66 /* PatientsListTableViewController.swift in Sources */,
 				2BB42A041EA045E6002C421C /* PatientProfileViewController.swift in Sources */,
 				2B21ABC31E9FEE7B001D6F66 /* OnlineUsersTableViewController.swift in Sources */,
 				2BA319C91EA03B2000E7A5C9 /* Patient.swift in Sources */,
+				2B424FF21EA2AFE50010E4F8 /* GeriatricScale.swift in Sources */,
+				2B424FEE1EA2A47E0010E4F8 /* Session.swift in Sources */,
+				2BE0426A1EA2C2A1002D485D /* ScalesQuestionsViewController.swift in Sources */,
+				2B424FEC1EA2A3470010E4F8 /* PatientSessionsTableViewController.swift in Sources */,
 				2B21ABBB1E9FEE3A001D6F66 /* GroceryItem.swift in Sources */,
 				2B6B56FA1E9FECD000445937 /* AppDelegate.swift in Sources */,
+				2B424FF41EA2BE5D0010E4F8 /* SessionsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

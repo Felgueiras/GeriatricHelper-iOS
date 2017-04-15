@@ -2,40 +2,29 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class PatientsListTableViewController: UITableViewController {
+class SessionScalesViewController: UITableViewController {
     
     // MARK: Constants
-    let listToUsers = "ListToUsers"
+    
+    var session: Session!
     
     // MARK: Properties
-    // patient
-    var patients: [Patient] = []
+    // scales
+    var scales: [GeriatricScale] = []
     // logged in user
     var user: User!
-    // number of online users
-    var userCountBarButtonItem: UIBarButtonItem!
     // Firebase reference to database
     let ref = FIRDatabase.database().reference()
     
-    // segue to display a patient's profile
-    let SeguePatientViewController = "ViewPatientProfile"
+    // segue to display a session's scales
+    let ViewScaleQuestionsSegue = "ViewScaleQuestion"
 
-    
-    
-    
     
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.allowsMultipleSelectionDuringEditing = false
-        
-//        userCountBarButtonItem = UIBarButtonItem(title: "1",
-//                                                 style: .plain,
-//                                                 target: self,
-//                                                 action: #selector(userCountButtonDidTouch))
-//        userCountBarButtonItem.tintColor = UIColor.white
-//        navigationItem.leftBarButtonItem = userCountBarButtonItem
 
         
         // add a state change listener - save the user
@@ -46,19 +35,18 @@ class PatientsListTableViewController: UITableViewController {
             // reference the user
             let userID = FIRAuth.auth()?.currentUser?.uid
             
-            // get all patients
-            self.ref.child("users").child(userID!).child("patients").observe(.value, with: {snapshot in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                let username = value?["name"] as? String ?? ""
+            // scales node reference
+            let scalesRef = self.ref.child("users").child(userID!).child("scales")
+            
+            // get session's scales
+            scalesRef.queryOrdered(byChild: "sessionID")
+                .queryEqual(toValue: self.session.guid).observe(.value, with: { snapshot in
                 
-                
-                // 3
                 for item in snapshot.children {
                     // 4
-                    let patient = Patient(snapshot: item as! FIRDataSnapshot)
-                    //                    print(patient)
-                    self.patients.append(patient)
+                    let scale = GeriatricScale(snapshot: item as! FIRDataSnapshot)
+                    self.scales.append(scale)
+                    print(scale.guid)
                 }
                 self.tableView.reloadData()
                 
@@ -72,15 +60,15 @@ class PatientsListTableViewController: UITableViewController {
     
     // MARK: UITableView Delegate methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return patients.count
+        return scales.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-        let patient = patients[indexPath.row]
+        let scale = scales[indexPath.row]
         
-        cell.textLabel?.text = patient.name
-        cell.detailTextLabel?.text = patient.name
+        cell.textLabel?.text = String(scale.scaleName)
+        cell.detailTextLabel?.text = scale.area
         
 //        toggleCellCheckbox(cell, isCompleted: patient.favorite)
         
@@ -95,7 +83,7 @@ class PatientsListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // groceryItem is a Snapshot instance
-            let groceryItem = patients[indexPath.row]
+            let groceryItem = scales[indexPath.row]
             groceryItem.ref?.removeValue()
         }
     }
@@ -105,7 +93,7 @@ class PatientsListTableViewController: UITableViewController {
         // 1 - get cell
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         // 2 - get grocery item
-        let selectedPatient = patients[indexPath.row]
+        let selectedPatient = scales[indexPath.row]
         // 3 - toogle ckmpletion
 //        let toggledCompletion = !groceryItem.favorite
 //        // 4 - update
@@ -122,12 +110,12 @@ class PatientsListTableViewController: UITableViewController {
     
     // prepare for the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SeguePatientViewController {
+        if segue.identifier == ViewScaleQuestionsSegue {
             if let indexPath = tableView.indexPathForSelectedRow,
-                let patient = patients[indexPath.row] as? Patient  {
-                let destinationViewController = segue.destination as! PatientProfileViewController
+                let scale = scales[indexPath.row] as? GeriatricScale  {
+                let destinationViewController = segue.destination as! ScalesQuestionsViewController
                 // set the author
-                destinationViewController.patient = patient
+                destinationViewController.scale = scale
             }
         }
     }
@@ -182,9 +170,6 @@ class PatientsListTableViewController: UITableViewController {
         
         present(alert, animated: true, completion: nil)
     }
-    
-    func userCountButtonDidTouch() {
-        performSegue(withIdentifier: listToUsers, sender: nil)
-    }
+
     
 }
