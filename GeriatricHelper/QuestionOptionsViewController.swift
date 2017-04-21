@@ -2,25 +2,22 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class SessionsTableViewController: UITableViewController {
+class QuestionOptionsViewController: UITableViewController {
     
     // MARK: Constants
-    let listToUsers = "ListToUsers"
     
-    var patient: Patient!
+    var question: Question!
     
     // MARK: Properties
-    // patient
-    var sessions: [Session] = []
+    // questions
+    var choices: [Choice] = []
     // logged in user
     var user: User!
-    // number of online users
-    var userCountBarButtonItem: UIBarButtonItem!
     // Firebase reference to database
     let ref = FIRDatabase.database().reference()
     
-    // segue to display a session's scales
-    let SeguePatientViewController = "ViewSessionScales"
+    // segue to display a session's questions
+    let ViewSessionScalesSegue = "ViewSessionScales"
 
     
     // MARK: UIViewController Lifecycle
@@ -38,65 +35,29 @@ class SessionsTableViewController: UITableViewController {
             // reference the user
             let userID = FIRAuth.auth()?.currentUser?.uid
             
-            /**
-             let patientsRef = self.ref.child("users").child(userID!).child("patients")
-             // make query - retrieve favorite patients
-             
-             patientsRef.queryOrdered(byChild: "favorite").queryEqual(toValue: true) .observe(.value, with: { snapshot in
-             // Get user value
-             let value = snapshot.value as? NSDictionary
-             let username = value?["name"] as? String ?? ""
-             // let user = User.init(username: username)
-             
-             
-             // 3
-             for item in snapshot.children {
-             // 4
-             let patient = Patient(snapshot: item as! FIRDataSnapshot)
-             //                    print(patient)
-             self.patients.append(patient)
-             }
-             self.tableView.reloadData()
-             
-             })
- **/
+            // questions node reference
+            let questionsRef = self.ref.child("users").child(userID!).child("questions")
             
-            // sessions node reference
-             let sessionsRef = self.ref.child("users").child(userID!).child("sessions")
-            
-            // get every session
-            sessionsRef.observe(.value, with: { snapshot in
-
-                for item in snapshot.children {
-                    let session = Session(snapshot: item as! FIRDataSnapshot)
-                                        print(session)
-                    self.sessions.append(session)
-                    print(session.guid)
-                }
-                self.tableView.reloadData()
-                
-                // ...
-            }) { (error) in
-                print(error.localizedDescription)
-            }
+//            // get scale by name
+//            var scale = Constants.getScaleByName(scaleName: self.question.scale!.testName!)
+//            
+//            // get choices for this question (from Constants)
+//            self.choices = self.question.choices!
             
         }
     }
     
     // MARK: UITableView Delegate methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sessions.count
+        return choices.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-        let session = sessions[indexPath.row]
+        let choice = choices[indexPath.row]
         
-        //TODO convert from timestamp to date
-        var date = NSDate(timeIntervalSince1970: Double(session.date!))
-        
-        cell.textLabel?.text = String(describing: date)
-        cell.detailTextLabel?.text = session.patientID
+        cell.textLabel?.text = String(describing: choice.name)
+        cell.detailTextLabel?.text = choice.description
         
 //        toggleCellCheckbox(cell, isCompleted: patient.favorite)
         
@@ -107,21 +68,21 @@ class SessionsTableViewController: UITableViewController {
         return true
     }
     
-    // remove from Firebase using reference
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // groceryItem is a Snapshot instance
-            let groceryItem = sessions[indexPath.row]
-            groceryItem.ref?.removeValue()
-        }
-    }
+//    // remove from Firebase using reference
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            // groceryItem is a Snapshot instance
+//            let choice = choice[indexPath.row]
+//            groceryItem.ref?.removeValue()
+//        }
+//    }
     
-    // select a row
+    // select a choice
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 1 - get cell
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         // 2 - get grocery item
-        let selectedPatient = sessions[indexPath.row]
+        let selectedChoice = choices[indexPath.row]
         // 3 - toogle ckmpletion
 //        let toggledCompletion = !groceryItem.favorite
 //        // 4 - update
@@ -137,17 +98,29 @@ class SessionsTableViewController: UITableViewController {
     }
     
     // prepare for the segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SeguePatientViewController {
-            if let indexPath = tableView.indexPathForSelectedRow,
-                let session = sessions[indexPath.row] as? Session  {
-                let destinationViewController = segue.destination as! SessionScalesViewController
-                // set the session
-                destinationViewController.session = session
-                print("Session guid is\(session.guid)")
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == ViewSessionScalesSegue {
+//            if let indexPath = tableView.indexPathForSelectedRow,
+//                let patient = questions[indexPath.row] as? Patient  {
+//                let destinationViewController = segue.destination as! PatientProfileViewController
+//                // set the author
+//                destinationViewController.patient = patient
+//            }
+//        }
+//    }
+    
+//    // changeUI depending on item being completed or not
+//    func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
+//        if !isCompleted {
+//            cell.accessoryType = .none
+//            cell.textLabel?.textColor = UIColor.black
+//            cell.detailTextLabel?.textColor = UIColor.black
+//        } else {
+//            cell.accessoryType = .checkmark
+//            cell.textLabel?.textColor = UIColor.gray
+//            cell.detailTextLabel?.textColor = UIColor.gray
+//        }
+//    }
     
     // MARK: Add Item
     
@@ -186,4 +159,6 @@ class SessionsTableViewController: UITableViewController {
         
         present(alert, animated: true, completion: nil)
     }
+
+    
 }

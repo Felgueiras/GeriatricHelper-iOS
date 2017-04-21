@@ -93,7 +93,7 @@ class PatientSessionsTableViewController: UITableViewController {
         let session = sessions[indexPath.row]
         
         //TODO: convert from timestamp to date
-        cell.textLabel?.text = String(session.date)
+        cell.textLabel?.text = String(describing: session.date)
         cell.detailTextLabel?.text = session.patientID
         
 //        toggleCellCheckbox(cell, isCompleted: patient.favorite)

@@ -19,7 +19,19 @@ class PatientsListTableViewController: UITableViewController {
     
     // segue to display a patient's profile
     let SeguePatientViewController = "ViewPatientProfile"
-
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    var filteredPatients = [Patient]()
+    
+    // set the title and icon for this tab
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        // Initialize Tab Bar Item
+        tabBarItem = UITabBarItem(title: "Patients", image: UIImage(named: "PatientIcon"), tag: 0)
+    }
+    
     
     
     
@@ -30,13 +42,18 @@ class PatientsListTableViewController: UITableViewController {
         
         tableView.allowsMultipleSelectionDuringEditing = false
         
-//        userCountBarButtonItem = UIBarButtonItem(title: "1",
-//                                                 style: .plain,
-//                                                 target: self,
-//                                                 action: #selector(userCountButtonDidTouch))
-//        userCountBarButtonItem.tintColor = UIColor.white
-//        navigationItem.leftBarButtonItem = userCountBarButtonItem
-
+        userCountBarButtonItem = UIBarButtonItem(title: "1",
+                                                 style: .plain,
+                                                 target: self,
+                                                 action: #selector(userCountButtonDidTouch))
+        userCountBarButtonItem.tintColor = UIColor.white
+        navigationItem.leftBarButtonItem = userCountBarButtonItem
+        
+        // add search bar
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
         
         // add a state change listener - save the user
         FIRAuth.auth()!.addStateDidChangeListener { auth, user in
@@ -52,6 +69,7 @@ class PatientsListTableViewController: UITableViewController {
                 let value = snapshot.value as? NSDictionary
                 let username = value?["name"] as? String ?? ""
                 
+                self.patients.removeAll()
                 
                 // 3
                 for item in snapshot.children {
@@ -72,17 +90,26 @@ class PatientsListTableViewController: UITableViewController {
     
     // MARK: UITableView Delegate methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredPatients.count
+        }
         return patients.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-        let patient = patients[indexPath.row]
+        let patient: Patient
         
+        
+        
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            patient = filteredPatients[indexPath.row]
+        } else {
+            patient = patients[indexPath.row]
+        }
         cell.textLabel?.text = patient.name
-        cell.detailTextLabel?.text = patient.name
-        
-//        toggleCellCheckbox(cell, isCompleted: patient.favorite)
+        return cell
         
         return cell
     }
@@ -107,43 +134,52 @@ class PatientsListTableViewController: UITableViewController {
         // 2 - get grocery item
         let selectedPatient = patients[indexPath.row]
         // 3 - toogle ckmpletion
-//        let toggledCompletion = !groceryItem.favorite
-//        // 4 - update
-//        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
-//        // 5 - tell Firebase "I updated my field called completed"
-//        groceryItem.ref?.updateChildValues([
-//            "completed": toggledCompletion
-//            ])
+        //        let toggledCompletion = !groceryItem.favorite
+        //        // 4 - update
+        //        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
+        //        // 5 - tell Firebase "I updated my field called completed"
+        //        groceryItem.ref?.updateChildValues([
+        //            "completed": toggledCompletion
+        //            ])
         
-//        // Perform Segue - go to patient's profile
-//        performSegue(withIdentifier: SeguePatientViewController, sender: self)
-//        tableView.deselectRow(at: indexPath, animated: true)
+        //        // Perform Segue - go to patient's profile
+        //        performSegue(withIdentifier: SeguePatientViewController, sender: self)
+        //        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // prepare for the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SeguePatientViewController {
-            if let indexPath = tableView.indexPathForSelectedRow,
-                let patient = patients[indexPath.row] as? Patient  {
-                let destinationViewController = segue.destination as! PatientProfileViewController
-                // set the author
-                destinationViewController.patient = patient
+            
+            let indexPath = tableView.indexPathForSelectedRow
+            let patient: Patient
+            if searchController.isActive && searchController.searchBar.text != "" {
+                patient = filteredPatients[(indexPath?.row)!]
+            } else {
+                patient = patients[(indexPath?.row)!]
             }
+            
+            
+            
+            let destinationViewController = segue.destination as! PatientProfileViewController
+            // set the author
+            destinationViewController.patient = patient
+            
         }
     }
     
-//    // changeUI depending on item being completed or not
-//    func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
-//        if !isCompleted {
-//            cell.accessoryType = .none
-//            cell.textLabel?.textColor = UIColor.black
-//            cell.detailTextLabel?.textColor = UIColor.black
-//        } else {
-//            cell.accessoryType = .checkmark
-//            cell.textLabel?.textColor = UIColor.gray
-//            cell.detailTextLabel?.textColor = UIColor.gray
-//        }
-//    }
+    //    // changeUI depending on item being completed or not
+    //    func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
+    //        if !isCompleted {
+    //            cell.accessoryType = .none
+    //            cell.textLabel?.textColor = UIColor.black
+    //            cell.detailTextLabel?.textColor = UIColor.black
+    //        } else {
+    //            cell.accessoryType = .checkmark
+    //            cell.textLabel?.textColor = UIColor.gray
+    //            cell.detailTextLabel?.textColor = UIColor.gray
+    //        }
+    //    }
     
     // MARK: Add Item
     
@@ -184,7 +220,26 @@ class PatientsListTableViewController: UITableViewController {
     }
     
     func userCountButtonDidTouch() {
-        performSegue(withIdentifier: listToUsers, sender: nil)
+        //        performSegue(withIdentifier: listToUsers, sender: nil)
+        print("Touched something")
+    }
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredPatients = patients.filter { patient in
+            return patient.name.lowercased().contains(searchText.lowercased())
+        }
+        
+        tableView.reloadData()
+    }
+    
+}
+
+// filter search results
+extension PatientsListTableViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+        
     }
     
 }

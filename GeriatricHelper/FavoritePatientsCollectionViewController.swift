@@ -1,30 +1,12 @@
-/*
- * Copyright (c) 2015 Razeware LLC
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class FavoritePatientsTableViewController: UITableViewController {
+class FavoritePatientsCollectionViewController: UICollectionViewController {
+    
+    fileprivate let itemsPerRow: CGFloat = 3
+    
+    fileprivate let reuseIdentifier = "ItemCell"
     
     // MARK: Constants
     let listToUsers = "ListToUsers"
@@ -48,16 +30,16 @@ class FavoritePatientsTableViewController: UITableViewController {
         
         
         
-        tableView.allowsMultipleSelectionDuringEditing = false
-        
-        userCountBarButtonItem = UIBarButtonItem(title: "1",
-                                                 style: .plain,
-                                                 target: self,
-                                                 action: #selector(userCountButtonDidTouch))
-        userCountBarButtonItem.tintColor = UIColor.white
-        navigationItem.leftBarButtonItem = userCountBarButtonItem
-        
-        user = User(uid: "FakeId", email: "hungry@person.food")
+//        tableView.allowsMultipleSelectionDuringEditing = false
+//        
+//        userCountBarButtonItem = UIBarButtonItem(title: "1",
+//                                                 style: .plain,
+//                                                 target: self,
+//                                                 action: #selector(userCountButtonDidTouch))
+//        userCountBarButtonItem.tintColor = UIColor.white
+//        navigationItem.leftBarButtonItem = userCountBarButtonItem
+//        
+//        user = User(uid: "FakeId", email: "hungry@person.food")
         
         // observe - value event type = listen for every change in data in the DB
         // 1 - order by completion
@@ -90,7 +72,7 @@ class FavoritePatientsTableViewController: UITableViewController {
                 let value = snapshot.value as? NSDictionary
                 let username = value?["name"] as? String ?? ""
                 // let user = User.init(username: username)
-                
+                self.patients.removeAll()
                 
                 // 3
                 for item in snapshot.children {
@@ -99,7 +81,9 @@ class FavoritePatientsTableViewController: UITableViewController {
                     //                    print(patient)
                     self.patients.append(patient)
                 }
-                self.tableView.reloadData()
+                
+                self.collectionView?.reloadData()
+//                self.tableView.reloadData()
                 
             })
         
@@ -124,53 +108,54 @@ class FavoritePatientsTableViewController: UITableViewController {
         //            }
         //        })
     }
+
     
-    // MARK: UITableView Delegate methods
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return patients.count
+    //1
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-        let patient = patients[indexPath.row]
+    //2
+    override func collectionView(_ collectionView: UICollectionView,
+                                 numberOfItemsInSection section: Int) -> Int {
+        return self.patients.count
+    }
+    
+    //3
+    override func collectionView(_ collectionView: UICollectionView,
+                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //1
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
+                                                      for: indexPath) as! FavoritePatientCellCollectionViewCell
+        //2
+        let patient = self.patients[indexPath.row]
+        cell.backgroundColor = UIColor.white
+        //3
+//        cell.patientName.text = patient.name
         
-        cell.textLabel?.text = patient.name
-        cell.detailTextLabel?.text = patient.name
-        
-        toggleCellCheckbox(cell, isCompleted: patient.favorite)
+        cell.patient = patient
         
         return cell
     }
+
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    // remove from Firebase using reference
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // groceryItem is a Snapshot instance
-            let groceryItem = patients[indexPath.row]
-            groceryItem.ref?.removeValue()
-        }
-    }
+
     
     // FIREBASE IMPLEMENTATION
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 1 - get cell
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        // 2 - get grocery item
-        let groceryItem = patients[indexPath.row]
-        // 3 - toogle ckmpletion
-        let toggledCompletion = !groceryItem.favorite
-        // 4 - update
-        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
-        // 5 - tell Firebase "I updated my field called completed"
-        groceryItem.ref?.updateChildValues([
-            "completed": toggledCompletion
-            ])
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        // 1 - get cell
+//        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+//        // 2 - get grocery item
+//        let groceryItem = patients[indexPath.row]
+//        // 3 - toogle ckmpletion
+//        let toggledCompletion = !groceryItem.favorite
+//        // 4 - update
+//        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
+//        // 5 - tell Firebase "I updated my field called completed"
+//        groceryItem.ref?.updateChildValues([
+//            "completed": toggledCompletion
+//            ])
+//    }
     
     // changeUI depending on item being completed or not
     func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
@@ -227,4 +212,35 @@ class FavoritePatientsTableViewController: UITableViewController {
         performSegue(withIdentifier: listToUsers, sender: nil)
     }
     
+}
+
+fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+
+
+extension FavoritePatientsCollectionViewController : UICollectionViewDelegateFlowLayout {
+    //1
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        //2
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+    
+    //3
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    // 4
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
 }

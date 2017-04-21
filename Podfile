@@ -10,5 +10,6 @@ target 'GeriatricHelper' do
 pod 'Firebase/Database'
 pod 'Firebase/Auth'
 pod ‘Firebase/Storage’
+pod 'ObjectMapper', '~> 2.2'
 
 end

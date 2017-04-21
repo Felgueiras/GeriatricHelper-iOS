@@ -25,6 +25,11 @@ class ScalesQuestionsViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.allowsMultipleSelectionDuringEditing = false
+        
+        // set title
+        self.title = scale.scaleName
+        
+        print("Single question? " + (scale.singleQuestion?.description)!)
 
         
         // add a state change listener - save the user
@@ -65,7 +70,7 @@ class ScalesQuestionsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         let question = questions[indexPath.row]
         
-        cell.textLabel?.text = String(question.description)
+        cell.textLabel?.text = question.descriptionText!
         cell.detailTextLabel?.text = question.selectedChoice
         
 //        toggleCellCheckbox(cell, isCompleted: patient.favorite)
