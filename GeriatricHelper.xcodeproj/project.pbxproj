@@ -28,7 +28,6 @@
 		2B50F1711EA9394D00E4B762 /* CGAGuideScaleSingleQuestionChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B50F1701EA9394D00E4B762 /* CGAGuideScaleSingleQuestionChoices.swift */; };
 		2B50F1731EA9470800E4B762 /* CGAPublic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B50F1721EA9470800E4B762 /* CGAPublic.storyboard */; };
 		2B50F1761EA9498B00E4B762 /* CGAPublicScalesQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B50F1751EA9498B00E4B762 /* CGAPublicScalesQuestions.swift */; };
-		2B50F1781EA94E0700E4B762 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B50F1771EA94E0700E4B762 /* TutorialViewController.swift */; };
 		2B50F17A1EA94E3400E4B762 /* PageViewTutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B50F1791EA94E3400E4B762 /* PageViewTutorial.storyboard */; };
 		2B5636E61EA4067800D8E75C /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5636E51EA4067800D8E75C /* MasterViewController.swift */; };
 		2B5636E81EA406AF00D8E75C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5636E71EA406AF00D8E75C /* DetailViewController.swift */; };
@@ -70,6 +69,10 @@
 		2BC60BCC1EA52995007F2839 /* ScaleSingleQuestionChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC60BCB1EA52995007F2839 /* ScaleSingleQuestionChoices.swift */; };
 		2BD6CCF31EA563AF007E10FC /* PrescriptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD6CCF21EA563AF007E10FC /* PrescriptionsViewController.swift */; };
 		2BD927CC1EAB7C6900EF1381 /* SessionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD927CB1EAB7C6900EF1381 /* SessionHelper.swift */; };
+		2BDB10AA1EAD3ED900ACD751 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB10A91EAD3ED900ACD751 /* PopUpViewController.swift */; };
+		2BDB10AC1EAD3F7B00ACD751 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB10AB1EAD3F7B00ACD751 /* TutorialViewController.swift */; };
+		2BDB10AE1EAD4D9800ACD751 /* PopOvers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BDB10AD1EAD4D9800ACD751 /* PopOvers.storyboard */; };
+		2BDB10B01EAD53CD00ACD751 /* CGAPublicYesNo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB10AF1EAD53CD00ACD751 /* CGAPublicYesNo.swift */; };
 		2BE0426A1EA2C2A1002D485D /* ScalesQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE042691EA2C2A1002D485D /* ScalesQuestionsViewController.swift */; };
 		2BE0426C1EA2C33A002D485D /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE0426B1EA2C33A002D485D /* Question.swift */; };
 /* End PBXBuildFile section */
@@ -95,7 +98,6 @@
 		2B50F1701EA9394D00E4B762 /* CGAGuideScaleSingleQuestionChoices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAGuideScaleSingleQuestionChoices.swift; sourceTree = "<group>"; };
 		2B50F1721EA9470800E4B762 /* CGAPublic.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CGAPublic.storyboard; sourceTree = "<group>"; };
 		2B50F1751EA9498B00E4B762 /* CGAPublicScalesQuestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAPublicScalesQuestions.swift; sourceTree = "<group>"; };
-		2B50F1771EA94E0700E4B762 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		2B50F1791EA94E3400E4B762 /* PageViewTutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PageViewTutorial.storyboard; sourceTree = "<group>"; };
 		2B5636E51EA4067800D8E75C /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		2B5636E71EA406AF00D8E75C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +142,10 @@
 		2BC60BCB1EA52995007F2839 /* ScaleSingleQuestionChoices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleSingleQuestionChoices.swift; sourceTree = "<group>"; };
 		2BD6CCF21EA563AF007E10FC /* PrescriptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrescriptionsViewController.swift; sourceTree = "<group>"; };
 		2BD927CB1EAB7C6900EF1381 /* SessionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionHelper.swift; sourceTree = "<group>"; };
+		2BDB10A91EAD3ED900ACD751 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		2BDB10AB1EAD3F7B00ACD751 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		2BDB10AD1EAD4D9800ACD751 /* PopOvers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PopOvers.storyboard; sourceTree = "<group>"; };
+		2BDB10AF1EAD53CD00ACD751 /* CGAPublicYesNo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAPublicYesNo.swift; sourceTree = "<group>"; };
 		2BE042691EA2C2A1002D485D /* ScalesQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalesQuestionsViewController.swift; sourceTree = "<group>"; };
 		2BE0426B1EA2C33A002D485D /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		306436849054F0814DE81659 /* Pods-GeriatricHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeriatricHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeriatricHelper/Pods-GeriatricHelper.release.xcconfig"; sourceTree = "<group>"; };
@@ -285,10 +291,10 @@
 				2B21ABB81E9FEE0C001D6F66 /* Models */,
 				2B6B56F91E9FECD000445937 /* AppDelegate.swift */,
 				2B6B56FB1E9FECD000445937 /* ViewController.swift */,
+				2BDB10AB1EAD3F7B00ACD751 /* TutorialViewController.swift */,
 				2BA319C11E9FF01E00E7A5C9 /* Images.xcassets */,
 				2B6B57051E9FECD000445937 /* Info.plist */,
 				2B6B570B1E9FED2400445937 /* GoogleService-Info.plist */,
-				2B50F1771EA94E0700E4B762 /* TutorialViewController.swift */,
 			);
 			path = GeriatricHelper;
 			sourceTree = "<group>";
@@ -298,6 +304,7 @@
 			children = (
 				2BADFB531EAA6B4400277E8A /* CGAPublicQuestionOptionsViewController.swift */,
 				2B50F1751EA9498B00E4B762 /* CGAPublicScalesQuestions.swift */,
+				2BDB10AF1EAD53CD00ACD751 /* CGAPublicYesNo.swift */,
 				2B7D68491EA6A88700443D59 /* CGAPublicScaleSingleChoice.swift */,
 				2B7D68461EA6A36700443D59 /* CGAPublicMain.swift */,
 				2B7D684B1EA6ABB200443D59 /* CGAPublicInfo.swift */,
@@ -311,7 +318,9 @@
 			children = (
 				2BAC89D31EA4248A00EE6CE9 /* Prescriptions.storyboard */,
 				2BA319C41E9FF03100E7A5C9 /* Main.storyboard */,
+				2BDB10AD1EAD4D9800ACD751 /* PopOvers.storyboard */,
 				2B59480B1EACB3DD0052EC98 /* Patients.storyboard */,
+				2BDB10A91EAD3ED900ACD751 /* PopUpViewController.swift */,
 				2B50F1791EA94E3400E4B762 /* PageViewTutorial.storyboard */,
 				2B50F1721EA9470800E4B762 /* CGAPublic.storyboard */,
 				2BA319C31E9FF03100E7A5C9 /* LaunchScreen.xib */,
@@ -447,6 +456,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BDB10AE1EAD4D9800ACD751 /* PopOvers.storyboard in Resources */,
 				2B59480C1EACB3DD0052EC98 /* Patients.storyboard in Resources */,
 				2B2D3A131EACDF04007E7A28 /* PatientInfoCard.xib in Resources */,
 				2BA319C51E9FF03100E7A5C9 /* LaunchScreen.xib in Resources */,
@@ -526,7 +536,7 @@
 				2B21ABBC1E9FEE3A001D6F66 /* User.swift in Sources */,
 				2B888A291EA55C880080BB7C /* InitialSetup.swift in Sources */,
 				2B7D68471EA6A36700443D59 /* CGAPublicMain.swift in Sources */,
-				2B50F1781EA94E0700E4B762 /* TutorialViewController.swift in Sources */,
+				2BDB10AC1EAD3F7B00ACD751 /* TutorialViewController.swift in Sources */,
 				2BE0426C1EA2C33A002D485D /* Question.swift in Sources */,
 				2B74803B1EA932B9006E231E /* ReviewPublicSessionTableViewController.swift in Sources */,
 				2B6B56FC1E9FECD000445937 /* ViewController.swift in Sources */,
@@ -549,6 +559,7 @@
 				2BD6CCF31EA563AF007E10FC /* PrescriptionsViewController.swift in Sources */,
 				2B50F1761EA9498B00E4B762 /* CGAPublicScalesQuestions.swift in Sources */,
 				2B3BCD4F1EA4F8910025EF6A /* FavoritePatientCellCollectionViewCell.swift in Sources */,
+				2BDB10B01EAD53CD00ACD751 /* CGAPublicYesNo.swift in Sources */,
 				2BAC89D01EA421B700EE6CE9 /* PrescriptionStart.swift in Sources */,
 				2B21ABC31E9FEE7B001D6F66 /* OnlineUsersTableViewController.swift in Sources */,
 				2BBF33A81EA38CCE008D30EC /* QuestionOptionsViewController.swift in Sources */,
@@ -559,6 +570,7 @@
 				2B424FEE1EA2A47E0010E4F8 /* Session.swift in Sources */,
 				2BE0426A1EA2C2A1002D485D /* ScalesQuestionsViewController.swift in Sources */,
 				2BC60BCC1EA52995007F2839 /* ScaleSingleQuestionChoices.swift in Sources */,
+				2BDB10AA1EAD3ED900ACD751 /* PopUpViewController.swift in Sources */,
 				2BAC89CE1EA41E7200EE6CE9 /* StartCriteria.swift in Sources */,
 				2BBF33A51EA3825C008D30EC /* Constants.swift in Sources */,
 				2B2D3A121EACDF04007E7A28 /* PatientInfoCard.swift in Sources */,

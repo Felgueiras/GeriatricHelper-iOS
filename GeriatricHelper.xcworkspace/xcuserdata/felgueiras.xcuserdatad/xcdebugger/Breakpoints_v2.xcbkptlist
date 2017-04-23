@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeriatricHelper/Question.swift"
-            timestampString = "514558039.1536"
+            timestampString = "514678249.813027"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "mapping(map:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -517,13 +517,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeriatricHelper/TutorialViewController.swift"
-            timestampString = "514412703.481131"
+            timestampString = "514673209.753598"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "TutorialViewController"
-            landmarkType = "4">
+            startingLineNumber = "96"
+            endingLineNumber = "96">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

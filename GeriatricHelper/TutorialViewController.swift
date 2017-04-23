@@ -1,38 +1,19 @@
 //
 //  TutorialViewController.swift
-//  GeriatricHelper
+//  
 //
-//  Created by felgueiras on 20/04/2017.
-//  Copyright © 2017 felgueiras. All rights reserved.
+//  Created by felgueiras on 23/04/2017.
+//
 //
 
 import UIKit
 
-class TutorialViewController: UIPageViewController {
+class TutorialViewController: UIViewController , UIPopoverPresentationControllerDelegate {
 
-    private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newColoredViewController(color: "Green"),
-                self.newColoredViewController(color: "Red"),
-                self.newColoredViewController(color: "Blue")]
-    }()
-    
-    private func newColoredViewController(color: String) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: nil) .
-            instantiateViewController(withIdentifier: "\(color)ViewController")
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        dataSource = self
-        
-        if let firstViewController = orderedViewControllers.first {
-            setViewControllers([firstViewController],
-                               direction: .forward,
-                               animated: true,
-                               completion: nil)
-        }
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,49 +32,42 @@ class TutorialViewController: UIPageViewController {
     }
     */
 
-}
-
-// MARK: UIPageViewControllerDataSource
-
-extension TutorialViewController: UIPageViewControllerDataSource {
+    @IBAction func showPopUp(_ sender: Any) {
+        
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID") as! PopUpViewController
+        
+        
+        
+        
+       
+        popOverVC.modalPresentationStyle = UIModalPresentationStyle.popover
+        let popover: UIPopoverPresentationController = popOverVC.popoverPresentationController!
+        popover.sourceView = sender as! UIView
+        popover.sourceRect = (sender as AnyObject).bounds
+        
+        
+        
+        popover.delegate = self
+        popOverVC.displayText = "Something"
     
-    func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
-            return nil
-        }
         
-        let previousIndex = viewControllerIndex - 1
+        present(popOverVC, animated: true, completion:nil)
         
-        guard previousIndex >= 0 else {
-            return nil
-        }
-        
-        guard orderedViewControllers.count > previousIndex else {
-            return nil
-        }
-        
-        return orderedViewControllers[previousIndex]
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
-            return nil
-        }
-        
-        let nextIndex = viewControllerIndex + 1
-        let orderedViewControllersCount = orderedViewControllers.count
-        
-        guard orderedViewControllersCount != nextIndex else {
-            return nil
-        }
-        guard orderedViewControllersCount > nextIndex else {
-            return nil
-        }
-        
-        return orderedViewControllers[nextIndex]
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.fullScreen
     }
-
+    
+    func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
+        let navigationController = UINavigationController(rootViewController: controller.presentedViewController)
+        let btnDone = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(TutorialViewController.dismiss as (TutorialViewController) -> () -> ()))
+        navigationController.topViewController?.navigationItem.rightBarButtonItem = btnDone
+        return navigationController
+    }
+    
+    func dismiss() {
+        self.dismiss(animated: true, completion: nil)
+    }
     
 }

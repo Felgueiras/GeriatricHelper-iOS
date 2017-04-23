@@ -786,6 +786,42 @@
             </objects>
             <point key="canvasLocation" x="3996" y="313"/>
         </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="mqZ-F4-UAK">
+            <objects>
+                <viewController id="dLk-dV-Mpb" customClass="TutorialViewController" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8dU-Qd-clX"/>
+                        <viewControllerLayoutGuide type="bottom" id="7HZ-kS-m75"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qtT-6e-nEj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yy4-Up-vqG">
+                                <rect key="frame" x="168" y="318" width="38" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Show"/>
+                                <connections>
+                                    <action selector="showPopUp:" destination="dLk-dV-Mpb" eventType="touchUpInside" id="CMp-YB-sGe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7zx-6W-zPt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6440" y="2541"/>
+        </scene>
+        <!--sbPopUpID-->
+        <scene sceneID="f7r-mO-d6F">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="sbPopUpID" storyboardName="PopOvers" referencedIdentifier="sbPopUpID" id="GlA-FQ-0X4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3lk-2e-58G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4091" y="-1124"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Account" width="25" height="25"/>

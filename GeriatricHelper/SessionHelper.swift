@@ -47,12 +47,12 @@ class SessionHelper{
                  * Yes/no Question
                  */
                 if question.yesOrNo == true {
-                    //                    let selectedYesNoChoice = question.getSelectedYesNoChoice();
-                    //                    if (selectedYesNoChoice.equals("yes")) {
-                    //                        res += question.getYesValue();
-                    //                    } else {
-                    //                        res += question.getNoValue();
-                    //                    }
+                    
+                    if question.selectedYesNo == "yes" {
+                        res += Double((question.choices?.first?.yes)!)
+                    } else {
+                        res += Double((question.choices?.first?.no)!)
+                    }
                 }
                     /**
                      * Right/ wrong question
@@ -64,10 +64,10 @@ class SessionHelper{
                     /**
                      * Numerical question.
                      */
-//                else if (question.isNumerical()) {
-//                    //                    System.out.println("Numerical");
-//                    //                    res += question.getAnswerNumber();
-//                }
+                    //                else if (question.isNumerical()) {
+                    //                    //                    System.out.println("Numerical");
+                    //                    //                    res += question.getAnswerNumber();
+                    //                }
                     /**
                      * Multiple Choice Question
                      */

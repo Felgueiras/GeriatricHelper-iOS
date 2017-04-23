@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="t95-p7-WTR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="t95-p7-WTR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -121,6 +121,7 @@
                         <segue destination="hDo-LP-lrV" kind="unwind" identifier="CGAPublicCancelSegue" unwindAction="unwindToMenuWithSegue:" id="MpC-KQ-sjL"/>
                         <segue destination="Peu-5Z-UVe" kind="show" identifier="ViewScaleQuestions" id="I4X-mv-DhB"/>
                         <segue destination="pYq-Hd-djC" kind="presentation" identifier="ReviewPublicSession" id="QLJ-0a-42O"/>
+                        <segue destination="gtM-Wm-YaA" kind="show" identifier="YesNoQuestion" id="oqv-rq-zFO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PAw-An-1JS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -230,7 +231,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0mq-dU-x6O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1234" y="-308"/>
+            <point key="canvasLocation" x="1114" y="-308"/>
         </scene>
         <!--Question Options-->
         <scene sceneID="lDv-mW-3dV">
@@ -407,6 +408,77 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ptu-mX-EKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="302" y="529"/>
+        </scene>
+        <!--Scales Questions-->
+        <scene sceneID="B90-D7-YiH">
+            <objects>
+                <tableViewController title="Scales Questions" id="gtM-Wm-YaA" customClass="CGAPublicYesNo" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="gOF-a6-bkV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="60" id="x8P-1R-UXj" customClass="YesNoQuestionCard" customModule="GeriatricHelper" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="22" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x8P-1R-UXj" id="fiL-dm-FeJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdc-1z-WEj">
+                                            <rect key="frame" x="16" y="19" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeA-M0-F1p">
+                                            <rect key="frame" x="275" y="15" width="46" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="46" id="I1V-Q2-vSA"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                            <state key="normal" title="Yes"/>
+                                            <connections>
+                                                <action selector="yesButtonClicked:" destination="x8P-1R-UXj" eventType="touchUpInside" id="tUp-lq-jUm"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bA1-Vc-mMY">
+                                            <rect key="frame" x="337" y="15" width="30" height="30"/>
+                                            <state key="normal" title="No"/>
+                                            <connections>
+                                                <action selector="noButtonClicked:" destination="x8P-1R-UXj" eventType="touchUpInside" id="7kN-k0-GYU"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Bdc-1z-WEj" firstAttribute="centerY" secondItem="fiL-dm-FeJ" secondAttribute="centerY" id="O6a-FF-TFC"/>
+                                        <constraint firstItem="bA1-Vc-mMY" firstAttribute="centerY" secondItem="fiL-dm-FeJ" secondAttribute="centerY" id="QOa-ge-1fF"/>
+                                        <constraint firstItem="eeA-M0-F1p" firstAttribute="baseline" secondItem="Bdc-1z-WEj" secondAttribute="baseline" id="UGh-go-wQs"/>
+                                        <constraint firstItem="Bdc-1z-WEj" firstAttribute="leading" secondItem="fiL-dm-FeJ" secondAttribute="leadingMargin" constant="8" id="YDY-NX-PmK"/>
+                                        <constraint firstItem="bA1-Vc-mMY" firstAttribute="leading" secondItem="eeA-M0-F1p" secondAttribute="trailing" constant="16" id="v9m-N2-AKz"/>
+                                        <constraint firstItem="bA1-Vc-mMY" firstAttribute="trailing" secondItem="fiL-dm-FeJ" secondAttribute="trailingMargin" id="zgA-60-fnI"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="noButton" destination="bA1-Vc-mMY" id="NzX-a0-Frx"/>
+                                    <outlet property="questionLabel" destination="Bdc-1z-WEj" id="GQH-g7-Skp"/>
+                                    <outlet property="yesButton" destination="eeA-M0-F1p" id="JKh-us-RIS"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gtM-Wm-YaA" id="8Cw-Nk-XaT"/>
+                            <outlet property="delegate" destination="gtM-Wm-YaA" id="de7-pN-D9g"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Yes No Questions" id="Pur-Y2-Kki">
+                        <barButtonItem key="backBarButtonItem" title="GoBack" id="rXO-FO-FZb"/>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="snT-GJ-Urb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1114" y="-966"/>
         </scene>
     </scenes>
     <resources>

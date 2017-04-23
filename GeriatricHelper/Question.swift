@@ -23,6 +23,7 @@ class Question: NSObject, Mappable, NSCoding {
     var scale: GeriatricScale?
     var rightWrong: Bool?
     var yesOrNo: Bool?
+    var selectedYesNo: String?
     
     override init(){}
     

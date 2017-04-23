@@ -21,8 +21,10 @@ class ScaleCard: UITableViewCell {
 class CGAPublicMain: UITableViewController {
     
     
-    // segue to display a patient's profile
+    
     let ViewScaleQuestionsSegue = "ViewScaleQuestions"
+    
+    let ViewScaleYesNoSegue = "YesNoQuestion"
     
     var session: Session?
     
@@ -169,13 +171,29 @@ class CGAPublicMain: UITableViewController {
         // filter scales by selected
         let scale = Constants.getScalesForArea(area: Constants.cgaAreas[indexPath.section])[indexPath.row]
         
-        if !scale.singleQuestion!{
-            // perform Segue - go to patient's profile
-            performSegue(withIdentifier: ViewScaleQuestionsSegue, sender: self)
-        }
-        else{
+        if scale.singleQuestion!{
             // single question scale - display the choices
             performSegue(withIdentifier: ViewScaleSingleQuestionChoicesSegue, sender: self)
+            
+        }
+        else{
+            // multiple choice
+            
+            
+            if scale.questions?.first?.yesOrNo == true {
+                // yes/no
+                // "normal" multiple choice
+                performSegue(withIdentifier: ViewScaleYesNoSegue, sender: self)
+            }
+            else
+            {
+                // "normal" multiple choice
+                performSegue(withIdentifier: ViewScaleQuestionsSegue, sender: self)
+            }
+            
+            
+            
+            
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -197,21 +215,33 @@ class CGAPublicMain: UITableViewController {
                 }
             }
         }
-        else
+        else if segue.identifier == ViewScaleSingleQuestionChoicesSegue {
             
-            if segue.identifier == ViewScaleSingleQuestionChoicesSegue {
-                
-                // pass scale to the controller
-                let scaleName = Constants.getScalesForArea(area: Constants.cgaAreas[(tableView.indexPathForSelectedRow?.section)!])[(tableView.indexPathForSelectedRow?.row)!].scaleName
-                
-                for scale in Constants.cgaPublicScales! {
-                    if scale.scaleName == scaleName{
-                        let destinationViewController = segue.destination as! CGAPublicScaleSingleChoice
-                        // set the author
-                        destinationViewController.scale = scale
-                    }
+            // pass scale to the controller
+            let scaleName = Constants.getScalesForArea(area: Constants.cgaAreas[(tableView.indexPathForSelectedRow?.section)!])[(tableView.indexPathForSelectedRow?.row)!].scaleName
+            
+            for scale in Constants.cgaPublicScales! {
+                if scale.scaleName == scaleName{
+                    let destinationViewController = segue.destination as! CGAPublicScaleSingleChoice
+                    // set the author
+                    destinationViewController.scale = scale
                 }
-                
+            }
+            
+        }
+        else if segue.identifier == ViewScaleYesNoSegue {
+            
+            // pass scale to the controller
+            let scaleName = Constants.getScalesForArea(area: Constants.cgaAreas[(tableView.indexPathForSelectedRow?.section)!])[(tableView.indexPathForSelectedRow?.row)!].scaleName
+            
+            for scale in Constants.cgaPublicScales! {
+                if scale.scaleName == scaleName{
+                    let destinationViewController = segue.destination as! CGAPublicYesNo
+                    // set the author
+                    destinationViewController.scale = scale
+                }
+            }
+            
         }
     }
     

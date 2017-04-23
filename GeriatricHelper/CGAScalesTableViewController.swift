@@ -24,12 +24,45 @@ class CGAScalesTableViewController: UITableViewController {
     
     
     
+    
+    
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // disable multiple selection
         tableView.allowsMultipleSelectionDuringEditing = false
+    }
+    
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        
+        // get selected cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
+        
+        // get the selected scale
+        let sectionIndex = indexPath.section
+        let area = Constants.cgaAreas[sectionIndex]
+        let rowInsideSection = indexPath.row
+        
+        let scale = Constants.getScalesForArea(area: area)[rowInsideSection]
+        
+        // display popover
+        let popOverVC = UIStoryboard(name: "PopOvers", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID") as! PopUpViewController
+        
+
+        popOverVC.modalPresentationStyle = UIModalPresentationStyle.popover
+        let popover: UIPopoverPresentationController = popOverVC.popoverPresentationController!
+        popover.sourceView = cell
+        popover.sourceRect = cell.bounds
+        
+        
+        
+//        popover.delegate = self
+        popOverVC.scale = scale
+        
+        
+        present(popOverVC, animated: true, completion:nil)
+        
     }
     
     // number of rows per section
@@ -52,7 +85,7 @@ class CGAScalesTableViewController: UITableViewController {
         let scale = Constants.getScalesForArea(area: area)[rowInsideSection]
         
         cell.textLabel?.text = scale.scaleName
-        cell.detailTextLabel?.text = scale.area
+//        cell.detailTextLabel?.text = scale.area
         
         return cell
     }
