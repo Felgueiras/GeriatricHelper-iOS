@@ -28,13 +28,79 @@ class PatientProfileViewController: UIViewController{
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     var user: User!
-
+    
+    //MARK: views
+    
+    @IBOutlet weak var favoriteButton: UIBarButtonItem!
+    @IBOutlet weak var birthDate: UILabel!
+    
+    @IBOutlet weak var address: UILabel!
+    
+    @IBOutlet weak var hospitalProcessNumber: UILabel!
     
     // choose between
     @IBAction func segmentedControlValueChanged(_ sender: Any) {
         
         // reload the data
         self.table.reloadData()
+    }
+
+    @IBAction func deletePatient(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Delete Patient",
+                                      message: "Do you wish to delete this Patient's profile?",
+                                      preferredStyle: .alert)
+        
+        
+        // cancel the current session
+        let saveAction = UIAlertAction(title: "Yes",
+                                       style: .default) { _ in
+                                        // delete patient from UserDefaults
+                                        PatientsManagement.deletePatient(patient: self.patient)
+                                        
+                                        
+                                        // go back to patients list
+                                        
+//                                        self.performSegue(withIdentifier: "CGAPublicCancelSegue", sender: self)
+                                        
+        }
+        
+        let cancelAction = UIAlertAction(title: "No",
+                                         style: .default)
+        
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func favoriteButtonPressed(_ sender: Any) {
+        // change favoriteness
+        patient.favorite = !patient.favorite!
+        
+        // update patient 
+        PatientsManagement.updatePatient(patient: patient)
+        
+        // update icon
+        setFavoriteIcon()
+        
+        print("Favorite button pressed")
+        
+    }
+    
+    func setFavoriteIcon(){
+        if patient.favorite == true{
+            // patient is favorite
+            let image = UIImage(named: "Star Filled-50")
+            favoriteButton.setBackgroundImage(image, for: .normal, barMetrics: .default)
+            
+        }
+        else
+        {
+            let image = UIImage(named: "Star-50")
+            favoriteButton.setBackgroundImage(image, for: .normal, barMetrics: .default)
+        }
     }
     
     @IBOutlet weak var table: UITableView!
@@ -51,6 +117,17 @@ class PatientProfileViewController: UIViewController{
         // set delegate for sessions table
         self.table.delegate = self
         self.table.dataSource = self
+        
+        //MARK: set patient's info
+//        birthDate.text = patient
+        address.text = patient.address
+        hospitalProcessNumber.text = patient.processNumber
+        
+        // check if favorite, change icon
+        if patient.favorite == true{
+            
+        }
+        
         
         // load patient's sessions
             FIRAuth.auth()!.addStateDidChangeListener { auth, user in

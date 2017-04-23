@@ -2,10 +2,21 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
+
+
+
 class PatientsListTableViewController: UITableViewController {
     
     // MARK: Constants
     let listToUsers = "ListToUsers"
+    
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    @IBAction func segmentedControlSelectionChanged(_ sender: Any) {
+        tableView.reloadData()
+    }
+    
     
     // MARK: Properties
     // patient
@@ -32,6 +43,22 @@ class PatientsListTableViewController: UITableViewController {
         tabBarItem = UITabBarItem(title: "Patients", image: UIImage(named: "PatientIcon"), tag: 0)
     }
     
+    var favoritePatients: [Patient] = []
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.patients = PatientsManagement.getPatients()
+        
+        // get favorite patients
+        favoritePatients.removeAll()
+        for patient in self.patients{
+            if patient.favorite == true{
+                favoritePatients.append(patient)
+            }
+        }
+        
+        self.tableView.reloadData()
+    }
     
     
     
@@ -56,36 +83,36 @@ class PatientsListTableViewController: UITableViewController {
         tableView.tableHeaderView = searchController.searchBar
         
         // add a state change listener - save the user
-        FIRAuth.auth()!.addStateDidChangeListener { auth, user in
-            guard let user = user else { return }
-            self.user = User(authData: user)
-            
-            // reference the user
-            let userID = FIRAuth.auth()?.currentUser?.uid
-            
-            // get all patients
-            self.ref.child("users").child(userID!).child("patients").observe(.value, with: {snapshot in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                let username = value?["name"] as? String ?? ""
-                
-                self.patients.removeAll()
-                
-                // 3
-                for item in snapshot.children {
-                    // 4
-                    let patient = Patient(snapshot: item as! FIRDataSnapshot)
-                    //                    print(patient)
-                    self.patients.append(patient)
-                }
-                self.tableView.reloadData()
-                
-                // ...
-            }) { (error) in
-                print(error.localizedDescription)
-            }
-            
-        }
+//        FIRAuth.auth()!.addStateDidChangeListener { auth, user in
+//            guard let user = user else { return }
+//            self.user = User(authData: user)
+//            
+//            // reference the user
+//            let userID = FIRAuth.auth()?.currentUser?.uid
+//            
+//            // get all patients
+//            self.ref.child("users").child(userID!).child("patients").observe(.value, with: {snapshot in
+//                // Get user value
+//                let value = snapshot.value as? NSDictionary
+//                let username = value?["name"] as? String ?? ""
+//                
+//                self.patients.removeAll()
+//                
+//                // 3
+//                for item in snapshot.children {
+//                    // 4
+//                    let patient = Patient(snapshot: item as! FIRDataSnapshot)
+//                    //                    print(patient)
+//                    self.patients.append(patient)
+//                }
+//                self.tableView.reloadData()
+//                
+//                // ...
+//            }) { (error) in
+//                print(error.localizedDescription)
+//            }
+//            
+//        }
     }
     
     // MARK: UITableView Delegate methods
@@ -93,6 +120,20 @@ class PatientsListTableViewController: UITableViewController {
         if searchController.isActive && searchController.searchBar.text != "" {
             return filteredPatients.count
         }
+        
+        
+        switch segmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            // all sessions
+            return patients.count
+        case 1:
+            // favorite patients
+            return favoritePatients.count
+        default:
+            break
+        }
+        
         return patients.count
     }
     
@@ -101,22 +142,31 @@ class PatientsListTableViewController: UITableViewController {
         let patient: Patient
         
         
-        
-        
-        if searchController.isActive && searchController.searchBar.text != "" {
-            patient = filteredPatients[indexPath.row]
-        } else {
-            patient = patients[indexPath.row]
+         switch segmentedControl.selectedSegmentIndex
+         {
+         case 0:
+            // all patients
+            if searchController.isActive && searchController.searchBar.text != "" {
+                patient = filteredPatients[indexPath.row]
+            } else {
+                patient = patients[indexPath.row]
+            }
+            cell.textLabel?.text = patient.name
+         case 1:
+            // favorite patients
+            if searchController.isActive && searchController.searchBar.text != "" {
+                patient = filteredPatients[indexPath.row]
+            } else {
+                patient = favoritePatients[indexPath.row]
+            }
+            cell.textLabel?.text = patient.name
+         default:
+            break
         }
-        cell.textLabel?.text = patient.name
-        return cell
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
     
     // remove from Firebase using reference
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -181,8 +231,7 @@ class PatientsListTableViewController: UITableViewController {
     //        }
     //    }
     
-    // MARK: Add Item
-    
+    // MARK: Create Patient
     @IBAction func addButtonDidTouch(_ sender: AnyObject) {
         let alert = UIAlertController(title: "Grocery Item",
                                       message: "Add an Item",
@@ -226,7 +275,7 @@ class PatientsListTableViewController: UITableViewController {
     
     func filterContentForSearchText(searchText: String, scope: String = "All") {
         filteredPatients = patients.filter { patient in
-            return patient.name.lowercased().contains(searchText.lowercased())
+            return (patient.name?.lowercased().contains(searchText.lowercased()))!
         }
         
         tableView.reloadData()

@@ -36,7 +36,7 @@
                             <constraint firstItem="AsD-UQ-avT" firstAttribute="centerX" secondItem="6t1-Em-LLm" secondAttribute="centerX" id="UBg-20-y1G"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="CGA" image="Folder-50" id="Tpw-0v-1li"/>
+                    <tabBarItem key="tabBarItem" title="CGA" image="Info-50" id="Tpw-0v-1li"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="v6C-01-5J4" kind="presentation" identifier="StartPublicSession" id="8RA-Bh-IAA"/>
@@ -410,7 +410,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Folder-50" width="25" height="25"/>
+        <image name="Info-50" width="25" height="25"/>
         <image name="pill" width="13" height="13"/>
     </resources>
 </document>
