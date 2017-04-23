@@ -13,21 +13,28 @@ class CGAPublicQuestionOptionsViewController: UITableViewController {
     var choices: [Choice] = []
     
     
+    // selected choice
+    var selectedChoice:Choice? {
+        didSet {
+            if let choice = selectedChoice  {
+                selectedChoiceIndex = question?.choices?.index{$0 === choice}
+            }
+        }
+    }
+    
+    
+    var selectedChoiceIndex:Int?
+    
+    
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.allowsMultipleSelectionDuringEditing = false
-
         
-        // add a state change listener - save the user
-        FIRAuth.auth()!.addStateDidChangeListener { auth, user in
-            
-
-            // get choices for this question (from Constants)
-            self.choices = self.question.choices!
-            
-        }
+        // get choices for this question
+        self.choices = self.question.choices!
+        
     }
     
     // MARK: UITableView Delegate methods
@@ -39,45 +46,44 @@ class CGAPublicQuestionOptionsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         let choice = choices[indexPath.row]
         
-        cell.textLabel?.text = String(describing: choice.name)
-        cell.detailTextLabel?.text = choice.description
-        
-//        toggleCellCheckbox(cell, isCompleted: patient.favorite)
+        cell.textLabel?.text = String(describing: choice.name!)
+        cell.detailTextLabel?.text = choice.descriptionText!
+    
+        // highlight choice if selected
+        if indexPath.row == selectedChoiceIndex
+        {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-//    // remove from Firebase using reference
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            // groceryItem is a Snapshot instance
-//            let choice = choice[indexPath.row]
-//            groceryItem.ref?.removeValue()
-//        }
-//    }
     
     // select a choice
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 1 - get cell
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        // 2 - get grocery item
-        let selectedChoice = choices[indexPath.row]
-        // 3 - toogle ckmpletion
-//        let toggledCompletion = !groceryItem.favorite
-//        // 4 - update
-//        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
-//        // 5 - tell Firebase "I updated my field called completed"
-//        groceryItem.ref?.updateChildValues([
-//            "completed": toggledCompletion
-//            ])
+  
+        selectedChoice = choices[indexPath.row]
         
-//        // Perform Segue - go to patient's profile
-//        performSegue(withIdentifier: SeguePatientViewController, sender: self)
-//        tableView.deselectRow(at: indexPath, animated: true)
+        
+        //Other row is selected - need to deselect it
+        if let index = selectedChoiceIndex {
+            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
+            cell?.accessoryType = .none
+        }
+        
+        // save result
+        
+        question.selectedChoice = selectedChoice?.name
+        question.answered = true
+        
+
+        
+        //update the checkmark for the current row
+        cell.accessoryType = .checkmark
     }
 
     

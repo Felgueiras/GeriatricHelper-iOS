@@ -2,6 +2,20 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
+
+/**
+ Custom cell class for displaying the scale results
+ **/
+
+class ScaleCard: UITableViewCell {
+    
+    @IBOutlet weak var scaleName: UILabel!
+    
+    @IBOutlet weak var scaleResultQualitative: UILabel!
+    
+    @IBOutlet weak var scaleResultQuantitative: UILabel!
+}
+
 // show all scales from CGA
 //TODO - display scales organized by areas
 class CGAPublicMain: UITableViewController {
@@ -11,6 +25,7 @@ class CGAPublicMain: UITableViewController {
     let ViewScaleQuestionsSegue = "ViewScaleQuestions"
     
     var session: Session?
+    
     
     
     // segue to display a session's scales
@@ -57,6 +72,16 @@ class CGAPublicMain: UITableViewController {
         let saveAction = UIAlertAction(title: "Yes",
                                        style: .default) { _ in
                                         
+                                        // remove all the uncompleted scales
+                                        var completedScales: [GeriatricScale]? = []
+                                        for scale in Constants.cgaPublicScales!{
+                                            if scale.completed == true {
+                                                completedScales?.append(scale)
+                                            }
+                                        }
+                                        
+                                        Constants.cgaPublicScales = completedScales
+                                        
                                         self.performSegue(withIdentifier: "ReviewPublicSession", sender: self)
                                         
         }
@@ -89,6 +114,11 @@ class CGAPublicMain: UITableViewController {
         session = Constants.cgaPublicSession
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.tableView.reloadData()
+    }
+    
     // number of rows per section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // current area
@@ -99,32 +129,35 @@ class CGAPublicMain: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ScaleCard
         
         let sectionIndex = indexPath.section
         let area = Constants.cgaAreas[sectionIndex]
         let rowInsideSection = indexPath.row
         
-        let scale = Constants.getScalesForArea(area: area)[rowInsideSection]
+        let scale = Constants.getScalesForAreaPublicSession(area: area)[rowInsideSection]
+    
+        cell.scaleName?.text = scale.scaleName
         
-        cell.textLabel?.text = scale.scaleName
-        cell.detailTextLabel?.text = scale.area
+        if scale.completed == true{
+            // generate quantitative result
+            
+            SessionHelper.generateScaleResult(scale: scale)
+            
+            cell.scaleResultQualitative?.text = ""
+            cell.scaleResultQuantitative?.text = String(describing: scale.result)
+        }
+        else
+        {
+            
+            cell.scaleResultQualitative?.text = ""
+            cell.scaleResultQuantitative?.text = ""
+        }
         
-        //        toggleCellCheckbox(cell, isCompleted: patient.favorite)
         
         return cell
     }
     
-
-    
-    //    // remove from Firebase using reference
-    //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    //        if editingStyle == .delete {
-    //            // groceryItem is a Snapshot instance
-    //            let groceryItem = patients[indexPath.row]
-    //            groceryItem.ref?.removeValue()
-    //        }
-    //    }
     
     // select a row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -153,11 +186,16 @@ class CGAPublicMain: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == ViewScaleQuestionsSegue {
+            // pass scale to the controller
+            let scaleName = Constants.getScalesForArea(area: Constants.cgaAreas[(tableView.indexPathForSelectedRow?.section)!])[(tableView.indexPathForSelectedRow?.row)!].scaleName
             
-            let scale = Constants.getScalesForArea(area: Constants.cgaAreas[(tableView.indexPathForSelectedRow?.section)!])[(tableView.indexPathForSelectedRow?.row)!]
-            let destinationViewController = segue.destination as! CGAPublicScalesQuestions
-            // set the author
-            destinationViewController.scale = scale
+            for scale in Constants.cgaPublicScales! {
+                if scale.scaleName == scaleName{
+                    let destinationViewController = segue.destination as! CGAPublicScalesQuestions
+                    // set the author
+                    destinationViewController.scale = scale
+                }
+            }
         }
         else
             
@@ -173,11 +211,6 @@ class CGAPublicMain: UITableViewController {
                         destinationViewController.scale = scale
                     }
                 }
-                
-                
-                
-  
-                
                 
         }
     }

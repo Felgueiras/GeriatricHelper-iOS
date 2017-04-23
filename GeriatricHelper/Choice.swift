@@ -18,6 +18,8 @@ class Choice: NSObject, Mappable, NSCoding {
     var yes: Int?
     var no: Int?
     
+    override init(){}
+    
     
     // decode
     required convenience init(coder aDecoder: NSCoder) {

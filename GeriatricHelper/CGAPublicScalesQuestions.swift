@@ -5,22 +5,78 @@ import FirebaseDatabase
 class CGAPublicScalesQuestions: UITableViewController {
     
     // MARK: Constants
-    
     var scale: GeriatricScale!
     
+    // segue to display the choices for a questions
     let ViewQuestionChoicesSegue = "ViewQuestionChoices"
-    
     
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.allowsMultipleSelectionDuringEditing = false
-        
         // set title
         self.title = scale.scaleName
+                
+        if scale.questions?.count == 0{
+            // add questions to scale
+            addQuestionsToScale()
+        }
         
-        print("Single question? " + (scale.singleQuestion?.description)!)
+    }
+    
+    // add questions to this scale
+    func addQuestionsToScale(){
+        // get questions from Constants
+        let questionsNonDB = Constants.getQuestionsForScale(scaleName: scale.scaleName!)
+       
+        for currentQuestionNonDB in questionsNonDB{
+            var question = Question()
+            question.descriptionText = currentQuestionNonDB.descriptionText
+//            question.(false);
+            
+            
+            // create Choices
+            var choicesNonDB: [Choice] = currentQuestionNonDB.choices!
+            
+            for currentChoiceNonDB in choicesNonDB {
+                
+                var choice = Choice()
+                choice.descriptionText = currentChoiceNonDB.descriptionText
+                choice.name = currentChoiceNonDB.name
+                choice.score = currentChoiceNonDB.score
+                choice.yes = currentChoiceNonDB.yes
+                choice.no = currentChoiceNonDB.no
+                
+                question.choices?.append(choice)
+                
+                
+            }
+            
+            self.scale.questions?.append(question)
+            
+        }
+        
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.tableView.reloadData()
+        
+        // check all questions were answered
+        var allQuestionsAnswered = true
+        for question in scale.questions!{
+            if question.answered != true{
+                allQuestionsAnswered = false
+                break
+            }
+        }
+        
+        if allQuestionsAnswered == true{
+            print("All questions answered!")
+            scale.completed = true
+        }
     }
     
     // MARK: UITableView Delegate methods
@@ -35,7 +91,6 @@ class CGAPublicScalesQuestions: UITableViewController {
         
         cell.textLabel?.text = question?.descriptionText!
         cell.detailTextLabel?.text = question?.selectedChoice
-        
         
         return cell
     }
@@ -60,5 +115,4 @@ class CGAPublicScalesQuestions: UITableViewController {
             destinationViewController.question = question
         }
     }
-    
 }

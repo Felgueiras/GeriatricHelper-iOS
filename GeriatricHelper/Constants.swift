@@ -45,6 +45,17 @@ class Constants{
     }
     
     
+    // get questions for a scale
+    static func getQuestionsForScale(scaleName: String) -> [Question]{
+        // get scale definition by its name
+        let scale = getScaleByName(scaleName: scaleName)
+        // get choices for this question
+        print(scale?.questions?.count)
+        // TODO check different men women
+        return (scale!.questions)!
+    }
+    
+    
     //TODO get a scale by its name
     static func getScaleByName(scaleName: String) -> GeriatricScale?{
         for scale in self.scales{
@@ -62,6 +73,30 @@ class Constants{
         for scale in self.scales{
             if scale.area == area{
             scalesForArea.append(scale)
+            }
+        }
+        
+        return scalesForArea
+    }
+    
+    
+    static func getScalesForAreaPublicSession(area: String) -> [GeriatricScale]{
+        var scalesForArea: [GeriatricScale] = []
+        for scale in self.cgaPublicScales!{
+            if scale.area == area{
+                scalesForArea.append(scale)
+            }
+        }
+        
+        return scalesForArea
+    }
+    
+    // get scales from an area for a Session
+    static func getScalesForAreaFromSession(area: String, scales: [GeriatricScale]) -> [GeriatricScale]{
+        var scalesForArea: [GeriatricScale] = []
+        for scale in scales{
+            if scale.area == area{
+                scalesForArea.append(scale)
             }
         }
         

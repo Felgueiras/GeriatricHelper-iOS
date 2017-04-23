@@ -28,9 +28,6 @@ class CGAPublicScaleSingleChoice: UITableViewController {
         // set title
         self.title = scale.scaleName
         
-        print("answer")
-        print(scale.answer)
-        
         
         // get possible choices for single question scale
         self.choices = Constants.getChoicesSingleQuestionScale(scaleName: self.scale.scaleName!)

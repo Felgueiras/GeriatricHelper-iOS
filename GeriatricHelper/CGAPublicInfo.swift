@@ -146,10 +146,7 @@ class CGAPublicInfo: UIViewController {
 //            scale.s(testNonDB.getSubCategory());
 //            scale.sessionID = session.guid
             scale.descriptionText = testNonDB.descriptionText
-            if testNonDB.singleQuestion == true
-            {
-                scale.singleQuestion = true
-            }
+            scale.singleQuestion = testNonDB.singleQuestion
             
 //            if testNonDB.scaleName == Constants.test_name_clock_drawing))
 //            scale.setContainsPhoto(true);
