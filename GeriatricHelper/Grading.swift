@@ -20,14 +20,13 @@ class Grading: NSObject, Mappable, NSCoding {
     var descriptionText: String?
     
     
-    
     // decode
     required convenience init(coder aDecoder: NSCoder) {
         let grade = aDecoder.decodeObject(forKey: "grade") as! String
         let max = aDecoder.decodeObject(forKey: "max") as! Int
         let min = aDecoder.decodeObject(forKey: "min") as! Int
         let score = aDecoder.decodeObject(forKey: "score") as! String
-        let descriptionText = aDecoder.decodeObject(forKey: "description") as! String
+        let descriptionText:String? = aDecoder.decodeObject(forKey: "description") as? String
         self.init(grade: grade,
                   max: max,
                   min: min,
@@ -41,7 +40,7 @@ class Grading: NSObject, Mappable, NSCoding {
         aCoder.encode(max, forKey: "max")
         aCoder.encode(min, forKey: "min")
         aCoder.encode(score, forKey: "score")
-        aCoder.encode(description, forKey: "description")
+        aCoder.encode(descriptionText, forKey: "description")
     }
     
     
@@ -49,7 +48,7 @@ class Grading: NSObject, Mappable, NSCoding {
          max: Int?,
          min: Int,
          score: String,
-         descriptionText: String) {
+         descriptionText: String?) {
         
         self.grade = grade
         self.max = max

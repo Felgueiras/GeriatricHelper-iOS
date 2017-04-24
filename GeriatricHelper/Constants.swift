@@ -58,6 +58,13 @@ class Constants{
         return (scale!.questions)!
     }
     
+    static func getQuestionCategoriesForScale(scaleName: String) -> [QuestionCategory]{
+        // get scale definition by its name
+        let scale = getScaleByName(scaleName: scaleName)
+        
+        return (scale?.questionsCategories)!
+    }
+    
     
     //TODO get a scale by its name
     static func getScaleByName(scaleName: String) -> GeriatricScale?{

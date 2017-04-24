@@ -25,14 +25,10 @@ class CGAPublicMain: UITableViewController {
     let ViewScaleQuestionsSegue = "ViewScaleQuestions"
     
     let ViewScaleYesNoSegue = "YesNoQuestion"
+    let ViewScaleMultipleCategoriesSegue = "MultipleCategories"
     
     var session: Session?
     
-    
-    
-    // segue to display a session's scales
-    //    let ViewScaleQuestionsSegue = "ViewScaleQuestion"
-    // display a single question scale's choices
     let ViewScaleSingleQuestionChoicesSegue = "CGAViewSingleQuestionChoices"
     
     
@@ -131,67 +127,22 @@ class CGAPublicMain: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed("ScaleTableViewCell", owner: self, options: nil)?.first as! ScaleTableViewCell
         
+        let cell = Bundle.main.loadNibNamed("ScaleTableViewCell", owner: self, options: nil)?.first as! ScaleTableViewCell
         
         let sectionIndex = indexPath.section
         let area = Constants.cgaAreas[sectionIndex]
         let rowInsideSection = indexPath.row
+        let scalesForArea = Constants.getScalesForAreaPublicSession(area: area)
         
-        let scale = Constants.getScalesForAreaPublicSession(area: area)[rowInsideSection]
-    
-        cell.name.text = scale.scaleName
-        
-        if scale.completed == true{
-            // generate quantitative result
-            
-            SessionHelper.generateScaleResult(scale: scale)
-            
-            // quantitative result
-            var quantitative:String = ""
-            quantitative += String(describing: scale.result!)
-            
-            var testNonDB = Constants.getScaleByName(scaleName: scale.scaleName!)
-            
-            
-         
-            if testNonDB?.scoring != nil {
-                if testNonDB?.scoring?.differentMenWomen == false{
-                    quantitative += " (" + String(describing: testNonDB!.scoring!.minScore!)
-                    quantitative += "-" + String(describing: testNonDB!.scoring!.maxScore!)
-                    quantitative += ")"
-                } else {
-                    if Constants.patientGender == "male" {
-                        quantitative += " (" + String(describing: testNonDB!.scoring!.minMen!)
-                        quantitative += "-" + String(describing: testNonDB!.scoring!.maxMen!)
-                        quantitative += ")"
-                    }
-                }
-            } else {
-                quantitative = "";
-            }
-        
-            cell.resultQuantitative?.text = String(describing: quantitative)
-            
-            
-            
-            let match = SessionHelper.getGradingForScale(scale: scale, gender: "male")
-            if match != nil{
-                cell.resultQualitative.text = String(describing: match!.grade!)
-            }
-            
-            
-        
+        if rowInsideSection < scalesForArea.count {
+            let scale = scalesForArea[rowInsideSection]
+            return ScaleTableViewCell.createCell(cell: cell, scale: scale)
         }
-        else
-        {
-            
-            cell.resultQualitative?.text = ""
-            cell.resultQuantitative?.text = ""
-        }
-        
-        
         return cell
+        
+        
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -213,28 +164,31 @@ class CGAPublicMain: UITableViewController {
         // filter scales by selected
         let scale = Constants.getScalesForArea(area: Constants.cgaAreas[indexPath.section])[indexPath.row]
         
+        print(scale.multipleCategories)
+        
         if scale.singleQuestion!{
             // single question scale - display the choices
             performSegue(withIdentifier: ViewScaleSingleQuestionChoicesSegue, sender: self)
             
         }
         else{
+            
+            if scale.multipleCategories == true {
+                print("MULTIPLE")
+                performSegue(withIdentifier: ViewScaleMultipleCategoriesSegue, sender: self)
+            }
             // multiple choice
-            
-            
-            if scale.questions?.first?.yesOrNo == true {
+            else if scale.questions?.first?.yesOrNo == true {
                 // yes/no
                 // "normal" multiple choice
                 performSegue(withIdentifier: ViewScaleYesNoSegue, sender: self)
             }
+            
             else
             {
                 // "normal" multiple choice
                 performSegue(withIdentifier: ViewScaleQuestionsSegue, sender: self)
             }
-            
-            
-            
             
         }
         tableView.deselectRow(at: indexPath, animated: true)
@@ -279,6 +233,20 @@ class CGAPublicMain: UITableViewController {
             for scale in Constants.cgaPublicScales! {
                 if scale.scaleName == scaleName{
                     let destinationViewController = segue.destination as! CGAPublicYesNo
+                    // set the author
+                    destinationViewController.scale = scale
+                }
+            }
+            
+        }
+        else if segue.identifier == ViewScaleMultipleCategoriesSegue {
+            
+            // pass scale to the controller
+            let scaleName = Constants.getScalesForArea(area: Constants.cgaAreas[(tableView.indexPathForSelectedRow?.section)!])[(tableView.indexPathForSelectedRow?.row)!].scaleName
+            
+            for scale in Constants.cgaPublicScales! {
+                if scale.scaleName == scaleName{
+                    let destinationViewController = segue.destination as! CGAPublicMultipleCategories
                     // set the author
                     destinationViewController.scale = scale
                 }

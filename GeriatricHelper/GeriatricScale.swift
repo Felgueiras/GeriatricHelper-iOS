@@ -8,6 +8,27 @@ import ObjectMapper
 class GeriatricScale: NSObject, Mappable, NSCoding {
     
     
+    // MARK: Properties
+    var key: String?
+    var area: String?
+    var alreadyOpened: Bool?
+    var multipleChoice: Bool?
+    var singleQuestion: Bool?
+    var multipleCategories: Bool?
+    var completed: Bool?
+    var descriptionText: String?
+    var shortName: String?
+    var guid: String?
+    var scoring: Scoring?
+    var scaleName: String?
+    var sessionID: String?
+    var questions: [Question]? = []
+    var questionsCategories: [QuestionCategory]? = []
+    var type: String?
+    var ref: FIRDatabaseReference?
+    var answer: String?
+    var result: Double?
+    
     // decode
     required convenience init(coder aDecoder: NSCoder) {
         let area = aDecoder.decodeObject(forKey: "area") as! String
@@ -15,15 +36,19 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
         let scaleName = aDecoder.decodeObject(forKey: "scaleName") as! String
         let multipleChoice = aDecoder.decodeObject(forKey: "multipleChoice") as! Bool
         let singleQuestion = aDecoder.decodeObject(forKey: "singleQuestion") as! Bool
+        let multipleCategories:Bool? = aDecoder.decodeObject(forKey: "multipleCategories") as? Bool
         let shortName = aDecoder.decodeObject(forKey: "shortName") as! String
         let scoring = aDecoder.decodeObject(forKey: "scoring") as! Scoring
         let questions = aDecoder.decodeObject(forKey: "questions") as! [Question]
+        let questionsCategories:[QuestionCategory]? = aDecoder.decodeObject(forKey: "questionsCategories") as? [QuestionCategory]
         self.init(area: area, multipleChoice: multipleChoice, singleQuestion: singleQuestion,
                   descriptionText: descriptionText,
                   scaleName: scaleName,
                   questions: questions,
                   shortName: shortName,
-                  scoring: scoring)
+                  scoring: scoring,
+                  multipleCategories: multipleCategories,
+                  questionsCategories: questionsCategories)
     }
     
     override init(){}
@@ -38,13 +63,17 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
         aCoder.encode(shortName, forKey: "shortName")
         aCoder.encode(scoring, forKey: "scoring")
         aCoder.encode(questions, forKey: "questions")
+        aCoder.encode(multipleCategories, forKey: "multipleCategories")
+        aCoder.encode(questionsCategories, forKey: "questionsCategories")
     }
     
     init(area: String, multipleChoice: Bool?, singleQuestion: Bool, descriptionText: String,
          scaleName: String,
          questions: [Question],
          shortName: String,
-         scoring: Scoring) {
+         scoring: Scoring,
+         multipleCategories: Bool?,
+         questionsCategories: [QuestionCategory]?) {
         self.area = area
         self.multipleChoice = multipleChoice
         self.singleQuestion = singleQuestion
@@ -53,28 +82,13 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
         self.questions = questions
         self.shortName = shortName
         self.scoring = scoring
+        self.multipleCategories = multipleCategories
+        self.questionsCategories = questionsCategories
     }
 
     
 
-    var key: String?
-    var area: String?
-    var alreadyOpened: Bool?
-    var multipleChoice: Bool?
-    var singleQuestion: Bool?
-    var completed: Bool?
-    var descriptionText: String?
-    var shortName: String?
-    var guid: String?
-    var scoring: Scoring?
-    var scaleName: String?
-    var sessionID: String?
-    // questions
-    var questions: [Question]? = []
-    var type: String?
-    var ref: FIRDatabaseReference?
-    var answer: String?
-    var result: Double?
+    
     
     
     /// This function can be used to validate JSON prior to mapping. Return nil to cancel mapping at this point
@@ -88,6 +102,7 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
         area         <- map["area"]
         descriptionText  <- map["description"]
         multipleChoice  <- map["multipleChoice"]
+        multipleCategories  <- map["multipleCategories"]
         scaleName  <- map["scaleName"]
         shortName  <- map["shortName"]
         scoring  <- map["scoring"]
@@ -96,6 +111,7 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
         singleQuestion  <- map["singleQuestion"]
         answer  <- map["answer"]
         result  <- map["result"]
+        questionsCategories  <- map["questionsCategories"]
     }
 
     

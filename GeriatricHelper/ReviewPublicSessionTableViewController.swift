@@ -54,28 +54,32 @@ class ReviewPublicSessionTableViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.table.reloadData()
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let scalesForArea = Constants.getScalesForAreaFromSession(area: Constants.cgaAreas[segmentedControl.selectedSegmentIndex],scales: Constants.cgaPublicScales!)
-        let scale = scalesForArea[(table.indexPathForSelectedRow?.row)!]
+        
         
         if segue.identifier == ViewScaleQuestionsSegue {
             
-            
+            let scale = scalesForArea[(table.indexPathForSelectedRow?.row)!]
             let destinationViewController = segue.destination as! CGAPublicScalesQuestions
             // set the author
             destinationViewController.scale = scale
             
         }
         else if segue.identifier == ViewScaleSingleQuestionChoicesSegue {
-            
+            let scale = scalesForArea[(table.indexPathForSelectedRow?.row)!]
             let destinationViewController = segue.destination as! CGAPublicScaleSingleChoice
             // set the author
             destinationViewController.scale = scale
         }
         else if segue.identifier == ViewScaleYesNoSegue {
-            
+            let scale = scalesForArea[(table.indexPathForSelectedRow?.row)!]
             
             let destinationViewController = segue.destination as! CGAPublicYesNo
             // set the author
@@ -104,18 +108,20 @@ extension ReviewPublicSessionTableViewController: UITableViewDataSource, UITable
     
     // get cell for row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.table.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
+        let cell = Bundle.main.loadNibNamed("ScaleTableViewCell", owner: self, options: nil)?.first as! ScaleTableViewCell
         
-        // get the completed scales for the current area
+        // get scale
         let scalesForArea = Constants.getScalesForAreaFromSession(area: Constants.cgaAreas[segmentedControl.selectedSegmentIndex],scales: Constants.cgaPublicScales!)
         let scale = scalesForArea[indexPath.row]
         
-        cell.textLabel?.text = scale.scaleName
-        cell.detailTextLabel?.text = String(describing: scale.completed)
         
+        return ScaleTableViewCell.createCell(cell: cell, scale: scale)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        
-        return cell
+        // return the height of the cell
+        return 100
     }
     
     
