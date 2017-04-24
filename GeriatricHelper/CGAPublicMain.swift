@@ -131,7 +131,8 @@ class CGAPublicMain: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ScaleCard
+        let cell = Bundle.main.loadNibNamed("ScaleTableViewCell", owner: self, options: nil)?.first as! ScaleTableViewCell
+        
         
         let sectionIndex = indexPath.section
         let area = Constants.cgaAreas[sectionIndex]
@@ -139,26 +140,67 @@ class CGAPublicMain: UITableViewController {
         
         let scale = Constants.getScalesForAreaPublicSession(area: area)[rowInsideSection]
     
-        cell.scaleName?.text = scale.scaleName
+        cell.name.text = scale.scaleName
         
         if scale.completed == true{
             // generate quantitative result
             
             SessionHelper.generateScaleResult(scale: scale)
             
-            cell.scaleResultQualitative?.text = ""
-            cell.scaleResultQuantitative?.text = String(describing: scale.result)
+            // quantitative result
+            var quantitative:String = ""
+            quantitative += String(describing: scale.result!)
+            
+            var testNonDB = Constants.getScaleByName(scaleName: scale.scaleName!)
+            
+            
+         
+            if testNonDB?.scoring != nil {
+                if testNonDB?.scoring?.differentMenWomen == false{
+                    quantitative += " (" + String(describing: testNonDB!.scoring!.minScore!)
+                    quantitative += "-" + String(describing: testNonDB!.scoring!.maxScore!)
+                    quantitative += ")"
+                } else {
+                    if Constants.patientGender == "male" {
+                        quantitative += " (" + String(describing: testNonDB!.scoring!.minMen!)
+                        quantitative += "-" + String(describing: testNonDB!.scoring!.maxMen!)
+                        quantitative += ")"
+                    }
+                }
+            } else {
+                quantitative = "";
+            }
+        
+            cell.resultQuantitative?.text = String(describing: quantitative)
+            
+            
+            
+            let match = SessionHelper.getGradingForScale(scale: scale, gender: "male")
+            if match != nil{
+                cell.resultQualitative.text = String(describing: match!.grade!)
+            }
+            
+            
+        
         }
         else
         {
             
-            cell.scaleResultQualitative?.text = ""
-            cell.scaleResultQuantitative?.text = ""
+            cell.resultQualitative?.text = ""
+            cell.resultQuantitative?.text = ""
         }
         
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        // return the height of the cell
+        return 100
+    }
+    
+    
     
     
     // select a row

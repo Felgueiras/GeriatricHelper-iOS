@@ -13,18 +13,17 @@ class CreatePatientViewController: UIViewController {
     
     var birthDate: Date?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-
-        // add method to be called when changing value in date picker
-        datePicker.addTarget(self, action: #selector(CreatePatientViewController.datePickerChanged), for: UIControlEvents.valueChanged)
+    
+    @IBOutlet weak var genderPickerView: UIPickerView!
+   
+    
+    @IBAction func cancelButtonPressed(_ sender: Any) {
         
-        // get the number of patients
-        print("There are " + String(PatientsManagement.getPatients().count) + " patients")
+         dismiss(animated: true, completion: nil)
     }
     
+    
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     func datePickerChanged() {
         var dateFormatter = DateFormatter()
@@ -40,28 +39,39 @@ class CreatePatientViewController: UIViewController {
         
         //use NSCalenda
         let myCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier(rawValue: NSGregorianCalendar))
-//        let myComponents = myCalendar?.components(.WeekdayCalendarUnit | .YearCalendarUnit, fromDate: chosenDate)
-//        let weekDay = myComponents?.weekday
-//        let year =varComponents?.year
-    }
-
-
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        //        let myComponents = myCalendar?.components(.WeekdayCalendarUnit | .YearCalendarUnit, fromDate: chosenDate)
+        //        let weekDay = myComponents?.weekday
+        //        let year =varComponents?.year
     }
     
-    @IBAction func cancelButtonPressed(_ sender: Any) {
+    @IBOutlet weak var name: UITextField!
+    
+    @IBOutlet weak var address: UITextField!
+    
+   
+    @IBOutlet weak var hospitalProcessNumber: UITextField!
+
+    var genders: [String] = [String]()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-         dismiss(animated: true, completion: nil)
+        // Do any additional setup after loading the view.
+        
+        // add method to be called when changing value in date picker
+        datePicker.addTarget(self, action: #selector(CreatePatientViewController.datePickerChanged), for: UIControlEvents.valueChanged)
+        
+        // get the number of patients
+        print("There are " + String(PatientsManagement.getPatients().count) + " patients")
+        
+        // set up picker
+        genderPickerView.dataSource = self
+        genderPickerView.delegate = self
+        
+        genders = ["male", "female"]
     }
     
-    
-    @IBOutlet weak var datePicker: UIDatePicker!
-    
-    
-    // MARK: Check Patient data
+    // MARK: Create Patient
     @IBAction func saveButtonPressed(_ sender: Any) {
         
         // Alert controller to show when there are errors
@@ -107,6 +117,8 @@ class CreatePatientViewController: UIViewController {
             present(alert, animated: true, completion: nil)
             return
         }
+        
+    
         
         /**
          radioGroup = (RadioGroup) view.findViewById(R.id.myRadioGroup);
@@ -177,42 +189,54 @@ class CreatePatientViewController: UIViewController {
         
         
         // create patient and save it
-         
-         var patient = Patient()
-         patient.name = name.text
-         
-//         patient.setBirthDate(selectedDate);
+        
+        var patient = Patient()
+        patient.name = name.text
+        
+        //         patient.setBirthDate(selectedDate);
         
         
-         patient.guid = "PATIENT" + String(arc4random())
-         patient.address = address.text
+        patient.guid = "PATIENT" + String(arc4random())
+        patient.address = address.text
+        patient.gender = genders[genderPickerView.selectedRow(inComponent: 0)]
         
-//         if (patientGender.equals("male")) {
-//         patient.setPicture(R.drawable.male);
-//         patient.setGender(Constants.MALE);
-//         } else {
-//         patient.setPicture(R.drawable.female);
-//         patient.setGender(Constants.FEMALE);
-//         }
+        patient.processNumber = hospitalProcessNumber.text
+        patient.favorite = false
         
-         patient.processNumber = hospitalProcessNumber.text
-         patient.favorite = false
-         
         PatientsManagement.createPatient(patient: patient)
-         
-//         PatientsManagement.getPatients(getActivity()).add(patient);
         
         // go back to list of patients
         dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+}
+
+
+extension CreatePatientViewController: UIPickerViewDataSource,UIPickerViewDelegate {
+    
+    
+    
+    //MARK: - Delegates and data sources
+    //MARK: Data Sources
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return genders.count
+    }
+    
+    //MARK: Delegates
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return genders[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
     }
     
-    @IBOutlet weak var name: UITextField!
     
-    @IBOutlet weak var address: UITextField!
-    
-   
-    @IBOutlet weak var hospitalProcessNumber: UITextField!
-
-
 }

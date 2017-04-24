@@ -116,4 +116,20 @@ class Grading: NSObject, Mappable, NSCoding {
         ]
     }
     
+    
+    func containsScore(testResult: Double) -> Bool{
+     
+        
+        var values:[String] = []
+        values = (score?.characters.split(separator: ",").map(String.init))!
+        
+        var vals:[Double] = []
+
+
+        for  s in values {
+            vals.append(Double(s)!)
+        }
+        return vals.contains(testResult)
+    }
+    
 }

@@ -48,7 +48,7 @@ class Patient: NSObject, NSCoding {
     var guid: String?
     var name: String?
     var address: String?
-    //    let gender: gender
+    var gender: String?
     var ref: FIRDatabaseReference?
     var processNumber: String?
     

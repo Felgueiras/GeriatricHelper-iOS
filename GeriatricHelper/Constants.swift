@@ -33,6 +33,9 @@ class Constants{
         "Estado nutricional"
     ]
     
+    
+    static var patientGender: String?
+    
     // get the choices for a single question scale
     static func getChoicesSingleQuestionScale(scaleName: String) -> [Grading]{
         print("Scale name is " + scaleName)

@@ -55,46 +55,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="84" id="ZVF-17-F1V" customClass="ScaleCard" customModule="GeriatricHelper" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="84" id="ZVF-17-F1V" customClass="ScaleCard" customModule="GeriatricHelper" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZVF-17-F1V" id="RiA-jc-UoD">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scale name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zml-Hq-Yzw">
-                                            <rect key="frame" x="8" y="0.0" width="89" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scale result qualitative" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OQ-YM-Et2">
-                                            <rect key="frame" x="8" y="29" width="172" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scale result quantivative" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fub-vy-dzh">
-                                            <rect key="frame" x="8" y="54" width="186" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="Zml-Hq-Yzw" firstAttribute="leading" secondItem="RiA-jc-UoD" secondAttribute="leading" constant="8" id="RQX-Ds-fWO"/>
-                                        <constraint firstItem="1OQ-YM-Et2" firstAttribute="top" secondItem="Zml-Hq-Yzw" secondAttribute="bottom" constant="8" id="c8L-M2-uZ5"/>
-                                        <constraint firstItem="Zml-Hq-Yzw" firstAttribute="top" secondItem="RiA-jc-UoD" secondAttribute="top" id="jtM-CA-S6c"/>
-                                        <constraint firstItem="Fub-vy-dzh" firstAttribute="top" secondItem="1OQ-YM-Et2" secondAttribute="bottom" constant="4" id="lzK-qH-fjs"/>
-                                        <constraint firstItem="Fub-vy-dzh" firstAttribute="leading" secondItem="RiA-jc-UoD" secondAttribute="leadingMargin" id="qG9-tQ-9uE"/>
-                                        <constraint firstItem="1OQ-YM-Et2" firstAttribute="leading" secondItem="RiA-jc-UoD" secondAttribute="leadingMargin" id="wbs-km-874"/>
-                                    </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="scaleName" destination="Zml-Hq-Yzw" id="cMw-Uo-Mgm"/>
-                                    <outlet property="scaleResultQualitative" destination="1OQ-YM-Et2" id="6tk-Mk-lPW"/>
-                                    <outlet property="scaleResultQuantitative" destination="Fub-vy-dzh" id="2BJ-fu-poo"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -127,7 +94,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PAw-An-1JS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hDo-LP-lrV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="301.60000000000002" y="-308.09595202398805"/>
+            <point key="canvasLocation" x="-658" y="-349"/>
         </scene>
         <!--SessionSingleQuestionChoices-->
         <scene sceneID="YOD-HF-9SN">
@@ -175,7 +142,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HM6-RG-HvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-564" y="-997"/>
+            <point key="canvasLocation" x="185" y="-1066"/>
         </scene>
         <!--Scales Questions-->
         <scene sceneID="zYk-li-XO9">
@@ -218,11 +185,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Scale's Questions" id="pfO-hN-GEp">
                         <barButtonItem key="backBarButtonItem" title="GoBack" id="b5f-Dc-Vxz"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="H71-2c-ahQ">
-                            <connections>
-                                <action selector="addButtonDidTouch:" destination="Peu-5Z-UVe" id="mqc-Ly-NkW"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -231,7 +193,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0mq-dU-x6O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1114" y="-308"/>
+            <point key="canvasLocation" x="286" y="561"/>
         </scene>
         <!--Question Options-->
         <scene sceneID="lDv-mW-3dV">
@@ -274,17 +236,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Question Choices" id="6ob-Dd-Hcz">
                         <barButtonItem key="backBarButtonItem" title="GoBack" id="w00-JN-WBl"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Aiy-Pb-I1G">
-                            <connections>
-                                <action selector="addButtonDidTouch:" destination="sZv-8a-aEg" id="2bi-ZA-5pQ"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IuR-2t-u5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2087" y="-308"/>
+            <point key="canvasLocation" x="1038" y="484"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iXL-Hc-BSL">
@@ -302,12 +259,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2bl-e3-uRF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-564" y="-308.09595202398805"/>
+            <point key="canvasLocation" x="-1457" y="-349"/>
         </scene>
-        <!--Prescriptions-->
+        <!--Review Public Session-->
         <scene sceneID="217-eP-XOV">
             <objects>
-                <viewController title="Prescriptions" id="d1D-lX-Ir5" customClass="ReviewPublicSessionTableViewController" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Review Public Session" id="d1D-lX-Ir5" customClass="ReviewPublicSessionTableViewController" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gPV-nk-ZNK"/>
                         <viewControllerLayoutGuide type="bottom" id="OG8-gI-GO3"/>
@@ -383,17 +340,20 @@
                     <connections>
                         <outlet property="segmentedControl" destination="3Yu-qI-2gA" id="kRm-Vp-e7c"/>
                         <outlet property="table" destination="bim-5J-uJA" id="Vu8-Nn-yHG"/>
+                        <segue destination="Peu-5Z-UVe" kind="show" identifier="ViewScaleQuestions" id="iGh-v3-wOO"/>
+                        <segue destination="gtM-Wm-YaA" kind="show" identifier="YesNoQuestion" id="6MQ-Id-j66"/>
+                        <segue destination="9Yt-du-9hg" kind="show" identifier="CGAViewSingleQuestionChoices" id="5sP-Qm-QCY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSn-ta-AdV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nnx-R5-Y9s" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1148" y="528"/>
+            <point key="canvasLocation" x="-658" y="484"/>
         </scene>
-        <!--Prescriptions-->
+        <!--Review Public Session-->
         <scene sceneID="z7P-q8-LDw">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pYq-Hd-djC" sceneMemberID="viewController">
+                <navigationController title="Review Public Session" automaticallyAdjustsScrollViewInsets="NO" id="pYq-Hd-djC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Prescriptions" image="pill" id="SlR-RL-r45"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7jW-Z1-hxG">
@@ -407,7 +367,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ptu-mX-EKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="302" y="529"/>
+            <point key="canvasLocation" x="-1458" y="485"/>
         </scene>
         <!--Scales Questions-->
         <scene sceneID="B90-D7-YiH">
@@ -422,7 +382,7 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x8P-1R-UXj" id="fiL-dm-FeJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdc-1z-WEj">
@@ -478,11 +438,16 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="snT-GJ-Urb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1114" y="-966"/>
+            <point key="canvasLocation" x="556" y="-349"/>
         </scene>
     </scenes>
     <resources>
         <image name="Info-50" width="25" height="25"/>
         <image name="pill" width="13" height="13"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="oqv-rq-zFO"/>
+        <segue reference="I4X-mv-DhB"/>
+        <segue reference="J9u-7k-BWy"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -120,4 +120,28 @@ class SessionHelper{
         //        return res
     }
     
+    
+    static func getGradingForScale(scale: GeriatricScale, gender: String) -> Grading? {
+        
+        generateScaleResult(scale: scale)
+        var scoring = Constants.getScaleByName(scaleName: scale.scaleName!)?.scoring
+        
+     
+        var match: Grading
+        // check if it's different for men and women
+        if scoring == nil{
+            return nil
+        }
+        if (scoring?.differentMenWomen)! {
+            if gender == "male" {
+                match = scoring!.getGrading(testResult: scale.result!, gender: "male")!
+            } else {
+                match = scoring!.getGrading(testResult: scale.result!, gender: "female")!
+            }
+        } else {
+            match = scoring!.getGrading(testResult: scale.result!, gender: "both")!
+        }
+        return match;
+    }
+    
 }

@@ -15,6 +15,8 @@ class Scoring: NSObject, Mappable, NSCoding {
     var minMen: Int?
     var minScore: Int?
     var valuesBoth: [Grading]?
+    var valuesMen: [Grading]?
+    var valuesWomen: [Grading]?
     var ref: FIRDatabaseReference?
     
     
@@ -55,6 +57,7 @@ class Scoring: NSObject, Mappable, NSCoding {
         self.differentMenWomen = differentMenWomen
         self.maxMen = maxMen
         self.minMen = minMen
+        self.maxScore = maxScore
         self.minScore = minScore
         self.valuesBoth = valuesBoth
         
@@ -114,6 +117,35 @@ class Scoring: NSObject, Mappable, NSCoding {
 //            "sessionID": sessionID,
 //            "type": type
         ]
+    }
+   
+    
+    func getGrading(testResult: Double, gender: String) -> Grading? {
+        var match: Grading? = nil
+        
+        var toConsider: [Grading]? = []
+        if gender == "male"{
+            toConsider = valuesMen
+        }
+            
+        else if gender == "female"
+        {
+            toConsider = valuesWomen
+        }
+            
+        else
+        {
+            toConsider = valuesBoth
+        }
+        
+        for grading in toConsider! {
+            // check the grading for the result we have
+            if grading.containsScore(testResult: testResult) {
+                match = grading
+                break
+            }
+        }
+        return match;
     }
     
 }

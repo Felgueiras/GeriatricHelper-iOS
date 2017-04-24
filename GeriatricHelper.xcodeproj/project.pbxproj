@@ -66,6 +66,15 @@
 		2BBF33AD1EA39D55008D30EC /* CGAScalesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF33AC1EA39D55008D30EC /* CGAScalesTableViewController.swift */; };
 		2BBF33B11EA3A10A008D30EC /* CGAScaleQuestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF33B01EA3A10A008D30EC /* CGAScaleQuestionsTableViewController.swift */; };
 		2BBF33B31EA3A7F3008D30EC /* CGAQuestionChoicesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF33B21EA3A7F3008D30EC /* CGAQuestionChoicesTableViewController.swift */; };
+		2BC583441EADF22C00A4D51B /* CustomTableCell.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BC583431EADF22C00A4D51B /* CustomTableCell.storyboard */; };
+		2BC583471EADF2B700A4D51B /* TableViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC583461EADF2B700A4D51B /* TableViewContoller.swift */; };
+		2BC5834A1EADF30600A4D51B /* TableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC583481EADF30600A4D51B /* TableViewCell1.swift */; };
+		2BC5834B1EADF30600A4D51B /* TableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BC583491EADF30600A4D51B /* TableViewCell1.xib */; };
+		2BC5834E1EADF3C000A4D51B /* TableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC5834C1EADF3C000A4D51B /* TableViewCell2.swift */; };
+		2BC5834F1EADF3C000A4D51B /* TableViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BC5834D1EADF3C000A4D51B /* TableViewCell2.xib */; };
+		2BC583511EADF61400A4D51B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BC583501EADF61400A4D51B /* Media.xcassets */; };
+		2BC583571EAE024B00A4D51B /* ScaleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC583551EAE024B00A4D51B /* ScaleTableViewCell.swift */; };
+		2BC583581EAE024B00A4D51B /* ScaleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BC583561EAE024B00A4D51B /* ScaleTableViewCell.xib */; };
 		2BC60BCC1EA52995007F2839 /* ScaleSingleQuestionChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC60BCB1EA52995007F2839 /* ScaleSingleQuestionChoices.swift */; };
 		2BD6CCF31EA563AF007E10FC /* PrescriptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD6CCF21EA563AF007E10FC /* PrescriptionsViewController.swift */; };
 		2BD927CC1EAB7C6900EF1381 /* SessionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD927CB1EAB7C6900EF1381 /* SessionHelper.swift */; };
@@ -139,6 +148,15 @@
 		2BBF33AC1EA39D55008D30EC /* CGAScalesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAScalesTableViewController.swift; sourceTree = "<group>"; };
 		2BBF33B01EA3A10A008D30EC /* CGAScaleQuestionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAScaleQuestionsTableViewController.swift; sourceTree = "<group>"; };
 		2BBF33B21EA3A7F3008D30EC /* CGAQuestionChoicesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAQuestionChoicesTableViewController.swift; sourceTree = "<group>"; };
+		2BC583431EADF22C00A4D51B /* CustomTableCell.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomTableCell.storyboard; sourceTree = "<group>"; };
+		2BC583461EADF2B700A4D51B /* TableViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewContoller.swift; sourceTree = "<group>"; };
+		2BC583481EADF30600A4D51B /* TableViewCell1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell1.swift; sourceTree = "<group>"; };
+		2BC583491EADF30600A4D51B /* TableViewCell1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell1.xib; sourceTree = "<group>"; };
+		2BC5834C1EADF3C000A4D51B /* TableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell2.swift; sourceTree = "<group>"; };
+		2BC5834D1EADF3C000A4D51B /* TableViewCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell2.xib; sourceTree = "<group>"; };
+		2BC583501EADF61400A4D51B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		2BC583551EAE024B00A4D51B /* ScaleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleTableViewCell.swift; sourceTree = "<group>"; };
+		2BC583561EAE024B00A4D51B /* ScaleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScaleTableViewCell.xib; sourceTree = "<group>"; };
 		2BC60BCB1EA52995007F2839 /* ScaleSingleQuestionChoices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleSingleQuestionChoices.swift; sourceTree = "<group>"; };
 		2BD6CCF21EA563AF007E10FC /* PrescriptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrescriptionsViewController.swift; sourceTree = "<group>"; };
 		2BD927CB1EAB7C6900EF1381 /* SessionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionHelper.swift; sourceTree = "<group>"; };
@@ -203,9 +221,11 @@
 		2B21ABBD1E9FEE68001D6F66 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2B7D68481EA6A37000443D59 /* CGAPublic */,
+				2BAC89C81EA41CCC00EE6CE9 /* Prescriptions */,
+				2BBF33AB1EA39D1E008D30EC /* CGAGuide */,
 				2B50F1741EA9497600E4B762 /* CGAPrivate */,
 				2BAC89C91EA41CD900EE6CE9 /* MasterDetail */,
-				2B7D68481EA6A37000443D59 /* CGAPublic */,
 				2BBF33A61EA38CB1008D30EC /* Questions */,
 				2BE042681EA2C287002D485D /* Scales */,
 				2B424FF61EA2BEEC0010E4F8 /* Sessions */,
@@ -221,6 +241,8 @@
 		2B242B261EACC62C0029FFF3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				2BD927CB1EAB7C6900EF1381 /* SessionHelper.swift */,
+				2BBF33A41EA3825C008D30EC /* Constants.swift */,
 				2B242B271EACC63A0029FFF3 /* PatientsManagement.swift */,
 			);
 			name = Helpers;
@@ -281,11 +303,9 @@
 		2B6B56F81E9FECD000445937 /* GeriatricHelper */ = {
 			isa = PBXGroup;
 			children = (
+				2BC583521EAE020D00A4D51B /* CustomViews */,
+				2BC583451EADF23600A4D51B /* Tutorials */,
 				2B242B261EACC62C0029FFF3 /* Helpers */,
-				2BBF33A41EA3825C008D30EC /* Constants.swift */,
-				2BD927CB1EAB7C6900EF1381 /* SessionHelper.swift */,
-				2BBF33AB1EA39D1E008D30EC /* CGAGuide */,
-				2BAC89C81EA41CCC00EE6CE9 /* Prescriptions */,
 				2BA319C71E9FF03B00E7A5C9 /* Views */,
 				2B21ABBD1E9FEE68001D6F66 /* Controllers */,
 				2B21ABB81E9FEE0C001D6F66 /* Models */,
@@ -320,7 +340,6 @@
 				2BA319C41E9FF03100E7A5C9 /* Main.storyboard */,
 				2BDB10AD1EAD4D9800ACD751 /* PopOvers.storyboard */,
 				2B59480B1EACB3DD0052EC98 /* Patients.storyboard */,
-				2BDB10A91EAD3ED900ACD751 /* PopUpViewController.swift */,
 				2B50F1791EA94E3400E4B762 /* PageViewTutorial.storyboard */,
 				2B50F1721EA9470800E4B762 /* CGAPublic.storyboard */,
 				2BA319C31E9FF03100E7A5C9 /* LaunchScreen.xib */,
@@ -379,6 +398,30 @@
 				2BBF33B21EA3A7F3008D30EC /* CGAQuestionChoicesTableViewController.swift */,
 			);
 			name = CGAGuide;
+			sourceTree = "<group>";
+		};
+		2BC583451EADF23600A4D51B /* Tutorials */ = {
+			isa = PBXGroup;
+			children = (
+				2BC583431EADF22C00A4D51B /* CustomTableCell.storyboard */,
+				2BC583461EADF2B700A4D51B /* TableViewContoller.swift */,
+				2BC583501EADF61400A4D51B /* Media.xcassets */,
+			);
+			name = Tutorials;
+			sourceTree = "<group>";
+		};
+		2BC583521EAE020D00A4D51B /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				2BDB10A91EAD3ED900ACD751 /* PopUpViewController.swift */,
+				2BC583481EADF30600A4D51B /* TableViewCell1.swift */,
+				2BC583491EADF30600A4D51B /* TableViewCell1.xib */,
+				2BC5834C1EADF3C000A4D51B /* TableViewCell2.swift */,
+				2BC5834D1EADF3C000A4D51B /* TableViewCell2.xib */,
+				2BC583551EAE024B00A4D51B /* ScaleTableViewCell.swift */,
+				2BC583561EAE024B00A4D51B /* ScaleTableViewCell.xib */,
+			);
+			name = CustomViews;
 			sourceTree = "<group>";
 		};
 		2BE042681EA2C287002D485D /* Scales */ = {
@@ -461,11 +504,16 @@
 				2B2D3A131EACDF04007E7A28 /* PatientInfoCard.xib in Resources */,
 				2BA319C51E9FF03100E7A5C9 /* LaunchScreen.xib in Resources */,
 				2BAC89D41EA4248A00EE6CE9 /* Prescriptions.storyboard in Resources */,
+				2BC5834B1EADF30600A4D51B /* TableViewCell1.xib in Resources */,
 				2B4ADBE41EA5565F00972332 /* CGAGuide.storyboard in Resources */,
 				2BA319C21E9FF01E00E7A5C9 /* Images.xcassets in Resources */,
 				2BA319C61E9FF03100E7A5C9 /* Main.storyboard in Resources */,
 				2B50F1731EA9470800E4B762 /* CGAPublic.storyboard in Resources */,
+				2BC583511EADF61400A4D51B /* Media.xcassets in Resources */,
+				2BC5834F1EADF3C000A4D51B /* TableViewCell2.xib in Resources */,
+				2BC583441EADF22C00A4D51B /* CustomTableCell.storyboard in Resources */,
 				2BAC89C71EA41B9E00EE6CE9 /* MasterDetail.storyboard in Resources */,
+				2BC583581EAE024B00A4D51B /* ScaleTableViewCell.xib in Resources */,
 				2B50F17A1EA94E3400E4B762 /* PageViewTutorial.storyboard in Resources */,
 				2B6B570C1E9FED2400445937 /* GoogleService-Info.plist in Resources */,
 			);
@@ -528,7 +576,9 @@
 			files = (
 				2B424FF01EA2AE930010E4F8 /* SessionScalesViewController.swift in Sources */,
 				2B21ABC21E9FEE7B001D6F66 /* LoginViewController.swift in Sources */,
+				2BC583571EAE024B00A4D51B /* ScaleTableViewCell.swift in Sources */,
 				2B4ADBE21EA54ECE00972332 /* AccountViewController.swift in Sources */,
+				2BC5834A1EADF30600A4D51B /* TableViewCell1.swift in Sources */,
 				2BBF33B11EA3A10A008D30EC /* CGAScaleQuestionsTableViewController.swift in Sources */,
 				2BAF8E581EA518E60011EA87 /* Prescription.swift in Sources */,
 				2BAC89D81EA4259400EE6CE9 /* StoppCriteria.swift in Sources */,
@@ -566,6 +616,7 @@
 				2BA319C91EA03B2000E7A5C9 /* Patient.swift in Sources */,
 				2BAC89CB1EA41D2F00EE6CE9 /* PrescriptionsAllTableViewController.swift in Sources */,
 				2B424FF21EA2AFE50010E4F8 /* GeriatricScale.swift in Sources */,
+				2BC583471EADF2B700A4D51B /* TableViewContoller.swift in Sources */,
 				2BBF33B31EA3A7F3008D30EC /* CGAQuestionChoicesTableViewController.swift in Sources */,
 				2B424FEE1EA2A47E0010E4F8 /* Session.swift in Sources */,
 				2BE0426A1EA2C2A1002D485D /* ScalesQuestionsViewController.swift in Sources */,
@@ -574,6 +625,7 @@
 				2BAC89CE1EA41E7200EE6CE9 /* StartCriteria.swift in Sources */,
 				2BBF33A51EA3825C008D30EC /* Constants.swift in Sources */,
 				2B2D3A121EACDF04007E7A28 /* PatientInfoCard.swift in Sources */,
+				2BC5834E1EADF3C000A4D51B /* TableViewCell2.swift in Sources */,
 				2BBF33AD1EA39D55008D30EC /* CGAScalesTableViewController.swift in Sources */,
 				2BAC89D61EA4257000EE6CE9 /* PrescriptionStopp.swift in Sources */,
 				2B424FEC1EA2A3470010E4F8 /* PatientSessionsTableViewController.swift in Sources */,

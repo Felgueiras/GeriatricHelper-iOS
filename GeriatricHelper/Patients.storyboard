@@ -197,7 +197,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="6VI-YW-fwJ">
-                                <rect key="frame" x="24" y="72" width="335" height="408.5"/>
+                                <rect key="frame" x="24" y="72" width="335" height="624.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pi2-3I-DL0" userLabel="Name">
                                         <rect key="frame" x="0.0" y="0.0" width="45" height="20.5"/>
@@ -229,26 +229,29 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fw1-9r-iO0">
+                                        <rect key="frame" x="0.0" y="307.5" width="320" height="216"/>
+                                    </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Enw-2U-bVx">
-                                        <rect key="frame" x="0.0" y="307.5" width="63" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="523.5" width="63" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fdg-RG-1AW">
-                                        <rect key="frame" x="0.0" y="328" width="327" height="30"/>
+                                        <rect key="frame" x="0.0" y="544" width="327" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital Process Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBT-sC-Mke">
-                                        <rect key="frame" x="0.0" y="358" width="194.5" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="574" width="194.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="meA-T4-yga">
-                                        <rect key="frame" x="0.0" y="378.5" width="327" height="30"/>
+                                        <rect key="frame" x="0.0" y="594.5" width="327" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -283,6 +286,7 @@
                     <connections>
                         <outlet property="address" destination="fdg-RG-1AW" id="Sbq-M3-3TI"/>
                         <outlet property="datePicker" destination="bHM-PN-DaD" id="Wjw-Ay-cEz"/>
+                        <outlet property="genderPickerView" destination="Fw1-9r-iO0" id="hI1-sg-OdI"/>
                         <outlet property="hospitalProcessNumber" destination="meA-T4-yga" id="097-dy-Rbu"/>
                         <outlet property="name" destination="ivd-dc-bb0" id="57A-rm-RE1"/>
                     </connections>

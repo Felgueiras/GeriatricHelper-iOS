@@ -13,7 +13,44 @@ class CGAPublicInfo: UIViewController {
     let StartPublicSessionSegue = "StartPublicSession"
     
     @IBAction func startPublicSessionButtonClicked(_ sender: Any) {
-        performSegue(withIdentifier: StartPublicSessionSegue, sender: self)
+        
+        // select the patient's gender
+        
+        let alert = UIAlertController(title: "Patient's gender",
+                                      message: nil,
+                                      preferredStyle: .alert)
+        
+        
+        let male = UIAlertAction(title: "Male",
+                                 style: .default) { _ in
+                                    
+                                    Constants.patientGender = "male"
+                                    self.performSegue(withIdentifier: self.StartPublicSessionSegue, sender: self)
+                                    
+        }
+        
+        let female = UIAlertAction(title: "Female",
+                                 style: .default) { _ in
+                                    
+                                    Constants.patientGender = "female"
+                                    self.performSegue(withIdentifier: self.StartPublicSessionSegue, sender: self)
+                                    
+        }
+        
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .default)
+        
+    
+        
+        
+        alert.addAction(male)
+        alert.addAction(female)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+        
+        
     }
     
     // unwind segue
@@ -38,12 +75,14 @@ class CGAPublicInfo: UIViewController {
         
         if segue.identifier == StartPublicSessionSegue {
             
+            
+            
+            
+            
+            
             // create a new Session
-            
-            // add Scales to the Session
-            
-            
             createNewSession()
+            // add Scales to the Session
             addScalesToSession()
             
             //            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

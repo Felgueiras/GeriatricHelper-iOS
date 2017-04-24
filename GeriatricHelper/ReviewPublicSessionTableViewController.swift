@@ -10,6 +10,12 @@ import UIKit
 
 class ReviewPublicSessionTableViewController: UIViewController {
     
+    let ViewScaleQuestionsSegue = "ViewScaleQuestions"
+    
+    let ViewScaleYesNoSegue = "YesNoQuestion"
+    
+    let ViewScaleSingleQuestionChoicesSegue = "CGAViewSingleQuestionChoices"
+    
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
@@ -47,7 +53,39 @@ class ReviewPublicSessionTableViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let scalesForArea = Constants.getScalesForAreaFromSession(area: Constants.cgaAreas[segmentedControl.selectedSegmentIndex],scales: Constants.cgaPublicScales!)
+        let scale = scalesForArea[(table.indexPathForSelectedRow?.row)!]
+        
+        if segue.identifier == ViewScaleQuestionsSegue {
+            
+            
+            let destinationViewController = segue.destination as! CGAPublicScalesQuestions
+            // set the author
+            destinationViewController.scale = scale
+            
+        }
+        else if segue.identifier == ViewScaleSingleQuestionChoicesSegue {
+            
+            let destinationViewController = segue.destination as! CGAPublicScaleSingleChoice
+            // set the author
+            destinationViewController.scale = scale
+        }
+        else if segue.identifier == ViewScaleYesNoSegue {
+            
+            
+            let destinationViewController = segue.destination as! CGAPublicYesNo
+            // set the author
+            destinationViewController.scale = scale
+            
+            
+        }
+    }
+    
+    
 
 }
 
@@ -69,12 +107,7 @@ extension ReviewPublicSessionTableViewController: UITableViewDataSource, UITable
         let cell = self.table.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         
         // get the completed scales for the current area
-        let scalesForArea = Constants.getScalesForAreaFromSession(area: Constants.cgaAreas[segmentedControl.selectedSegmentIndex],
-                                                                  scales: Constants.cgaPublicScales!)
-        
-        
-        
-        // prescriptions
+        let scalesForArea = Constants.getScalesForAreaFromSession(area: Constants.cgaAreas[segmentedControl.selectedSegmentIndex],scales: Constants.cgaPublicScales!)
         let scale = scalesForArea[indexPath.row]
         
         cell.textLabel?.text = scale.scaleName
@@ -83,6 +116,40 @@ extension ReviewPublicSessionTableViewController: UITableViewDataSource, UITable
         
         
         return cell
+    }
+    
+    
+    // select a row
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // get cell and selected scale
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+
+        
+        // get the completed scales for the current area
+        let scalesForArea = Constants.getScalesForAreaFromSession(area: Constants.cgaAreas[segmentedControl.selectedSegmentIndex],scales: Constants.cgaPublicScales!)
+        let scale = scalesForArea[indexPath.row]
+        
+        if scale.singleQuestion!{
+            // single question scale - display the choices
+            performSegue(withIdentifier: ViewScaleSingleQuestionChoicesSegue, sender: self)
+            
+        }
+        else{
+            // multiple choice
+            
+            if scale.questions?.first?.yesOrNo == true {
+                // yes/no
+                // "normal" multiple choice
+                performSegue(withIdentifier: ViewScaleYesNoSegue, sender: self)
+            }
+            else
+            {
+                // "normal" multiple choice
+                performSegue(withIdentifier: ViewScaleQuestionsSegue, sender: self)
+            }
+            
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
