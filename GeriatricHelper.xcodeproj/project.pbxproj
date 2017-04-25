@@ -29,7 +29,6 @@
 		2B4957D31EAE5609009DDF91 /* YesNoQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4957D11EAE5609009DDF91 /* YesNoQuestionTableViewCell.swift */; };
 		2B4957D41EAE5609009DDF91 /* YesNoQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B4957D21EAE5609009DDF91 /* YesNoQuestionTableViewCell.xib */; };
 		2B4ADBE21EA54ECE00972332 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4ADBE11EA54ECE00972332 /* AccountViewController.swift */; };
-		2B4ADBE41EA5565F00972332 /* CGAGuide.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B4ADBE31EA5565F00972332 /* CGAGuide.storyboard */; };
 		2B50F1711EA9394D00E4B762 /* CGAGuideScaleSingleQuestionChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B50F1701EA9394D00E4B762 /* CGAGuideScaleSingleQuestionChoices.swift */; };
 		2B50F1731EA9470800E4B762 /* CGAPublic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B50F1721EA9470800E4B762 /* CGAPublic.storyboard */; };
 		2B50F1761EA9498B00E4B762 /* CGAPublicScalesQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B50F1751EA9498B00E4B762 /* CGAPublicScalesQuestions.swift */; };
@@ -47,9 +46,10 @@
 		2B7D684A1EA6A88700443D59 /* CGAPublicScaleSingleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7D68491EA6A88700443D59 /* CGAPublicScaleSingleChoice.swift */; };
 		2B7D684C1EA6ABB200443D59 /* CGAPublicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7D684B1EA6ABB200443D59 /* CGAPublicInfo.swift */; };
 		2B888A291EA55C880080BB7C /* InitialSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B888A281EA55C880080BB7C /* InitialSetup.swift */; };
+		2BA1EF6D1EAFBC4B00270C76 /* CGAGuide.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BA1EF6F1EAFBC4B00270C76 /* CGAGuide.storyboard */; };
+		2BA1EF741EAFBCCB00270C76 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BA1EF761EAFBCCB00270C76 /* Localizable.strings */; };
 		2BA319C21E9FF01E00E7A5C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BA319C11E9FF01E00E7A5C9 /* Images.xcassets */; };
 		2BA319C51E9FF03100E7A5C9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BA319C31E9FF03100E7A5C9 /* LaunchScreen.xib */; };
-		2BA319C61E9FF03100E7A5C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BA319C41E9FF03100E7A5C9 /* Main.storyboard */; };
 		2BA319C91EA03B2000E7A5C9 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA319C81EA03B2000E7A5C9 /* Patient.swift */; };
 		2BAC89C71EA41B9E00EE6CE9 /* MasterDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC89C61EA41B9E00EE6CE9 /* MasterDetail.storyboard */; };
 		2BAC89CB1EA41D2F00EE6CE9 /* PrescriptionsAllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC89CA1EA41D2F00EE6CE9 /* PrescriptionsAllTableViewController.swift */; };
@@ -89,6 +89,8 @@
 		2BDB10B01EAD53CD00ACD751 /* CGAPublicYesNo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB10AF1EAD53CD00ACD751 /* CGAPublicYesNo.swift */; };
 		2BE0426A1EA2C2A1002D485D /* ScalesQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE042691EA2C2A1002D485D /* ScalesQuestionsViewController.swift */; };
 		2BE0426C1EA2C33A002D485D /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE0426B1EA2C33A002D485D /* Question.swift */; };
+		2BEDA0AF1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEDA0AD1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.swift */; };
+		2BEDA0B01EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BEDA0AE1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,7 +115,6 @@
 		2B4957D11EAE5609009DDF91 /* YesNoQuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesNoQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		2B4957D21EAE5609009DDF91 /* YesNoQuestionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesNoQuestionTableViewCell.xib; sourceTree = "<group>"; };
 		2B4ADBE11EA54ECE00972332 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
-		2B4ADBE31EA5565F00972332 /* CGAGuide.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CGAGuide.storyboard; sourceTree = "<group>"; };
 		2B50F1701EA9394D00E4B762 /* CGAGuideScaleSingleQuestionChoices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAGuideScaleSingleQuestionChoices.swift; sourceTree = "<group>"; };
 		2B50F1721EA9470800E4B762 /* CGAPublic.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CGAPublic.storyboard; sourceTree = "<group>"; };
 		2B50F1751EA9498B00E4B762 /* CGAPublicScalesQuestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAPublicScalesQuestions.swift; sourceTree = "<group>"; };
@@ -133,10 +134,14 @@
 		2B7D68491EA6A88700443D59 /* CGAPublicScaleSingleChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAPublicScaleSingleChoice.swift; sourceTree = "<group>"; };
 		2B7D684B1EA6ABB200443D59 /* CGAPublicInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAPublicInfo.swift; sourceTree = "<group>"; };
 		2B888A281EA55C880080BB7C /* InitialSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialSetup.swift; sourceTree = "<group>"; };
+		2BA1EF6E1EAFBC4B00270C76 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/CGAGuide.storyboard; sourceTree = "<group>"; };
+		2BA1EF751EAFBCCB00270C76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2BA1EF771EAFBCCD00270C76 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		2BA1EF7E1EAFBEB700270C76 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/CGAGuide.strings"; sourceTree = "<group>"; };
+		2BA1EF7F1EAFBF1500270C76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CGAGuide.storyboard; sourceTree = "<group>"; };
 		2BA319C01E9FEFE000E7A5C9 /* GeriatricHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = GeriatricHelper.entitlements; path = GeriatricHelper/GeriatricHelper.entitlements; sourceTree = "<group>"; };
 		2BA319C11E9FF01E00E7A5C9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2BA319C31E9FF03100E7A5C9 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		2BA319C41E9FF03100E7A5C9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2BA319C81EA03B2000E7A5C9 /* Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		2BAC89C61EA41B9E00EE6CE9 /* MasterDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MasterDetail.storyboard; sourceTree = "<group>"; };
 		2BAC89CA1EA41D2F00EE6CE9 /* PrescriptionsAllTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrescriptionsAllTableViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +181,8 @@
 		2BDB10AF1EAD53CD00ACD751 /* CGAPublicYesNo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAPublicYesNo.swift; sourceTree = "<group>"; };
 		2BE042691EA2C2A1002D485D /* ScalesQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalesQuestionsViewController.swift; sourceTree = "<group>"; };
 		2BE0426B1EA2C33A002D485D /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		2BEDA0AD1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightWrongQuestionTableViewCell.swift; sourceTree = "<group>"; };
+		2BEDA0AE1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightWrongQuestionTableViewCell.xib; sourceTree = "<group>"; };
 		306436849054F0814DE81659 /* Pods-GeriatricHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeriatricHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeriatricHelper/Pods-GeriatricHelper.release.xcconfig"; sourceTree = "<group>"; };
 		3D9ED9CE99D7543CD64D9D6C /* Pods-GeriatricHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeriatricHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeriatricHelper/Pods-GeriatricHelper.debug.xcconfig"; sourceTree = "<group>"; };
 		4EA09AF322E24D40665776C4 /* Pods_GeriatricHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeriatricHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -232,7 +239,6 @@
 		2B21ABBD1E9FEE68001D6F66 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2B7D68481EA6A37000443D59 /* CGAPublic */,
 				2BAC89C81EA41CCC00EE6CE9 /* Prescriptions */,
 				2BBF33AB1EA39D1E008D30EC /* CGAGuide */,
 				2B50F1741EA9497600E4B762 /* CGAPrivate */,
@@ -314,6 +320,7 @@
 		2B6B56F81E9FECD000445937 /* GeriatricHelper */ = {
 			isa = PBXGroup;
 			children = (
+				2B7D68481EA6A37000443D59 /* CGAPublic */,
 				2BC583521EAE020D00A4D51B /* CustomViews */,
 				2BC583451EADF23600A4D51B /* Tutorials */,
 				2B242B261EACC62C0029FFF3 /* Helpers */,
@@ -326,6 +333,7 @@
 				2BA319C11E9FF01E00E7A5C9 /* Images.xcassets */,
 				2B6B57051E9FECD000445937 /* Info.plist */,
 				2B6B570B1E9FED2400445937 /* GoogleService-Info.plist */,
+				2BA1EF761EAFBCCB00270C76 /* Localizable.strings */,
 			);
 			path = GeriatricHelper;
 			sourceTree = "<group>";
@@ -351,7 +359,6 @@
 			isa = PBXGroup;
 			children = (
 				2BAC89D31EA4248A00EE6CE9 /* Prescriptions.storyboard */,
-				2BA319C41E9FF03100E7A5C9 /* Main.storyboard */,
 				2BDB10AD1EAD4D9800ACD751 /* PopOvers.storyboard */,
 				2B59480B1EACB3DD0052EC98 /* Patients.storyboard */,
 				2B50F1791EA94E3400E4B762 /* PageViewTutorial.storyboard */,
@@ -404,7 +411,7 @@
 		2BBF33AB1EA39D1E008D30EC /* CGAGuide */ = {
 			isa = PBXGroup;
 			children = (
-				2B4ADBE31EA5565F00972332 /* CGAGuide.storyboard */,
+				2BA1EF6F1EAFBC4B00270C76 /* CGAGuide.storyboard */,
 				2B50F1701EA9394D00E4B762 /* CGAGuideScaleSingleQuestionChoices.swift */,
 				2BBF33AC1EA39D55008D30EC /* CGAScalesTableViewController.swift */,
 				2BBF33B01EA3A10A008D30EC /* CGAScaleQuestionsTableViewController.swift */,
@@ -435,6 +442,8 @@
 				2BC583561EAE024B00A4D51B /* ScaleTableViewCell.xib */,
 				2B4957D11EAE5609009DDF91 /* YesNoQuestionTableViewCell.swift */,
 				2B4957D21EAE5609009DDF91 /* YesNoQuestionTableViewCell.xib */,
+				2BEDA0AD1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.swift */,
+				2BEDA0AE1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.xib */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -498,6 +507,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-PT",
 			);
 			mainGroup = 2B6B56ED1E9FECD000445937;
 			productRefGroup = 2B6B56F71E9FECD000445937 /* Products */;
@@ -517,13 +527,14 @@
 				2BDB10AE1EAD4D9800ACD751 /* PopOvers.storyboard in Resources */,
 				2B59480C1EACB3DD0052EC98 /* Patients.storyboard in Resources */,
 				2B2D3A131EACDF04007E7A28 /* PatientInfoCard.xib in Resources */,
+				2BEDA0B01EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.xib in Resources */,
 				2BA319C51E9FF03100E7A5C9 /* LaunchScreen.xib in Resources */,
+				2BA1EF741EAFBCCB00270C76 /* Localizable.strings in Resources */,
 				2BAC89D41EA4248A00EE6CE9 /* Prescriptions.storyboard in Resources */,
 				2BC5834B1EADF30600A4D51B /* TableViewCell1.xib in Resources */,
 				2B4957D41EAE5609009DDF91 /* YesNoQuestionTableViewCell.xib in Resources */,
-				2B4ADBE41EA5565F00972332 /* CGAGuide.storyboard in Resources */,
+				2BA1EF6D1EAFBC4B00270C76 /* CGAGuide.storyboard in Resources */,
 				2BA319C21E9FF01E00E7A5C9 /* Images.xcassets in Resources */,
-				2BA319C61E9FF03100E7A5C9 /* Main.storyboard in Resources */,
 				2B50F1731EA9470800E4B762 /* CGAPublic.storyboard in Resources */,
 				2BC583511EADF61400A4D51B /* Media.xcassets in Resources */,
 				2BC5834F1EADF3C000A4D51B /* TableViewCell2.xib in Resources */,
@@ -628,6 +639,7 @@
 				2B5636E61EA4067800D8E75C /* MasterViewController.swift in Sources */,
 				2BD6CCF31EA563AF007E10FC /* PrescriptionsViewController.swift in Sources */,
 				2B50F1761EA9498B00E4B762 /* CGAPublicScalesQuestions.swift in Sources */,
+				2BEDA0AF1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.swift in Sources */,
 				2B3BCD4F1EA4F8910025EF6A /* FavoritePatientCellCollectionViewCell.swift in Sources */,
 				2BDB10B01EAD53CD00ACD751 /* CGAPublicYesNo.swift in Sources */,
 				2BAC89D01EA421B700EE6CE9 /* PrescriptionStart.swift in Sources */,
@@ -658,11 +670,34 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		2BA1EF6F1EAFBC4B00270C76 /* CGAGuide.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BA1EF6E1EAFBC4B00270C76 /* en */,
+				2BA1EF7E1EAFBEB700270C76 /* pt-PT */,
+				2BA1EF7F1EAFBF1500270C76 /* Base */,
+			);
+			name = CGAGuide.storyboard;
+			sourceTree = "<group>";
+		};
+		2BA1EF761EAFBCCB00270C76 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BA1EF751EAFBCCB00270C76 /* en */,
+				2BA1EF771EAFBCCD00270C76 /* pt-PT */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		2B6B57061E9FECD000445937 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -713,6 +748,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

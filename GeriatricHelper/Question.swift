@@ -24,6 +24,7 @@ class Question: NSObject, Mappable, NSCoding {
     var rightWrong: Bool?
     var yesOrNo: Bool?
     var selectedYesNo: String?
+    var selectedRightWrong: String?
     
     override init(){}
     

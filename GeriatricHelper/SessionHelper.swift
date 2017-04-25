@@ -58,8 +58,10 @@ class SessionHelper{
                      * Right/ wrong question
                      */
                 else if question.rightWrong == true {
-                    //                    if (question.getSelectedRightWrong().equals("right"))
-                    //                    res += 1;
+                    if question.selectedRightWrong == "right"{
+                        res += 1
+                    }
+                    
                 }
                     /**
                      * Numerical question.

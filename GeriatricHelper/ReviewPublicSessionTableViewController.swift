@@ -115,7 +115,7 @@ extension ReviewPublicSessionTableViewController: UITableViewDataSource, UITable
         let scale = scalesForArea[indexPath.row]
         
         
-        return ScaleTableViewCell.createCell(cell: cell, scale: scale)
+        return ScaleTableViewCell.createCell(cell: cell, scale: scale, viewController: self)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -1,0 +1,45 @@
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "0VX-TN-Hg1"; */
+"0VX-TN-Hg1.text" = "Title";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "9ns-Nx-LX1"; */
+"9ns-Nx-LX1.text" = "Title";
+
+/* Class = "UITableViewController"; title = "CGA Question Choices"; ObjectID = "E6K-dH-7fh"; */
+"E6K-dH-7fh.title" = "Escolhas";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "OG1-ez-xFH"; */
+"OG1-ez-xFH.text" = "Title";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "ONy-If-MQp"; */
+"ONy-If-MQp.text" = "Title";
+
+/* Class = "UITableViewController"; title = "CGA Guide"; ObjectID = "Ore-uh-hNV"; */
+"Ore-uh-hNV.title" = "Guia AGG";
+
+/* Class = "UITabBarItem"; title = "CGA Guide"; ObjectID = "TZo-v3-plm"; */
+"TZo-v3-plm.title" = "Guia AGG";
+
+/* Class = "UINavigationItem"; title = "CGA Scale Questions"; ObjectID = "XYJ-Sy-WWJ"; */
+"XYJ-Sy-WWJ.title" = "Questões da Escala";
+
+/* Class = "UITableViewController"; title = "SessionSingleQuestionChoices"; ObjectID = "XZ4-eS-iWS"; */
+"XZ4-eS-iWS.title" = "Escolhas";
+
+/* Class = "UINavigationItem"; title = "CGA Guide Scales"; ObjectID = "Y0h-BI-U4s"; */
+"Y0h-BI-U4s.title" = "Escalas";
+
+/* Class = "UIBarButtonItem"; title = "GoBack"; ObjectID = "aoj-am-1AE"; */
+"aoj-am-1AE.title" = "Retroceder";
+
+/* Class = "UINavigationItem"; title = "CGA Question Choices"; ObjectID = "mXf-6c-iOG"; */
+"mXf-6c-iOG.title" = "Escolhas";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "xeY-bg-p8j"; */
+"xeY-bg-p8j.text" = "Detalhe";
+
+/* Class = "UITableViewController"; title = "Scale Questions"; ObjectID = "xhm-sf-hit"; */
+"xhm-sf-hit.title" = "Quest";
+
+/* Class = "UINavigationItem"; title = "Session Single Question Choices"; ObjectID = "xkj-qU-dpE"; */
+"xkj-qU-dpE.title" = "Session Single Question Choices";

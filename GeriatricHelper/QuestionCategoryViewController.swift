@@ -13,11 +13,13 @@ class QuestionCategoryViewController: UIViewController {
     
     @IBOutlet weak var categoryName: UILabel!
     
+    @IBOutlet weak var categoryDescription: UILabel!
     @IBOutlet weak var table: UITableView!
     
     var pageIndex: Int = 0
     
     var category: String?
+    var descriptionText: String?
     
     var scale:GeriatricScale?
     
@@ -28,6 +30,7 @@ class QuestionCategoryViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         categoryName.text = category
+        categoryDescription.text = descriptionText
         
         // set delegate for questions table
         self.table.delegate = self
@@ -49,19 +52,16 @@ extension QuestionCategoryViewController: UITableViewDataSource, UITableViewDele
     
     // get cell for row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed("YesNoQuestionTableViewCell", owner: self, options: nil)?.first as! YesNoQuestionTableViewCell
+        let cell = Bundle.main.loadNibNamed("RightWrongQuestionTableViewCell", owner: self, options: nil)?.first as! RightWrongQuestionTableViewCell
         
         let question = scale?.questionsCategories![pageIndex].questions?[indexPath.row]
         
-        return YesNoQuestionTableViewCell.createCell(cell: cell,
-                                                     question: question!)
+        return RightWrongQuestionTableViewCell.createCell(cell: cell,
+                                                     question: question!,
+                                                     scale: scale!,
+                                                     category: (scale?.questionsCategories![pageIndex])!)
         
     }
-    
-    
-    
-    
-    
     
     
 }

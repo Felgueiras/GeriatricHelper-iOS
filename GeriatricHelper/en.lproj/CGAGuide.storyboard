@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="chf-bG-QDY">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--CGAGuide-->
+        <scene sceneID="N0x-BR-BdG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CGAGuide" id="cj6-pW-EpK" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="6hP-oy-dda"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Av-BH-pTo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3384" y="2319.9400299850076"/>
+        </scene>
+        <!--CGA Guide-->
+        <scene sceneID="yC0-nM-IfE">
+            <objects>
+                <tableViewController title="CGA Guide" id="Ore-uh-hNV" customClass="CGAScalesTableViewController" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="edA-qV-iFV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ItemCell" textLabel="9ns-Nx-LX1" rowHeight="65" style="IBUITableViewCellStyleDefault" id="JsA-mf-POB">
+                                <rect key="frame" x="0.0" y="28" width="375" height="65"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JsA-mf-POB" id="LH3-TG-AlV">
+                                    <rect key="frame" x="0.0" y="0.0" width="308" height="64.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9ns-Nx-LX1">
+                                            <rect key="frame" x="15" y="0.0" width="293" height="64.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ore-uh-hNV" id="9oz-pj-pHA"/>
+                            <outlet property="delegate" destination="Ore-uh-hNV" id="IOy-Gw-Za5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="CGA Guide Scales" id="Y0h-BI-U4s"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="XZ4-eS-iWS" kind="show" identifier="SingleChoiceSegue" id="PMo-1M-1Yc"/>
+                        <segue destination="xhm-sf-hit" kind="show" identifier="ViewScaleQuestions" id="hit-Y4-tZ7"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="trC-g5-Jau" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3257" y="2248"/>
+        </scene>
+        <!--Scale Questions-->
+        <scene sceneID="skf-QR-2dK">
+            <objects>
+                <tableViewController title="Scale Questions" id="xhm-sf-hit" customClass="CGAScaleQuestionsTableViewController" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="ck5-u6-H2p">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ItemCell" textLabel="OG1-ez-xFH" detailTextLabel="1mC-3H-0Kk" rowHeight="65" style="IBUITableViewCellStyleValue1" id="aMq-ie-oAS">
+                                <rect key="frame" x="0.0" y="28" width="375" height="65"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aMq-ie-oAS" id="6i7-dC-RfS">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="64.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OG1-ez-xFH">
+                                            <rect key="frame" x="15" y="22" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1mC-3H-0Kk">
+                                            <rect key="frame" x="296" y="22" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="E6K-dH-7fh" kind="show" identifier="ViewQuestionChoicesGuide" id="a2m-ap-tL5">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xhm-sf-hit" id="ZbC-A9-eYf"/>
+                            <outlet property="delegate" destination="xhm-sf-hit" id="gRH-fJ-d8P"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="CGA Scale Questions" id="XYJ-Sy-WWJ"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K8u-Ww-aja" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4098" y="2248"/>
+        </scene>
+        <!--CGA Question Choices-->
+        <scene sceneID="VdI-ON-wHg">
+            <objects>
+                <tableViewController title="CGA Question Choices" id="E6K-dH-7fh" customClass="CGAQuestionChoicesTableViewController" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="Bhw-Lv-HVJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" textLabel="0VX-TN-Hg1" detailTextLabel="xeY-bg-p8j" rowHeight="65" style="IBUITableViewCellStyleSubtitle" id="vSm-oc-0Mn">
+                                <rect key="frame" x="0.0" y="28" width="375" height="65"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vSm-oc-0Mn" id="BrJ-PQ-Vzr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0VX-TN-Hg1">
+                                            <rect key="frame" x="15" y="15" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xeY-bg-p8j">
+                                            <rect key="frame" x="15" y="35.5" width="33" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="E6K-dH-7fh" id="9oc-d3-ztb"/>
+                            <outlet property="delegate" destination="E6K-dH-7fh" id="CbF-cU-WCd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="CGA Question Choices" id="mXf-6c-iOG"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d8b-j7-tmt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4842" y="2248"/>
+        </scene>
+        <!--CGA Guide-->
+        <scene sceneID="vAs-XZ-7bf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="chf-bG-QDY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="CGA Guide" image="Folder-50" id="TZo-v3-plm"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QcK-Ut-RtY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ore-uh-hNV" kind="relationship" relationship="rootViewController" id="sGM-03-SSK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qv1-fj-gPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2320.8000000000002" y="2659.5202398800602"/>
+        </scene>
+        <!--SessionSingleQuestionChoices-->
+        <scene sceneID="C9i-nY-UoN">
+            <objects>
+                <tableViewController title="SessionSingleQuestionChoices" id="XZ4-eS-iWS" customClass="CGAGuideScaleSingleQuestionChoices" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="y7R-eX-dAl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" textLabel="ONy-If-MQp" rowHeight="60" style="IBUITableViewCellStyleDefault" id="Lcx-zP-HTk">
+                                <rect key="frame" x="0.0" y="22" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lcx-zP-HTk" id="PoB-OR-hEF">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ONy-If-MQp">
+                                            <rect key="frame" x="15" y="0.0" width="345" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="XZ4-eS-iWS" id="QHw-Kg-g8Z"/>
+                            <outlet property="delegate" destination="XZ4-eS-iWS" id="c92-KG-0ys"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Session Single Question Choices" id="xkj-qU-dpE">
+                        <barButtonItem key="backBarButtonItem" title="GoBack" id="aoj-am-1AE"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="axT-VR-jjN">
+                            <connections>
+                                <action selector="addButtonDidTouch:" destination="XZ4-eS-iWS" id="cUZ-K1-jKA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wsp-Sa-R5I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3257" y="3099"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Folder-50" width="25" height="25"/>
+    </resources>
+</document>

@@ -37,22 +37,31 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1C5-Av-VGx">
+                        <rect key="frame" x="282" y="16" width="22" height="22"/>
+                        <connections>
+                            <action selector="infoButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sSA-Ag-opv"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="1C5-Av-VGx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="27t-o6-vwJ"/>
                     <constraint firstItem="Bdj-sq-K4k" firstAttribute="top" secondItem="EA6-d1-j3R" secondAttribute="bottom" constant="8" id="4Hl-cg-fvM"/>
                     <constraint firstItem="ZuR-3c-eps" firstAttribute="top" secondItem="Bdj-sq-K4k" secondAttribute="bottom" constant="8" id="BuS-kN-hTO"/>
                     <constraint firstItem="ZuR-3c-eps" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="E0c-f2-sXL"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="1C5-Av-VGx" secondAttribute="trailing" constant="8" id="FQh-YO-apk"/>
                     <constraint firstItem="EA6-d1-j3R" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="G1c-RC-omB"/>
                     <constraint firstItem="EA6-d1-j3R" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="Knw-1e-Lhz"/>
                     <constraint firstItem="Bdj-sq-K4k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="RaY-Ts-WWS"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="infoButton" destination="1C5-Av-VGx" id="SsI-CM-3I7"/>
                 <outlet property="name" destination="EA6-d1-j3R" id="MOk-pf-DWN"/>
                 <outlet property="resultQualitative" destination="Bdj-sq-K4k" id="Ptw-yf-w6Y"/>
                 <outlet property="resultQuantitative" destination="ZuR-3c-eps" id="nfO-so-H5F"/>
             </connections>
-            <point key="canvasLocation" x="56" y="55"/>
+            <point key="canvasLocation" x="-80" y="29"/>
         </tableViewCell>
     </objects>
 </document>

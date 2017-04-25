@@ -3,18 +3,6 @@ import FirebaseAuth
 import FirebaseDatabase
 
 
-/**
- Custom cell class for displaying the scale results
- **/
-
-class ScaleCard: UITableViewCell {
-    
-    @IBOutlet weak var scaleName: UILabel!
-    
-    @IBOutlet weak var scaleResultQualitative: UILabel!
-    
-    @IBOutlet weak var scaleResultQuantitative: UILabel!
-}
 
 // show all scales from CGA
 //TODO - display scales organized by areas
@@ -137,7 +125,9 @@ class CGAPublicMain: UITableViewController {
         
         if rowInsideSection < scalesForArea.count {
             let scale = scalesForArea[rowInsideSection]
-            return ScaleTableViewCell.createCell(cell: cell, scale: scale)
+            return ScaleTableViewCell.createCell(cell: cell,
+                                                 scale: scale,
+                                                 viewController: self)
         }
         return cell
         
@@ -147,7 +137,7 @@ class CGAPublicMain: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        // return the height of the cell
+        // TODO return the height of the cell
         return 100
     }
     

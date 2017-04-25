@@ -49,17 +49,13 @@ class CGAScalesTableViewController: UITableViewController {
         // display popover
         let popOverVC = UIStoryboard(name: "PopOvers", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID") as! PopUpViewController
         
-
         popOverVC.modalPresentationStyle = UIModalPresentationStyle.popover
         let popover: UIPopoverPresentationController = popOverVC.popoverPresentationController!
         popover.sourceView = cell
         popover.sourceRect = cell.bounds
         
-        
-        
 //        popover.delegate = self
         popOverVC.scale = scale
-        
         
         present(popOverVC, animated: true, completion:nil)
         

@@ -171,11 +171,15 @@ class InitialSetup: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        // test localization
+        let welcomeMessage = NSLocalizedString("Welcome", comment: "")
+        print(welcomeMessage)
+        
         
         // check if first start
         let defaults = UserDefaults.standard
         let HasLaunchedOnce = defaults.bool(forKey: "HasLaunchedOnce")
-//        if !HasLaunchedOnce{
+        if !HasLaunchedOnce{
             // start the counter
             for _ in 0..<100 {
                 DispatchQueue.global(qos: .background).async {
@@ -192,17 +196,17 @@ class InitialSetup: UIViewController {
             
             downloadScales()
             defaults.set(true, forKey: "HasLaunchedOnce")
-//        }
-//        else{
-//            // read from defaults and add to Constants
-//            let decoded  = defaults.object(forKey: "scales") as! Data
-//            let decodedScales = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [GeriatricScale]
-//            Constants.scales = decodedScales
-//            
-//            // call segue
-//            print("calling segue")
-//            performSegue(withIdentifier: SegueLeaveInitialSetup, sender: self)
-//        }
+        }
+        else{
+            // read from defaults and add to Constants
+            let decoded  = defaults.object(forKey: "scales") as! Data
+            let decodedScales = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [GeriatricScale]
+            Constants.scales = decodedScales
+            
+            // call segue
+            print("calling segue")
+            performSegue(withIdentifier: SegueLeaveInitialSetup, sender: self)
+        }
     
 
     }
