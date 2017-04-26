@@ -156,12 +156,13 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // register
     @IBAction func signUpDidTouch(_ sender: AnyObject) {
-        let alert = UIAlertController(title: "Register",
-                                      message: "Register",
+        let alert = UIAlertController(title: "Registar",
+                                      message: nil,
                                       preferredStyle: .alert)
         
-        let saveAction = UIAlertAction(title: "Save",
+        let saveAction = UIAlertAction(title: "Registar",
                                        style: .default) { action in
                                         
                                         // 1 - get email and password
@@ -180,9 +181,9 @@ class LoginViewController: UIViewController {
                                         
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel",
+        let cancelAction = UIAlertAction(title: "Cancelar",
                                          style: .default)
-        
+        // add text fields to alert action        
         alert.addTextField { textEmail in
             textEmail.placeholder = "Enter your email"
         }

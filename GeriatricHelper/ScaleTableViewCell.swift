@@ -10,6 +10,8 @@ import UIKit
 
 class ScaleTableViewCell: UITableViewCell {
     
+    
+    
     var scale:GeriatricScale?
     
     @IBOutlet weak var infoButton: UIButton!
@@ -46,6 +48,7 @@ class ScaleTableViewCell: UITableViewCell {
                            scale: GeriatricScale,
                            viewController: UIViewController) -> UITableViewCell{
         
+     
         cell.scale = scale
         cell.viewController = viewController
         

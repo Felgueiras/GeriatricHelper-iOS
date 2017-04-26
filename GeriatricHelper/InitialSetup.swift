@@ -203,10 +203,34 @@ class InitialSetup: UIViewController {
             let decodedScales = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [GeriatricScale]
             Constants.scales = decodedScales
             
-            // call segue
-            print("calling segue")
-            performSegue(withIdentifier: SegueLeaveInitialSetup, sender: self)
+            // check if user is already logged in
+            
+            FIRAuth.auth()!.addStateDidChangeListener { auth, user in
+                guard user != nil else {
+                    
+                 
+                    
+                    
+                    // not logged in
+                    self.performSegue(withIdentifier: self.SegueLeaveInitialSetup, sender: self)
+                    return
+                }
+                
+                // save user ID
+                FirebaseHelper.userID = FIRAuth.auth()?.currentUser?.uid
+                
+                print("Going to personal area...")
+                
+                // navigate automatically to the private area
+                self.performSegue(withIdentifier: "NavigatePersonalArea", sender: self)
+                
+                
+                
+            }
+            
         }
+        
+        
     
 
     }

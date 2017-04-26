@@ -18,13 +18,12 @@ class PatientProfileViewController: UIViewController{
     var sessions: [Session] = []
     var prescriptions: [Prescription] = []
 
+   
     
     // segue to display a patient's profile
     let ViewPatientSessions = "ViewPatientSessions"
     let ViewSessionScales = "ViewSessionScales"
     
-    // Firebase reference to database
-    let ref = FIRDatabase.database().reference()
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     var user: User!
@@ -89,6 +88,86 @@ class PatientProfileViewController: UIViewController{
         
     }
     
+    var privateSession:Session?
+    
+    // create new session
+    @IBAction func newSessionButtonPressed(_ sender: Any) {
+        
+        // create a new Session
+        privateSession = createNewSession()
+        // add Scales to the Session
+        addScalesToSession(session: privateSession!)
+        
+        // navigate to private session
+        
+        performSegue(withIdentifier: "StartPrivateSession", sender: self)
+        
+        
+    }
+    
+    /**
+     Create a new CGA Session.
+     **/
+    func createNewSession() -> Session {
+        
+        
+        let time = NSDate()
+        let calendar = NSCalendar.current
+        //        let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: time)
+        //        let hour = components.hour
+        //        let minutes = components.minute
+        
+        var dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yy hh:mm"
+        var dateString = dateFormatter.string(from: time as Date)
+        // save
+        var session = Session()
+        session.guid = dateString
+        
+        // set date
+        //        Calendar now = Calendar.getInstance();
+        //        int; year = now.get(Calendar.YEAR);
+        //        int; month = now.get(Calendar.MONTH);
+        //        int; day = now.get(Calendar.DAY_OF_MONTH);
+        //        int; hour = now.get(Calendar.HOUR_OF_DAY);
+        //        int; minutes = now.get(Calendar.MINUTE);
+        //        session.setDate(DatesHandler.createCustomDate(year, month, day, hour, minute));
+        //        session.setDate(time.getTime());
+        //system.out.println("Session date is " + session.getDate());
+        //        FirebaseHelper.createSession(session);
+        
+        
+        // save the ID
+        //        sharedPreferences.edit().putString(getString(R.string.saved_session_public), sessionID).apply();
+        
+        // save Session
+        FirebaseDatabaseHelper.createSession(session: session)
+        
+        
+        // save in constants
+        return session
+    }
+    
+    /**
+     Add scales to the Session.
+     **/
+    func addScalesToSession(session: Session) {
+        // add every scale
+        for testNonDB in Constants.scales {
+            var scale = testNonDB
+            scale.guid = session.guid! + "-" + testNonDB.scaleName!
+            scale.sessionID = session.guid
+            
+            session.addScaleID(scaleID: scale.guid!)
+            // TODO remove
+            session.scales?.append(scale)
+            // add scale to session
+            FirebaseDatabaseHelper.createScale(scale:scale)
+            
+        }
+    }
+    
+    
     func setFavoriteIcon(){
         if patient.favorite == true{
             // patient is favorite
@@ -138,7 +217,7 @@ class PatientProfileViewController: UIViewController{
                 let userID = FIRAuth.auth()?.currentUser?.uid
                 
                 // get patient's sessions
-                let sessionsRef = self.ref.child("users").child(userID!).child("sessions")
+                let sessionsRef = FirebaseHelper.ref.child("users").child(userID!).child("sessions")
                 sessionsRef.queryOrdered(byChild: "patientID")
                     .queryEqual(toValue: self.patient.guid).observe(.value, with: { snapshot in
                         self.sessions.removeAll()
@@ -156,7 +235,7 @@ class PatientProfileViewController: UIViewController{
                 }
                 
                 // get patient's prescriptions
-                let prescriptionsRef = self.ref.child("users").child(userID!).child("prescriptions")
+                let prescriptionsRef = FirebaseHelper.ref.child("users").child(userID!).child("prescriptions")
                 prescriptionsRef.queryOrdered(byChild: "patientID")
                     .queryEqual(toValue: self.patient.guid).observe(.value, with: { snapshot in
                         self.prescriptions.removeAll()
@@ -212,11 +291,24 @@ class PatientProfileViewController: UIViewController{
                 let session = sessions[indexPath.row] as? Session  {
                 let destinationViewController = segue.destination as! SessionScalesViewController
                 // set the session
-                destinationViewController.session = session
+                destinationViewController.session = privateSession
                 print("Session guid is\(session.guid)")
             }
         }
+        else if segue.identifier == "StartPrivateSession" {
+            
+            let destinationViewController = segue.destination as! CGAPrivateMain
+            // set the session
+            destinationViewController.session = privateSession
+            
+        }
     }
+    
+    
+    // unwind segue
+    @IBAction func unwindToPatientProfile(segue: UIStoryboardSegue) {}
+
+    
     
 }
 
@@ -272,11 +364,6 @@ extension PatientProfileViewController: UITableViewDataSource, UITableViewDelega
         return cell
     }
 
-    
-    
-   
-
  
-    
 }
 

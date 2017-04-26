@@ -44,11 +44,12 @@
                     <connections>
                         <outlet property="progressView" destination="1Y6-Xo-uQV" id="eB8-bj-sDk"/>
                         <segue destination="ldk-HW-20u" kind="show" identifier="leaveInitialSetup" id="5sa-nP-6NU"/>
+                        <segue destination="tCG-0D-c11" kind="show" identifier="NavigatePersonalArea" id="aAJ-mt-opf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JC0-GJ-mII" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4090" y="-201"/>
+            <point key="canvasLocation" x="-4196" y="-310"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Mur-gJ-XWJ">
@@ -64,11 +65,12 @@
                         <segue destination="xLU-sb-1ia" kind="relationship" relationship="viewControllers" id="mnc-FI-fOs"/>
                         <segue destination="HZw-ZX-5Jx" kind="relationship" relationship="viewControllers" id="Jiz-Vq-dY3"/>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="Cnx-yY-ayK"/>
+                        <segue destination="6JO-WD-3s3" kind="relationship" relationship="viewControllers" id="ECV-rY-VHf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6NG-Ba-U4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3231" y="-309"/>
+            <point key="canvasLocation" x="-3004" y="-380"/>
         </scene>
         <!--CGAGuide-->
         <scene sceneID="x6l-Vk-bsz">
@@ -143,7 +145,7 @@
             </objects>
             <point key="canvasLocation" x="-3178.4000000000001" y="502.39880059970017"/>
         </scene>
-        <!--Account-->
+        <!--Conta-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="LoginViewController" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
@@ -156,17 +158,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GeriatricHelper" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlR-6D-pNE">
-                                <rect key="frame" x="104.5" y="72" width="166" height="59"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="166" id="D2O-pG-5WL"/>
-                                    <constraint firstAttribute="height" constant="59" id="gPQ-9y-BZM"/>
-                                </constraints>
+                                <rect key="frame" x="16.5" y="72" width="342" height="68.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="50"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FXf-pW-pxd">
-                                <rect key="frame" x="70" y="247" width="235" height="30"/>
+                                <rect key="frame" x="70" y="256.5" width="235" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="bDr-5c-4xr"/>
                                 </constraints>
@@ -177,7 +175,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hxW-pl-K5k">
-                                <rect key="frame" x="70" y="285" width="235" height="30"/>
+                                <rect key="frame" x="70" y="294.5" width="235" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="cCv-SX-nS7"/>
                                 </constraints>
@@ -188,7 +186,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufw-i0-710">
-                                <rect key="frame" x="70" y="389" width="235" height="38"/>
+                                <rect key="frame" x="70" y="398.5" width="235" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="7br-n8-SvO"/>
                                 </constraints>
@@ -213,7 +211,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vRw-I3-Jav">
-                                <rect key="frame" x="70" y="335" width="235" height="38"/>
+                                <rect key="frame" x="70" y="344.5" width="235" height="38"/>
                                 <color key="backgroundColor" red="0.99160850048065186" green="0.584259033203125" blue="0.42443481087684631" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="5c9-Up-nv4"/>
@@ -252,7 +250,7 @@
                             <constraint firstItem="hxW-pl-K5k" firstAttribute="top" secondItem="FXf-pW-pxd" secondAttribute="bottom" constant="8" id="w4t-Rh-6er"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Account" image="Account" id="IIP-tI-s2o"/>
+                    <tabBarItem key="tabBarItem" title="Conta" image="Account" id="IIP-tI-s2o"/>
                     <connections>
                         <outlet property="textFieldLoginEmail" destination="FXf-pW-pxd" id="BPY-iG-OjN"/>
                         <outlet property="textFieldLoginPassword" destination="hxW-pl-K5k" id="MPd-yK-pII"/>
@@ -533,10 +531,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="ldk-HW-20u" kind="presentation" identifier="LogOutSegue" id="Snr-ky-S8C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Nz-rY-w7t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-396" y="2067.6161919040483"/>
+            <point key="canvasLocation" x="-1486" y="1566"/>
         </scene>
         <!--Sessions-->
         <scene sceneID="DOc-n4-ON7">
@@ -715,7 +716,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="svO-a4-6hP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1335.2" y="2067.6161919040483"/>
+            <point key="canvasLocation" x="-2402" y="1566"/>
         </scene>
         <!--CGAGuide-->
         <scene sceneID="hN4-FO-PoY">
@@ -784,7 +785,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d89-cr-MZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3996" y="313"/>
+            <point key="canvasLocation" x="-762" y="312"/>
+        </scene>
+        <!--Help-->
+        <scene sceneID="PGc-tI-34i">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Help" id="6JO-WD-3s3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Hpv-R4-a1m"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Woo-pk-hZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1486" y="-636"/>
         </scene>
     </scenes>
     <resources>
@@ -792,6 +803,8 @@
         <image name="pill" width="13" height="13"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Snr-ky-S8C"/>
+        <segue reference="GnM-Yr-cEm"/>
         <segue reference="XH4-lZ-S85"/>
     </inferredMetricsTieBreakers>
 </document>

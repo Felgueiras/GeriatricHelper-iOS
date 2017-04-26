@@ -29,6 +29,9 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
     var answer: String?
     var result: Double?
     
+    
+    
+    
     // decode
     required convenience init(coder aDecoder: NSCoder) {
         let area = aDecoder.decodeObject(forKey: "area") as! String
@@ -150,7 +153,7 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
             "guid": guid,
             "scaleName": scaleName,
             "sessionID": sessionID,
-            "type": type
+            "singleQuestion": singleQuestion
         ]
     }
     

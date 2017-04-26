@@ -15,6 +15,9 @@
     var patientID: String?
     var ref: FIRDatabaseReference?
     
+    var scales: [GeriatricScale]? = []
+    var scalesIDS: [String]? = []
+    
     
     
     // initialize Patient from snapshot
@@ -33,8 +36,16 @@
             "date": date,
             "key": key,
             "guid": guid,
-            "patientID": patientID
+            "patientID": "123",
+            "scalesIDS": scalesIDS
         ]
+    }
+    
+    
+    func addScaleID(scaleID:String)
+    {
+        scalesIDS?.append(scaleID)
+        FirebaseDatabaseHelper.updateSession(session: self)
     }
     
    }

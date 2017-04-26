@@ -99,6 +99,11 @@
                                     <action selector="favoriteButtonPressed:" destination="M7g-Jl-xpE" id="D4p-PI-6zp"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem title="Nova Sessão" id="Duz-fn-s9g" userLabel="Nova Sessão">
+                                <connections>
+                                    <action selector="newSessionButtonPressed:" destination="M7g-Jl-xpE" id="SIK-rQ-WGU"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="Delete" id="HAW-V7-pfJ">
                                 <connections>
                                     <action selector="deletePatient:" destination="M7g-Jl-xpE" id="fRz-x8-sQn"/>
@@ -113,11 +118,12 @@
                         <outlet property="hospitalProcessNumber" destination="oHa-V6-SjZ" id="pTn-a4-tcp"/>
                         <outlet property="segmentedControl" destination="uj9-Wj-wUP" id="bD5-Wb-6Sn"/>
                         <outlet property="table" destination="jIR-C1-uCM" id="VL5-LG-Sla"/>
+                        <segue destination="YtY-Ka-e4u" kind="show" identifier="StartPrivateSession" id="lWj-l5-sqa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvL-El-Rsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5504" y="313"/>
+            <point key="canvasLocation" x="5705" y="293"/>
         </scene>
         <!--Patients List-->
         <scene sceneID="GDd-Ja-sb5">
@@ -158,12 +164,12 @@
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="GoBack" id="i2u-mM-p7v"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="lDB-BB-Due">
-                            <rect key="frame" x="83" y="7" width="209" height="30"/>
+                            <rect key="frame" x="80" y="7" width="215" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="All"/>
-                                <segment title="Favorites"/>
-                                <segment title="Recent"/>
+                                <segment title="Todos"/>
+                                <segment title="Favoritos"/>
+                                <segment title="Recentes"/>
                             </segments>
                             <connections>
                                 <action selector="segmentedControlSelectionChanged:" destination="WRG-qR-ebT" eventType="valueChanged" id="Ay1-Sm-yEV"/>
@@ -182,7 +188,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fRX-FK-8Yw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4831" y="313"/>
+            <point key="canvasLocation" x="4882" y="293"/>
         </scene>
         <!--Create Patient View Controller-->
         <scene sceneID="ywI-Uk-GGO">
@@ -293,13 +299,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Um-US-U16" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5594" y="1166"/>
+            <point key="canvasLocation" x="5359" y="1138"/>
         </scene>
-        <!--Patients-->
+        <!--Pacientes-->
         <scene sceneID="Mvi-gC-Xa6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EoC-eh-07v" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Patients" image="Account" id="hpC-lM-5FY"/>
+                    <tabBarItem key="tabBarItem" title="Pacientes" image="Account" id="hpC-lM-5FY"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yAK-SR-crY">
@@ -313,7 +319,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R5E-ST-Mi5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3996" y="313"/>
+            <point key="canvasLocation" x="3599" y="313"/>
         </scene>
         <!--UITableViewController-YQj-Ib-h14-->
         <scene sceneID="I4C-zs-WAM">
@@ -339,7 +345,121 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaO-AN-BF4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4831" y="1167"/>
+            <point key="canvasLocation" x="4486" y="1139"/>
+        </scene>
+        <!--Patient Profile View Controller-->
+        <scene sceneID="Ilj-Zi-L5q">
+            <objects>
+                <viewController id="IOq-hJ-W0N" customClass="PatientProfileViewController" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yaf-zP-M7G"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vz1-r7-4VM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Uwl-Se-2Nd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="sOj-2l-Eon">
+                                <rect key="frame" x="24" y="28" width="327" height="89.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birth date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1B0-YA-JzQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="75.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTT-HI-1dA">
+                                        <rect key="frame" x="0.0" y="20.5" width="63" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7E1-77-nMT">
+                                        <rect key="frame" x="0.0" y="41" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="096-vV-2yH">
+                                        <rect key="frame" x="0.0" y="61.5" width="327" height="29"/>
+                                        <segments>
+                                            <segment title="Sessions"/>
+                                            <segment title="Notes"/>
+                                            <segment title="Prescriptions"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="segmentedControlValueChanged:" destination="IOq-hJ-W0N" eventType="valueChanged" id="cB3-ME-MHa"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="096-vV-2yH" firstAttribute="centerX" secondItem="sOj-2l-Eon" secondAttribute="centerX" id="hjG-0c-XYB"/>
+                                </constraints>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mLo-eK-h6z">
+                                <rect key="frame" x="8" y="125.5" width="359" height="533.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ItemCell" id="t8S-pT-LiR">
+                                        <rect key="frame" x="0.0" y="28" width="359" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t8S-pT-LiR" id="vba-3B-IhJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sOj-2l-Eon" firstAttribute="top" secondItem="Yaf-zP-M7G" secondAttribute="bottom" constant="8" id="GJO-Yw-1VT"/>
+                            <constraint firstItem="mLo-eK-h6z" firstAttribute="top" secondItem="sOj-2l-Eon" secondAttribute="bottom" constant="8" id="KZm-xa-Jyq"/>
+                            <constraint firstItem="mLo-eK-h6z" firstAttribute="trailing" secondItem="Uwl-Se-2Nd" secondAttribute="trailingMargin" constant="8" id="LFq-cm-p8p"/>
+                            <constraint firstItem="sOj-2l-Eon" firstAttribute="leading" secondItem="Uwl-Se-2Nd" secondAttribute="leadingMargin" constant="8" id="ZOM-kt-N4F"/>
+                            <constraint firstItem="mLo-eK-h6z" firstAttribute="leading" secondItem="Uwl-Se-2Nd" secondAttribute="leading" constant="8" id="hmt-vn-gak"/>
+                            <constraint firstItem="mLo-eK-h6z" firstAttribute="top" secondItem="sOj-2l-Eon" secondAttribute="bottom" constant="8" id="iZK-j3-BIG"/>
+                            <constraint firstItem="Vz1-r7-4VM" firstAttribute="top" secondItem="mLo-eK-h6z" secondAttribute="bottom" constant="8" id="nvj-By-sfJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sOj-2l-Eon" secondAttribute="trailing" constant="8" id="off-T6-3ar"/>
+                            <constraint firstAttribute="trailing" secondItem="mLo-eK-h6z" secondAttribute="trailing" constant="8" id="w0C-Dr-qX5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="rSY-ST-x9u">
+                        <barButtonItem key="backBarButtonItem" title="GoBack" id="0na-fg-hED"/>
+                        <rightBarButtonItems>
+                            <barButtonItem image="Star-50" id="d4s-MF-QF0">
+                                <connections>
+                                    <action selector="favoriteButtonPressed:" destination="IOq-hJ-W0N" id="ivk-v5-3xJ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Nova Sessão" id="QCI-X7-bkE" userLabel="Nova Sessão"/>
+                            <barButtonItem title="Delete" id="ZCL-nS-lhZ">
+                                <connections>
+                                    <action selector="deletePatient:" destination="IOq-hJ-W0N" id="FbM-wg-ph5"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="address" destination="CTT-HI-1dA" id="LcA-z9-oSU"/>
+                        <outlet property="birthDate" destination="1B0-YA-JzQ" id="pUc-UV-3ee"/>
+                        <outlet property="favoriteButton" destination="d4s-MF-QF0" id="rIW-lw-fHh"/>
+                        <outlet property="hospitalProcessNumber" destination="7E1-77-nMT" id="xfl-0r-8Fo"/>
+                        <outlet property="segmentedControl" destination="096-vV-2yH" id="Ifu-Tg-Rk6"/>
+                        <outlet property="table" destination="mLo-eK-h6z" id="F5K-h8-eSD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2zw-ud-C4q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5705" y="293"/>
+        </scene>
+        <!--CGAPrivate-->
+        <scene sceneID="H2i-nZ-Baa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CGAPrivate" id="YtY-Ka-e4u" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vMB-9T-iYc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6658" y="293"/>
         </scene>
     </scenes>
     <resources>

@@ -23,8 +23,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AsD-UQ-avT">
-                                <rect key="frame" x="102.5" y="318" width="169" height="30"/>
-                                <state key="normal" title="Start a new CGA session"/>
+                                <rect key="frame" x="91.5" y="318" width="192" height="30"/>
+                                <state key="normal" title="Criar uma nova Sessão CGA"/>
                                 <connections>
                                     <action selector="startPublicSessionButtonClicked:" destination="t95-p7-WTR" eventType="touchUpInside" id="mCk-lM-CmD"/>
                                 </connections>
@@ -105,7 +105,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xh1-Xr-SNJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="391" y="-1402"/>
+            <point key="canvasLocation" x="322" y="-1380"/>
         </scene>
         <!--Question Category View Controller-->
         <scene sceneID="8DQ-gF-bIq">

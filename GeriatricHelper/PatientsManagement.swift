@@ -121,29 +121,18 @@ class PatientsManagement{
             }
         }
     }
-    //
-    //        /**
-    //         * Get a patient by its ID.
-    //         *
-    //         * @return
-    //         */
-    //        @Nullable
-    //        public static PatientFirebase getPatientFromSession(SessionFirebase session, Context context) {
-    //        FirebaseAuth auth = FirebaseAuth.getInstance();
-    //        if (auth.getCurrentUser() == null) {
-    //        return null;
-    //        }
-    //        if (session.getPatientID() == null) {
-    //        return null;
-    //        }
-    //        ArrayList<PatientFirebase> patients = getPatients(context);
-    //        for (PatientFirebase patient : patients) {
-    //        if (patient.getGuid().equals(session.getPatientID()))
-    //        return patient;
-    //        }
-    //        return null;
-    //        }
-    //    }
     
     
+//    static  getPatientFromSession( session: Session) {
+//    
+//  
+//    ArrayList<PatientFirebase> patients = getPatients(context);
+//    for (PatientFirebase patient : patients) {
+//    if (patient.getGuid().equals(session.getPatientID()))
+//    return patient;
+//    }
+//    return null;
+//    }
 }
+
+

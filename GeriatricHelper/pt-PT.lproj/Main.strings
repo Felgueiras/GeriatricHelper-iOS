@@ -1,0 +1,150 @@
+
+/* Class = "UITableViewController"; title = "Scales Questions"; ObjectID = "2sH-UT-HXE"; */
+"2sH-UT-HXE.title" = "Questões";
+
+/* Class = "UINavigationItem"; title = "Patient Sessions"; ObjectID = "3sE-o9-X0g"; */
+"3sE-o9-X0g.title" = "Sessões";
+
+/* Class = "UINavigationItem"; title = "Sessions"; ObjectID = "4QN-RX-J3e"; */
+"4QN-RX-J3e.title" = "Sessões";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "4dh-LT-jv5"; */
+"4dh-LT-jv5.text" = "Title";
+
+/* Class = "UIBarButtonItem"; title = "GoBack"; ObjectID = "7iQ-ti-byG"; */
+"7iQ-ti-byG.title" = "GoBack";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "CZq-fQ-Ub9"; */
+"CZq-fQ-Ub9.text" = "Detalhe";
+
+/* Class = "UIBarButtonItem"; title = "GoBack"; ObjectID = "Cag-Hl-Z8r"; */
+"Cag-Hl-Z8r.title" = "GoBack";
+
+/* Class = "UIBarButtonItem"; title = "Logout"; ObjectID = "EFi-KG-bZC"; */
+"EFi-KG-bZC.title" = "Logout";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "FX6-Y7-lxm"; */
+"FX6-Y7-lxm.text" = "Title";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "FXf-pW-pxd"; */
+"FXf-pW-pxd.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Hq0-TL-Nlx"; */
+"Hq0-TL-Nlx.text" = "Title";
+
+/* Class = "UITabBarItem"; title = "Account"; ObjectID = "IIP-tI-s2o"; */
+"IIP-tI-s2o.title" = "Conta";
+
+/* Class = "UINavigationItem"; title = "Question Choices"; ObjectID = "LEx-rv-yRe"; */
+"LEx-rv-yRe.title" = "Escolhas";
+
+/* Class = "UITabBarItem"; title = "Sessions"; ObjectID = "MQ6-yT-PaT"; */
+"MQ6-yT-PaT.title" = "Sessões";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "O7z-MU-SQk"; */
+"O7z-MU-SQk.title" = "Item";
+
+/* Class = "UITableViewController"; title = "Patients Sessions"; ObjectID = "OaF-Bp-Oi0"; */
+"OaF-Bp-Oi0.title" = "Patients Sessions";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "OgE-BW-NlL"; */
+"OgE-BW-NlL.title" = "Item";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "SRW-MV-LTF"; */
+"SRW-MV-LTF.title" = "Item";
+
+/* Class = "UISegmentedControl"; VHi-Sb-oe6.segmentTitles[0] = "Estado functional"; ObjectID = "VHi-Sb-oe6"; */
+"VHi-Sb-oe6.segmentTitles[0]" = "Estado functional";
+
+/* Class = "UISegmentedControl"; VHi-Sb-oe6.segmentTitles[1] = "Situação social"; ObjectID = "VHi-Sb-oe6"; */
+"VHi-Sb-oe6.segmentTitles[1]" = "Situação social";
+
+/* Class = "UISegmentedControl"; VHi-Sb-oe6.segmentTitles[2] = "Estado mental"; ObjectID = "VHi-Sb-oe6"; */
+"VHi-Sb-oe6.segmentTitles[2]" = "Estado mental";
+
+/* Class = "UISegmentedControl"; VHi-Sb-oe6.segmentTitles[3] = "Estado nutricional"; ObjectID = "VHi-Sb-oe6"; */
+"VHi-Sb-oe6.segmentTitles[3]" = "Estado nutricional";
+
+/* Class = "UIBarButtonItem"; title = "GoBack"; ObjectID = "Wbj-5O-Ye1"; */
+"Wbj-5O-Ye1.title" = "GoBack";
+
+/* Class = "UILabel"; text = "GeriatricHelper"; ObjectID = "XlR-6D-pNE"; */
+"XlR-6D-pNE.text" = "GeriatricHelper";
+
+/* Class = "UITableViewController"; title = "Session Scales"; ObjectID = "YQj-Ib-h14"; */
+"YQj-Ib-h14.title" = "Escalas";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ZHD-lj-BdL"; */
+"ZHD-lj-BdL.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Favorite"; ObjectID = "Zui-Jt-tVO"; */
+"Zui-Jt-tVO.title" = "Favorito";
+
+/* Class = "UITableViewController"; title = "Question Options"; ObjectID = "bgv-hn-A2C"; */
+"bgv-hn-A2C.title" = "Question Options";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "c4I-1s-Idw"; */
+"c4I-1s-Idw.text" = "Title";
+
+/* Class = "UITabBarItem"; title = "Prescriptions"; ObjectID = "emK-Eb-w8y"; */
+"emK-Eb-w8y.title" = "Prescrições";
+
+/* Class = "UIBarButtonItem"; title = "GoBack"; ObjectID = "f1L-PF-kly"; */
+"f1L-PF-kly.title" = "GoBack";
+
+/* Class = "UITabBarItem"; title = "Favorite Patients"; ObjectID = "fNQ-jV-Iqe"; */
+"fNQ-jV-Iqe.title" = "Favoritos";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "hxW-pl-K5k"; */
+"hxW-pl-K5k.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "kHM-QN-cXB"; */
+"kHM-QN-cXB.text" = "Title";
+
+/* Class = "UITableViewController"; title = "SessionSingleQuestionChoices"; ObjectID = "kuI-18-DeK"; */
+"kuI-18-DeK.title" = "SessionSingleQuestionChoices";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "ldg-KU-tbf"; */
+"ldg-KU-tbf.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "Scale's Questions"; ObjectID = "nmt-HM-8ke"; */
+"nmt-HM-8ke.title" = "Scale's Questions";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "nq2-gW-UCH"; */
+"nq2-gW-UCH.title" = "Item";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "sAj-ci-ryc"; */
+"sAj-ci-ryc.title" = "Item";
+
+/* Class = "UINavigationItem"; title = "Session Single Question Choices"; ObjectID = "uDS-fS-ynr"; */
+"uDS-fS-ynr.title" = "Session Single Question Choices";
+
+/* Class = "UIButton"; normalTitle = "Sign up"; ObjectID = "ufw-i0-710"; */
+"ufw-i0-710.normalTitle" = "Sign up";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "vRw-I3-Jav"; */
+"vRw-I3-Jav.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "Preparing initial setup"; ObjectID = "w8P-RC-0Fm"; */
+"w8P-RC-0Fm.text" = "Preparing initial setup";
+
+/* Class = "UIBarButtonItem"; title = "GoBack"; ObjectID = "wzd-gc-6U3"; */
+"wzd-gc-6U3.title" = "GoBack";
+
+/* Class = "UISegmentedControl"; xAT-gX-nSu.segmentTitles[0] = "All"; ObjectID = "xAT-gX-nSu"; */
+"xAT-gX-nSu.segmentTitles[0]" = "All";
+
+/* Class = "UISegmentedControl"; xAT-gX-nSu.segmentTitles[1] = "Start"; ObjectID = "xAT-gX-nSu"; */
+"xAT-gX-nSu.segmentTitles[1]" = "Start";
+
+/* Class = "UISegmentedControl"; xAT-gX-nSu.segmentTitles[2] = "Stopp"; ObjectID = "xAT-gX-nSu"; */
+"xAT-gX-nSu.segmentTitles[2]" = "Stopp";
+
+/* Class = "UISegmentedControl"; xAT-gX-nSu.segmentTitles[3] = "Beers"; ObjectID = "xAT-gX-nSu"; */
+"xAT-gX-nSu.segmentTitles[3]" = "Beers";
+
+/* Class = "UIViewController"; title = "Prescriptions"; ObjectID = "xLU-sb-1ia"; */
+"xLU-sb-1ia.title" = "Prescriptions";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "xyr-bD-TmX"; */
+"xyr-bD-TmX.text" = "Title";

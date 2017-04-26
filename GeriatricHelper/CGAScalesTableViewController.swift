@@ -4,7 +4,7 @@ import FirebaseDatabase
 
 // show all scales from CGA
 //TODO - display scales organized by areas
-class CGAScalesTableViewController: UITableViewController {
+class CGAScalesTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
     
     
     // segue to display a patient's profile
@@ -49,16 +49,32 @@ class CGAScalesTableViewController: UITableViewController {
         // display popover
         let popOverVC = UIStoryboard(name: "PopOvers", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID") as! PopUpViewController
         
-        popOverVC.modalPresentationStyle = UIModalPresentationStyle.popover
+    
         let popover: UIPopoverPresentationController = popOverVC.popoverPresentationController!
-        popover.sourceView = cell
-        popover.sourceRect = cell.bounds
+//        popover.sourceView = cell
+//        popover.sourceRect = cell.bounds
         
-//        popover.delegate = self
+        popover.delegate = self
+        
         popOverVC.scale = scale
         
         present(popOverVC, animated: true, completion:nil)
         
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.fullScreen
+    }
+    
+    func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
+        let navigationController = UINavigationController(rootViewController: controller.presentedViewController)
+        let btnDone = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(CGAScalesTableViewController.dismiss as (CGAScalesTableViewController) -> () -> ()))
+        navigationController.topViewController?.navigationItem.rightBarButtonItem = btnDone
+        return navigationController
+    }
+    
+    func dismiss() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     // number of rows per section

@@ -22,6 +22,7 @@ class Question: NSObject, Mappable, NSCoding {
     // scale which this Question belong to
     var scale: GeriatricScale?
     var rightWrong: Bool?
+    var scaleID: String?
     var yesOrNo: Bool?
     var selectedYesNo: String?
     var selectedRightWrong: String?
@@ -93,11 +94,12 @@ class Question: NSObject, Mappable, NSCoding {
         let snapshotValue = snapshot.value as! [String: AnyObject]
         
         // assign properties
-        answerNumber = snapshotValue["answerNumber"] as! Int
-        answered = snapshotValue["answered"] as! Bool
-        descriptionText = snapshotValue["description"] as! String
-        guid = snapshotValue["guid"] as! String
-        selectedChoice = snapshotValue["selectedChoice"] as! String
+        answerNumber = snapshotValue["answerNumber"] as? Int
+        answered = snapshotValue["answered"] as? Bool
+        descriptionText = snapshotValue["description"] as? String
+        guid = snapshotValue["guid"] as? String
+        selectedChoice = snapshotValue["selectedChoice"] as? String
+        scaleID = snapshotValue["scaleID"] as? String
         //        choices = snapshotValue["choices"] as! [Choice]
     }
     
@@ -109,6 +111,8 @@ class Question: NSObject, Mappable, NSCoding {
             "guid": guid,
             "selectedChoice": selectedChoice,
             "answerNumber": answerNumber,
+            "selectedYesNo": selectedYesNo,
+            "scaleID": scaleID
         ]
     }
     

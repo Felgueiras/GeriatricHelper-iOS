@@ -76,7 +76,8 @@ class CGAPublicYesNo: UITableViewController {
         
         return YesNoQuestionTableViewCell.createCell(cell: cell,
                                                           question: question!,
-                                                          scale: scale)
+                                                          scale: scale,
+                                                          backend: false)
    
     }
 
