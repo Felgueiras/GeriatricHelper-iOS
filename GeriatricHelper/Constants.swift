@@ -25,12 +25,17 @@ class Constants{
     static var cgaPublicQuestions: [Question]? = []
     static var cgaPublicChoices: [Choice]? = []
     
+    static let functionalState: String = "Estado funcional"
+    static let socialState: String = "Situação social"
+    static let mentalState: String = "Estado mental"
+    static let nutritionalState: String = "Estado nutricional"
+    
     // CGA areas
     static let cgaAreas = [
-        "Estado funcional",
-        "Situação social",
-        "Estado mental",
-        "Estado nutricional"
+        functionalState,
+        socialState,
+        mentalState,
+        nutritionalState
     ]
     
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HelpTableViewController: UITableViewController {
+class HelpSingleTopic: UITableViewController {
 
     var helpTopics:[String]? = ["Sobre a Avaliação Geriátrica Global",
                                 "Funcionalidades",

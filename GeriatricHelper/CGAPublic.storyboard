@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="t95-p7-WTR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="t95-p7-WTR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,9 +22,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AsD-UQ-avT">
-                                <rect key="frame" x="91.5" y="318" width="192" height="30"/>
-                                <state key="normal" title="Criar uma nova Sessão CGA"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AsD-UQ-avT">
+                                <rect key="frame" x="80" y="318" width="215" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="CRIAR SESSÃO">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="startPublicSessionButtonClicked:" destination="t95-p7-WTR" eventType="touchUpInside" id="mCk-lM-CmD"/>
                                 </connections>
@@ -39,17 +48,17 @@
                     <tabBarItem key="tabBarItem" title="CGA" image="Info-50" id="Tpw-0v-1li"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="v6C-01-5J4" kind="presentation" identifier="StartPublicSession" id="8RA-Bh-IAA"/>
+                        <segue destination="9VL-l6-MHa" kind="presentation" identifier="StartPublicSession" id="Erm-jB-4ui"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2e-ty-JQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2289" y="-349"/>
+            <point key="canvasLocation" x="-2263.5" y="-349.5"/>
         </scene>
         <!--CGA Guide Scales-->
         <scene sceneID="AeB-SH-nul">
             <objects>
-                <tableViewController title="CGA Guide Scales" id="Oze-dn-a1N" customClass="CGAPublicMain" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="CGA Guide Scales" id="Oze-dn-a1N" customClass="CGAPublicScalesForArea" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="84" sectionHeaderHeight="28" sectionFooterHeight="28" id="tpT-3f-fdP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,12 +78,7 @@
                             <outlet property="delegate" destination="Oze-dn-a1N" id="hsn-jG-t4Z"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="CGA Public Scales" id="jkC-ZQ-Gaq">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="R2c-vM-8IW">
-                            <connections>
-                                <action selector="cancelButtonPressed:" destination="Oze-dn-a1N" id="K0n-Rk-KRv"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" title="Scales for Area" id="jkC-ZQ-Gaq">
                         <barButtonItem key="rightBarButtonItem" title="Finish" id="KMm-4L-EaO">
                             <connections>
                                 <action selector="finishButtonPressed:" destination="Oze-dn-a1N" id="b3Y-HD-rad"/>
@@ -87,15 +91,15 @@
                         <segue destination="9Yt-du-9hg" kind="show" identifier="CGAViewSingleQuestionChoices" id="J9u-7k-BWy"/>
                         <segue destination="hDo-LP-lrV" kind="unwind" identifier="CGAPublicCancelSegue" unwindAction="unwindToMenuWithSegue:" id="MpC-KQ-sjL"/>
                         <segue destination="Peu-5Z-UVe" kind="show" identifier="ViewScaleQuestions" id="I4X-mv-DhB"/>
-                        <segue destination="pYq-Hd-djC" kind="presentation" identifier="ReviewPublicSession" id="QLJ-0a-42O"/>
                         <segue destination="gtM-Wm-YaA" kind="show" identifier="YesNoQuestion" id="oqv-rq-zFO"/>
                         <segue destination="oMo-MT-t55" kind="show" identifier="MultipleCategories" id="aLe-V6-Lcp"/>
+                        <segue destination="pYq-Hd-djC" kind="show" identifier="ReviewPublicSession" id="4ue-RV-T5t"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PAw-An-1JS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hDo-LP-lrV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-740" y="-501"/>
+            <point key="canvasLocation" x="-658" y="-349"/>
         </scene>
         <!--Public Multiple Categories-->
         <scene sceneID="Cef-Fl-CSR">
@@ -105,7 +109,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xh1-Xr-SNJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="322" y="-1380"/>
+            <point key="canvasLocation" x="1260" y="-1380.3598200899551"/>
         </scene>
         <!--Question Category View Controller-->
         <scene sceneID="8DQ-gF-bIq">
@@ -158,7 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OdI-vz-dlY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1192.8" y="-1403.7481259370315"/>
+            <point key="canvasLocation" x="2132" y="-1403.7481259370315"/>
         </scene>
         <!--SessionSingleQuestionChoices-->
         <scene sceneID="YOD-HF-9SN">
@@ -206,7 +210,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HM6-RG-HvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2434.4000000000001" y="-1035.832083958021"/>
+            <point key="canvasLocation" x="3373.5999999999999" y="-1035.832083958021"/>
         </scene>
         <!--Scales Questions-->
         <scene sceneID="zYk-li-XO9">
@@ -307,24 +311,6 @@
             </objects>
             <point key="canvasLocation" x="1038" y="484"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="iXL-Hc-BSL">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v6C-01-5J4" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xmw-FI-OZQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Oze-dn-a1N" kind="relationship" relationship="rootViewController" id="2HK-As-LSD"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2bl-e3-uRF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1457" y="-349"/>
-        </scene>
         <!--Review Public Session-->
         <scene sceneID="217-eP-XOV">
             <objects>
@@ -338,7 +324,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bim-5J-uJA">
-                                <rect key="frame" x="8" y="108" width="359" height="551"/>
+                                <rect key="frame" x="8" y="108" width="359" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ItemCell" id="1HU-bt-PbT">
@@ -449,12 +435,79 @@
             </objects>
             <point key="canvasLocation" x="823" y="-281"/>
         </scene>
+        <!--CGA Guide Scales-->
+        <scene sceneID="Lb9-l5-UrZ">
+            <objects>
+                <tableViewController title="CGA Guide Scales" id="scl-CK-nrf" customClass="CGAPublicAreas" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="84" sectionHeaderHeight="28" sectionFooterHeight="28" id="cFz-fI-H3o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="84" id="5rc-vS-tLD">
+                                <rect key="frame" x="0.0" y="28" width="375" height="84"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5rc-vS-tLD" id="hpz-SP-k99">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="scl-CK-nrf" id="05U-NR-YVE"/>
+                            <outlet property="delegate" destination="scl-CK-nrf" id="ceL-PB-qvg"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="CGA Public Areas" id="2Ng-zQ-5re">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9zm-kL-CEI">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="scl-CK-nrf" id="6NA-aG-20o"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Finish" id="a3J-Qt-sd7">
+                            <connections>
+                                <action selector="finishButtonPressed:" destination="scl-CK-nrf" id="l9f-2f-sPA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="peO-s4-lRR" kind="unwind" identifier="CGAPublicCancelSegue" unwindAction="unwindToMenuWithSegue:" id="REb-RQ-wTy"/>
+                        <segue destination="Oze-dn-a1N" kind="show" identifier="ViewAreaScales" id="srn-AX-W5t"/>
+                        <segue destination="pYq-Hd-djC" kind="show" identifier="ReviewPublicSession" id="vH1-f2-YmV"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rWA-69-DRs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="peO-s4-lRR" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-658" y="-1036"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bZz-aE-IPC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9VL-l6-MHa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="U19-5Q-hJ4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="scl-CK-nrf" kind="relationship" relationship="rootViewController" id="DjM-gU-pTp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nNv-9T-aO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1458" y="-349"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Info-50" width="25" height="25"/>
         <image name="pill" width="13" height="13"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="4ue-RV-T5t"/>
         <segue reference="I4X-mv-DhB"/>
         <segue reference="oqv-rq-zFO"/>
         <segue reference="J9u-7k-BWy"/>

@@ -6,9 +6,9 @@ import FirebaseDatabase
 
 // show all scales from CGA
 //TODO - display scales organized by areas
-class CGAPublicMain: UITableViewController {
+class CGAPublicScalesForArea: UITableViewController {
     
-    
+    var area: String?
     
     let ViewScaleQuestionsSegue = "ViewScaleQuestions"
     
@@ -87,8 +87,9 @@ class CGAPublicMain: UITableViewController {
         return Constants.cgaAreas[section]
     }
     
+    // one sungle section (CGA area)
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return Constants.cgaAreas.count
+        return 1
     }
     
     
@@ -107,11 +108,10 @@ class CGAPublicMain: UITableViewController {
     
     // number of rows per section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // current area
-        let area = Constants.cgaAreas[section]
-        // number of scales for current area
+
         
-        return Constants.getScalesForArea(area: area).count
+        // number of scales for area
+        return Constants.getScalesForArea(area: area!).count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -119,9 +119,8 @@ class CGAPublicMain: UITableViewController {
         let cell = Bundle.main.loadNibNamed("ScaleTableViewCell", owner: self, options: nil)?.first as! ScaleTableViewCell
         
         let sectionIndex = indexPath.section
-        let area = Constants.cgaAreas[sectionIndex]
         let rowInsideSection = indexPath.row
-        let scalesForArea = Constants.getScalesForAreaPublicSession(area: area)
+        let scalesForArea = Constants.getScalesForAreaPublicSession(area: area!)
         
         if rowInsideSection < scalesForArea.count {
             let scale = scalesForArea[rowInsideSection]
@@ -142,8 +141,6 @@ class CGAPublicMain: UITableViewController {
     }
     
     
-    
-    
     // select a row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // get cell and selected scale
@@ -152,7 +149,7 @@ class CGAPublicMain: UITableViewController {
         //        var selectedAreaIndex = segmentedControl.selectedSegmentIndex
         
         // filter scales by selected
-        let scale = Constants.getScalesForArea(area: Constants.cgaAreas[indexPath.section])[indexPath.row]
+        let scale = Constants.getScalesForArea(area: area!)[indexPath.row]
         
         print(scale.multipleCategories)
         

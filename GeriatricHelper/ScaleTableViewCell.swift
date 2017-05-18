@@ -104,4 +104,7 @@ class ScaleTableViewCell: UITableViewCell {
         return cell
         
     }
+    
+    
+    
 }

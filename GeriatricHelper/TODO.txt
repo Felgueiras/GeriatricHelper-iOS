@@ -1,0 +1,7 @@
+- auto height for cells (youtube video)
+- get sessions for patient
+- buscar critérios start e stopp
+- visualizar critérios start e stopp
+- mostrar guia de AGG por área (collection view)
+- acabar a parte de mostrar a ajuda sobre uma escala
+-

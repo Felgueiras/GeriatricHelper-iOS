@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Awc_skyline_sunset_small.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "ic_mental.png",
       "scale" : "2x"
     },
     {

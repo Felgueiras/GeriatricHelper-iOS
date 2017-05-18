@@ -53,6 +53,7 @@
                     <constraint firstItem="EA6-d1-j3R" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="G1c-RC-omB"/>
                     <constraint firstItem="EA6-d1-j3R" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="Knw-1e-Lhz"/>
                     <constraint firstItem="Bdj-sq-K4k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="RaY-Ts-WWS"/>
+                    <constraint firstItem="1C5-Av-VGx" firstAttribute="leading" secondItem="EA6-d1-j3R" secondAttribute="trailing" constant="177" id="TLx-0B-Tlu"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -61,7 +62,7 @@
                 <outlet property="resultQualitative" destination="Bdj-sq-K4k" id="Ptw-yf-w6Y"/>
                 <outlet property="resultQuantitative" destination="ZuR-3c-eps" id="nfO-so-H5F"/>
             </connections>
-            <point key="canvasLocation" x="-80" y="29"/>
+            <point key="canvasLocation" x="-118" y="31"/>
         </tableViewCell>
     </objects>
 </document>

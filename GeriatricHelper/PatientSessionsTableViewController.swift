@@ -162,44 +162,5 @@ class PatientSessionsTableViewController: UITableViewController {
     
     // MARK: Add Item
     
-    @IBAction func addButtonDidTouch(_ sender: AnyObject) {
-        let alert = UIAlertController(title: "Grocery Item",
-                                      message: "Add an Item",
-                                      preferredStyle: .alert)
-        
-        
-        // save an item to Firebase
-        let saveAction = UIAlertAction(title: "Save",
-                                       style: .default) { _ in
-                                        // 1 - get text
-                                        guard let textField = alert.textFields?.first,
-                                            let text = textField.text else { return }
-                                        
-                                        // 2 - create grocery item
-                                        let groceryItem = GroceryItem(name: text,
-                                                                      addedByUser: self.user.email,
-                                                                      completed: false)
-                                        // 3 - create reference to new child - key value is text in lowercase
-                                        let groceryItemRef = self.ref.child(text.lowercased())
-                                        
-                                        // 4 - set value (save to firebase) - expects a dictionary,
-                                        // GroceryItem has a method that turns it into a Dictionary
-                                        groceryItemRef.setValue(groceryItem.toAnyObject())
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel",
-                                         style: .default)
-        
-        alert.addTextField()
-        
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
-    func userCountButtonDidTouch() {
-        performSegue(withIdentifier: listToUsers, sender: nil)
-    }
     
 }

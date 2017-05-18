@@ -67,21 +67,23 @@ class CGAPublicInfo: UIViewController {
     
     
     
+    /**
+     
+     Prepare for a segue
+     **/
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == StartPublicSessionSegue {
             
-           
  
             
             // create a new Session
             createNewSession()
             // add Scales to the Session
             addScalesToSession()
-        
             
             // pass Session to the destination controller
-//            let destinationViewController = segue.destination as! CGAPublicMain
+//            let destinationViewController = segue.destination as! CGAPublicScalesForArea
 //            destinationViewController.session = Constants.cgaPublicSession
         }
         
