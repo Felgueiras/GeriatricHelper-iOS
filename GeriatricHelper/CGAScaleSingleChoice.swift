@@ -3,11 +3,11 @@ import FirebaseAuth
 import FirebaseDatabase
 import SwiftMessages
 
-class CGAPublicScaleSingleChoice: UITableViewController {
+class CGAScaleSingleChoice: UITableViewController {
     
-    // MARK: Constants
-    
+    // MARK: properties
     var scale: GeriatricScale!
+    var session: Session?
     
     // MARK: Properties
     var choices: [Grading] = []
@@ -60,21 +60,18 @@ class CGAPublicScaleSingleChoice: UITableViewController {
    
     
     
-    // select a row - update in Firebase
+    /**
+     Choice was selected
+     **/
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 1 - get cell
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         // 2 - get grocery item
         let selectedChoice = choices[indexPath.row]
         
-        // update answer, result,
-//        scale.ref?.updateChildValues([
-//            "answer": selectedChoice.grade,
-//            "result": selectedChoice.score
-//            ])
-        
         
         scale.answer = selectedChoice.grade
+        scale.result = Double(selectedChoice.score!)
 
         // TODO set numerical score
 //        scale.result = selectedChoice.score
@@ -84,8 +81,18 @@ class CGAPublicScaleSingleChoice: UITableViewController {
         }
         scale.completed = true
         
+        if session?.type == Session.sessionType.privateSession{
+            // update from Firebase
+            // get grade
+            let grading:Grading = choices[indexPath.row]
+            scale.alreadyOpened = true
+            scale.answer = grading.grade
+            scale.completed = true
+            
+            FirebaseDatabaseHelper.updateScale(scale: scale);
+        }
         
-        print("Question answered")
+        
 
     }
     

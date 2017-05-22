@@ -72,7 +72,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fRX-FK-8Yw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4882" y="293"/>
+            <point key="canvasLocation" x="4486" y="313"/>
         </scene>
         <!--Create Patient View Controller-->
         <scene sceneID="ywI-Uk-GGO">
@@ -183,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Um-US-U16" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5359" y="1138"/>
+            <point key="canvasLocation" x="5294" y="1057"/>
         </scene>
         <!--Pacientes-->
         <scene sceneID="Mvi-gC-Xa6">
@@ -211,7 +211,41 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="UITableViewController-YQj-Ib-h14" id="pzR-ez-F3I" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fub-sk-TSD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3260" y="1100.5997001499252"/>
+            <point key="canvasLocation" x="2675" y="1125"/>
+        </scene>
+        <!--Bar Chart View Controller-->
+        <scene sceneID="wOE-r7-w4u">
+            <objects>
+                <viewController id="3Li-Br-wI1" customClass="BarChartViewController" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p7U-UB-Gr5"/>
+                        <viewControllerLayoutGuide type="bottom" id="lsp-QC-aYv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XSL-O9-UBr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wp3-22-RSW" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="20" width="343" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wp3-22-RSW" firstAttribute="leading" secondItem="XSL-O9-UBr" secondAttribute="leadingMargin" id="8Cw-Ra-F35"/>
+                            <constraint firstItem="lsp-QC-aYv" firstAttribute="top" secondItem="wp3-22-RSW" secondAttribute="bottom" id="HNi-F5-od6"/>
+                            <constraint firstItem="wp3-22-RSW" firstAttribute="top" secondItem="p7U-UB-Gr5" secondAttribute="bottom" id="c33-yU-A3G"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wp3-22-RSW" secondAttribute="trailing" id="uW1-JN-ULy"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <connections>
+                        <outlet property="barChartView" destination="wp3-22-RSW" id="aZZ-6e-lOo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U39-iO-tvN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2511" y="687"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iON-ae-JUb">
@@ -229,7 +263,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaO-AN-BF4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4486" y="1139"/>
+            <point key="canvasLocation" x="4486" y="1057"/>
         </scene>
         <!--Patient Profile View Controller-->
         <scene sceneID="Ilj-Zi-L5q">
@@ -344,11 +378,12 @@
                         <outlet property="table" destination="mLo-eK-h6z" id="F5K-h8-eSD"/>
                         <segue destination="YtY-Ka-e4u" kind="show" identifier="StartPrivateSession" id="OvE-xI-cPh"/>
                         <segue destination="11r-kC-dAB" kind="show" identifier="AddPrescription" id="s9H-oj-QwJ"/>
+                        <segue destination="nBb-WV-6Pc" kind="show" identifier="ConsultProgress" id="cqO-7K-BBq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2zw-ud-C4q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5654" y="293"/>
+            <point key="canvasLocation" x="5295" y="313"/>
         </scene>
         <!--CGAPublic-->
         <scene sceneID="H2i-nZ-Baa">
@@ -356,7 +391,7 @@
                 <viewControllerPlaceholder storyboardName="CGAPublic" id="YtY-Ka-e4u" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vMB-9T-iYc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6658" y="293"/>
+            <point key="canvasLocation" x="6106" y="-2"/>
         </scene>
         <!--Add Prescription View Controller-->
         <scene sceneID="Ir3-NK-YZr">
@@ -411,7 +446,68 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kuv-4t-Ef1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6326" y="944"/>
+            <point key="canvasLocation" x="6750" y="313"/>
+        </scene>
+        <!--Patient Progress-->
+        <scene sceneID="6li-Ym-d6Z">
+            <objects>
+                <viewController title="Patient Progress" id="nBb-WV-6Pc" customClass="ProgressTableViewController" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ov3-7J-hui"/>
+                        <viewControllerLayoutGuide type="bottom" id="sFZ-a4-Y7o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SXu-Wp-uTY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pmB-oU-h35">
+                                <rect key="frame" x="8" y="72" width="359" height="29"/>
+                                <segments>
+                                    <segment title="Estado funcional"/>
+                                    <segment title="Situação social"/>
+                                    <segment title="Estado mental"/>
+                                    <segment title="Estado Nutricional"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlSelectionChanged:" destination="nBb-WV-6Pc" eventType="valueChanged" id="9Am-OS-2vg"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ilz-jI-ZCo">
+                                <rect key="frame" x="24" y="108" width="327" height="502"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ItemCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="HML-g0-h9b">
+                                        <rect key="frame" x="0.0" y="28" width="327" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HML-g0-h9b" id="G5d-dY-3Cb">
+                                            <rect key="frame" x="0.0" y="0.0" width="327" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sFZ-a4-Y7o" firstAttribute="top" secondItem="ilz-jI-ZCo" secondAttribute="bottom" constant="8" id="HH3-vm-acu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ilz-jI-ZCo" secondAttribute="trailing" constant="8" id="MOk-Jo-WUE"/>
+                            <constraint firstItem="pmB-oU-h35" firstAttribute="top" secondItem="ov3-7J-hui" secondAttribute="bottom" constant="8" symbolic="YES" id="MVX-N8-bq1"/>
+                            <constraint firstItem="ilz-jI-ZCo" firstAttribute="top" secondItem="pmB-oU-h35" secondAttribute="bottom" constant="8" id="Sxv-Ya-5bR"/>
+                            <constraint firstItem="pmB-oU-h35" firstAttribute="centerX" secondItem="SXu-Wp-uTY" secondAttribute="centerX" id="bn6-Sx-Z8E"/>
+                            <constraint firstAttribute="trailing" secondItem="pmB-oU-h35" secondAttribute="trailing" constant="8" id="kt9-Va-h4X"/>
+                            <constraint firstItem="ilz-jI-ZCo" firstAttribute="leading" secondItem="SXu-Wp-uTY" secondAttribute="leadingMargin" constant="8" id="tYg-CM-kYx"/>
+                            <constraint firstItem="pmB-oU-h35" firstAttribute="leading" secondItem="SXu-Wp-uTY" secondAttribute="leading" constant="8" id="v1b-JV-JCS"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Progresso" id="AEt-ML-gD4"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="pmB-oU-h35" id="Oba-WH-BBS"/>
+                        <outlet property="table" destination="ilz-jI-ZCo" id="ysp-Kx-rf7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="umc-Zp-QId" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6105" y="1057"/>
         </scene>
     </scenes>
     <resources>

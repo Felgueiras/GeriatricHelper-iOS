@@ -6,14 +6,20 @@
    class Session {
  
     
+    enum sessionType {
+        case publicSession
+        case privateSession
+    }
+    
     init(){}
     
     
-    var date: Int?
+    var date: Date?
     var guid: String?
     var key: String?
     var patientID: String?
     var ref: FIRDatabaseReference?
+    var type: sessionType?
     
     var scales: [GeriatricScale]? = []
     var scalesIDS: [String]? = []
@@ -24,19 +30,20 @@
     init(snapshot: FIRDataSnapshot) {
         key = snapshot.key
         let snapshotValue = snapshot.value as! [String: AnyObject]
-        date = snapshotValue["date"] as! Int
+        date = NSDate(timeIntervalSince1970: (snapshotValue["date"] as! Double)) as Date
         ref = snapshot.ref
         guid = snapshotValue["guid"] as! String
         patientID = snapshotValue["patientID"] as! String
+        scalesIDS = snapshotValue["scalesIDS"] as! [String]
     }
     
     // convert into NSDisctionary - needed for Firebase
     func toAnyObject() -> Any {
         return [
-            "date": date,
+            "date": date?.timeIntervalSince1970,
             "key": key,
             "guid": guid,
-            "patientID": "123",
+            "patientID": patientID,
             "scalesIDS": scalesIDS
         ]
     }

@@ -11,8 +11,11 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class FirebaseHelper{
+    
+    
 
     static var userID:String?
+    static var scales:[GeriatricScale] = []
     
     static let ref = FIRDatabase.database().reference()
     

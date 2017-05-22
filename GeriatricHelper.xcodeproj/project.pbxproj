@@ -40,11 +40,17 @@
 		2B59480C1EACB3DD0052EC98 /* Patients.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B59480B1EACB3DD0052EC98 /* Patients.storyboard */; };
 		2B59480E1EACB6170052EC98 /* CreatePatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B59480D1EACB6170052EC98 /* CreatePatientViewController.swift */; };
 		2B5B260F1ECF967300A60F14 /* AppIntro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B260E1ECF967300A60F14 /* AppIntro.swift */; };
+		2B616AE61ED339580056590E /* PrivateArea.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B616AE41ED339580056590E /* PrivateArea.storyboard */; };
+		2B616AED1ED33F4A0056590E /* PrivateSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B616AEC1ED33F4A0056590E /* PrivateSettingsTableViewController.swift */; };
+		2B616AF01ED35DF10056590E /* ProgressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B616AEF1ED35DF10056590E /* ProgressTableViewController.swift */; };
+		2B616AF21ED3658F0056590E /* BarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B616AF11ED3658F0056590E /* BarChartViewController.swift */; };
+		2B616AF61ED376410056590E /* ProgressChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B616AF41ED376410056590E /* ProgressChartTableViewCell.swift */; };
+		2B616AF71ED376410056590E /* ProgressChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B616AF51ED376410056590E /* ProgressChartTableViewCell.xib */; };
 		2B6B56FA1E9FECD000445937 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B56F91E9FECD000445937 /* AppDelegate.swift */; };
 		2B6B570C1E9FED2400445937 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B6B570B1E9FED2400445937 /* GoogleService-Info.plist */; };
-		2B74803B1EA932B9006E231E /* ReviewPublicSessionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B74803A1EA932B9006E231E /* ReviewPublicSessionTableViewController.swift */; };
-		2B7D68471EA6A36700443D59 /* CGAPublicScalesForArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7D68461EA6A36700443D59 /* CGAPublicScalesForArea.swift */; };
-		2B7D684A1EA6A88700443D59 /* CGAPublicScaleSingleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7D68491EA6A88700443D59 /* CGAPublicScaleSingleChoice.swift */; };
+		2B74803B1EA932B9006E231E /* ReviewSessionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B74803A1EA932B9006E231E /* ReviewSessionTableViewController.swift */; };
+		2B7D68471EA6A36700443D59 /* CGAScalesForArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7D68461EA6A36700443D59 /* CGAScalesForArea.swift */; };
+		2B7D684A1EA6A88700443D59 /* CGAScaleSingleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7D68491EA6A88700443D59 /* CGAScaleSingleChoice.swift */; };
 		2B7D684C1EA6ABB200443D59 /* CGAPublicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7D684B1EA6ABB200443D59 /* CGAPublicInfo.swift */; };
 		2B96717D1ED0D976001DDF90 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B96717C1ED0D976001DDF90 /* PreviewViewController.swift */; };
 		2B96717F1ED0D993001DDF90 /* android_pdf.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2B96717E1ED0D993001DDF90 /* android_pdf.rtf */; };
@@ -153,13 +159,19 @@
 		2B59480B1EACB3DD0052EC98 /* Patients.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Patients.storyboard; sourceTree = "<group>"; };
 		2B59480D1EACB6170052EC98 /* CreatePatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePatientViewController.swift; sourceTree = "<group>"; };
 		2B5B260E1ECF967300A60F14 /* AppIntro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIntro.swift; sourceTree = "<group>"; };
+		2B616AE51ED339580056590E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PrivateArea.storyboard; sourceTree = "<group>"; };
+		2B616AEC1ED33F4A0056590E /* PrivateSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateSettingsTableViewController.swift; sourceTree = "<group>"; };
+		2B616AEF1ED35DF10056590E /* ProgressTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressTableViewController.swift; sourceTree = "<group>"; };
+		2B616AF11ED3658F0056590E /* BarChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartViewController.swift; sourceTree = "<group>"; };
+		2B616AF41ED376410056590E /* ProgressChartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressChartTableViewCell.swift; sourceTree = "<group>"; };
+		2B616AF51ED376410056590E /* ProgressChartTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressChartTableViewCell.xib; sourceTree = "<group>"; };
 		2B6B56F61E9FECD000445937 /* GeriatricHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeriatricHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B6B56F91E9FECD000445937 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B6B57051E9FECD000445937 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B6B570B1E9FED2400445937 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		2B74803A1EA932B9006E231E /* ReviewPublicSessionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewPublicSessionTableViewController.swift; sourceTree = "<group>"; };
-		2B7D68461EA6A36700443D59 /* CGAPublicScalesForArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAPublicScalesForArea.swift; sourceTree = "<group>"; };
-		2B7D68491EA6A88700443D59 /* CGAPublicScaleSingleChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAPublicScaleSingleChoice.swift; sourceTree = "<group>"; };
+		2B74803A1EA932B9006E231E /* ReviewSessionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewSessionTableViewController.swift; sourceTree = "<group>"; };
+		2B7D68461EA6A36700443D59 /* CGAScalesForArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAScalesForArea.swift; sourceTree = "<group>"; };
+		2B7D68491EA6A88700443D59 /* CGAScaleSingleChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAScaleSingleChoice.swift; sourceTree = "<group>"; };
 		2B7D684B1EA6ABB200443D59 /* CGAPublicInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAPublicInfo.swift; sourceTree = "<group>"; };
 		2B96717C1ED0D976001DDF90 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		2B96717E1ED0D993001DDF90 /* android_pdf.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = android_pdf.rtf; sourceTree = "<group>"; };
@@ -327,6 +339,7 @@
 		2B424FF51EA2BEDD0010E4F8 /* Patients */ = {
 			isa = PBXGroup;
 			children = (
+				2B616AEE1ED35DCA0056590E /* Progress */,
 				2BA773701ED1AA4500D3E352 /* AddPrescriptionViewController.swift */,
 				2B59480B1EACB3DD0052EC98 /* Patients.storyboard */,
 				2B3BCD4E1EA4F8910025EF6A /* FavoritePatientCellCollectionViewCell.swift */,
@@ -362,6 +375,32 @@
 			name = CGAPrivate;
 			sourceTree = "<group>";
 		};
+		2B616AE71ED33ED90056590E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2B616AEC1ED33F4A0056590E /* PrivateSettingsTableViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		2B616AEE1ED35DCA0056590E /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				2B616AEF1ED35DF10056590E /* ProgressTableViewController.swift */,
+				2B616AF11ED3658F0056590E /* BarChartViewController.swift */,
+			);
+			name = Progress;
+			sourceTree = "<group>";
+		};
+		2B616AF31ED376120056590E /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				2B616AF41ED376410056590E /* ProgressChartTableViewCell.swift */,
+				2B616AF51ED376410056590E /* ProgressChartTableViewCell.xib */,
+			);
+			name = Charts;
+			sourceTree = "<group>";
+		};
 		2B6B56ED1E9FECD000445937 = {
 			isa = PBXGroup;
 			children = (
@@ -384,10 +423,12 @@
 		2B6B56F81E9FECD000445937 /* GeriatricHelper */ = {
 			isa = PBXGroup;
 			children = (
+				2B616AE71ED33ED90056590E /* Settings */,
 				2B9671771ED0D786001DDF90 /* PDF */,
 				2B004F981EB1FAB7003A8CD9 /* Others */,
 				2BA319C31E9FF03100E7A5C9 /* LaunchScreen.xib */,
 				2B9819ED1EAFC16E00FBF67D /* Main.storyboard */,
+				2B616AE41ED339580056590E /* PrivateArea.storyboard */,
 				2BDB10AD1EAD4D9800ACD751 /* PopOvers.storyboard */,
 				2B21ABBF1E9FEE7B001D6F66 /* LoginViewController.swift */,
 				2B4ADBE11EA54ECE00972332 /* AccountViewController.swift */,
@@ -395,7 +436,7 @@
 				2BAC89C81EA41CCC00EE6CE9 /* Prescriptions */,
 				2B424FF51EA2BEDD0010E4F8 /* Patients */,
 				2B9819EF1EAFC51300FBF67D /* HelpFeedback */,
-				2B7D68481EA6A37000443D59 /* CGAPublic */,
+				2B7D68481EA6A37000443D59 /* CGA */,
 				2B50F1741EA9497600E4B762 /* CGAPrivate */,
 				2BBF33AB1EA39D1E008D30EC /* CGAGuide */,
 				2BC583521EAE020D00A4D51B /* CustomViews */,
@@ -411,22 +452,22 @@
 			path = GeriatricHelper;
 			sourceTree = "<group>";
 		};
-		2B7D68481EA6A37000443D59 /* CGAPublic */ = {
+		2B7D68481EA6A37000443D59 /* CGA */ = {
 			isa = PBXGroup;
 			children = (
 				2B50F1721EA9470800E4B762 /* CGAPublic.storyboard */,
 				2BADFB531EAA6B4400277E8A /* CGAPublicQuestionOptionsViewController.swift */,
 				2B50F1751EA9498B00E4B762 /* CGAPublicScalesQuestions.swift */,
 				2BDB10AF1EAD53CD00ACD751 /* CGAPublicYesNo.swift */,
-				2B7D68491EA6A88700443D59 /* CGAPublicScaleSingleChoice.swift */,
-				2B7D68461EA6A36700443D59 /* CGAPublicScalesForArea.swift */,
+				2B7D68491EA6A88700443D59 /* CGAScaleSingleChoice.swift */,
+				2B7D68461EA6A36700443D59 /* CGAScalesForArea.swift */,
 				2BFAA14F1EC9AD9F0096F71A /* CGAPublicAreas.swift */,
 				2B7D684B1EA6ABB200443D59 /* CGAPublicInfo.swift */,
-				2B74803A1EA932B9006E231E /* ReviewPublicSessionTableViewController.swift */,
+				2B74803A1EA932B9006E231E /* ReviewSessionTableViewController.swift */,
 				2B036ACC1EAE3FC900E4E6AA /* CGAPublicMultipleCategories.swift */,
 				2B036AD01EAE4AF700E4E6AA /* QuestionCategoryViewController.swift */,
 			);
-			name = CGAPublic;
+			name = CGA;
 			sourceTree = "<group>";
 		};
 		2B9671771ED0D786001DDF90 /* PDF */ = {
@@ -558,6 +599,7 @@
 		2BC583521EAE020D00A4D51B /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				2B616AF31ED376120056590E /* Charts */,
 				2BA773731ED1D02000D3E352 /* PopUps */,
 				2BA773721ED1D00C00D3E352 /* TableCells */,
 			);
@@ -663,6 +705,7 @@
 				2BAC89D41EA4248A00EE6CE9 /* Prescriptions.storyboard in Resources */,
 				2BC5834B1EADF30600A4D51B /* TableViewCell1.xib in Resources */,
 				2B4957D41EAE5609009DDF91 /* YesNoQuestionTableViewCell.xib in Resources */,
+				2B616AE61ED339580056590E /* PrivateArea.storyboard in Resources */,
 				2BA1EF6D1EAFBC4B00270C76 /* CGAGuide.storyboard in Resources */,
 				2BA319C21E9FF01E00E7A5C9 /* Images.xcassets in Resources */,
 				2BA773791ED1D0D400D3E352 /* PrescriptionTableViewCell.xib in Resources */,
@@ -677,6 +720,7 @@
 				2BAC89C71EA41B9E00EE6CE9 /* MasterDetail.storyboard in Resources */,
 				2BA23EDA1EB1F1330006145F /* TODO.txt in Resources */,
 				2BDBF8AB1ED0E19000F412A2 /* last_item.html in Resources */,
+				2B616AF71ED376410056590E /* ProgressChartTableViewCell.xib in Resources */,
 				2BC583581EAE024B00A4D51B /* ScaleTableViewCell.xib in Resources */,
 				2B6B570C1E9FED2400445937 /* GoogleService-Info.plist in Resources */,
 			);
@@ -751,13 +795,15 @@
 				2BAF8E581EA518E60011EA87 /* Prescription.swift in Sources */,
 				2BD0FE921ECF06C60024CBA3 /* StringHelper.swift in Sources */,
 				2BAC89D81EA4259400EE6CE9 /* StoppCriteria.swift in Sources */,
+				2B616AF01ED35DF10056590E /* ProgressTableViewController.swift in Sources */,
 				2BBF33AA1EA38D1E008D30EC /* Choice.swift in Sources */,
 				2B21ABBC1E9FEE3A001D6F66 /* User.swift in Sources */,
-				2B7D68471EA6A36700443D59 /* CGAPublicScalesForArea.swift in Sources */,
+				2B616AF21ED3658F0056590E /* BarChartViewController.swift in Sources */,
+				2B7D68471EA6A36700443D59 /* CGAScalesForArea.swift in Sources */,
 				2BDB10AC1EAD3F7B00ACD751 /* TutorialViewController.swift in Sources */,
 				2BE0426C1EA2C33A002D485D /* Question.swift in Sources */,
 				2BC0AC721ECDE23300EE7300 /* HelpTopics.swift in Sources */,
-				2B74803B1EA932B9006E231E /* ReviewPublicSessionTableViewController.swift in Sources */,
+				2B74803B1EA932B9006E231E /* ReviewSessionTableViewController.swift in Sources */,
 				2BADFB541EAA6B4400277E8A /* CGAPublicQuestionOptionsViewController.swift in Sources */,
 				2BAC89D21EA423F200EE6CE9 /* PrescriptionsStopTableViewController.swift in Sources */,
 				2B389CC71ED0D9F300C27E6E /* CustomPrintPageRenderer.swift in Sources */,
@@ -777,8 +823,9 @@
 				2B21ABC11E9FEE7B001D6F66 /* PatientsListTableViewController.swift in Sources */,
 				2BEA8D2C1EB0AAE0007E284A /* CGAPrivateQuestions.swift in Sources */,
 				2B5B260F1ECF967300A60F14 /* AppIntro.swift in Sources */,
+				2B616AED1ED33F4A0056590E /* PrivateSettingsTableViewController.swift in Sources */,
 				2B5636EA1EA406D800D8E75C /* Patient2.swift in Sources */,
-				2B7D684A1EA6A88700443D59 /* CGAPublicScaleSingleChoice.swift in Sources */,
+				2B7D684A1EA6A88700443D59 /* CGAScaleSingleChoice.swift in Sources */,
 				2BAC89DA1EA4265300EE6CE9 /* Issue.swift in Sources */,
 				2B389CC51ED0D9CB00C27E6E /* SessionPDFComposer.swift in Sources */,
 				2BB42A041EA045E6002C421C /* PatientProfileViewController.swift in Sources */,
@@ -793,6 +840,7 @@
 				2BAC89D01EA421B700EE6CE9 /* PrescriptionStart.swift in Sources */,
 				2BBF33A81EA38CCE008D30EC /* QuestionOptionsViewController.swift in Sources */,
 				2BA319C91EA03B2000E7A5C9 /* Patient.swift in Sources */,
+				2B616AF61ED376410056590E /* ProgressChartTableViewCell.swift in Sources */,
 				2BAC89CB1EA41D2F00EE6CE9 /* PrescriptionsAllTableViewController.swift in Sources */,
 				2B424FF21EA2AFE50010E4F8 /* GeriatricScale.swift in Sources */,
 				2BBF33B31EA3A7F3008D30EC /* CGAQuestionChoicesTableViewController.swift in Sources */,
@@ -824,6 +872,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		2B616AE41ED339580056590E /* PrivateArea.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B616AE51ED339580056590E /* Base */,
+			);
+			name = PrivateArea.storyboard;
+			sourceTree = "<group>";
+		};
 		2B9819ED1EAFC16E00FBF67D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

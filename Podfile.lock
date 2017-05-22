@@ -1,4 +1,7 @@
 PODS:
+  - Charts (3.0.2):
+    - Charts/Core (= 3.0.2)
+  - Charts/Core (3.0.2)
   - Firebase/Auth (3.15.0):
     - Firebase/Core
     - FirebaseAuth (= 3.1.1)
@@ -53,6 +56,7 @@ PODS:
   - SwiftMessages (3.3.3)
 
 DEPENDENCIES:
+  - Charts
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -64,6 +68,7 @@ DEPENDENCIES:
   - SwiftMessages
 
 SPEC CHECKSUMS:
+  Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
   Firebase: 2b1cdfba1cda8589f32904a697cc753322bff9d8
   FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
   FirebaseAuth: cc8a1824170adbd351edb7f994490a3fb5c18be6
@@ -80,6 +85,6 @@ SPEC CHECKSUMS:
   SearchTextField: 5daab6cecfd90e06f9b08b2814593656c0c99f3d
   SwiftMessages: 09cea3336e3fb63c3578983c8aac65acaa6d884a
 
-PODFILE CHECKSUM: 1d7b7b40256a39b553a420b0bea8605b1b888eca
+PODFILE CHECKSUM: 3698f307e3be8392bbb4cda4ec85d38cd54ab15b
 
 COCOAPODS: 1.2.1

@@ -6,18 +6,23 @@ import FirebaseDatabase
 
 // show all scales from CGA
 //TODO - display scales organized by areas
-class CGAPublicScalesForArea: UITableViewController {
+class CGAScalesForArea: UITableViewController {
     
     var area: String?
     
+    var scales: [GeriatricScale]? = []
+    
+    // MARK: segues identifiers
     let ViewScaleQuestionsSegue = "ViewScaleQuestions"
     
     let ViewScaleYesNoSegue = "YesNoQuestion"
     let ViewScaleMultipleCategoriesSegue = "MultipleCategories"
+    let ReviewPublicSession = "ReviewPublicSession"
+    let ViewScaleSingleQuestionChoicesSegue = "CGAViewSingleQuestionChoices"
     
+    // can be public or private
     var session: Session?
     
-    let ViewScaleSingleQuestionChoicesSegue = "CGAViewSingleQuestionChoices"
     
     
     // cancel public CGA session
@@ -65,10 +70,8 @@ class CGAPublicScalesForArea: UITableViewController {
                                                 completedScales?.append(scale)
                                             }
                                         }
-                                        
                                         Constants.cgaPublicScales = completedScales
-                                        
-                                        self.performSegue(withIdentifier: "ReviewPublicSession", sender: self)
+                                        self.performSegue(withIdentifier: self.ReviewPublicSession, sender: self)
                                         
         }
         
@@ -82,26 +85,36 @@ class CGAPublicScalesForArea: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Constants.cgaAreas[section]
-    }
-    
-    // one sungle section (CGA area)
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    
+  
     
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        session = Constants.cgaPublicSession
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        // check session type
+        if session!.type == Session.sessionType.privateSession {
+            
+            // private session
+            FirebaseHelper.ref.child(FirebaseHelper.scalesReferencePath).queryOrdered(byChild: "sessionID").queryEqual(toValue: session?.guid!).observe(.value, with: { snapshot in
+                var scalesFirebase: [GeriatricScale] = []
+                
+                for item in snapshot.children {
+                    let scale = GeriatricScale(snapshot: item as! FIRDataSnapshot)
+                    scalesFirebase.append(scale)
+                }
+                
+                self.scales = scalesFirebase
+                self.tableView.reloadData()
+            })
+        
+        }
+        else{
+        // public session
+            self.scales = Constants.cgaPublicScales
+        }
         
         self.tableView.reloadData()
     }
@@ -119,7 +132,8 @@ class CGAPublicScalesForArea: UITableViewController {
         
         let sectionIndex = indexPath.section
         let rowInsideSection = indexPath.row
-        let scalesForArea = Constants.getScalesForAreaPublicSession(area: area!)
+        let scalesForArea = Constants.getScalesForAreaFromSession(area: area!, scales: scales!)
+        
         
         if rowInsideSection < scalesForArea.count {
             let scale = scalesForArea[rowInsideSection]
@@ -127,10 +141,7 @@ class CGAPublicScalesForArea: UITableViewController {
                                                  scale: scale,
                                                  viewController: self)
         }
-        return cell
-        
-        
-        
+        return cell        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -146,7 +157,7 @@ class CGAPublicScalesForArea: UITableViewController {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         
         // filter scales by selected
-        let scale = Constants.getScalesForAreaPublicSession(area: area!)[indexPath.row]
+        let scale = Constants.getScalesForAreaFromSession(area: area!, scales: scales!)[indexPath.row]
         
         if scale.singleQuestion!{
             // single question scale - display the choices
@@ -185,7 +196,7 @@ class CGAPublicScalesForArea: UITableViewController {
             // pass scale to the controller
             let scaleName = Constants.getScalesForArea(area: area!)[(tableView.indexPathForSelectedRow?.row)!].scaleName
             
-            for scale in Constants.cgaPublicScales! {
+            for scale in scales! {
                 if scale.scaleName == scaleName{
                     let destinationViewController = segue.destination as! CGAPublicScalesQuestions
                     // set the author
@@ -193,16 +204,18 @@ class CGAPublicScalesForArea: UITableViewController {
                 }
             }
         }
+            // single choice
         else if segue.identifier == ViewScaleSingleQuestionChoicesSegue {
             
             // pass scale to the controller
             let scaleName = Constants.getScalesForArea(area: area!)[(tableView.indexPathForSelectedRow?.row)!].scaleName
             
-            for scale in Constants.cgaPublicScales! {
+            for scale in scales! {
                 if scale.scaleName == scaleName{
-                    let destinationViewController = segue.destination as! CGAPublicScaleSingleChoice
+                    let destinationViewController = segue.destination as! CGAScaleSingleChoice
                     // set the author
                     destinationViewController.scale = scale
+                    destinationViewController.session = session!
                 }
             }
             
@@ -212,7 +225,7 @@ class CGAPublicScalesForArea: UITableViewController {
             // pass scale to the controller
             let scaleName = Constants.getScalesForArea(area: area!)[(tableView.indexPathForSelectedRow?.row)!].scaleName
             
-            for scale in Constants.cgaPublicScales! {
+            for scale in scales! {
                 if scale.scaleName == scaleName{
                     let destinationViewController = segue.destination as! CGAPublicYesNo
                     // set the author
@@ -226,13 +239,24 @@ class CGAPublicScalesForArea: UITableViewController {
             // pass scale to the controller
             let scaleName = Constants.getScalesForArea(area: area!)[(tableView.indexPathForSelectedRow?.row)!].scaleName
             
-            for scale in Constants.cgaPublicScales! {
+            for scale in scales! {
                 if scale.scaleName == scaleName{
                     let destinationViewController = segue.destination as! CGAPublicMultipleCategories
                     // set the author
                     destinationViewController.scale = scale
                 }
             }
+            
+        }
+        else if segue.identifier == ReviewPublicSession {
+            
+            var DestViewController = segue.destination as! UINavigationController
+            let destinationViewController = DestViewController.topViewController as! ReviewSessionTableViewController
+            
+         
+            // set the author
+            destinationViewController.session = session
+            destinationViewController.scales = scales
             
         }
     }

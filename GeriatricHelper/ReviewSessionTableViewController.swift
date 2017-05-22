@@ -1,5 +1,5 @@
 //
-//  ReviewPublicSessionTableViewController.swift
+//  ReviewSessionTableViewController.swift
 //  GeriatricHelper
 //
 //  Created by felgueiras on 20/04/2017.
@@ -9,14 +9,18 @@
 import UIKit
 import SwiftMessages
 
-class ReviewPublicSessionTableViewController: UIViewController {
+class ReviewSessionTableViewController: UIViewController {
     
+    var session: Session?
+    
+    var scales: [GeriatricScale]? = []
+    
+    // MARK: segues identifiers
     let ViewScaleQuestionsSegue = "ViewScaleQuestions"
-    
     let ViewScaleYesNoSegue = "YesNoQuestion"
-    
     let ViewScaleSingleQuestionChoicesSegue = "CGAViewSingleQuestionChoices"
     
+    // MARK: actions and outlets
     @IBAction func createPdfButtonClicked(_ sender: Any) {
         
     }
@@ -36,16 +40,19 @@ class ReviewPublicSessionTableViewController: UIViewController {
         performSegue(withIdentifier: "FinishReviewingPublicSession", sender: self)
     }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // get the scales that were completed
-        for scale in Constants.cgaPublicScales!{
+        var completedScales: [GeriatricScale] = []
+        for scale in scales!{
             if scale.completed == true{
-                print("Completed scale " + scale.scaleName!)
-                print(scale.answer)
+                completedScales.append(scale)
             }
         }
+        
+        self.scales = completedScales
         
         // set delegate for table
         self.table.delegate = self
@@ -55,14 +62,11 @@ class ReviewPublicSessionTableViewController: UIViewController {
     }
 
 
-    override func viewDidAppear(_ animated: Bool) {
-        self.table.reloadData()
-    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let scalesForArea = Constants.getScalesForAreaFromSession(area: Constants.cgaAreas[segmentedControl.selectedSegmentIndex],scales: Constants.cgaPublicScales!)
+        let scalesForArea = Constants.getScalesForAreaFromSession(area: Constants.cgaAreas[segmentedControl.selectedSegmentIndex],scales: scales!)
         
         
         if segue.identifier == ViewScaleQuestionsSegue {
@@ -75,7 +79,7 @@ class ReviewPublicSessionTableViewController: UIViewController {
         }
         else if segue.identifier == ViewScaleSingleQuestionChoicesSegue {
             let scale = scalesForArea[(table.indexPathForSelectedRow?.row)!]
-            let destinationViewController = segue.destination as! CGAPublicScaleSingleChoice
+            let destinationViewController = segue.destination as! CGAScaleSingleChoice
             // set the author
             destinationViewController.scale = scale
         }
@@ -94,7 +98,7 @@ class ReviewPublicSessionTableViewController: UIViewController {
 
 }
 
-extension ReviewPublicSessionTableViewController: UITableViewDataSource, UITableViewDelegate  {
+extension ReviewSessionTableViewController: UITableViewDataSource, UITableViewDelegate  {
     
     // number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -102,7 +106,7 @@ extension ReviewPublicSessionTableViewController: UITableViewDataSource, UITable
         // get the completed scales for the current area
         let scalesForArea = Constants.getScalesForAreaFromSession(
             area: Constants.cgaAreas[segmentedControl.selectedSegmentIndex],
-                                              scales: Constants.cgaPublicScales!)
+                                              scales: scales!)
         
         return scalesForArea.count
     }
@@ -112,7 +116,7 @@ extension ReviewPublicSessionTableViewController: UITableViewDataSource, UITable
         let cell = Bundle.main.loadNibNamed("ScaleTableViewCell", owner: self, options: nil)?.first as! ScaleTableViewCell
         
         // get scale
-        let scalesForArea = Constants.getScalesForAreaFromSession(area: Constants.cgaAreas[segmentedControl.selectedSegmentIndex],scales: Constants.cgaPublicScales!)
+        let scalesForArea = Constants.getScalesForAreaFromSession(area: Constants.cgaAreas[segmentedControl.selectedSegmentIndex],scales: scales!)
         let scale = scalesForArea[indexPath.row]
         
         
@@ -133,7 +137,7 @@ extension ReviewPublicSessionTableViewController: UITableViewDataSource, UITable
 
         
         // get the completed scales for the current area
-        let scalesForArea = Constants.getScalesForAreaFromSession(area: Constants.cgaAreas[segmentedControl.selectedSegmentIndex],scales: Constants.cgaPublicScales!)
+        let scalesForArea = Constants.getScalesForAreaFromSession(area: Constants.cgaAreas[segmentedControl.selectedSegmentIndex],scales: scales!)
         let scale = scalesForArea[indexPath.row]
         
         if scale.singleQuestion!{

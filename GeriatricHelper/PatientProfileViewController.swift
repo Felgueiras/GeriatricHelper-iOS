@@ -16,6 +16,9 @@ class PatientProfileViewController: UIViewController{
     var patient: Patient!
     var sessions: [Session] = []
     var prescriptions: [Prescription] = []
+    
+    // MARK: segue identifiers
+    let ConsultProgressSegue = "ConsultProgress"
 
     @IBOutlet weak var plusButton: UIBarButtonItem!
     
@@ -59,16 +62,22 @@ class PatientProfileViewController: UIViewController{
                                         
         }
         
+        // new session
+        let consultProgress = UIAlertAction(title: "Consultar progresso",
+                                       style: .default) { _ in
+                                        
+                                        self.performSegue(withIdentifier: self.ConsultProgressSegue, sender: self)
+                                        
+        }
         
-        let cancelAction = UIAlertAction(title: "Cancel",
-                                         style: .default)
+ 
         
         
         
         
         alert.addAction(newSession)
         alert.addAction(newPrescription)
-//        alert.addAction(cancelAction)
+        alert.addAction(consultProgress)
         
         alert.popoverPresentationController?.barButtonItem = sender
         
@@ -169,6 +178,12 @@ class PatientProfileViewController: UIViewController{
         var session = Session()
         session.guid = dateString
         
+        session.type = Session.sessionType.privateSession
+        session.patientID = patient.guid
+        
+        let date = Date()
+        session.date = date
+        
         // set date
         //        Calendar now = Calendar.getInstance();
         //        int; year = now.get(Calendar.YEAR);
@@ -179,8 +194,6 @@ class PatientProfileViewController: UIViewController{
         //        session.setDate(DatesHandler.createCustomDate(year, month, day, hour, minute));
         //        session.setDate(time.getTime());
         //system.out.println("Session date is " + session.getDate());
-        //        FirebaseHelper.createSession(session);
-        
         
         // save the ID
         //        sharedPreferences.edit().putString(getString(R.string.saved_session_public), sessionID).apply();
@@ -204,6 +217,22 @@ class PatientProfileViewController: UIViewController{
             scale.sessionID = session.guid
             
             session.addScaleID(scaleID: scale.guid!)
+
+            scale.scaleName = testNonDB.scaleName
+            scale.shortName = testNonDB.shortName
+            scale.area = testNonDB.area
+            //            scale.s(testNonDB.getSubCategory());
+            //            scale.sessionID = session.guid
+            scale.descriptionText = testNonDB.descriptionText
+            scale.singleQuestion = testNonDB.singleQuestion
+            
+            //            if testNonDB.scaleName == Constants.test_name_clock_drawing))
+            //            scale.setContainsPhoto(true);
+            //            if (testNonDB.getScaleName().equals(Constants.test_name_tinetti)|| testNonDB.getScaleName().equals(Constants.test_name_marchaHolden))
+            //            scale.setContainsVideo(true);
+            
+            scale.alreadyOpened = false
+            
             // TODO remove
             session.scales?.append(scale)
             // add scale to session
@@ -264,13 +293,11 @@ class PatientProfileViewController: UIViewController{
                 // get patient's sessions
                 let sessionsRef = FirebaseHelper.ref.child("users").child(userID!).child("sessions")
                 sessionsRef.queryOrdered(byChild: "patientID")
-                    .queryEqual(toValue: self.patient.guid).observe(.value, with: { snapshot in
+                    .queryEqual(toValue: self.patient.guid).observeSingleEvent(of: .value, with: { (snapshot) in
                         self.sessions.removeAll()
                         for item in snapshot.children {
                             let session = Session(snapshot: item as! FIRDataSnapshot)
-                            print(session)
                             self.sessions.append(session)
-                            print(session.guid)
                         }
                         self.table.reloadData()
                         
@@ -354,6 +381,12 @@ class PatientProfileViewController: UIViewController{
             destinationViewController.session = privateSession
             
         }
+        else if segue.identifier == ConsultProgressSegue {
+            
+            let destinationViewController = segue.destination as! ProgressTableViewController
+            // set the session
+            destinationViewController.sessions = sessions
+        }
     }
     
     
@@ -401,10 +434,9 @@ extension PatientProfileViewController: UITableViewDataSource, UITableViewDelega
             // sessions
             let session = sessions[indexPath.row]
             
-            //TODO: convert from timestamp to date
-            var date = NSDate(timeIntervalSince1970: Double(session.date!))
             
-            cell?.textLabel?.text = String(describing: date)
+            
+            cell?.textLabel?.text = DatesHandler.dateToStringWithoutHour(eventDate: session.date!)
             cell?.detailTextLabel?.text = session.patientID
         case 2:
             // load custom cell for Prescription

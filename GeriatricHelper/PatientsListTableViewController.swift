@@ -10,6 +10,8 @@ class PatientsListTableViewController: UITableViewController {
     // MARK: Constants
     let listToUsers = "ListToUsers"
     
+    var initials:[Character] = []
+    
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
@@ -59,8 +61,6 @@ class PatientsListTableViewController: UITableViewController {
         
         self.tableView.reloadData()
     }
-    
-    
     
     
     // MARK: UIViewController Lifecycle
@@ -115,8 +115,49 @@ class PatientsListTableViewController: UITableViewController {
 //        }
     }
     
+    
+    
+    /**
+        One section for each initial letter.
+ **/
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        var initialsSet = NSMutableSet()
+        // get patients initials
+        for patient in patients{
+            initialsSet.add(patient.name?.characters.first)
+        }
+        
+        // set -> array
+        initials = Array(initialsSet) as! [Character]
+        initials = initials.sorted(by: { $0 < $1 })
+        
+        // order array
+        
+        return initials.count
+    }
+    
+    // MARK: - Table view data source
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return String(initials[section])
+    }
+    
+    func getPatientsWithInitial(initial:Character, patients:[Patient]) -> [Patient]{
+    
+        var patientsForInitial:[Patient] = []
+        for patient in patients{
+            
+            if patient.name?.characters.first == initial{
+                patientsForInitial.append(patient)
+            }
+        }
+        // order patients
+        patientsForInitial = patientsForInitial.sorted(by: { $0.name! < $1.name! })
+        return patientsForInitial
+    }
+    
     // MARK: UITableView Delegate methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var currentInitial = initials[section]
         if searchController.isActive && searchController.searchBar.text != "" {
             return filteredPatients.count
         }
@@ -125,10 +166,12 @@ class PatientsListTableViewController: UITableViewController {
         switch segmentedControl.selectedSegmentIndex
         {
         case 0:
-            // all sessions
-            return patients.count
+            // all patients
+            
+            return getPatientsWithInitial(initial: currentInitial, patients: patients).count
         case 1:
             // favorite patients
+            // get patients with that initial letter
             return favoritePatients.count
         default:
             break
@@ -141,6 +184,9 @@ class PatientsListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         let patient: Patient
         
+        var currentInitial = initials[indexPath.section]
+
+        
         
          switch segmentedControl.selectedSegmentIndex
          {
@@ -149,7 +195,7 @@ class PatientsListTableViewController: UITableViewController {
             if searchController.isActive && searchController.searchBar.text != "" {
                 patient = filteredPatients[indexPath.row]
             } else {
-                patient = patients[indexPath.row]
+                patient = getPatientsWithInitial(initial: currentInitial, patients: patients)[indexPath.row]
             }
             cell.textLabel?.text = patient.name
          case 1:

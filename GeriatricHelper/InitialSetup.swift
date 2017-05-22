@@ -219,7 +219,9 @@ class InitialSetup: UIViewController {
                 // save user ID
                 FirebaseHelper.userID = FIRAuth.auth()?.currentUser?.uid
                 
-                print("Going to personal area...")
+               
+                // load scales
+                FirebaseDatabaseHelper.fetchScales()
                 
                 // navigate automatically to the private area
                 self.performSegue(withIdentifier: "NavigatePersonalArea", sender: self)

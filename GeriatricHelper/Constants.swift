@@ -94,7 +94,9 @@ class Constants{
         return scalesForArea
     }
     
-    
+    /**
+     Get public scales of a certain area.
+    **/
     static func getScalesForAreaPublicSession(area: String) -> [GeriatricScale]{
         print("Area is " + area)
         var scalesForArea: [GeriatricScale] = []

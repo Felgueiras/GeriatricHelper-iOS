@@ -103,6 +103,8 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
     // Mappable - mapping from JSON
     func mapping(map: Map) {
         area         <- map["area"]
+        answer         <- map["answer"]
+        completed         <- map["completed"]
         descriptionText  <- map["description"]
         multipleChoice  <- map["multipleChoice"]
         multipleCategories  <- map["multipleCategories"]
@@ -130,6 +132,7 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
         // assign properties
         area = snapshotValue["area"] as? String
         alreadyOpened = snapshotValue["alreadyOpened"] as? Bool
+        answer = snapshotValue["answer"] as? String
         completed = snapshotValue["completed"] as? Bool
         descriptionText = snapshotValue["description"] as? String
         guid = snapshotValue["guid"] as? String
@@ -146,6 +149,7 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
     func toAnyObject() -> Any {
         return [
             "area": area,
+            "answer": answer,
             "key": key,
             "alreadyOpened": alreadyOpened,
             "completed": completed,

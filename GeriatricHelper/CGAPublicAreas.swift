@@ -100,12 +100,8 @@ class CGAPublicAreas: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        session = Constants.cgaPublicSession
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        self.tableView.reloadData()
+        // TODO remove
+//        session = Constants.cgaPublicSession
     }
     
     // number of rows per section
@@ -164,9 +160,10 @@ class CGAPublicAreas: UITableViewController {
             let areaName = Constants.cgaAreas[(tableView.indexPathForSelectedRow?.row)!]
             
             
-            let destinationViewController = segue.destination as! CGAPublicScalesForArea
+            let destinationViewController = segue.destination as! CGAScalesForArea
             // set the author
             destinationViewController.area = areaName
+            destinationViewController.session = session!
             
             
         }

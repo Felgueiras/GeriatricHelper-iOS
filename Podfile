@@ -15,5 +15,6 @@ pod 'ObjectMapper', '~> 2.2'
 pod 'SwiftMessages'
 pod ‘Onboard’
 pod ‘SearchTextField’
+pod ‘Charts’
 
 end

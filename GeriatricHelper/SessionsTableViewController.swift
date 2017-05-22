@@ -92,10 +92,7 @@ class SessionsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         let session = sessions[indexPath.row]
         
-        //TODO convert from timestamp to date
-        var date = NSDate(timeIntervalSince1970: Double(session.date!))
-        
-        cell.textLabel?.text = String(describing: date)
+        cell.textLabel?.text = DatesHandler.dateToStringWithoutHour(eventDate: session.date!)
         cell.detailTextLabel?.text = session.patientID
         
 //        toggleCellCheckbox(cell, isCompleted: patient.favorite)

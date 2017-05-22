@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import FirebaseAuth
+import FirebaseDatabase
 
 
 class FirebaseDatabaseHelper{
@@ -128,20 +130,36 @@ class FirebaseDatabaseHelper{
      });
      }
      
+     **/
+     
      /**
      * Fetch Scales from Firebase.
      */
-     public static void fetchScales() {
-     FirebaseHelper.firebaseTableScales.addValueEventListener(new ValueEventListener() {
-     @Override
-     public void onDataChange(DataSnapshot dataSnapshot) {
-     FirebaseHelper.scales.clear();
-     for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-     GeriatricScaleFirebase scale = postSnapshot.getValue(GeriatricScaleFirebase.class);
-     scale.setKey(postSnapshot.getKey());
-     FirebaseHelper.scales.add(scale);
-     }
-     }
+    static func fetchScales() {
+        
+        // reference the user
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        
+        // get all scales scales
+        let scalesRef = FirebaseHelper.ref.child("users").child(userID!).child("scales")
+        scalesRef.observe(.value, with: { (snapshot) in
+                FirebaseHelper.scales = []
+                for item in snapshot.children {
+                    let scale = GeriatricScale(snapshot: item as! FIRDataSnapshot)
+                    if scale.completed == true{
+                        FirebaseHelper.scales.append(scale)
+                    }
+                }
+                
+            }) { (error) in
+                print(error.localizedDescription)
+        }
+        
+    }
+    
+
+    
+    /**
      
      @Override
      public void onCancelled(DatabaseError databaseError) {
@@ -225,21 +243,41 @@ class FirebaseDatabaseHelper{
      return differentDates;
      
      }
+     **/
      
      
-     public static ArrayList<GeriatricScaleFirebase> getScaleInstancesForPatient(ArrayList<SessionFirebase> patientSessions, String scaleName) {
-     ArrayList<GeriatricScaleFirebase> scaleInstances = new ArrayList<>();
-     // get instances for that test
-     for (SessionFirebase currentSession : patientSessions) {
-     List<GeriatricScaleFirebase> scalesFromSession = getScalesFromSession(currentSession);
-     for (GeriatricScaleFirebase currentScale : scalesFromSession) {
-     if (currentScale.getScaleName().equals(scaleName)) {
-     scaleInstances.add(currentScale);
-     }
-     }
-     }
-     return scaleInstances;
-     }
+//    static func  getScaleInstancesForPatient(patientSessions: [Session],
+//                                             scaleName: String) -> [GeriatricScale] {
+//        var scaleInstances: [GeriatricScale] = []
+//        // get instances for that test
+//        for var currentSession in patientSessions {
+//            var scalesFromSession: [GeriatricScale] = getScalesFromSession(currentSession);
+//            for var currentScale in scalesFromSession {
+//                if currentScale.scaleName == scaleName {
+//                    scaleInstances.append(currentScale)
+//                }
+//            }
+//        }
+//        return scaleInstances;
+//    }
+    
+    static func  getScaleInstancesForPatient(patientSessions: [Session],
+                                             scaleName: String) -> [GeriatricScale] {
+        
+        var scaleInstances: [GeriatricScale] = []
+        // get instances for that test
+        for var currentSession in patientSessions {
+            var scalesFromSession: [GeriatricScale] = getScalesFromSession(session: currentSession);
+            for var currentScale in scalesFromSession {
+                if currentScale.scaleName == scaleName {
+                    scaleInstances.append(currentScale)
+                }
+            }
+        }
+        return scaleInstances;
+    }
+    
+    /**
      
      /**
      * Get sessions from a date.
@@ -288,20 +326,22 @@ class FirebaseDatabaseHelper{
         scaleRef.setValue(scale.toAnyObject())
     }
     
-    /**
+    
      
      /**
      * Update scale.
      *
      * @param currentScale
      */
-     public static void updateScale(GeriatricScaleFirebase currentScale) {
-     // check if logged in
-     FirebaseAuth auth = FirebaseAuth.getInstance();
-     if (auth.getCurrentUser() != null) {
-     FirebaseHelper.firebaseTableScales.child(currentScale.getKey()).setValue(currentScale);
-     }
-     }
+    static func updateScale(scale: GeriatricScale) {
+        // check if logged in
+//        FirebaseAuth auth = FirebaseAuth.getInstance();
+//        if (auth.getCurrentUser() != null) {
+        FirebaseHelper.ref.child(FirebaseHelper.scalesReferencePath).child(scale.key!).setValue(scale.toAnyObject())
+//        }
+    }
+    
+    /**
      
      public static void updateQuestion(QuestionFirebase question) {
      FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -314,7 +354,6 @@ class FirebaseDatabaseHelper{
     
     static func updateSession(session:Session) {
         FirebaseHelper.ref.child(FirebaseHelper.sessionsReferencePath).child(session.key!).setValue(session.toAnyObject())
-        
     }
     
     /**
@@ -608,26 +647,27 @@ class FirebaseDatabaseHelper{
      
      return null;
      }
+     **/
      
-     public static ArrayList<GeriatricScaleFirebase> getScalesFromSession(SessionFirebase session) {
-     FirebaseAuth auth = FirebaseAuth.getInstance();
-     if (auth.getCurrentUser() != null) {
-     
-     ArrayList<String> scalesIDS = session.getScalesIDS();
-     ArrayList<GeriatricScaleFirebase> scalesForSession = new ArrayList<>();
-     // get scales with those IDS
-     
-     for (GeriatricScaleFirebase scale : FirebaseHelper.scales) {
-     if (scalesIDS.contains(scale.getGuid()))
-     scalesForSession.add(scale);
-     }
-     return scalesForSession;
-     
-     } else {
-     return Constants.publicScales;
-     }
-     
-     }
+    static func  getScalesFromSession(session: Session) -> [GeriatricScale]{
+        
+        let scalesIDS = session.scalesIDS!
+        var  scalesForSession:[GeriatricScale] = []
+        
+        // get scales with those IDS
+        for var scale in FirebaseHelper.scales {
+            if scalesIDS.contains( scale.guid! ) {
+                
+                scalesForSession.append(scale)
+            }
+            
+        }
+        return scalesForSession
+        
+        
+    }
+    
+    /**
      
      public static SessionFirebase getSessionFromScale(GeriatricScaleFirebase scale) {
      FirebaseAuth auth = FirebaseAuth.getInstance();
