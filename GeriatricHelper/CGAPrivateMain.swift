@@ -92,11 +92,6 @@ class CGAPrivateMain: UITableViewController {
     
     
     
-    // MARK: UIViewController Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         // get scales from session
         

@@ -1,5 +1,5 @@
 //
-//  HelpTableViewController.swift
+//  HelpMain.swift
 //  GeriatricHelper
 //
 //  Created by felgueiras on 25/04/2017.
@@ -7,27 +7,23 @@
 //
 
 import UIKit
+import SwiftMessages
 
-class HelpTableViewController: UITableViewController {
-
-    var helpTopics:[String]? = ["Sobre a Avaliação Geriátrica Global",
-                                "Funcionalidades",
-                                "Área Pessoal",
-                                "Pacientes",
-                                "Sessões",
-                                "Prescrições",
-                                "Guia da AGG"]
+class HelpMain: UITableViewController {
+    
+    let viewHelpTopic: String = "ViewHelpTopic"
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        SwiftMessagesHelper.showWarningMessage()
         
     }
 
@@ -40,13 +36,13 @@ class HelpTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (helpTopics?.count)!
+        return HelpTopics.helpTopics.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-         cell.textLabel?.text = helpTopics?[indexPath.row]
+         cell.textLabel?.text = HelpTopics.helpTopics[indexPath.row]
         return cell
     }
     
@@ -64,7 +60,7 @@ class HelpTableViewController: UITableViewController {
         //        let scale = Constants.getScalesForArea(area: Constants.cgaAreas[indexPath.section])[indexPath.row]
         
         
-        performSegue(withIdentifier: ViewAreaScales, sender: self)
+        performSegue(withIdentifier: viewHelpTopic, sender: self)
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -74,14 +70,15 @@ class HelpTableViewController: UITableViewController {
     // prepare for the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == ViewAreaScales {
-            // pass area to the controller
-            let areaName = Constants.cgaAreas[(tableView.indexPathForSelectedRow?.row)!]
+        if segue.identifier == viewHelpTopic {
+            
+            // pass help topic to the controller
+            let selectedTopic = HelpTopics.helpTopics[(tableView.indexPathForSelectedRow?.row)!]
             
             
-            let destinationViewController = segue.destination as! CGAPublicScalesForArea
+            let destinationViewController = segue.destination as! HelpSingleTopic
             // set the author
-            destinationViewController.area = areaName
+            destinationViewController.helpTopic = selectedTopic
             
             
         }

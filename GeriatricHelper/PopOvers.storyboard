@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -90,7 +90,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2vG-8c-BgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4092" y="-1124.8875562218891"/>
+            <point key="canvasLocation" x="-4870" y="-1093"/>
+        </scene>
+        <!--Text Pop Up View Controller-->
+        <scene sceneID="xer-vM-f2Z">
+            <objects>
+                <viewController storyboardIdentifier="textPopUp" id="1FH-8m-7K7" customClass="TextPopUpViewController" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pyU-Wd-3El"/>
+                        <viewControllerLayoutGuide type="bottom" id="9pT-mD-fxG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0jc-bE-pTH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLN-7r-pXq">
+                                <rect key="frame" x="16" y="28" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vLN-7r-pXq" firstAttribute="centerX" secondItem="0jc-bE-pTH" secondAttribute="centerX" id="7TU-bN-3Nu"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="vLN-7r-pXq" secondAttribute="leading" id="d68-J0-uCv"/>
+                            <constraint firstItem="vLN-7r-pXq" firstAttribute="top" secondItem="pyU-Wd-3El" secondAttribute="bottom" constant="8" id="jIs-9o-7BL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="text" destination="vLN-7r-pXq" id="jnC-DH-32s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="02e-hm-xXf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4140" y="-1093.4032983508246"/>
         </scene>
     </scenes>
 </document>

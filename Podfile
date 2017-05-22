@@ -10,6 +10,10 @@ target 'GeriatricHelper' do
 pod 'Firebase/Database'
 pod 'Firebase/Auth'
 pod ‘Firebase/Storage’
+pod 'Firebase/RemoteConfig'
 pod 'ObjectMapper', '~> 2.2'
+pod 'SwiftMessages'
+pod ‘Onboard’
+pod ‘SearchTextField’
 
 end

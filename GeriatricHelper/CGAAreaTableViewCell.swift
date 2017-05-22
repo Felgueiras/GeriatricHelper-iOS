@@ -24,22 +24,31 @@ class CGAAreaTableViewCell: UITableViewCell {
     @IBAction func infoButtonClicked(_ sender: Any) {
         
         
-        
         // display popover
-        let popOverVC = UIStoryboard(name: "PopOvers", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID") as! PopUpViewController
+        let popOverVC = UIStoryboard(name: "PopOvers", bundle: nil).instantiateViewController(withIdentifier: "textPopUp") as! TextPopUpViewController
         
         popOverVC.modalPresentationStyle = UIModalPresentationStyle.popover
         let popover: UIPopoverPresentationController = popOverVC.popoverPresentationController!
         popover.sourceView = self.infoButton
         popover.sourceRect = self.infoButton.bounds
 
-        // TODO present area info
-//        popOverVC.scale = scale
-//        
-//        self.viewController?.present(popOverVC, animated: true, completion:nil)
+        switch area! {
+        case Constants.functionalState:
+            popOverVC.displayText = StringHelper.cga_functional
+        case Constants.mentalState:
+            popOverVC.displayText = StringHelper.cga_mental
+        case Constants.socialState:
+            popOverVC.displayText = StringHelper.cga_social
+        case Constants.nutritionalState:
+            popOverVC.displayText = StringHelper.cga_nutritional
+        default:
+            popOverVC.displayText = ""
+        }
         
-        
+        self.viewController?.present(popOverVC, animated: true, completion:nil)
     }
+    
+    var viewController:UIViewController?
     
     
     // create the cell
@@ -49,7 +58,7 @@ class CGAAreaTableViewCell: UITableViewCell {
         
         
         cell.area = area
-//        cell.viewController = viewController
+        cell.viewController = viewController
         
         cell.areaLabel.text = area
         
@@ -68,8 +77,6 @@ class CGAAreaTableViewCell: UITableViewCell {
         default:
             cell.areaIcon?.image = #imageLiteral(resourceName: "icon_small")
         }
-        
-        
         
         
         return cell

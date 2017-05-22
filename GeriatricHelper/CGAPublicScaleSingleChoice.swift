@@ -1,6 +1,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import SwiftMessages
 
 class CGAPublicScaleSingleChoice: UITableViewController {
     
@@ -77,10 +78,15 @@ class CGAPublicScaleSingleChoice: UITableViewController {
 
         // TODO set numerical score
 //        scale.result = selectedChoice.score
+        if scale.completed == nil{
+            SwiftMessagesHelper.showMessage(type: Theme.info,
+                                            text: StringHelper.allQuestionsAnswered)
+        }
         scale.completed = true
         
         
         print("Question answered")
+
     }
     
     

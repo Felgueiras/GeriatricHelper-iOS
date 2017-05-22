@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="t95-p7-WTR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="scl-CK-nrf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,51 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--CGA-->
-        <scene sceneID="LVc-zC-DcM">
-            <objects>
-                <viewController id="t95-p7-WTR" customClass="CGAPublicInfo" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="eEI-Yo-xau"/>
-                        <viewControllerLayoutGuide type="bottom" id="NQd-JQ-Nq2"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="6t1-Em-LLm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AsD-UQ-avT">
-                                <rect key="frame" x="80" y="318" width="215" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="CRIAR SESSÃO">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="startPublicSessionButtonClicked:" destination="t95-p7-WTR" eventType="touchUpInside" id="mCk-lM-CmD"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="AsD-UQ-avT" firstAttribute="centerY" secondItem="6t1-Em-LLm" secondAttribute="centerY" id="4gD-vE-uXk"/>
-                            <constraint firstItem="AsD-UQ-avT" firstAttribute="centerX" secondItem="6t1-Em-LLm" secondAttribute="centerX" id="UBg-20-y1G"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="CGA" image="Info-50" id="Tpw-0v-1li"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <segue destination="9VL-l6-MHa" kind="presentation" identifier="StartPublicSession" id="Erm-jB-4ui"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="p2e-ty-JQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2263.5" y="-349.5"/>
-        </scene>
         <!--CGA Guide Scales-->
         <scene sceneID="AeB-SH-nul">
             <objects>
@@ -109,7 +64,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xh1-Xr-SNJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1260" y="-1380.3598200899551"/>
+            <point key="canvasLocation" x="503" y="-1299"/>
         </scene>
         <!--Question Category View Controller-->
         <scene sceneID="8DQ-gF-bIq">
@@ -162,7 +117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OdI-vz-dlY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2132" y="-1403.7481259370315"/>
+            <point key="canvasLocation" x="1386" y="-1299"/>
         </scene>
         <!--SessionSingleQuestionChoices-->
         <scene sceneID="YOD-HF-9SN">
@@ -210,7 +165,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HM6-RG-HvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3373.5999999999999" y="-1035.832083958021"/>
+            <point key="canvasLocation" x="2073" y="-537"/>
         </scene>
         <!--Scales Questions-->
         <scene sceneID="zYk-li-XO9">
@@ -261,7 +216,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0mq-dU-x6O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="286" y="561"/>
+            <point key="canvasLocation" x="322" y="484"/>
         </scene>
         <!--Question Options-->
         <scene sceneID="lDv-mW-3dV">
@@ -309,7 +264,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IuR-2t-u5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1038" y="484"/>
+            <point key="canvasLocation" x="1071" y="484"/>
         </scene>
         <!--Review Public Session-->
         <scene sceneID="217-eP-XOV">
@@ -365,6 +320,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Public Session Review" id="KLD-yf-FTp">
+                        <barButtonItem key="leftBarButtonItem" title="PDF" id="35t-0l-04X">
+                            <connections>
+                                <action selector="createPdfButtonClicked:" destination="d1D-lX-Ir5" id="KAf-BI-5Cw"/>
+                                <segue destination="GfM-wo-jef" kind="show" id="hBV-pt-Wye"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="lrn-3Q-MxZ">
                             <connections>
                                 <segue destination="nnx-R5-Y9s" kind="unwind" unwindAction="unwindToMenuWithSegue:" id="Vhz-Uh-dBh"/>
@@ -382,7 +343,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSn-ta-AdV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nnx-R5-Y9s" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-658.39999999999998" y="483.50824587706148"/>
+            <point key="canvasLocation" x="-1458" y="1195"/>
         </scene>
         <!--Review Public Session-->
         <scene sceneID="z7P-q8-LDw">
@@ -433,7 +394,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="snT-GJ-Urb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="823" y="-281"/>
+            <point key="canvasLocation" x="321" y="-279"/>
         </scene>
         <!--CGA Guide Scales-->
         <scene sceneID="Lb9-l5-UrZ">
@@ -458,7 +419,7 @@
                             <outlet property="delegate" destination="scl-CK-nrf" id="ceL-PB-qvg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="CGA Public Areas" id="2Ng-zQ-5re">
+                    <navigationItem key="navigationItem" title="Áreas" id="2Ng-zQ-5re">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9zm-kL-CEI">
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="scl-CK-nrf" id="6NA-aG-20o"/>
@@ -476,40 +437,56 @@
                         <segue destination="peO-s4-lRR" kind="unwind" identifier="CGAPublicCancelSegue" unwindAction="unwindToMenuWithSegue:" id="REb-RQ-wTy"/>
                         <segue destination="Oze-dn-a1N" kind="show" identifier="ViewAreaScales" id="srn-AX-W5t"/>
                         <segue destination="pYq-Hd-djC" kind="show" identifier="ReviewPublicSession" id="vH1-f2-YmV"/>
+                        <segue destination="peO-s4-lRR" kind="unwind" identifier="CGAPrivateCancelSegue" unwindAction="unwindToPatientProfileWithSegue:" id="1OR-0p-YPo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rWA-69-DRs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="peO-s4-lRR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-658" y="-1036"/>
+            <point key="canvasLocation" x="-659" y="-1166"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="bZz-aE-IPC">
+        <!--Preview View Controller-->
+        <scene sceneID="gic-c3-tgr">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9VL-l6-MHa" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="U19-5Q-hJ4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <viewController id="GfM-wo-jef" customClass="PreviewViewController" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dcw-aj-aMZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="O81-eM-WF1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yLt-Bp-KmL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MGt-1v-cYB">
+                                <rect key="frame" x="-4" y="0.0" width="383" height="618"/>
+                                <color key="backgroundColor" red="0.28958413" green="0.31462949509999999" blue="0.32950475810000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="O81-eM-WF1" firstAttribute="top" secondItem="MGt-1v-cYB" secondAttribute="bottom" id="1Zx-uw-jhf"/>
+                            <constraint firstItem="MGt-1v-cYB" firstAttribute="top" secondItem="Dcw-aj-aMZ" secondAttribute="bottom" constant="-64" id="AWW-df-VEk"/>
+                            <constraint firstItem="MGt-1v-cYB" firstAttribute="leading" secondItem="yLt-Bp-KmL" secondAttribute="leadingMargin" constant="-20" id="K3A-Nu-2Bf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MGt-1v-cYB" secondAttribute="trailing" constant="-20" id="d3u-L3-FTK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="8hj-5D-FWG"/>
                     <connections>
-                        <segue destination="scl-CK-nrf" kind="relationship" relationship="rootViewController" id="DjM-gU-pTp"/>
+                        <outlet property="webPreview" destination="MGt-1v-cYB" id="dbt-ht-3Ob"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nNv-9T-aO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VE2-A8-KQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1458" y="-349"/>
+            <point key="canvasLocation" x="-658" y="1394"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Info-50" width="25" height="25"/>
         <image name="pill" width="13" height="13"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4ue-RV-T5t"/>
-        <segue reference="I4X-mv-DhB"/>
-        <segue reference="oqv-rq-zFO"/>
-        <segue reference="J9u-7k-BWy"/>
+        <segue reference="vH1-f2-YmV"/>
+        <segue reference="6MQ-Id-j66"/>
+        <segue reference="5sP-Qm-QCY"/>
+        <segue reference="iGh-v3-wOO"/>
     </inferredMetricsTieBreakers>
 </document>

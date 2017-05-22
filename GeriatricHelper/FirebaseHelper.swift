@@ -17,6 +17,7 @@ class FirebaseHelper{
     static let ref = FIRDatabase.database().reference()
     
     static let sessionsReferencePath = "users/" + String(describing: userID!) + "/sessions"
+    static let prescriptionsReferencePath = "users/" + String(describing: userID!) + "/prescriptions"
     static let scalesReferencePath = "users/" + String(describing: userID!) + "/scales"
     static let questionsReferencePath = "users/" + String(describing: userID!) + "/questions"
 }

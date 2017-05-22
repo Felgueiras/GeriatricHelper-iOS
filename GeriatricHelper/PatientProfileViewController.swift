@@ -14,19 +14,77 @@ class PatientProfileViewController: UIViewController{
     
     //MARK: properties
     var patient: Patient!
-    
     var sessions: [Session] = []
     var prescriptions: [Prescription] = []
 
-   
+    @IBOutlet weak var plusButton: UIBarButtonItem!
     
-    // segue to display a patient's profile
+    @IBAction func plusButtonClicked(_ sender: UIBarButtonItem) {
+    
+        // create an action sheet
+        let alert = UIAlertController(title: nil,
+                                      message: nil,
+                                      preferredStyle: .actionSheet)
+        
+        
+        // new session
+        let newSession = UIAlertAction(title: "Nova Sessão",
+                                 style: .default) { _ in
+                                    
+                    
+                                    // create a new Session
+                                    self.privateSession = self.createNewSession()
+                                    // add Scales to the Session
+                                    self.addScalesToSession(session: self.privateSession!)
+                                    
+                                    // navigate to private session
+                                    
+                                    self.performSegue(withIdentifier: "StartPrivateSession", sender: self)
+                                    
+        }
+        
+        // new prescription
+        let newPrescription = UIAlertAction(title: "Adicionar Prescrição",
+                                       style: .default) { _ in
+                                        
+                                        
+//                                        // create a new Session
+//                                        self.privateSession = self.createNewSession()
+//                                        // add Scales to the Session
+//                                        self.addScalesToSession(session: self.privateSession!)
+//                                        
+//                                        // navigate to private session
+//                                        
+                                        self.performSegue(withIdentifier: self.AddPrescription, sender: self)
+                                        
+        }
+        
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .default)
+        
+        
+        
+        
+        alert.addAction(newSession)
+        alert.addAction(newPrescription)
+//        alert.addAction(cancelAction)
+        
+        alert.popoverPresentationController?.barButtonItem = sender
+        
+        present(alert, animated: true, completion: nil)
+    }
+   
+
+    //MARK: Segues
     let ViewPatientSessions = "ViewPatientSessions"
     let ViewSessionScales = "ViewSessionScales"
-    
+    let AddPrescription = "AddPrescription"
+    var user: User!
+
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    var user: User!
+    
     
     //MARK: views
     
@@ -90,20 +148,7 @@ class PatientProfileViewController: UIViewController{
     
     var privateSession:Session?
     
-    // create new session
-    @IBAction func newSessionButtonPressed(_ sender: Any) {
-        
-        // create a new Session
-        privateSession = createNewSession()
-        // add Scales to the Session
-        addScalesToSession(session: privateSession!)
-        
-        // navigate to private session
-        
-        performSegue(withIdentifier: "StartPrivateSession", sender: self)
-        
-        
-    }
+
     
     /**
      Create a new CGA Session.
@@ -198,7 +243,7 @@ class PatientProfileViewController: UIViewController{
         self.table.dataSource = self
         
         //MARK: set patient's info
-//        birthDate.text = patient
+//        birthDate.text = patient.birth2
         address.text = patient.address
         hospitalProcessNumber.text = patient.processNumber
         
@@ -295,9 +340,16 @@ class PatientProfileViewController: UIViewController{
                 print("Session guid is\(session.guid)")
             }
         }
+        else if segue.identifier == AddPrescription {
+        
+                let destinationViewController = segue.destination as! AddPrescriptionViewController
+                // set the session
+                destinationViewController.patient = patient
+           
+        }
         else if segue.identifier == "StartPrivateSession" {
             
-            let destinationViewController = segue.destination as! CGAPrivateMain
+            let destinationViewController = segue.destination as! CGAPublicAreas
             // set the session
             destinationViewController.session = privateSession
             
@@ -312,6 +364,9 @@ class PatientProfileViewController: UIViewController{
     
 }
 
+/**
+ Display different sections.
+ **/
 extension PatientProfileViewController: UITableViewDataSource, UITableViewDelegate  {
     
     // number of rows
@@ -335,25 +390,36 @@ extension PatientProfileViewController: UITableViewDataSource, UITableViewDelega
     
     // get cell for row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.table.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
+        
+    
+        var cell:UITableViewCell?
         
         switch segmentedControl.selectedSegmentIndex
         {
         case 0:
+            cell = self.table.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
             // sessions
             let session = sessions[indexPath.row]
             
             //TODO: convert from timestamp to date
             var date = NSDate(timeIntervalSince1970: Double(session.date!))
             
-            cell.textLabel?.text = String(describing: date)
-            cell.detailTextLabel?.text = session.patientID
+            cell?.textLabel?.text = String(describing: date)
+            cell?.detailTextLabel?.text = session.patientID
         case 2:
+            // load custom cell for Prescription
+            cell = Bundle.main.loadNibNamed("PrescriptionTableViewCell", owner: self, options: nil)?.first as! PrescriptionTableViewCell
+            
             // prescriptions
             let prescription = prescriptions[indexPath.row]
             
-            cell.textLabel?.text = prescription.name
-            cell.detailTextLabel?.text = prescription.notes
+//            cell?.textLabel?.text = prescription.name
+//            cell?.detailTextLabel?.text = prescription.notes
+            
+            return PrescriptionTableViewCell.createCell(cell: cell as! PrescriptionTableViewCell,
+                                                   prescription: prescription,
+                                                   viewController: self)
+            
         default:
             break
         }
@@ -361,9 +427,33 @@ extension PatientProfileViewController: UITableViewDataSource, UITableViewDelega
         
         
         
-        return cell
+        return cell!
     }
-
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        // TODO return the height of the cell
+        return 100
+    }
+    
+    func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
+        return true
+    }
+    
+    /**
+     Remove a prescription.
+     **/
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            // remove from Firebase
+            let prescription = prescriptions[indexPath.row]
+            FirebaseDatabaseHelper.deletePrescription(prescription: prescription,
+                                                      patient: patient)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
+    }
  
 }
 

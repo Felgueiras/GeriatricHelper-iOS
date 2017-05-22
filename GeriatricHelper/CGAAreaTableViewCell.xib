@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -17,11 +17,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rIF-vy-Ce7" id="MYK-zF-812">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="107.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Qm-rG-V5N">
                         <rect key="frame" x="282" y="16" width="22" height="22"/>
+                        <connections>
+                            <action selector="infoButtonClicked:" destination="rIF-vy-Ce7" eventType="touchUpInside" id="rVg-I5-oXc"/>
+                        </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0wO-tO-KdU">
                         <rect key="frame" x="8" y="30" width="45" height="46"/>
@@ -51,7 +54,7 @@
                 <outlet property="areaLabel" destination="iuy-jX-7lf" id="ge8-Pm-2NQ"/>
                 <outlet property="infoButton" destination="2Qm-rG-V5N" id="0DN-E5-jnW"/>
             </connections>
-            <point key="canvasLocation" x="-149" y="-47"/>
+            <point key="canvasLocation" x="14" y="5"/>
         </tableViewCell>
     </objects>
 </document>

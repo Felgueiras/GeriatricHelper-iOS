@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftMessages
 
 class ReviewPublicSessionTableViewController: UIViewController {
     
@@ -16,6 +17,9 @@ class ReviewPublicSessionTableViewController: UIViewController {
     
     let ViewScaleSingleQuestionChoicesSegue = "CGAViewSingleQuestionChoices"
     
+    @IBAction func createPdfButtonClicked(_ sender: Any) {
+        
+    }
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
@@ -30,7 +34,6 @@ class ReviewPublicSessionTableViewController: UIViewController {
     
     @IBAction func finishReviewButtonClicked(_ sender: Any) {
         performSegue(withIdentifier: "FinishReviewingPublicSession", sender: self)
-        
     }
 
     override func viewDidLoad() {
@@ -47,13 +50,11 @@ class ReviewPublicSessionTableViewController: UIViewController {
         // set delegate for table
         self.table.delegate = self
         self.table.dataSource = self
+        
+        SwiftMessagesHelper.showMessage(type: Theme.success, text: StringHelper.sessionFinished)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         self.table.reloadData()
     }

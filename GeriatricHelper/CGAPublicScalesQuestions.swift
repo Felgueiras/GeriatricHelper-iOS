@@ -1,11 +1,14 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import SwiftMessages
 
-class CGAPublicScalesQuestions: UITableViewController {
+class  CGAPublicScalesQuestions: UITableViewController {
     
     // MARK: Constants
     var scale: GeriatricScale!
+    
+    var opt1: String?
     
     // segue to display the choices for a questions
     let ViewQuestionChoicesSegue = "ViewQuestionChoices"
@@ -75,7 +78,13 @@ class CGAPublicScalesQuestions: UITableViewController {
         
         if allQuestionsAnswered == true{
             print("All questions answered!")
+            if scale.completed == nil{
+                SwiftMessagesHelper.showMessage(type: Theme.info,
+                                                text: StringHelper.allQuestionsAnswered)
+            }
             scale.completed = true
+            
+            
         }
     }
     

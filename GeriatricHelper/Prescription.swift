@@ -5,13 +5,25 @@
     
     class Prescription {
         
-        let key: String
-        let ref: FIRDatabaseReference?
+        init(){}
         
-        let guid: String
-        let patientID: String
-        let name: String
-        let notes: String
+        init(drug: String,
+             notes: String,
+             date: Date){
+            self.name = drug
+            self.notes = notes
+            self.date = date
+            
+        }
+        
+        var key: String?
+        var ref: FIRDatabaseReference?
+        
+        var guid: String?
+        var patientID: String?
+        var name: String?
+        var notes: String?
+        var date: Date?
         
         
         
@@ -25,6 +37,7 @@
             patientID = snapshotValue["patientID"] as! String
             name = snapshotValue["name"] as! String
             notes = snapshotValue["notes"] as! String
+            date = NSDate(timeIntervalSince1970: (snapshotValue["date"] as! Double)) as Date
         }
         
         // convert into NSDisctionary - needed for Firebase
@@ -32,7 +45,10 @@
             return [
                 "key": key,
                 "guid": guid,
-                "patientID": patientID
+                "patientID": patientID,
+                "name": name,
+                "notes": notes,
+                "date": date?.timeIntervalSince1970
             ]
         }
         

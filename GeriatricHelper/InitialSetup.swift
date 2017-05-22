@@ -2,6 +2,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseStorage
 import ObjectMapper
+import Onboard
 
 class InitialSetup: UIViewController {
     
@@ -25,8 +26,10 @@ class InitialSetup: UIViewController {
             if(downloadedScales == Int(scalesTotal)){
                 print("Every Scale downloaded")
                 
-                // call segue
-                performSegue(withIdentifier: SegueLeaveInitialSetup, sender: self)
+                
+                
+                
+                self.performSegue(withIdentifier: "showAppIntro", sender: self)
             }
         }
     }
@@ -161,12 +164,6 @@ class InitialSetup: UIViewController {
     
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-    }
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -196,20 +193,23 @@ class InitialSetup: UIViewController {
             
             downloadScales()
             defaults.set(true, forKey: "HasLaunchedOnce")
+            
+            
+            
+           
+            
         }
         else{
             // read from defaults and add to Constants
             let decoded  = defaults.object(forKey: "scales") as! Data
             let decodedScales = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [GeriatricScale]
             Constants.scales = decodedScales
+        
             
+            print("Presenting")
             // check if user is already logged in
-            
             FIRAuth.auth()!.addStateDidChangeListener { auth, user in
                 guard user != nil else {
-                    
-                 
-                    
                     
                     // not logged in
                     self.performSegue(withIdentifier: self.SegueLeaveInitialSetup, sender: self)

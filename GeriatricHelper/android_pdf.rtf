@@ -1,0 +1,1071 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fnil\fcharset0 Menlo-Bold;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Menlo-Italic;
+\f3\fnil\fcharset0 Menlo-BoldItalic;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue109;\red109\green111\blue5;\red109\green109\blue109;
+\red82\green0\blue103;\red0\green0\blue254;\red15\green112\blue3;\red47\green47\blue47;}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c0\c42745;\csgenericrgb\c42745\c43529\c1961;\csgenericrgb\c42745\c42745\c42745;
+\csgenericrgb\c32157\c0\c40392;\csgenericrgb\c0\c0\c99608;\csgenericrgb\c5882\c43922\c1176;\csgenericrgb\c18431\c18431\c18431;}
+\paperw12240\paperh15840\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf2 package 
+\f1\b0 \cf0 com.felgueiras.apps.geriatric_helper.HelpersHandlers;\
+\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.Manifest;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.annotation.\cf3 SuppressLint\cf0 ;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.app.Activity;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.content.Context;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.content.DialogInterface;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.content.Intent;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.content.pm.PackageManager;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.net.Uri;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.os.Environment;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.support.v4.app.ActivityCompat;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.support.v4.content.FileProvider;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.support.v7.app.AlertDialog;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.util.Log;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.widget.Button;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.widget.EditText;\
+\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.felgueiras.apps.geriatric_helper.Constants;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.felgueiras.apps.geriatric_helper.DataTypes.NonDB.GeriatricScaleNonDB;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.felgueiras.apps.geriatric_helper.DataTypes.NonDB.GradingNonDB;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.felgueiras.apps.geriatric_helper.DataTypes.Scales;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.felgueiras.apps.geriatric_helper.Firebase.RealtimeDatabase.FirebaseDatabaseHelper;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.felgueiras.apps.geriatric_helper.Firebase.RealtimeDatabase.GeriatricScaleFirebase;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.felgueiras.apps.geriatric_helper.Firebase.RealtimeDatabase.PatientFirebase;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.felgueiras.apps.geriatric_helper.Firebase.RealtimeDatabase.SessionFirebase;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.felgueiras.apps.geriatric_helper.PatientsManagement;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.felgueiras.apps.geriatric_helper.R;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.itextpdf.text.Anchor;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.itextpdf.text.BadElementException;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.itextpdf.text.BaseColor;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.itextpdf.text.Chapter;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.itextpdf.text.Document;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.itextpdf.text.DocumentException;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.itextpdf.text.Element;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.itextpdf.text.Font;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.itextpdf.text.List;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.itextpdf.text.ListItem;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.itextpdf.text.Paragraph;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.itextpdf.text.Phrase;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.itextpdf.text.Section;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.itextpdf.text.pdf.PdfPCell;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.itextpdf.text.pdf.PdfPTable;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.itextpdf.text.pdf.PdfWriter;\
+\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 java.io.File;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 java.io.FileNotFoundException;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 java.io.FileOutputStream;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 java.io.OutputStream;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 java.text.SimpleDateFormat;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 java.util.ArrayList;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 java.util.Date;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 java.util.Locale;\
+\
+
+\f2\i \cf4 /**\
+ * Created by felgueiras on 10/04/2017.\
+ */\
+\
+
+\f0\i0\b \cf2 public class 
+\f1\b0 \cf0 SessionPDF \{\
+\
+    
+\f0\b \cf2 static int 
+\f2\i\b0 \cf5 leftIndentation 
+\f1\i0 \cf0 = \cf6 50\cf0 ;\
+\
+\
+    
+\f2\i \cf4 /**\
+     * Fonts.\
+     */\
+    
+\f0\i0\b \cf2 private static 
+\f1\b0 \cf0 Font 
+\f2\i \cf5 catFont 
+\f1\i0 \cf0 = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 Font(Font.FontFamily.
+\f3\i\b \cf5 TIMES_ROMAN
+\f1\i0\b0 \cf0 , \cf6 18\cf0 ,\
+            Font.
+\f3\i\b \cf5 BOLD
+\f1\i0\b0 \cf0 );\
+    
+\f0\b \cf2 private static 
+\f1\b0 \cf0 Font 
+\f2\i \cf5 redFont 
+\f1\i0 \cf0 = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 Font(Font.FontFamily.
+\f3\i\b \cf5 TIMES_ROMAN
+\f1\i0\b0 \cf0 , \cf6 12\cf0 ,\
+            Font.
+\f3\i\b \cf5 NORMAL
+\f1\i0\b0 \cf0 , BaseColor.
+\f3\i\b \cf5 RED
+\f1\i0\b0 \cf0 );\
+    
+\f0\b \cf2 private static 
+\f1\b0 \cf0 Font 
+\f2\i \cf5 subFont 
+\f1\i0 \cf0 = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 Font(Font.FontFamily.
+\f3\i\b \cf5 TIMES_ROMAN
+\f1\i0\b0 \cf0 , \cf6 16\cf0 ,\
+            Font.
+\f3\i\b \cf5 BOLD
+\f1\i0\b0 \cf0 );\
+    
+\f0\b \cf2 private static 
+\f1\b0 \cf0 Font 
+\f2\i \cf5 smallBold 
+\f1\i0 \cf0 = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 Font(Font.FontFamily.
+\f3\i\b \cf5 TIMES_ROMAN
+\f1\i0\b0 \cf0 , \cf6 12\cf0 ,\
+            Font.
+\f3\i\b \cf5 BOLD
+\f1\i0\b0 \cf0 );\
+\
+    
+\f0\b \cf2 private static final 
+\f1\b0 \cf0 String 
+\f3\i\b \cf5 LOG_TAG 
+\f1\i0\b0 \cf0 = 
+\f0\b \cf7 "PDF"
+\f1\b0 \cf0 ;\
+    
+\f0\b \cf2 private static 
+\f1\b0 \cf0 Context 
+\f2\i \cf5 context
+\f1\i0 \cf0 ;\
+    
+\f0\b \cf2 private static 
+\f1\b0 \cf0 PatientFirebase 
+\f2\i \cf5 patient
+\f1\i0 \cf0 ;\
+    
+\f0\b \cf2 private 
+\f1\b0 \cf0 EditText 
+\f0\b \cf5 mSubjectEditText
+\f1\b0 \cf0 , 
+\f0\b \cf5 mBodyEditText
+\f1\b0 \cf0 ;\
+    
+\f0\b \cf2 private 
+\f1\b0 \cf0 Button 
+\f0\b \cf5 mSaveButton
+\f1\b0 \cf0 ;\
+    
+\f0\b \cf2 private static 
+\f1\b0 \cf0 File 
+\f2\i \cf5 myFile
+\f1\i0 \cf0 ;\
+\
+    
+\f0\b \cf2 static 
+\f1\b0 \cf0 SessionFirebase 
+\f2\i \cf5 session
+\f1\i0 \cf0 ;\
+\
+\
+    
+\f0\b \cf2 private static final int 
+\f3\i \cf5 REQUEST_EXTERNAL_STORAGE 
+\f1\i0\b0 \cf0 = \cf6 1\cf0 ;\
+    
+\f0\b \cf2 private static 
+\f1\b0 \cf0 String[] 
+\f2\i \cf5 PERMISSIONS_STORAGE 
+\f1\i0 \cf0 = \{\
+            Manifest.permission.
+\f3\i\b \cf5 READ_EXTERNAL_STORAGE
+\f1\i0\b0 \cf0 ,\
+            Manifest.permission.
+\f3\i\b \cf5 WRITE_EXTERNAL_STORAGE\
+    
+\f1\i0\b0 \cf0 \};\
+\
+    
+\f0\b \cf2 public 
+\f1\b0 \cf0 SessionPDF(SessionFirebase session) \{\
+        
+\f0\b \cf2 this
+\f1\b0 \cf0 .
+\f2\i \cf5 session 
+\f1\i0 \cf0 = session;\
+    \}\
+\
+    
+\f0\b \cf2 public static boolean 
+\f1\b0 \cf0 verifyStoragePermissions(Activity activity) \{\
+        
+\f2\i \cf4 // Check if we have write permission\
+        
+\f0\i0\b \cf2 int 
+\f1\b0 \cf0 permission = ActivityCompat.
+\f2\i checkSelfPermission
+\f1\i0 (activity, Manifest.permission.
+\f3\i\b \cf5 WRITE_EXTERNAL_STORAGE
+\f1\i0\b0 \cf0 );\
+\
+        
+\f0\b \cf2 if 
+\f1\b0 \cf0 (permission != PackageManager.
+\f3\i\b \cf5 PERMISSION_GRANTED
+\f1\i0\b0 \cf0 ) \{\
+            
+\f2\i \cf4 // We don't have permission so prompt the user\
+\
+            
+\f1\i0 \cf0 ActivityCompat.
+\f2\i requestPermissions
+\f1\i0 (\
+                    activity,\
+                    
+\f2\i \cf5 PERMISSIONS_STORAGE
+\f1\i0 \cf0 ,\
+                    
+\f3\i\b \cf5 REQUEST_EXTERNAL_STORAGE\
+            
+\f1\i0\b0 \cf0 );\
+            
+\f0\b \cf2 return false
+\f1\b0 \cf0 ;\
+        \} 
+\f0\b \cf2 else 
+\f1\b0 \cf0 \{\
+            
+\f0\b \cf2 return true
+\f1\b0 \cf0 ;\
+        \}\
+    \}\
+\
+\
+    
+\f2\i \cf4 /**\
+     * Cret\
+     *\
+     * 
+\f3\b @param \cf8 activity\
+     
+\f2\b0 \cf4 * 
+\f3\b @param \cf8 includePatientInfo\
+     
+\f2\b0 \cf4 */\
+    
+\f0\i0\b \cf2 public void 
+\f1\b0 \cf0 createSessionPdf(Activity activity, 
+\f0\b \cf2 boolean 
+\f1\b0 \cf0 includePatientInfo) \{\
+        
+\f2\i \cf5 context 
+\f1\i0 \cf0 = activity;\
+        
+\f0\b \cf2 if 
+\f1\b0 \cf0 (includePatientInfo)\
+            
+\f2\i \cf5 patient 
+\f1\i0 \cf0 = PatientsManagement.
+\f2\i getInstance
+\f1\i0 ().getPatientFromSession(
+\f2\i \cf5 session
+\f1\i0 \cf0 , 
+\f2\i \cf5 context
+\f1\i0 \cf0 );\
+\
+\
+        
+\f0\b \cf2 if 
+\f1\b0 \cf0 (!
+\f2\i verifyStoragePermissions
+\f1\i0 (activity)) \{\
+            
+\f2\i \cf4 // currently there are no permissions\
+            
+\f0\i0\b \cf2 return
+\f1\b0 \cf0 ;\
+        \}\
+\
+        File pdfFolder = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 File(Environment.
+\f2\i getExternalStoragePublicDirectory
+\f1\i0 (\
+                Environment.
+\f2\i \cf5 DIRECTORY_DOCUMENTS
+\f1\i0 \cf0 ), 
+\f0\b \cf7 "pdfdemo"
+\f1\b0 \cf0 );\
+        
+\f0\b \cf2 if 
+\f1\b0 \cf0 (!pdfFolder.exists()) \{\
+            pdfFolder.mkdir();\
+            Log.
+\f2\i i
+\f1\i0 (
+\f3\i\b \cf5 LOG_TAG
+\f1\i0\b0 \cf0 , 
+\f0\b \cf7 "Pdf Directory created"
+\f1\b0 \cf0 );\
+        \}\
+\
+        
+\f2\i \cf4 //Create time stamp\
+        
+\f1\i0 \cf0 Date date = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 Date();\
+        String timeStamp = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 SimpleDateFormat(
+\f0\b \cf7 "dd-MM-yyyy_HH-mm-ss"
+\f1\b0 \cf0 , Locale.
+\f3\i\b \cf5 UK
+\f1\i0\b0 \cf0 ).format(date);\
+\
+        
+\f2\i \cf5 myFile 
+\f1\i0 \cf0 = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 File(pdfFolder + timeStamp + 
+\f0\b \cf7 ".pdf"
+\f1\b0 \cf0 );\
+\
+        OutputStream output = 
+\f0\b \cf2 null
+\f1\b0 \cf0 ;\
+        
+\f0\b \cf2 try 
+\f1\b0 \cf0 \{\
+            output = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 FileOutputStream(
+\f2\i \cf5 myFile
+\f1\i0 \cf0 );\
+        \} 
+\f0\b \cf2 catch 
+\f1\b0 \cf0 (FileNotFoundException e) \{\
+            e.printStackTrace();\
+        \}\
+\
+        
+\f2\i \cf4 /**\
+         * Create PDF.\
+         */\
+\
+        //Step 1\
+        
+\f1\i0 \cf0 Document document = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 Document();\
+\
+        
+\f2\i \cf4 //Step 2\
+        
+\f0\i0\b \cf2 try 
+\f1\b0 \cf0 \{\
+            PdfWriter.
+\f2\i getInstance
+\f1\i0 (document, output);\
+            document.open();\
+            
+\f2\i addMetaData
+\f1\i0 (document);\
+            
+\f2\i addTitlePageSession
+\f1\i0 (document, includePatientInfo);\
+            addScalesInfo(document);\
+            document.close();\
+        \} 
+\f0\b \cf2 catch 
+\f1\b0 \cf0 (DocumentException e) \{\
+            e.printStackTrace();\
+        \}\
+\
+        
+\f2\i promptForNextAction
+\f1\i0 ();\
+    \}\
+\
+    
+\f2\i \cf4 // iText allows to add metadata to the PDF which can be viewed in your Adobe\
+    // Reader\
+    // under File -> Properties\
+    
+\f0\i0\b \cf2 private static void 
+\f1\b0 \cf0 addMetaData(Document document) \{\
+        document.addTitle(
+\f0\b \cf7 "Relat\'f3rio AGG"
+\f1\b0 \cf0 );\
+
+\f2\i \cf4 //        document.addSubject("Using iText");\
+//        document.addKeywords("Java, PDF, iText");\
+//        document.addAuthor("Lars Vogel");\
+//        document.addCreator("Lars Vogel");\
+    
+\f1\i0 \cf0 \}\
+\
+    
+\f2\i \cf4 /**\
+     * Add title page with infos about patient.\
+     *\
+     * 
+\f3\b @param \cf8 document\
+     
+\f2\b0 \cf4 * 
+\f3\b @param \cf8 includePatientInfo\
+     
+\f2\b0 \cf4 * 
+\f3\b @throws 
+\f2\b0 DocumentException\
+     */\
+    
+\f0\i0\b \cf2 private static void 
+\f1\b0 \cf0 addTitlePageSession(Document document, 
+\f0\b \cf2 boolean 
+\f1\b0 \cf0 includePatientInfo)\
+            
+\f0\b \cf2 throws 
+\f1\b0 \cf0 DocumentException \{\
+        Paragraph preface = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 Paragraph();\
+        
+\f2\i \cf4 // We add one empty line\
+        \cf0 addEmptyLine
+\f1\i0 (preface, \cf6 1\cf0 );\
+        
+\f2\i \cf4 // Lets write a big header\
+        
+\f1\i0 \cf0 preface.add(
+\f0\b \cf2 new 
+\f1\b0 \cf0 Paragraph(
+\f0\b \cf7 "Relat\'f3rio m\'e9dico de sess\'e3o de Avalia\'e7\'e3o Geri\'e1trica Global"
+\f1\b0 \cf0 , 
+\f2\i \cf5 catFont
+\f1\i0 \cf0 ));\
+        
+\f2\i addEmptyLine
+\f1\i0 (preface, \cf6 1\cf0 );\
+\
+        
+\f2\i \cf4 // Will create: Report generated by: _name, _date\
+        
+\f1\i0 \cf0 preface.add(
+\f0\b \cf2 new 
+\f1\b0 \cf0 Paragraph(DatesHandler.
+\f2\i dateToStringWithHour
+\f1\i0 (
+\f0\b \cf2 new 
+\f1\b0 \cf0 Date(), 
+\f0\b \cf2 false
+\f1\b0 \cf0 ),\
+                
+\f2\i \cf5 smallBold
+\f1\i0 \cf0 ));\
+        
+\f2\i addEmptyLine
+\f1\i0 (preface, \cf6 3\cf0 );\
+\
+        
+\f2\i \cf4 // session's notes\
+        
+\f0\i0\b \cf2 if 
+\f1\b0 \cf0 (
+\f2\i \cf5 session
+\f1\i0 \cf0 .getNotes() != 
+\f0\b \cf2 null
+\f1\b0 \cf0 ) \{\
+            preface.add(
+\f0\b \cf2 new 
+\f1\b0 \cf0 Paragraph(
+\f0\b \cf7 "Notas da sess\'e3o: " 
+\f1\b0 \cf0 + 
+\f2\i \cf5 session
+\f1\i0 \cf0 .getNotes(),\
+                    
+\f2\i \cf5 smallBold
+\f1\i0 \cf0 ));\
+            
+\f2\i addEmptyLine
+\f1\i0 (preface, \cf6 1\cf0 );\
+        \}\
+\
+\
+        
+\f2\i \cf4 // infos about Patient\
+        
+\f0\i0\b \cf2 if 
+\f1\b0 \cf0 (includePatientInfo) \{\
+            preface.add(
+\f0\b \cf2 new 
+\f1\b0 \cf0 Paragraph(\
+                    
+\f0\b \cf7 "Nome: " 
+\f1\b0 \cf0 + 
+\f2\i \cf5 patient
+\f1\i0 \cf0 .getName(),\
+                    
+\f2\i \cf5 smallBold
+\f1\i0 \cf0 ));\
+            preface.add(
+\f0\b \cf2 new 
+\f1\b0 \cf0 Paragraph(\
+                    
+\f0\b \cf7 "Data de nascimento: " 
+\f1\b0 \cf0 + 
+\f2\i \cf5 patient
+\f1\i0 \cf0 .getBirthDate(),\
+                    
+\f2\i \cf5 smallBold
+\f1\i0 \cf0 ));\
+            preface.add(
+\f0\b \cf2 new 
+\f1\b0 \cf0 Paragraph(\
+                    
+\f0\b \cf7 "Morada: " 
+\f1\b0 \cf0 + 
+\f2\i \cf5 patient
+\f1\i0 \cf0 .getAddress(),\
+                    
+\f2\i \cf5 smallBold
+\f1\i0 \cf0 ));\
+            preface.add(
+\f0\b \cf2 new 
+\f1\b0 \cf0 Paragraph(\
+                    
+\f0\b \cf7 "Processo n\'ba: " 
+\f1\b0 \cf0 + 
+\f2\i \cf5 patient
+\f1\i0 \cf0 .getProcessNumber(),\
+                    
+\f2\i \cf5 smallBold
+\f1\i0 \cf0 ));\
+        \}\
+\
+\
+        document.add(preface);\
+        
+\f2\i \cf4 // Start a new page\
+        
+\f1\i0 \cf0 document.newPage();\
+    \}\
+\
+\
+    
+\f2\i \cf4 /**\
+     * Add scales section to the PDF.\
+     *\
+     * 
+\f3\b @param \cf8 document\
+     
+\f2\b0 \cf4 * 
+\f3\b @throws 
+\f2\b0 DocumentException\
+     */\
+    
+\f0\i0\b \cf2 private void 
+\f1\b0 \cf0 addScalesInfo(Document document) 
+\f0\b \cf2 throws 
+\f1\b0 \cf0 DocumentException \{\
+        Anchor anchor = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 Anchor(
+\f0\b \cf7 "Relat\'f3rio"
+\f1\b0 \cf0 , 
+\f2\i \cf5 catFont
+\f1\i0 \cf0 );\
+        anchor.setName(
+\f0\b \cf7 "Relat\'f3rio"
+\f1\b0 \cf0 );\
+\
+        
+\f2\i \cf4 // Second parameter is the number of the chapter\
+        
+\f1\i0 \cf0 Chapter catPart = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 Chapter(
+\f0\b \cf2 new 
+\f1\b0 \cf0 Paragraph(anchor), \cf6 1\cf0 );\
+\
+        
+\f2\i \cf4 // represent data from each CGA area\
+        
+\f0\i0\b \cf2 for 
+\f1\b0 \cf0 (
+\f0\b \cf2 int 
+\f1\b0 \cf0 i = \cf6 0\cf0 ; i < Constants.
+\f2\i \cf5 cga_areas
+\f1\i0 \cf0 .
+\f0\b \cf5 length
+\f1\b0 \cf0 ; i++) \{\
+            
+\f2\i \cf4 // check if there are scales from this area\
+\
+            
+\f1\i0 \cf0 String area = Constants.
+\f2\i \cf5 cga_areas
+\f1\i0 \cf0 [i];\
+            ArrayList<GeriatricScaleFirebase> scalesForArea = FirebaseDatabaseHelper.
+\f2\i getScalesForArea
+\f1\i0 (FirebaseDatabaseHelper.
+\f2\i getScalesFromSession
+\f1\i0 (
+\f2\i \cf5 session
+\f1\i0 \cf0 ), area);\
+            
+\f0\b \cf2 if 
+\f1\b0 \cf0 (scalesForArea.size() == \cf6 0\cf0 ) \{\
+                
+\f0\b \cf2 continue
+\f1\b0 \cf0 ;\
+            \}\
+\
+            
+\f2\i \cf4 // area\
+            
+\f1\i0 \cf0 Paragraph subPara = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 Paragraph(area, 
+\f2\i \cf5 subFont
+\f1\i0 \cf0 );\
+            Section subCatPart = catPart.addSection(subPara);\
+            
+\f2\i \cf4 // display tests/scales from that area\
+            
+\f0\i0\b \cf2 for 
+\f1\b0 \cf0 (
+\f0\b \cf2 int 
+\f1\b0 \cf0 j = \cf6 0\cf0 ; j < Scales.
+\f2\i getScalesForArea
+\f1\i0 (area).size(); j++) \{\
+                
+\f2\i \cf4 // search if there is an occurrence for this scale\
+                
+\f1\i0 \cf0 GeriatricScaleNonDB scale = Scales.
+\f2\i getScalesForArea
+\f1\i0 (area).get(j);\
+\
+                
+\f0\b \cf2 for 
+\f1\b0 \cf0 (GeriatricScaleFirebase scaleFirebase : scalesForArea) \{\
+                    GradingNonDB match;\
+                    
+\f0\b \cf2 if 
+\f1\b0 \cf0 (scaleFirebase.getScaleName().equals(scale.getScaleName())) \{\
+                        Section scaleInfo = subCatPart.addSection(
+\f0\b \cf2 new 
+\f1\b0 \cf0 Paragraph(scale.getScaleName()));\
+                        
+\f2\i \cf4 // present info - result (qualitative/quantitative)\
+                        
+\f0\i0\b \cf2 if 
+\f1\b0 \cf0 (
+\f2\i \cf5 patient 
+\f1\i0 \cf0 != 
+\f0\b \cf2 null
+\f1\b0 \cf0 ) \{\
+                            match = Scales.
+\f2\i getGradingForScale
+\f1\i0 (\
+                                    scaleFirebase,\
+                                    
+\f2\i \cf5 patient
+\f1\i0 \cf0 .getGender());\
+                        \} 
+\f0\b \cf2 else 
+\f1\b0 \cf0 \{\
+                            match = Scales.
+\f2\i getGradingForScale
+\f1\i0 (\
+                                    scaleFirebase,\
+                                    Constants.
+\f2\i \cf5 SESSION_GENDER
+\f1\i0 \cf0 );\
+                        \}\
+\
+                        
+\f2\i \cf4 // add notes\
+                        
+\f0\i0\b \cf2 if 
+\f1\b0 \cf0 (scaleFirebase.getNotes() != 
+\f0\b \cf2 null
+\f1\b0 \cf0 ) \{\
+                            Paragraph qualitativeResult = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 Paragraph(
+\f0\b \cf7 "Notas: " 
+\f1\b0 \cf0 + scaleFirebase.getNotes());\
+                            qualitativeResult.setIndentationLeft(
+\f2\i \cf5 leftIndentation
+\f1\i0 \cf0 );\
+                            scaleInfo.add(qualitativeResult);\
+                        \}\
+\
+                        
+\f0\b \cf2 if 
+\f1\b0 \cf0 (match != 
+\f0\b \cf2 null
+\f1\b0 \cf0 ) \{\
+                            Paragraph qualitativeResult = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 Paragraph(
+\f0\b \cf7 "Resultado qualitativo: " 
+\f1\b0 \cf0 + match.getGrade());\
+                            qualitativeResult.setIndentationLeft(
+\f2\i \cf5 leftIndentation
+\f1\i0 \cf0 );\
+                            scaleInfo.add(qualitativeResult);\
+                        \}\
+\
+                        Paragraph quantitativeResult = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 Paragraph(
+\f0\b \cf7 "Resultado quantitativo: " 
+\f1\b0 \cf0 + scaleFirebase.getResult() + 
+\f0\b \cf7 ""
+\f1\b0 \cf0 );\
+                        
+\f2\i \cf4 // paragraph.setAlignment(Element.ALIGN_LEFT);\
+                        
+\f1\i0 \cf0 quantitativeResult.setIndentationLeft(
+\f2\i \cf5 leftIndentation
+\f1\i0 \cf0 );\
+                        scaleInfo.add(quantitativeResult);\
+                    \}\
+                \}\
+            \}\
+\
+        \}\
+\
+        document.add(catPart);\
+    \}\
+\
+    
+\f0\b \cf2 private static void 
+\f1\b0 \cf0 addEmptyLine(Paragraph paragraph, 
+\f0\b \cf2 int 
+\f1\b0 \cf0 number) \{\
+        
+\f0\b \cf2 for 
+\f1\b0 \cf0 (
+\f0\b \cf2 int 
+\f1\b0 \cf0 i = \cf6 0\cf0 ; i < number; i++) \{\
+            paragraph.add(
+\f0\b \cf2 new 
+\f1\b0 \cf0 Paragraph(
+\f0\b \cf7 " "
+\f1\b0 \cf0 ));\
+        \}\
+    \}\
+\
+\
+    
+\f2\i \cf4 /**\
+     * View pdf.\
+     */\
+    
+\f0\i0\b \cf2 private static void 
+\f1\b0 \cf0 viewPdf() \{\
+        Intent intent = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 Intent(Intent.
+\f3\i\b \cf5 ACTION_VIEW
+\f1\i0\b0 \cf0 );\
+        Uri ur = FileProvider.
+\f2\i getUriForFile
+\f1\i0 (
+\f2\i \cf5 context
+\f1\i0 \cf0 ,\
+                
+\f0\b \cf7 "com.example.android.fileprovider"
+\f1\b0 \cf0 ,\
+                
+\f2\i \cf5 myFile
+\f1\i0 \cf0 );\
+
+\f2\i \cf4 //        intent.setDataAndType(Uri.fromFile(myFile), "application/pdf");\
+        
+\f1\i0 \cf0 intent.setDataAndType(ur, 
+\f0\b \cf7 "application/pdf"
+\f1\b0 \cf0 );\
+        intent.setFlags(Intent.
+\f3\i\b \cf5 FLAG_ACTIVITY_NO_HISTORY
+\f1\i0\b0 \cf0 );\
+        intent.setFlags(Intent.
+\f3\i\b \cf5 FLAG_GRANT_READ_URI_PERMISSION
+\f1\i0\b0 \cf0 );\
+        
+\f2\i \cf5 context
+\f1\i0 \cf0 .startActivity(intent);\
+    \}\
+\
+    
+\f2\i \cf4 /**\
+     * Email pdf as a note.\
+     */\
+    
+\f0\i0\b \cf2 private static void 
+\f1\b0 \cf0 emailPDF() \{\
+        Intent email = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 Intent(Intent.
+\f3\i\b \cf5 ACTION_SEND
+\f1\i0\b0 \cf0 );\
+
+\f2\i \cf4 //        email.putExtra(Intent.EXTRA_SUBJECT, mSubjectEditText.getText().toString());\
+//        email.putExtra(Intent.EXTRA_TEXT, mBodyEditText.getText().toString());\
+        
+\f1\i0 \cf0 Uri uri = FileProvider.
+\f2\i getUriForFile
+\f1\i0 (
+\f2\i \cf5 context
+\f1\i0 \cf0 ,\
+                
+\f0\b \cf7 "com.example.android.fileprovider"
+\f1\b0 \cf0 ,\
+                
+\f2\i \cf5 myFile
+\f1\i0 \cf0 );\
+        email.putExtra(Intent.
+\f3\i\b \cf5 EXTRA_STREAM
+\f1\i0\b0 \cf0 , uri);\
+        email.setType(
+\f0\b \cf7 "message/rfc822"
+\f1\b0 \cf0 );\
+        
+\f2\i \cf5 context
+\f1\i0 \cf0 .startActivity(email);\
+    \}\
+\
+    
+\f0\b \cf2 private static void 
+\f1\b0 \cf0 printPDF() \{\
+        Intent email = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 Intent(Intent.
+\f3\i\b \cf5 ACTION_SEND
+\f1\i0\b0 \cf0 );\
+
+\f2\i \cf4 //        email.putExtra(Intent.EXTRA_SUBJECT, mSubjectEditText.getText().toString());\
+//        email.putExtra(Intent.EXTRA_TEXT, mBodyEditText.getText().toString());\
+        
+\f1\i0 \cf0 Uri uri = FileProvider.
+\f2\i getUriForFile
+\f1\i0 (
+\f2\i \cf5 context
+\f1\i0 \cf0 ,\
+                
+\f0\b \cf7 "com.example.android.fileprovider"
+\f1\b0 \cf0 ,\
+                
+\f2\i \cf5 myFile
+\f1\i0 \cf0 );\
+        email.putExtra(Intent.
+\f3\i\b \cf5 EXTRA_STREAM
+\f1\i0\b0 \cf0 , uri);\
+        email.setType(
+\f0\b \cf7 "message/rfc822"
+\f1\b0 \cf0 );\
+        
+\f2\i \cf5 context
+\f1\i0 \cf0 .startActivity(email);\
+    \}\
+\
+    
+\f2\i \cf4 /**\
+     * Prompt the user what to do (view, print or email pdf)\
+     */\
+    
+\f0\i0\b \cf2 private static void 
+\f1\b0 \cf0 promptForNextAction() \{\
+        
+\f0\b \cf2 final 
+\f1\b0 \cf0 String[] options = \{\
+                
+\f2\i \cf5 context
+\f1\i0 \cf0 .getString(R.string.
+\f3\i\b \cf5 label_preview
+\f1\i0\b0 \cf0 ),\
+                
+\f2\i \cf5 context
+\f1\i0 \cf0 .getString(R.string.
+\f3\i\b \cf5 label_email
+\f1\i0\b0 \cf0 ),\
+
+\f2\i \cf4 //                context.getString(R.string.label_print),\
+                \cf5 context
+\f1\i0 \cf0 .getString(R.string.
+\f3\i\b \cf5 label_cancel
+\f1\i0\b0 \cf0 )\};\
+\
+        AlertDialog.Builder builder = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 AlertDialog.Builder(
+\f2\i \cf5 context
+\f1\i0 \cf0 );\
+        builder.setTitle(R.string.
+\f3\i\b \cf5 sessionPDF
+\f1\i0\b0 \cf0 );\
+        builder.setItems(options, 
+\f0\b \cf2 new 
+\f1\b0 \cf0 DialogInterface.OnClickListener() \{\
+            \cf3 @Override\
+            
+\f0\b \cf2 public void 
+\f1\b0 \cf0 onClick(DialogInterface dialog, 
+\f0\b \cf2 int 
+\f1\b0 \cf0 which) \{\
+                
+\f0\b \cf2 if 
+\f1\b0 \cf0 (\cf5 options\cf0 [which].equals(
+\f2\i \cf5 context
+\f1\i0 \cf0 .getString(R.string.
+\f3\i\b \cf5 label_email
+\f1\i0\b0 \cf0 ))) \{\
+                    
+\f2\i emailPDF
+\f1\i0 ();\
+                \} 
+\f0\b \cf2 else if 
+\f1\b0 \cf0 (\cf5 options\cf0 [which].equals(
+\f2\i \cf5 context
+\f1\i0 \cf0 .getString(R.string.
+\f3\i\b \cf5 label_preview
+\f1\i0\b0 \cf0 ))) \{\
+                    
+\f2\i viewPdf
+\f1\i0 ();\
+                \} 
+\f0\b \cf2 else if 
+\f1\b0 \cf0 (\cf5 options\cf0 [which].equals(
+\f2\i \cf5 context
+\f1\i0 \cf0 .getString(R.string.
+\f3\i\b \cf5 label_print
+\f1\i0\b0 \cf0 ))) \{\
+                    
+\f2\i printPDF
+\f1\i0 ();\
+                \} 
+\f0\b \cf2 else if 
+\f1\b0 \cf0 (\cf5 options\cf0 [which].equals(
+\f2\i \cf5 context
+\f1\i0 \cf0 .getString(R.string.
+\f3\i\b \cf5 label_cancel
+\f1\i0\b0 \cf0 ))) \{\
+                    dialog.dismiss();\
+                \}\
+            \}\
+        \});\
+\
+        builder.show();\
+\
+    \}\
+\}\
+\
+}

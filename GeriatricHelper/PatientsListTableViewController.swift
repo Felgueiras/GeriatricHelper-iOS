@@ -193,8 +193,8 @@ class PatientsListTableViewController: UITableViewController {
         //            ])
         
         //        // Perform Segue - go to patient's profile
-        //        performSegue(withIdentifier: SeguePatientViewController, sender: self)
-        //        tableView.deselectRow(at: indexPath, animated: true)
+                performSegue(withIdentifier: SeguePatientViewController, sender: self)
+                tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // prepare for the segue
@@ -217,19 +217,6 @@ class PatientsListTableViewController: UITableViewController {
             
         }
     }
-    
-    //    // changeUI depending on item being completed or not
-    //    func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
-    //        if !isCompleted {
-    //            cell.accessoryType = .none
-    //            cell.textLabel?.textColor = UIColor.black
-    //            cell.detailTextLabel?.textColor = UIColor.black
-    //        } else {
-    //            cell.accessoryType = .checkmark
-    //            cell.textLabel?.textColor = UIColor.gray
-    //            cell.detailTextLabel?.textColor = UIColor.gray
-    //        }
-    //    }
 
     
     func userCountButtonDidTouch() {

@@ -1,5 +1,5 @@
 //
-//  HelpTableViewController.swift
+//  HelpMain.swift
 //  GeriatricHelper
 //
 //  Created by felgueiras on 25/04/2017.
@@ -7,85 +7,79 @@
 //
 
 import UIKit
+import FirebaseRemoteConfig
 
-class HelpSingleTopic: UITableViewController {
+class HelpSingleTopic: UIViewController {
 
-    var helpTopics:[String]? = ["Sobre a Avaliação Geriátrica Global",
-                                "Funcionalidades",
-                                "Área Pessoal",
-                                "Pacientes",
-                                "Sessões",
-                                "Prescrições",
-                                "Guia da AGG"]
+    var helpTopic: String?
     
+    var remoteConfig: FIRRemoteConfig?
+
+    @IBOutlet weak var helpTopicText: UILabel!
+    // MARK: - Table view data source
+    
+    func getStringFirebase(key: String) -> String{
+        
+        // replace /n for new line
+        let str = FIRRemoteConfig.remoteConfig().configValue(forKey: key).stringValue!
+        return str.replacingOccurrences(of: "\\n", with: "\n")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // access RemoteConfig
+        self.remoteConfig = FIRRemoteConfig.remoteConfig()
+        
+        fetchCloudValues()
+        
+        var text: String?
         
         
-    }
-
-
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (helpTopics?.count)!
-    }
-
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-         cell.textLabel?.text = helpTopics?[indexPath.row]
-        return cell
-    }
-    
-
-
-    
-    // select a row
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // get cell and selected scale
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        
-        //        var selectedAreaIndex = segmentedControl.selectedSegmentIndex
-        
-        // filter scales by selected
-        //        let scale = Constants.getScalesForArea(area: Constants.cgaAreas[indexPath.section])[indexPath.row]
-        
-        
-        performSegue(withIdentifier: ViewAreaScales, sender: self)
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    
-    
-    // prepare for the segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == ViewAreaScales {
-            // pass area to the controller
-            let areaName = Constants.cgaAreas[(tableView.indexPathForSelectedRow?.row)!]
-            
-            
-            let destinationViewController = segue.destination as! CGAPublicScalesForArea
-            // set the author
-            destinationViewController.area = areaName
-            
-            
+        switch helpTopic! {
+        case HelpTopics.help_topic_cga:
+            text = getStringFirebase(key: "help_cga_description")
+        case HelpTopics.help_topic_functionalities:
+            text = getStringFirebase(key: "help_functionalitites_description")
+        case HelpTopics.help_topic_personal_area:
+            text = getStringFirebase(key: "help_personal_area")
+        case HelpTopics.help_topic_patients:
+            text = getStringFirebase(key: "help_patients_description")
+        case HelpTopics.help_topic_prescriptions:
+            text = getStringFirebase(key: "help_precription_description")
+        case HelpTopics.help_topic_sessions:
+            text = getStringFirebase(key: "help_sessions_description")
+        case HelpTopics.help_topic_cga_guide:
+            text = getStringFirebase(key: "help_cga_guide_description")
+        default:
+            text = ""
         }
+        helpTopicText.text = text
+        print(text)
         
     }
+    
+        
+    
+    func fetchCloudValues() {
+        // 1
+        // WARNING: Don't actually do this in production!
+        let fetchDuration: TimeInterval = 0
+        FIRRemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) {
+            [weak self] (status, error) in
+            
+            guard error == nil else {
+                print ("Uh-oh. Got an error fetching remote values \(error)")
+                return
+            }
+            
+            // 2
+            FIRRemoteConfig.remoteConfig().activateFetched()
+            print ("Retrieved values from the cloud!")
+        }
+    }
 
+    
+
+    
 }

@@ -461,21 +461,31 @@ class FirebaseDatabaseHelper{
      }
      
      
+     **/
+    
      /**
      * Delete a prescription.
      *
      * @param prescription
      * @param context
      */
-     public static void deletePrescription(PrescriptionFirebase prescription, Context context) {
-     // remove from patient's list of prescriptions
-     PatientFirebase patient = PatientsManagement.getPatientFromPrescription(prescription, context);
-     patient.getPrescriptionsIDS().remove(prescription.getGuid());
-     PatientsManagement.updatePatient(patient, context);
-     
-     // remove prescription
-     FirebaseHelper.firebaseTablePrescriptions.child(prescription.getKey()).removeValue();
-     }
+    static func deletePrescription(prescription: Prescription,
+                                   patient: Patient) {
+        
+        // remove from patient's list of prescriptions
+//        PatientFirebase patient = PatientsManagement.getPatientFromPrescription(prescription, context);
+        if let itemToRemoveIndex = patient.prescriptionsIDS.index(of: prescription.guid!) {
+            patient.prescriptionsIDS.remove(at: itemToRemoveIndex)
+        }
+        
+        PatientsManagement.updatePatient(patient: patient)
+    
+        
+        // remove prescription
+        prescription.ref?.removeValue()
+    }
+    
+    /**
      
      /**
      * Get sessions from patient.
@@ -694,7 +704,10 @@ class FirebaseDatabaseHelper{
      }
      
     **/
-     
+    
+    /**
+     Add Session to Firebase
+ **/
     static func createSession(session:Session) {        
         // create reference to new session
         let sessionref = FirebaseHelper.ref.child(FirebaseHelper.sessionsReferencePath).childByAutoId()
@@ -702,6 +715,18 @@ class FirebaseDatabaseHelper{
         session.key = sessionKey
         // add to firebase
         sessionref.setValue(session.toAnyObject())
+    }
+    
+    /**
+     Add Prescription to Firebase
+ **/
+    static func createPrescription(prescription:Prescription) {
+        // create reference to new session
+        let prescriptionRef = FirebaseHelper.ref.child(FirebaseHelper.prescriptionsReferencePath).childByAutoId()
+        let prescriptionKey = prescriptionRef.key
+        prescription.key = prescriptionKey
+        // add to firebase
+        prescriptionRef.setValue(prescription.toAnyObject())
     }
     
  

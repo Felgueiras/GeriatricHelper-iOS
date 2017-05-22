@@ -27,7 +27,19 @@ class CGAPublicAreas: UITableViewController {
         let saveAction = UIAlertAction(title: "Yes",
                                        style: .default) { _ in
                                         
-                                        self.performSegue(withIdentifier: "CGAPublicCancelSegue", sender: self)
+                                        // check if user is logged in
+                                        FIRAuth.auth()!.addStateDidChangeListener { auth, user in
+                                            if user == nil{
+                                                // public
+                                                self.performSegue(withIdentifier: "CGAPublicCancelSegue", sender: self)
+                                            }
+                                            else
+                                            {
+                                                // private
+                                                self.performSegue(withIdentifier: "CGAPrivateCancelSegue", sender: self)
+                                            }
+                              
+                                        }
                                         
         }
         
@@ -115,10 +127,7 @@ class CGAPublicAreas: UITableViewController {
                                                area: area,
                                                viewController: self)
         
-        return cell
-        
-        
-        
+        return cell        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

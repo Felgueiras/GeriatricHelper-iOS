@@ -15,7 +15,7 @@ class PatientsManagement{
     //        //    static ArrayList<PatientFirebase> patients = new ArrayList<>();
     //
     /**
-     * Save a Patient.
+     * Save a Patient on the user defaults.
      *
      * @param patient
      * @param context
@@ -32,6 +32,8 @@ class PatientsManagement{
         defaults.synchronize()
         
     }
+    
+    
     //
     //
     //        /**
@@ -53,6 +55,7 @@ class PatientsManagement{
     //        }
     //
     
+    // Get all patients from UserDefaults
     static func getPatients() -> [Patient] {
         // read from defaults
         let defaults = UserDefaults.standard
@@ -63,16 +66,8 @@ class PatientsManagement{
         let decodedPatients = NSKeyedUnarchiver.unarchiveObject(with: decoded!) as! [Patient]
         return decodedPatients
     }
-    //
-    //        public static ArrayList<PatientFirebase> getFavoritePatients(Context context) {
-    //        ArrayList<PatientFirebase> favoritePatients = new ArrayList<>();
-    //        for (PatientFirebase patient : SharedPreferencesHelper.getPatients(context)) {
-    //        if (patient.isFavorite())
-    //        favoritePatients.add(patient);
-    //        }
-    //        return favoritePatients;
-    //        }
-    //
+ 
+    // Update patient
     static func updatePatient(patient: Patient) {
         var patients = getPatients()
         for i in 0..<patients.count {

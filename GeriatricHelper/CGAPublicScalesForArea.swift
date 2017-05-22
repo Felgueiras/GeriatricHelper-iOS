@@ -108,7 +108,6 @@ class CGAPublicScalesForArea: UITableViewController {
     
     // number of rows per section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         
         // number of scales for area
         return Constants.getScalesForArea(area: area!).count
@@ -146,12 +145,8 @@ class CGAPublicScalesForArea: UITableViewController {
         // get cell and selected scale
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         
-        //        var selectedAreaIndex = segmentedControl.selectedSegmentIndex
-        
         // filter scales by selected
-        let scale = Constants.getScalesForArea(area: area!)[indexPath.row]
-        
-        print(scale.multipleCategories)
+        let scale = Constants.getScalesForAreaPublicSession(area: area!)[indexPath.row]
         
         if scale.singleQuestion!{
             // single question scale - display the choices
@@ -188,7 +183,7 @@ class CGAPublicScalesForArea: UITableViewController {
         
         if segue.identifier == ViewScaleQuestionsSegue {
             // pass scale to the controller
-            let scaleName = Constants.getScalesForArea(area: Constants.cgaAreas[(tableView.indexPathForSelectedRow?.section)!])[(tableView.indexPathForSelectedRow?.row)!].scaleName
+            let scaleName = Constants.getScalesForArea(area: area!)[(tableView.indexPathForSelectedRow?.row)!].scaleName
             
             for scale in Constants.cgaPublicScales! {
                 if scale.scaleName == scaleName{
@@ -201,7 +196,7 @@ class CGAPublicScalesForArea: UITableViewController {
         else if segue.identifier == ViewScaleSingleQuestionChoicesSegue {
             
             // pass scale to the controller
-            let scaleName = Constants.getScalesForArea(area: Constants.cgaAreas[(tableView.indexPathForSelectedRow?.section)!])[(tableView.indexPathForSelectedRow?.row)!].scaleName
+            let scaleName = Constants.getScalesForArea(area: area!)[(tableView.indexPathForSelectedRow?.row)!].scaleName
             
             for scale in Constants.cgaPublicScales! {
                 if scale.scaleName == scaleName{
@@ -215,7 +210,7 @@ class CGAPublicScalesForArea: UITableViewController {
         else if segue.identifier == ViewScaleYesNoSegue {
             
             // pass scale to the controller
-            let scaleName = Constants.getScalesForArea(area: Constants.cgaAreas[(tableView.indexPathForSelectedRow?.section)!])[(tableView.indexPathForSelectedRow?.row)!].scaleName
+            let scaleName = Constants.getScalesForArea(area: area!)[(tableView.indexPathForSelectedRow?.row)!].scaleName
             
             for scale in Constants.cgaPublicScales! {
                 if scale.scaleName == scaleName{
@@ -229,7 +224,7 @@ class CGAPublicScalesForArea: UITableViewController {
         else if segue.identifier == ViewScaleMultipleCategoriesSegue {
             
             // pass scale to the controller
-            let scaleName = Constants.getScalesForArea(area: Constants.cgaAreas[(tableView.indexPathForSelectedRow?.section)!])[(tableView.indexPathForSelectedRow?.row)!].scaleName
+            let scaleName = Constants.getScalesForArea(area: area!)[(tableView.indexPathForSelectedRow?.row)!].scaleName
             
             for scale in Constants.cgaPublicScales! {
                 if scale.scaleName == scaleName{

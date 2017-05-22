@@ -55,41 +55,14 @@ class ScaleTableViewCell: UITableViewCell {
         cell.name.text = scale.scaleName
         
         if scale.completed == true{
-            // generate quantitative result
-            
-            SessionHelper.generateScaleResult(scale: scale)
             
             // quantitative result
-            var quantitative:String = ""
-            quantitative += String(describing: scale.result!)
+            let quantitativeResult = ScaleHelper.getQuantitativeResult(scale: scale)
+            cell.resultQuantitative?.text = String(describing: quantitativeResult)
             
-            var testNonDB = Constants.getScaleByName(scaleName: scale.scaleName!)
-            
-            
-            if testNonDB?.scoring != nil {
-                if testNonDB?.scoring?.differentMenWomen == false{
-                    quantitative += " (" + String(describing: testNonDB!.scoring!.minScore!)
-                    quantitative += "-" + String(describing: testNonDB!.scoring!.maxScore!)
-                    quantitative += ")"
-                } else {
-                    if Constants.patientGender == "male" {
-                        quantitative += " (" + String(describing: testNonDB!.scoring!.minMen!)
-                        quantitative += "-" + String(describing: testNonDB!.scoring!.maxMen!)
-                        quantitative += ")"
-                    }
-                }
-            } else {
-                quantitative = "";
-            }
-            
-            cell.resultQuantitative?.text = String(describing: quantitative)
-            
-            let match = SessionHelper.getGradingForScale(scale: scale, gender: "male")
-            if match != nil{
-                cell.resultQualitative.text = String(describing: match!.grade!)
-            }
-            
-            
+            // qualitative result
+            let qualitativeResult = ScaleHelper.getQualitativeResult(scale: scale)
+            cell.resultQualitative.text = String(describing: qualitativeResult)
             
         }
         else

@@ -96,6 +96,7 @@ class Constants{
     
     
     static func getScalesForAreaPublicSession(area: String) -> [GeriatricScale]{
+        print("Area is " + area)
         var scalesForArea: [GeriatricScale] = []
         for scale in self.cgaPublicScales!{
             if scale.area == area{

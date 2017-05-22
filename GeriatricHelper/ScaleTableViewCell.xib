@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -38,22 +38,21 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1C5-Av-VGx">
-                        <rect key="frame" x="282" y="16" width="22" height="22"/>
+                        <rect key="frame" x="290" y="16" width="22" height="22"/>
                         <connections>
                             <action selector="infoButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sSA-Ag-opv"/>
                         </connections>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="1C5-Av-VGx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="27t-o6-vwJ"/>
                     <constraint firstItem="Bdj-sq-K4k" firstAttribute="top" secondItem="EA6-d1-j3R" secondAttribute="bottom" constant="8" id="4Hl-cg-fvM"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="1C5-Av-VGx" secondAttribute="trailing" id="5tf-GW-tAx"/>
                     <constraint firstItem="ZuR-3c-eps" firstAttribute="top" secondItem="Bdj-sq-K4k" secondAttribute="bottom" constant="8" id="BuS-kN-hTO"/>
                     <constraint firstItem="ZuR-3c-eps" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="E0c-f2-sXL"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="1C5-Av-VGx" secondAttribute="trailing" constant="8" id="FQh-YO-apk"/>
                     <constraint firstItem="EA6-d1-j3R" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="G1c-RC-omB"/>
                     <constraint firstItem="EA6-d1-j3R" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="Knw-1e-Lhz"/>
                     <constraint firstItem="Bdj-sq-K4k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="RaY-Ts-WWS"/>
-                    <constraint firstItem="1C5-Av-VGx" firstAttribute="leading" secondItem="EA6-d1-j3R" secondAttribute="trailing" constant="177" id="TLx-0B-Tlu"/>
+                    <constraint firstItem="1C5-Av-VGx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="gZr-5M-Llx"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

@@ -6,13 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Help All Topics-->
         <scene sceneID="BAO-NZ-K8R">
             <objects>
-                <tableViewController title="Help" id="li8-gQ-kOb" userLabel="Help All Topics" customClass="HelpTableViewController" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Help" id="li8-gQ-kOb" userLabel="Help All Topics" customClass="HelpMain" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lRS-RY-32e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,7 +45,7 @@
                     <navigationItem key="navigationItem" title="Ajuda" id="ctj-2P-Ics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="Sz7-JM-Vr9" kind="show" identifier="ViewHelpTopic" id="TZq-zj-Ywk"/>
+                        <segue destination="sHH-4u-P47" kind="show" identifier="ViewHelpTopic" id="yss-Yb-W4i"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nhB-GK-apu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -71,43 +72,39 @@
             <point key="canvasLocation" x="-1487.2" y="-636.4317841079461"/>
         </scene>
         <!--Help Single Topic-->
-        <scene sceneID="02j-eN-ghx">
+        <scene sceneID="IaA-ne-Lsp">
             <objects>
-                <tableViewController title="Help" id="Sz7-JM-Vr9" userLabel="Help Single Topic" customClass="HelpTableViewController" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="y7I-FN-Qy0">
+                <viewController id="sHH-4u-P47" customClass="HelpSingleTopic" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tTC-5S-mLH"/>
+                        <viewControllerLayoutGuide type="bottom" id="9vS-Rx-AfI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eVO-kg-cD9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4W-Ht-rgQ">
+                                <rect key="frame" x="24" y="72" width="327" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ItemCell" textLabel="hBZ-DU-rl9" style="IBUITableViewCellStyleDefault" id="fQ9-eD-Qhg">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fQ9-eD-Qhg" id="fXc-CU-bpo">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hBZ-DU-rl9">
-                                            <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Sz7-JM-Vr9" id="txe-v6-UwZ"/>
-                            <outlet property="delegate" destination="Sz7-JM-Vr9" id="b6q-Kb-XKK"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Ajuda" id="5St-ZG-syI"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R5P-jO-pem" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="V4W-Ht-rgQ" secondAttribute="trailing" constant="8" id="7D2-Tk-J4W"/>
+                            <constraint firstItem="V4W-Ht-rgQ" firstAttribute="leading" secondItem="eVO-kg-cD9" secondAttribute="leadingMargin" constant="8" id="7qJ-nC-KtC"/>
+                            <constraint firstItem="V4W-Ht-rgQ" firstAttribute="top" secondItem="tTC-5S-mLH" secondAttribute="bottom" constant="8" id="gZZ-dA-EEJ"/>
+                            <constraint firstItem="V4W-Ht-rgQ" firstAttribute="centerX" secondItem="eVO-kg-cD9" secondAttribute="centerX" id="igq-C1-ezR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="helpTopicText" destination="V4W-Ht-rgQ" id="X2q-XS-bSq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jxf-ym-6QS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-52" y="-636"/>
+            <point key="canvasLocation" x="-28" y="-636.4317841079461"/>
         </scene>
     </scenes>
     <resources>

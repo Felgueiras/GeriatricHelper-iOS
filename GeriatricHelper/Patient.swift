@@ -51,6 +51,7 @@ class Patient: NSObject, NSCoding {
     var gender: String?
     var ref: FIRDatabaseReference?
     var processNumber: String?
+    var  prescriptionsIDS: [String] = []
     
     //    init(name: String,  key: String = "") {
     //        self.key = key
@@ -69,6 +70,7 @@ class Patient: NSObject, NSCoding {
         processNumber = snapshotValue["processNumber"] as! String
         favorite = snapshotValue["favorite"] as! Bool
         guid = snapshotValue["guid"] as! String
+        prescriptionsIDS = snapshotValue["prescriptionsIDS"] as! [String]
         
     }
     
@@ -80,8 +82,15 @@ class Patient: NSObject, NSCoding {
         return [
             "name": name,
             "favorite": favorite,
-            "processNumber": processNumber
+            "processNumber": processNumber,
+            "prescriptionsIDS": prescriptionsIDS
         ]
+    }
+    
+    func addPrescription(prescriptionID: String) {
+        prescriptionsIDS.append(prescriptionID)
+        // update patient
+        PatientsManagement.updatePatient(patient: self)
     }
     
 }
