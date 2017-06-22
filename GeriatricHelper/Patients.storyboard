@@ -58,7 +58,7 @@
                                 <action selector="segmentedControlSelectionChanged:" destination="WRG-qR-ebT" eventType="valueChanged" id="Ay1-Sm-yEV"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QGM-U2-dHv">
+                        <barButtonItem key="rightBarButtonItem" image="Add User" id="QGM-U2-dHv">
                             <connections>
                                 <segue destination="ljw-VW-gmv" kind="presentation" id="VPw-KZ-fT5"/>
                             </connections>
@@ -86,79 +86,105 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="6VI-YW-fwJ">
-                                <rect key="frame" x="24" y="72" width="335" height="624.5"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WR4-N0-Gqu">
+                                <rect key="frame" x="0.0" y="64" width="375" height="539"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pi2-3I-DL0" userLabel="Name">
-                                        <rect key="frame" x="0.0" y="0.0" width="45" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ivd-dc-bb0">
-                                        <rect key="frame" x="0.0" y="20.5" width="327" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birth date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Oy-bF-eoI">
-                                        <rect key="frame" x="0.0" y="50.5" width="75.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="bHM-PN-DaD">
-                                        <rect key="frame" x="0.0" y="71" width="320" height="216"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="514638033.077389">
-                                            <!--2017-04-23 11:00:33 +0000-->
-                                        </date>
-                                    </datePicker>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GhI-3W-gg2">
-                                        <rect key="frame" x="0.0" y="287" width="57" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fw1-9r-iO0">
-                                        <rect key="frame" x="0.0" y="307.5" width="320" height="216"/>
-                                    </pickerView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Enw-2U-bVx">
-                                        <rect key="frame" x="0.0" y="523.5" width="63" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fdg-RG-1AW">
-                                        <rect key="frame" x="0.0" y="544" width="327" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital Process Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBT-sC-Mke">
-                                        <rect key="frame" x="0.0" y="574" width="194.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="meA-T4-yga">
-                                        <rect key="frame" x="0.0" y="594.5" width="327" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="6VI-YW-fwJ">
+                                        <rect key="frame" x="8" y="8" width="320" height="621.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pi2-3I-DL0" userLabel="Name">
+                                                <rect key="frame" x="0.0" y="0.0" width="45" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ivd-dc-bb0">
+                                                <rect key="frame" x="0.0" y="20.5" width="25" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="rzr-NM-NTg"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birth date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Oy-bF-eoI">
+                                                <rect key="frame" x="0.0" y="50.5" width="75.5" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="bHM-PN-DaD">
+                                                <rect key="frame" x="0.0" y="70.5" width="320" height="216"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="216" id="rho-6Q-Dhx"/>
+                                                </constraints>
+                                                <date key="date" timeIntervalSinceReferenceDate="514638033.077389">
+                                                    <!--2017-04-23 11:00:33 +0000-->
+                                                </date>
+                                            </datePicker>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GhI-3W-gg2">
+                                                <rect key="frame" x="0.0" y="286.5" width="57" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fw1-9r-iO0">
+                                                <rect key="frame" x="0.0" y="306.5" width="320" height="216"/>
+                                            </pickerView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Enw-2U-bVx">
+                                                <rect key="frame" x="0.0" y="522.5" width="63" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fdg-RG-1AW">
+                                                <rect key="frame" x="0.0" y="542.5" width="25" height="29"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital Process Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBT-sC-Mke">
+                                                <rect key="frame" x="0.0" y="571.5" width="194.5" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="meA-T4-yga">
+                                                <rect key="frame" x="0.0" y="591.5" width="25" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="lWO-eQ-WaG"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="meA-T4-yga" firstAttribute="top" secondItem="fdg-RG-1AW" secondAttribute="bottom" constant="20" id="7wA-Eh-yu4"/>
+                                            <constraint firstItem="fdg-RG-1AW" firstAttribute="top" secondItem="Fw1-9r-iO0" secondAttribute="bottom" constant="20" id="Afn-6t-zDB"/>
+                                            <constraint firstItem="bHM-PN-DaD" firstAttribute="top" secondItem="ivd-dc-bb0" secondAttribute="bottom" constant="20" id="Dcd-Dc-xLM"/>
+                                            <constraint firstItem="qBT-sC-Mke" firstAttribute="top" secondItem="Enw-2U-bVx" secondAttribute="bottom" constant="29" id="S5c-2I-efz"/>
+                                            <constraint firstItem="Fw1-9r-iO0" firstAttribute="top" secondItem="bHM-PN-DaD" secondAttribute="bottom" constant="20" id="lfx-rp-box"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailingMargin" secondItem="meA-T4-yga" secondAttribute="trailing" constant="8" id="QR5-xm-geQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="ivd-dc-bb0" secondAttribute="trailing" constant="8" id="fnz-Sz-s0O"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="fdg-RG-1AW" secondAttribute="trailing" constant="8" id="oBK-gh-Hik"/>
+                                    <constraint firstAttribute="bottom" secondItem="6VI-YW-fwJ" secondAttribute="bottom" constant="-27" id="1V2-Xz-6e8"/>
+                                    <constraint firstItem="6VI-YW-fwJ" firstAttribute="leading" secondItem="WR4-N0-Gqu" secondAttribute="leading" constant="8" id="3Zd-ep-CRd"/>
+                                    <constraint firstItem="6VI-YW-fwJ" firstAttribute="top" secondItem="WR4-N0-Gqu" secondAttribute="top" constant="8" id="Y9E-Ok-fhu"/>
+                                    <constraint firstAttribute="trailing" secondItem="6VI-YW-fwJ" secondAttribute="trailing" constant="47" id="l2h-yq-nwV"/>
+                                    <constraint firstItem="6VI-YW-fwJ" firstAttribute="leading" secondItem="WR4-N0-Gqu" secondAttribute="leading" constant="8" id="lAr-nh-3ZM"/>
+                                    <constraint firstItem="6VI-YW-fwJ" firstAttribute="leading" secondItem="WR4-N0-Gqu" secondAttribute="leading" constant="8" id="vPk-S6-h0M"/>
+                                    <constraint firstItem="6VI-YW-fwJ" firstAttribute="leading" secondItem="WR4-N0-Gqu" secondAttribute="leadingMargin" id="wQb-xE-QtP"/>
                                 </constraints>
-                            </stackView>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6VI-YW-fwJ" firstAttribute="leading" secondItem="Hzk-w2-g28" secondAttribute="leadingMargin" constant="8" id="7ds-O8-wLC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6VI-YW-fwJ" secondAttribute="trailing" id="JS2-eb-ocw"/>
-                            <constraint firstItem="6VI-YW-fwJ" firstAttribute="top" secondItem="59Y-Ji-Y1t" secondAttribute="bottom" constant="8" id="viU-AH-Y0x"/>
+                            <constraint firstItem="WR4-N0-Gqu" firstAttribute="leading" secondItem="Hzk-w2-g28" secondAttribute="leading" id="0pc-EI-Xdh"/>
+                            <constraint firstItem="WR4-N0-Gqu" firstAttribute="centerY" secondItem="Hzk-w2-g28" secondAttribute="centerY" id="9fP-9R-gwr"/>
+                            <constraint firstAttribute="trailing" secondItem="WR4-N0-Gqu" secondAttribute="trailing" id="Am5-u8-X90"/>
+                            <constraint firstItem="WR4-N0-Gqu" firstAttribute="top" secondItem="59Y-Ji-Y1t" secondAttribute="bottom" id="z9u-jg-P9t"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fkl-41-WJH">
@@ -183,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Um-US-U16" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5294" y="1057"/>
+            <point key="canvasLocation" x="5293.6000000000004" y="1055.6221889055473"/>
         </scene>
         <!--Pacientes-->
         <scene sceneID="Mvi-gC-Xa6">
@@ -512,6 +538,7 @@
     </scenes>
     <resources>
         <image name="Account" width="25" height="25"/>
+        <image name="Add User" width="25" height="25"/>
         <image name="Star-50" width="25" height="25"/>
     </resources>
 </document>

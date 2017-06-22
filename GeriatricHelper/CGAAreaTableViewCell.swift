@@ -16,6 +16,7 @@ class CGAAreaTableViewCell: UITableViewCell {
     // name of the CGA area
     @IBOutlet weak var areaLabel: UILabel!
     
+    @IBOutlet weak var completedScales: UILabel!
     var area:String?
     
     @IBOutlet weak var infoButton: UIButton!
@@ -23,12 +24,13 @@ class CGAAreaTableViewCell: UITableViewCell {
     
     @IBAction func infoButtonClicked(_ sender: Any) {
         
-        
         // display popover
         let popOverVC = UIStoryboard(name: "PopOvers", bundle: nil).instantiateViewController(withIdentifier: "textPopUp") as! TextPopUpViewController
         
         popOverVC.modalPresentationStyle = UIModalPresentationStyle.popover
         let popover: UIPopoverPresentationController = popOverVC.popoverPresentationController!
+        
+        // set the source
         popover.sourceView = self.infoButton
         popover.sourceRect = self.infoButton.bounds
 
@@ -54,7 +56,8 @@ class CGAAreaTableViewCell: UITableViewCell {
     // create the cell
     static func createCell(cell: CGAAreaTableViewCell,
                            area: String,
-                           viewController: UIViewController) -> UITableViewCell{
+                           viewController: UIViewController,
+                           scales: [GeriatricScale]) -> UITableViewCell{
         
         
         cell.area = area
@@ -62,7 +65,28 @@ class CGAAreaTableViewCell: UITableViewCell {
         
         cell.areaLabel.text = area
         
-        // TODO display already completed scales
+        // display already completed scales
+        var completedScales: [GeriatricScale]? = []
+        
+        // get scales for area
+        for scale in scales{
+            if scale.completed == true {
+                completedScales?.append(scale)
+            }
+        }
+        
+        
+        if completedScales!.count > 0{
+            var completionText=""
+            for scale in completedScales!{
+                completionText += scale.shortName!+"   "
+            
+            }
+            cell.completedScales.text=completionText
+        }
+        else{
+            cell.completedScales.text=""
+        }
         
         //display area icon
         switch area {

@@ -16,6 +16,7 @@ class ScaleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var infoButton: UIButton!
     
+    @IBOutlet weak var notes: UITextField!
     
     @IBAction func infoButtonClicked(_ sender: Any) {
         
@@ -38,6 +39,11 @@ class ScaleTableViewCell: UITableViewCell {
     
     var viewController:UIViewController?
     
+    @IBAction func notesUpdated(_ sender: Any) {
+        // save notes to scale
+        scale!.notes = notes.text
+        
+    }
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var resultQualitative: UILabel!
     
@@ -70,6 +76,10 @@ class ScaleTableViewCell: UITableViewCell {
             
             cell.resultQualitative?.text = ""
             cell.resultQuantitative?.text = ""
+        }
+        
+        if scale.notes != nil{
+            cell.notes.text = scale.notes
         }
         
         

@@ -6,7 +6,8 @@ class CGAPublicQuestionOptionsViewController: UITableViewController {
     
     // MARK: Constants
     
-    var question: Question!
+    var questionDB: Question!
+    var questionNonDB: Question!
     
     // MARK: Properties
     // questions
@@ -17,7 +18,7 @@ class CGAPublicQuestionOptionsViewController: UITableViewController {
     var selectedChoice:Choice? {
         didSet {
             if let choice = selectedChoice  {
-                selectedChoiceIndex = question?.choices?.index{$0 === choice}
+                selectedChoiceIndex = questionNonDB?.choices?.index{$0 === choice}
             }
         }
     }
@@ -33,7 +34,10 @@ class CGAPublicQuestionOptionsViewController: UITableViewController {
         tableView.allowsMultipleSelectionDuringEditing = false
         
         // get choices for this question
-        self.choices = self.question.choices!
+        self.choices = self.questionNonDB.choices!
+        
+        // set title
+        self.title = self.questionNonDB.descriptionText!
         
     }
     
@@ -77,13 +81,15 @@ class CGAPublicQuestionOptionsViewController: UITableViewController {
         
         // save result
         
-        question.selectedChoice = selectedChoice?.name
-        question.answered = true
+        questionDB.selectedChoice = selectedChoice?.name
+        questionDB.answered = true
         
 
-        
         //update the checkmark for the current row
         cell.accessoryType = .checkmark
+        
+        // update question
+        FirebaseDatabaseHelper.updateQuestion(question: questionDB)
     }
 
     

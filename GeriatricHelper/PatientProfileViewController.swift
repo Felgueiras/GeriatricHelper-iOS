@@ -353,9 +353,9 @@ class PatientProfileViewController: UIViewController{
     // prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == ViewPatientSessions {
-            let destinationViewController = segue.destination as! PatientSessionsTableViewController
-            // set the author
-            destinationViewController.patient = patient
+//            let destinationViewController = segue.destination as! PatientSessionsTableViewController
+//            // set the author
+//            destinationViewController.patient = patient
             
         }
         else if segue.identifier == ViewSessionScales {
@@ -473,15 +473,30 @@ extension PatientProfileViewController: UITableViewDataSource, UITableViewDelega
     }
     
     /**
-     Remove a prescription.
+     Remove a prescription/session.
      **/
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            // remove from Firebase
-            let prescription = prescriptions[indexPath.row]
-            FirebaseDatabaseHelper.deletePrescription(prescription: prescription,
-                                                      patient: patient)
+            switch segmentedControl.selectedSegmentIndex
+            {
+            case 0:
+                // TODO remove session from Firebase
+                let session = sessions[indexPath.row]
+                FirebaseDatabaseHelper.deleteSession(session: session,
+                patient: patient)
+            case 2:
+                // remove prescription
+                let prescription = prescriptions[indexPath.row]
+                FirebaseDatabaseHelper.deletePrescription(prescription: prescription,
+                                                          patient: patient)
+            default:
+                break
+            }
+            
+            // TODO show animation
+            table.reloadData()
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }

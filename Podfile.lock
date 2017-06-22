@@ -38,6 +38,7 @@ PODS:
   - FirebaseStorage (1.1.0):
     - FirebaseAnalytics (~> 3.7)
     - GTMSessionFetcher/Core (~> 1.1)
+  - FSCalendar (2.7.4)
   - GoogleToolboxForMac/DebugUtils (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/Defines (2.1.1)
@@ -62,6 +63,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/RemoteConfig
   - Firebase/Storage
+  - FSCalendar
   - ObjectMapper (~> 2.2)
   - Onboard
   - SearchTextField
@@ -77,6 +79,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
   FirebaseRemoteConfig: af3003f4e8daa2bd1d5cf90d3cccc1fe224f8ed9
   FirebaseStorage: a5c55b23741a49a72af8f30f95b3bb5ddbeda12d
+  FSCalendar: e95995a746acae531c4a7dd636b8393233125ec5
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
@@ -85,6 +88,6 @@ SPEC CHECKSUMS:
   SearchTextField: 5daab6cecfd90e06f9b08b2814593656c0c99f3d
   SwiftMessages: 09cea3336e3fb63c3578983c8aac65acaa6d884a
 
-PODFILE CHECKSUM: 3698f307e3be8392bbb4cda4ec85d38cd54ab15b
+PODFILE CHECKSUM: bfbb28590c87666da1d7c7c1066157d4830c134e
 
 COCOAPODS: 1.2.1

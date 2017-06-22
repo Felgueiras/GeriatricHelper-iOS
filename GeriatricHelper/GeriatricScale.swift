@@ -28,6 +28,7 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
     var ref: FIRDatabaseReference?
     var answer: String?
     var result: Double?
+    var notes: String?
     
     
     
@@ -36,6 +37,7 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
     required convenience init(coder aDecoder: NSCoder) {
         let area = aDecoder.decodeObject(forKey: "area") as! String
         let descriptionText = aDecoder.decodeObject(forKey: "descriptionText") as! String
+        let notes = aDecoder.decodeObject(forKey: "notes") as? String
         let scaleName = aDecoder.decodeObject(forKey: "scaleName") as! String
         let multipleChoice = aDecoder.decodeObject(forKey: "multipleChoice") as! Bool
         let singleQuestion = aDecoder.decodeObject(forKey: "singleQuestion") as! Bool
@@ -51,7 +53,8 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
                   shortName: shortName,
                   scoring: scoring,
                   multipleCategories: multipleCategories,
-                  questionsCategories: questionsCategories)
+                  questionsCategories: questionsCategories,
+                  notes: notes)
     }
     
     override init(){}
@@ -68,6 +71,7 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
         aCoder.encode(questions, forKey: "questions")
         aCoder.encode(multipleCategories, forKey: "multipleCategories")
         aCoder.encode(questionsCategories, forKey: "questionsCategories")
+        aCoder.encode(notes, forKey: "notes")
     }
     
     init(area: String, multipleChoice: Bool?, singleQuestion: Bool, descriptionText: String,
@@ -76,7 +80,8 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
          shortName: String,
          scoring: Scoring,
          multipleCategories: Bool?,
-         questionsCategories: [QuestionCategory]?) {
+         questionsCategories: [QuestionCategory]?,
+         notes: String?) {
         self.area = area
         self.multipleChoice = multipleChoice
         self.singleQuestion = singleQuestion
@@ -87,6 +92,7 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
         self.scoring = scoring
         self.multipleCategories = multipleCategories
         self.questionsCategories = questionsCategories
+        self.notes = notes
     }
 
     
@@ -117,6 +123,7 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
         answer  <- map["answer"]
         result  <- map["result"]
         questionsCategories  <- map["questionsCategories"]
+        notes  <- map["notes"]
     }
 
     
@@ -142,6 +149,7 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
         scoring = snapshotValue["scoring"] as? Scoring
         singleQuestion = snapshotValue["singleQuestion"] as? Bool
         answer = snapshotValue["answer"] as? String
+        notes = snapshotValue["notes"] as? String
         result = snapshotValue["result"] as? Double
     }
     
@@ -157,7 +165,8 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
             "guid": guid,
             "scaleName": scaleName,
             "sessionID": sessionID,
-            "singleQuestion": singleQuestion
+            "singleQuestion": singleQuestion,
+            "notes": notes
         ]
     }
     

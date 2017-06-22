@@ -114,6 +114,10 @@ class SessionPDFComposer: NSObject {
                         itemHTMLContent = itemHTMLContent.replacingOccurrences(of: "#QUALITATIVE#", with: ScaleHelper.getQualitativeResult(scale: scale ))
                         itemHTMLContent = itemHTMLContent.replacingOccurrences(of: "#QUANTITATIVE#", with: ScaleHelper.getQuantitativeResult(scale: scale))
                         
+                            itemHTMLContent = itemHTMLContent.replacingOccurrences(of: "#NOTES#", with: scale.notes!)
+                        
+                        
+                        
                         // Add the item's HTML code to the general items string.
                         allItems += itemHTMLContent
                     }

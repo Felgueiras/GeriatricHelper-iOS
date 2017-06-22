@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SZx-We-HUP">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Data Source-->
+        <scene sceneID="D6U-iJ-4t7">
+            <objects>
+                <viewController title="FSCalendarScopeExample" id="8Oy-cn-ntP" customClass="SessionsTableViewController" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n2Z-3c-sks"/>
+                        <viewControllerLayoutGuide type="bottom" id="tyV-KV-ak0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DBE-px-rG5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9A4-On-KOo" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="64" width="375" height="300"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="qYi-gO-cep"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fakedSelectedDay">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="8Oy-cn-ntP" id="6bv-hv-eqd"/>
+                                    <outlet property="delegate" destination="8Oy-cn-ntP" id="J01-Sk-1e8"/>
+                                </connections>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yjn-Wd-kdA">
+                                <rect key="frame" x="8" y="372" width="359" height="238"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ItemCell" id="FCu-Du-9It">
+                                        <rect key="frame" x="0.0" y="28" width="359" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FCu-Du-9It" id="yW5-DH-J7b">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="8Oy-cn-ntP" id="byg-4C-jDa"/>
+                                    <outlet property="delegate" destination="8Oy-cn-ntP" id="EAu-ob-lRv"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tyV-KV-ak0" firstAttribute="top" secondItem="Yjn-Wd-kdA" secondAttribute="bottom" constant="8" id="JqA-Cd-r72"/>
+                            <constraint firstItem="Yjn-Wd-kdA" firstAttribute="top" secondItem="9A4-On-KOo" secondAttribute="bottom" constant="8" id="S73-sc-6JS"/>
+                            <constraint firstItem="Yjn-Wd-kdA" firstAttribute="centerX" secondItem="DBE-px-rG5" secondAttribute="centerX" id="UM0-js-aHy"/>
+                            <constraint firstAttribute="trailing" secondItem="Yjn-Wd-kdA" secondAttribute="trailing" constant="8" id="Upo-qT-qXP"/>
+                            <constraint firstItem="9A4-On-KOo" firstAttribute="top" secondItem="n2Z-3c-sks" secondAttribute="bottom" id="fp8-zO-W2Q"/>
+                            <constraint firstItem="9A4-On-KOo" firstAttribute="leading" secondItem="DBE-px-rG5" secondAttribute="leading" id="gZa-rR-Kuk"/>
+                            <constraint firstItem="Yjn-Wd-kdA" firstAttribute="leading" secondItem="DBE-px-rG5" secondAttribute="leading" constant="8" id="vFu-Li-lps"/>
+                            <constraint firstAttribute="trailing" secondItem="9A4-On-KOo" secondAttribute="trailing" id="xNH-b7-vCO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sessões" id="MG9-kF-ArK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="S9b-4s-hA6">
+                            <connections>
+                                <action selector="createSession:" destination="8Oy-cn-ntP" id="MzB-iJ-FyS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="calendar" destination="9A4-On-KOo" id="uIL-qH-J6d"/>
+                        <outlet property="calendarHeightConstraint" destination="qYi-gO-cep" id="ZtA-3T-8kh"/>
+                        <outlet property="tableView" destination="Yjn-Wd-kdA" id="wfw-Sd-3ay"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WXt-cM-nLg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2906" y="2312"/>
+        </scene>
+        <!--Sessões-->
+        <scene sceneID="eZW-Ju-CH0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SZx-We-HUP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Sessões" image="Health Book-50" id="YKS-fI-amF"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9ey-Tw-7bb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8Oy-cn-ntP" kind="relationship" relationship="rootViewController" id="yWM-kj-c6P"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yrW-uM-GCM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3702" y="2340"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Health Book-50" width="25" height="25"/>
+    </resources>
+</document>

@@ -117,17 +117,21 @@ class PatientsManagement{
         }
     }
     
-    
-//    static  getPatientFromSession( session: Session) {
-//    
-//  
-//    ArrayList<PatientFirebase> patients = getPatients(context);
-//    for (PatientFirebase patient : patients) {
-//    if (patient.getGuid().equals(session.getPatientID()))
-//    return patient;
-//    }
-//    return null;
-//    }
+
+    /**
+     Get Patient from Session.
+ **/
+    static  func getPatientFromSession(session: Session) -> Patient?{
+        
+        
+        let patients = getPatients()
+        for patient in patients {
+            if patient.guid == session.patientID{
+                return patient
+            }
+        }
+        return nil
+    }
 }
 
 

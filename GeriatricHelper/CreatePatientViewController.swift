@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftMessages
 
 class CreatePatientViewController: UIViewController {
 
@@ -204,6 +205,8 @@ class CreatePatientViewController: UIViewController {
         patient.favorite = false
         
         PatientsManagement.createPatient(patient: patient)
+        
+        SwiftMessagesHelper.showMessage(type: Theme.success, text: "Pacient criado com sucesso")
         
         // go back to list of patients
         dismiss(animated: true, completion: nil)

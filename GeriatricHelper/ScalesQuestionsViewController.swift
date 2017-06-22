@@ -72,8 +72,8 @@ class ScalesQuestionsViewController: UITableViewController {
         
         cell.textLabel?.text = question.descriptionText!
         cell.detailTextLabel?.text = question.selectedChoice
-        
-//        toggleCellCheckbox(cell, isCompleted: patient.favorite)
+
+        cell.accessoryType = .checkmark
         
         return cell
     }

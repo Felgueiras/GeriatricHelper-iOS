@@ -23,12 +23,15 @@ class TextPopUpViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-//        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+//         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
+        self.view.backgroundColor = UIColor.clear
+        self.view.isOpaque = false
         
         text?.text = displayText
         
         self.showAnimate()
+        
+        // TODO set size
     }
 
     override func didReceiveMemoryWarning() {

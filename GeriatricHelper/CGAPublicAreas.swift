@@ -5,14 +5,13 @@ import FirebaseDatabase
 
 
 // show all scales from CGA
-//TODO - display scales organized by areas
 class CGAPublicAreas: UITableViewController {
     
-    
-
     var session: Session?
     
     let ViewAreaScales = "ViewAreaScales"
+    
+    var scales:[GeriatricScale] = []
     
     
     // cancel public CGA session
@@ -99,9 +98,33 @@ class CGAPublicAreas: UITableViewController {
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+            
+        // check session type
+        if session!.type == Session.sessionType.privateSession {
+            
+            // private session
+            FirebaseHelper.ref.child(FirebaseHelper.scalesReferencePath).queryOrdered(byChild: "sessionID").queryEqual(toValue: session?.guid!).observe(.value, with: { snapshot in
+                var scalesFirebase: [GeriatricScale] = []
+                
+                for item in snapshot.children {
+                    let scale = GeriatricScale(snapshot: item as! FIRDataSnapshot)
+                    scalesFirebase.append(scale)
+                }
+                
+                self.scales = scalesFirebase
+                self.tableView.reloadData()
+            })
+            
+        }
+        else{
+            // public session
+            self.scales = Constants.cgaPublicScales!
+        }
         
-        // TODO remove
-//        session = Constants.cgaPublicSession
+        self.tableView.reloadData()
     }
     
     // number of rows per section
@@ -118,10 +141,14 @@ class CGAPublicAreas: UITableViewController {
         
         let cell = Bundle.main.loadNibNamed("CGAAreaTableViewCell", owner: self, options: nil)?.first as! CGAAreaTableViewCell
         let area = Constants.cgaAreas[indexPath.row]
+        
+        // get scales for area
+        
     
         return CGAAreaTableViewCell.createCell(cell: cell,
                                                area: area,
-                                               viewController: self)
+                                               viewController: self,
+                                               scales: Constants.getScalesForAreaFromSession(area: area, scales: scales))
         
         return cell        
     }
@@ -161,13 +188,24 @@ class CGAPublicAreas: UITableViewController {
             
             
             let destinationViewController = segue.destination as! CGAScalesForArea
-            // set the author
+            
+            // create session
             destinationViewController.area = areaName
             destinationViewController.session = session!
+        } else if segue.identifier == "ReviewPublicSession" {
             
+            var DestViewController = segue.destination as! UINavigationController
+            let destinationViewController = DestViewController.topViewController as! ReviewSessionTableViewController
+            
+            
+            // set the author
+            destinationViewController.session = session
+            destinationViewController.scales = scales
             
         }
         
     }
+    
+
     
 }

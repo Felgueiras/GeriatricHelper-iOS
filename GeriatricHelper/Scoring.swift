@@ -28,12 +28,16 @@ class Scoring: NSObject, Mappable, NSCoding {
         let minMen = aDecoder.decodeObject(forKey: "minMen") as! Int
         let minScore = aDecoder.decodeObject(forKey: "minScore") as! Int
         let valuesBoth = aDecoder.decodeObject(forKey: "valuesBoth") as? [Grading]
+        let valuesMen = aDecoder.decodeObject(forKey: "valuesMen") as? [Grading]
+        let valuesWomen = aDecoder.decodeObject(forKey: "valuesWomen") as? [Grading]
         self.init(differentMenWomen: differentMenWomen,
                   maxMen: maxMen,
                   maxScore: maxScore,
                   minMen: minMen,
                   minScore: minScore,
-                  valuesBoth: valuesBoth)
+                  valuesBoth: valuesBoth,
+                  valuesMen: valuesMen,
+                  valuesWomen: valuesWomen)
     }
     
     // encode
@@ -44,6 +48,8 @@ class Scoring: NSObject, Mappable, NSCoding {
         aCoder.encode(minMen, forKey: "minMen")
         aCoder.encode(minScore, forKey: "minScore")
         aCoder.encode(valuesBoth, forKey: "valuesBoth")
+        aCoder.encode(valuesMen, forKey: "valuesMen")
+        aCoder.encode(valuesWomen, forKey: "valuesWomen")
     }
     
     
@@ -52,7 +58,9 @@ class Scoring: NSObject, Mappable, NSCoding {
          maxScore: Int,
          minMen: Int,
          minScore: Int,
-         valuesBoth: [Grading]?) {
+         valuesBoth: [Grading]?,
+         valuesMen: [Grading]?,
+         valuesWomen: [Grading]?         ) {
         
         self.differentMenWomen = differentMenWomen
         self.maxMen = maxMen
@@ -60,6 +68,8 @@ class Scoring: NSObject, Mappable, NSCoding {
         self.maxScore = maxScore
         self.minScore = minScore
         self.valuesBoth = valuesBoth
+        self.valuesMen = valuesMen
+        self.valuesWomen = valuesWomen
         
     }
     
@@ -81,6 +91,8 @@ class Scoring: NSObject, Mappable, NSCoding {
         minMen  <- map["minMen"]
         minScore  <- map["minScore"]
         valuesBoth <- map["valuesBoth"]
+        valuesMen <- map["valuesMen"]
+        valuesWomen <- map["valuesWomen"]
     }
 
     

@@ -204,9 +204,7 @@ class InitialSetup: UIViewController {
             let decoded  = defaults.object(forKey: "scales") as! Data
             let decodedScales = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [GeriatricScale]
             Constants.scales = decodedScales
-        
             
-            print("Presenting")
             // check if user is already logged in
             FIRAuth.auth()!.addStateDidChangeListener { auth, user in
                 guard user != nil else {
@@ -219,9 +217,12 @@ class InitialSetup: UIViewController {
                 // save user ID
                 FirebaseHelper.userID = FIRAuth.auth()?.currentUser?.uid
                 
-               
+                // load questions
+                FirebaseDatabaseHelper.fetchQuestions()
                 // load scales
                 FirebaseDatabaseHelper.fetchScales()
+                // load sessions
+                FirebaseDatabaseHelper.fetchSessions()
                 
                 // navigate automatically to the private area
                 self.performSegue(withIdentifier: "NavigatePersonalArea", sender: self)

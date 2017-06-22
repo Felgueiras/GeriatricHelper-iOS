@@ -83,8 +83,9 @@ class CGAPublicInfo: UIViewController {
             addScalesToSession()
             
             // pass Session to the destination controller
-//            let destinationViewController = segue.destination as! CGAScalesForArea
-//            destinationViewController.session = Constants.cgaPublicSession
+            let DestViewController = segue.destination as! UINavigationController
+            let destinationViewController = DestViewController.topViewController as! CGAPublicAreas
+            destinationViewController.session = Constants.cgaPublicSession
         }
         
     }

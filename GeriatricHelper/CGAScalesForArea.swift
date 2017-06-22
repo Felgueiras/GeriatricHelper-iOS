@@ -90,6 +90,9 @@ class CGAScalesForArea: UITableViewController {
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set title
+        self.title = area
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -114,9 +117,12 @@ class CGAScalesForArea: UITableViewController {
         else{
         // public session
             self.scales = Constants.cgaPublicScales
+            self.tableView.reloadData()
         }
         
         self.tableView.reloadData()
+        
+        
     }
     
     // number of rows per section
@@ -130,7 +136,6 @@ class CGAScalesForArea: UITableViewController {
         
         let cell = Bundle.main.loadNibNamed("ScaleTableViewCell", owner: self, options: nil)?.first as! ScaleTableViewCell
         
-        let sectionIndex = indexPath.section
         let rowInsideSection = indexPath.row
         let scalesForArea = Constants.getScalesForAreaFromSession(area: area!, scales: scales!)
         
@@ -147,7 +152,7 @@ class CGAScalesForArea: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         // TODO return the height of the cell
-        return 100
+        return 150
     }
     
     
@@ -201,6 +206,7 @@ class CGAScalesForArea: UITableViewController {
                     let destinationViewController = segue.destination as! CGAPublicScalesQuestions
                     // set the author
                     destinationViewController.scale = scale
+                    destinationViewController.session = session
                 }
             }
         }

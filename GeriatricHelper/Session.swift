@@ -22,11 +22,11 @@
     var type: sessionType?
     
     var scales: [GeriatricScale]? = []
-    var scalesIDS: [String]? = []
+    var scalesIDS: [String] = []
     
     
     
-    // initialize Patient from snapshot
+    // initialize Session from snapshot
     init(snapshot: FIRDataSnapshot) {
         key = snapshot.key
         let snapshotValue = snapshot.value as! [String: AnyObject]
@@ -34,7 +34,14 @@
         ref = snapshot.ref
         guid = snapshotValue["guid"] as! String
         patientID = snapshotValue["patientID"] as! String
-        scalesIDS = snapshotValue["scalesIDS"] as! [String]
+        if snapshotValue["scalesIDS"] == nil{
+            scalesIDS = []
+        }
+        else
+        {
+            scalesIDS = snapshotValue["scalesIDS"] as! [String]
+        
+        }
     }
     
     // convert into NSDisctionary - needed for Firebase
@@ -44,14 +51,14 @@
             "key": key,
             "guid": guid,
             "patientID": patientID,
-            "scalesIDS": scalesIDS
+            "scalesIDS": scalesIDS,
         ]
     }
     
-    
+    // add a scale to the session
     func addScaleID(scaleID:String)
     {
-        scalesIDS?.append(scaleID)
+        scalesIDS.append(scaleID)
         FirebaseDatabaseHelper.updateSession(session: self)
     }
     

@@ -73,8 +73,6 @@ class CGAScaleSingleChoice: UITableViewController {
         scale.answer = selectedChoice.grade
         scale.result = Double(selectedChoice.score!)
 
-        // TODO set numerical score
-//        scale.result = selectedChoice.score
         if scale.completed == nil{
             SwiftMessagesHelper.showMessage(type: Theme.info,
                                             text: StringHelper.allQuestionsAnswered)
@@ -89,6 +87,7 @@ class CGAScaleSingleChoice: UITableViewController {
             scale.answer = grading.grade
             scale.completed = true
             
+            // update scale
             FirebaseDatabaseHelper.updateScale(scale: scale);
         }
         

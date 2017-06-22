@@ -206,9 +206,7 @@
                             <outlet property="delegate" destination="Peu-5Z-UVe" id="TTC-Pp-N8k"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Scale's Questions" id="pfO-hN-GEp">
-                        <barButtonItem key="backBarButtonItem" title="GoBack" id="b5f-Dc-Vxz"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Scale's Questions" id="pfO-hN-GEp"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="sZv-8a-aEg" kind="show" identifier="ViewQuestionChoices" id="AzA-x6-MqA"/>
@@ -319,7 +317,7 @@
                             <constraint firstItem="3Yu-qI-2gA" firstAttribute="centerX" secondItem="jWi-9c-8hy" secondAttribute="centerX" id="wXs-iK-c2d"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Public Session Review" id="KLD-yf-FTp">
+                    <navigationItem key="navigationItem" title="Resumo da Sessão" id="KLD-yf-FTp">
                         <barButtonItem key="leftBarButtonItem" title="PDF" id="35t-0l-04X">
                             <connections>
                                 <action selector="createPdfButtonClicked:" destination="d1D-lX-Ir5" id="KAf-BI-5Cw"/>
@@ -484,9 +482,9 @@
         <image name="pill" width="13" height="13"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5sP-Qm-QCY"/>
+        <segue reference="oqv-rq-zFO"/>
+        <segue reference="I4X-mv-DhB"/>
+        <segue reference="J9u-7k-BWy"/>
         <segue reference="4ue-RV-T5t"/>
-        <segue reference="iGh-v3-wOO"/>
-        <segue reference="6MQ-Id-j66"/>
     </inferredMetricsTieBreakers>
 </document>

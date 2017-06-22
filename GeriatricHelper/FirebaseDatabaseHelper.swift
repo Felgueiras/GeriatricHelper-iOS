@@ -105,33 +105,32 @@ class FirebaseDatabaseHelper{
      //        });
      //    }
      
+     **/
      
      /**
      * Fetch Sessions from Firebase.
      */
-     public static void fetchSessions() {
-     FirebaseHelper.firebaseTableSessions.addValueEventListener(new ValueEventListener() {
-     
-     @Override
-     public void onDataChange(DataSnapshot dataSnapshot) {
-     Log.d("Firebase","Fetch sessions");
-     FirebaseHelper.sessions.clear();
-     for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-     SessionFirebase session = postSnapshot.getValue(SessionFirebase.class);
-     session.setKey(postSnapshot.getKey());
-     FirebaseHelper.sessions.add(session);
-     }
-     }
-     
-     @Override
-     public void onCancelled(DatabaseError databaseError) {
-     // Getting Post failed, log a message
-     }
-     });
-     }
-     
-     **/
-     
+    static func fetchSessions() {
+        // reference the user
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        
+        // get all scales scales
+        let sessionsRef = FirebaseHelper.ref.child("users").child(userID!).child("sessions")
+        sessionsRef.observe(.value, with: { (snapshot) in
+            FirebaseHelper.sessions = []
+            for item in snapshot.children {
+                let session = Session(snapshot: item as! FIRDataSnapshot)
+                
+                FirebaseHelper.sessions.append(session)
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    
+    
      /**
      * Fetch Scales from Firebase.
      */
@@ -168,20 +167,38 @@ class FirebaseDatabaseHelper{
      });
      }
      
-     /**
+     **/
+     
+    /**
      * Fetch questions from Firebase.
      */
-     public static void fetchQuestions() {
-     FirebaseHelper.firebaseTableQuestions.addValueEventListener(new ValueEventListener() {
-     @Override
-     public void onDataChange(DataSnapshot dataSnapshot) {
-     Log.d("Firebase","Fetch questions");
-     FirebaseHelper.questions.clear();
-     for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-     QuestionFirebase question = postSnapshot.getValue(QuestionFirebase.class);
-     question.setKey(postSnapshot.getKey());
-     FirebaseHelper.questions.add(question);
+    static func fetchQuestions() {
+        
+        // reference the user
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        
+        // get all questions
+        let scalesRef = FirebaseHelper.ref.child("users").child(userID!).child("questions")
+        scalesRef.observe(.value, with: { (snapshot) in
+            FirebaseHelper.questions = []
+            for item in snapshot.children {
+                let question = Question(snapshot: item as! FIRDataSnapshot)
+                
+                FirebaseHelper.questions.append(question)
+                
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+        /**
+     
+     }) { (error) in
+     print(error.localizedDescription)
      }
+     
      }
      
      @Override
@@ -214,36 +231,27 @@ class FirebaseDatabaseHelper{
      }
      });
      }
+     **/
      
      /**
      * Get different session dates (display sessions by date).
      *
      * @return
      */
-     public static ArrayList<Date> getDifferentSessionDates() {
-     HashSet<Date> days = new HashSet<>();
-     for (SessionFirebase session : FirebaseHelper.sessions) {
-     Date dateWithoutHour = DatesHandler.getDateWithoutHour(session.getDate());
-     days.add(dateWithoutHour);
-     }
-     ArrayList<Date> differentDates = new ArrayList<>();
-     differentDates.addAll(days);
-     // order by date (descending)
-     Collections.sort(differentDates, new Comparator<Date>() {
-     @Override
-     public int compare(Date first, Date second) {
-     if (first.after(second)) {
-     return -1;
-     } else if (first.before(second)) {
-     return 1;
-     } else
-     return 0;
-     }
-     });
-     return differentDates;
+    static func getDifferentSessionDates() -> [Date] {
+        var days = NSMutableSet()
+        for  session in FirebaseHelper.sessions {
+            var dateWithoutHour = DatesHandler.getDateWithoutHour(date: session.date!)
+            days.add(dateWithoutHour);
+        }
+        var differentDates = Array(days) as! [Date]
      
-     }
-     **/
+        // order by date (descending)
+        return differentDates;
+        
+}
+
+    
      
      
 //    static func  getScaleInstancesForPatient(patientSessions: [Session],
@@ -260,6 +268,8 @@ class FirebaseDatabaseHelper{
 //        }
 //        return scaleInstances;
 //    }
+    
+    
     
     static func  getScaleInstancesForPatient(patientSessions: [Session],
                                              scaleName: String) -> [GeriatricScale] {
@@ -341,16 +351,14 @@ class FirebaseDatabaseHelper{
 //        }
     }
     
-    /**
+   
      
-     public static void updateQuestion(QuestionFirebase question) {
-     FirebaseAuth auth = FirebaseAuth.getInstance();
-     if (auth.getCurrentUser() != null) {
-     FirebaseHelper.firebaseTableQuestions.child(question.getKey()).setValue(question);
-     }
-     }
-     
-     **/
+    static func updateQuestion(question: Question) {
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        if userID != nil {
+            FirebaseHelper.ref.child(FirebaseHelper.questionsReferencePath).child(question.key!).setValue(question.toAnyObject())
+        }
+    }
     
     static func updateSession(session:Session) {
         FirebaseHelper.ref.child(FirebaseHelper.sessionsReferencePath).child(session.key!).setValue(session.toAnyObject())
@@ -370,19 +378,21 @@ class FirebaseDatabaseHelper{
      
      
      **/
-    
-    static func deleteSession(session:Session) {
-     
-     // remove session from patient's sessions list (if patient not null)
+    // TODo
+    static func deleteSession(session:Session,
+                              patient: Patient) {
         
         
+        if let itemToRemoveIndex = patient.sessionsIDS.index(of: session.guid!) {
+            patient.sessionsIDS.remove(at: itemToRemoveIndex)
+        }
+        
+        PatientsManagement.updatePatient(patient: patient)
         
         
-//     var patient = PatientsManagement.getPatientFromSession(session, context);
-//     if (patient != null) {
-//     patient.getSessionsIDS().remove(session.getGuid());
-//                 updatePatient(patient);
-//     }
+        // remove session
+        session.ref?.removeValue()
+
 //        
 //        public static PatientFirebase getPatientFromSession(SessionFirebase session, Context context) {
 //            FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -651,7 +661,7 @@ class FirebaseDatabaseHelper{
      
     static func  getScalesFromSession(session: Session) -> [GeriatricScale]{
         
-        let scalesIDS = session.scalesIDS!
+        let scalesIDS = session.scalesIDS
         var  scalesForSession:[GeriatricScale] = []
         
         // get scales with those IDS
@@ -685,31 +695,43 @@ class FirebaseDatabaseHelper{
      
      }
      
+     **/
+     
      /**
      * Get questions from a scale.
      *
      * @param scale
      * @return
      */
-     public static ArrayList<QuestionFirebase> getQuestionsFromScale(GeriatricScaleFirebase scale) {
-     ArrayList<QuestionFirebase> questionsFromScale = new ArrayList<>();
-     ArrayList<QuestionFirebase> questionsToConsider = new ArrayList<>();
-     // get scales with those IDS
-     FirebaseAuth auth = FirebaseAuth.getInstance();
-     if (auth.getCurrentUser() != null) {
-     questionsToConsider = FirebaseHelper.questions;
-     } else {
-     questionsToConsider = Constants.publicQuestions;
-     
-     }
-     
-     for (QuestionFirebase question : questionsToConsider) {
-     if (question.getScaleID().equals(scale.getGuid())) {
-     questionsFromScale.add(question);
-     }
-     }
-     return questionsFromScale;
-     }
+    static func getQuestionsFromScale(scale:GeriatricScale) -> [Question] {
+//        ArrayList<QuestionFirebase> questionsFromScale = new ArrayList<>();
+//        ArrayList<QuestionFirebase> questionsToConsider = new ArrayList<>();
+//        // get scales with those IDS
+//        FirebaseAuth auth = FirebaseAuth.getInstance();
+//        if (auth.getCurrentUser() != null) {
+//            questionsToConsider = FirebaseHelper.questions;
+//        } else {
+//            questionsToConsider = Constants.publicQuestions;
+//            
+//        }
+        
+ 
+        
+
+        var  questions:[Question] = []
+        
+        // get scales with those IDS
+        for var question in FirebaseHelper.questions {
+            if question.scaleID == scale.guid{
+                
+                questions.append(question)
+            }
+            
+        }
+        return questions
+    }
+    
+    /**
      
      /**
      * Get Choices for a Question.
@@ -781,5 +803,6 @@ class FirebaseDatabaseHelper{
         questionref.setValue(question.toAnyObject())
     }
 
+ 
 
 }

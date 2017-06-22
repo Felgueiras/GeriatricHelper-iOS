@@ -16,6 +16,8 @@ class FirebaseHelper{
 
     static var userID:String?
     static var scales:[GeriatricScale] = []
+    static var sessions:[Session] = []
+    static var questions:[Question] = []
     
     static let ref = FIRDatabase.database().reference()
     

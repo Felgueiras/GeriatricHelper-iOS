@@ -52,6 +52,7 @@ class Patient: NSObject, NSCoding {
     var ref: FIRDatabaseReference?
     var processNumber: String?
     var  prescriptionsIDS: [String] = []
+    var  sessionsIDS: [String] = []
     
     //    init(name: String,  key: String = "") {
     //        self.key = key
@@ -71,7 +72,7 @@ class Patient: NSObject, NSCoding {
         favorite = snapshotValue["favorite"] as! Bool
         guid = snapshotValue["guid"] as! String
         prescriptionsIDS = snapshotValue["prescriptionsIDS"] as! [String]
-        
+        sessionsIDS = snapshotValue["sessionsIDS"] as! [String]
     }
     
     override init(){
@@ -83,7 +84,8 @@ class Patient: NSObject, NSCoding {
             "name": name,
             "favorite": favorite,
             "processNumber": processNumber,
-            "prescriptionsIDS": prescriptionsIDS
+            "prescriptionsIDS": prescriptionsIDS,
+            "sessionsIDS": sessionsIDS,
         ]
     }
     

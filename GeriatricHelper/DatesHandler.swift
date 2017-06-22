@@ -93,36 +93,36 @@ class DatesHandler{
                 return "Last year"
             }
         } else if (components.month! >= 2) {
-            return "\(components.month!) months ago"
+            return "\(components.month!) meses atrás"
         } else if (components.month! >= 1){
             if (numericDates){
-                return "1 month ago"
+                return "1 mês atrás"
             } else {
-                return "Last month"
+                return "Último mês"
             }
         } else if (components.weekOfYear! >= 2) {
-            return "\(components.weekOfYear!) weeks ago"
+            return "\(components.weekOfYear!) semanas atrás"
         } else if (components.weekOfYear! >= 1){
             if (numericDates){
-                return "1 week ago"
+                return "1 semana atrás"
             } else {
-                return "Last week"
+                return "Última semana"
             }
         } else if (components.day! >= 2) {
-            return "\(components.day!) days ago"
+            return "\(components.day!) dias atrás"
         } else if (components.day! >= 1){
             if (numericDates){
-                return "1 day ago"
+                return "1 dia atrás"
             } else {
-                return "Yesterday"
+                return "Ontem"
             }
         } else if (components.hour! >= 2) {
-            return "\(components.hour!) hours ago"
+            return "\(components.hour!) horas atrás"
         } else if (components.hour! >= 1){
             if (numericDates){
-                return "1 hour ago"
+                return "1 hora atrás"
             } else {
-                return "An hour ago"
+                return "Uma hora atrás"
             }
         } else if (components.minute! >= 2) {
             return "\(components.minute!) minutes ago"
@@ -133,9 +133,9 @@ class DatesHandler{
                 return "A minute ago"
             }
         } else if (components.second! >= 3) {
-            return "\(components.second!) seconds ago"
+            return "\(components.second!) segundos atrás"
         } else {
-            return "Just now"
+            return "Agora"
         }
         
     }
@@ -205,22 +205,30 @@ class DatesHandler{
      return cal.getTime();
      }
      
+     **/
+     
      /**
      * Get date (not including hour and minutes).
      *
      * @param date
      * @return
      */
-     public static Date getDateWithoutHour(long date) {
-     // create a copy of the date with hour and minute set to 0
-     
-     Calendar calendar = Calendar.getInstance();
-     calendar.setTimeInMillis(date);
-     return DatesHandler.createCustomDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
-     0, 0);
-     }
-     }
-
- **/
-
+    static func  getDateWithoutHour(date: Date) -> Date {
+        // create a copy of the date with hour and minute set to 0
+        
+        let calendar = NSCalendar.current
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        
+        let dateString = dateFormatter.string(from: date)
+        
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        
+        return dateFormatter.date(from: dateString)!
+    }
 }
+
+
+

@@ -60,9 +60,11 @@ class ReviewSessionTableViewController: UIViewController {
         
         SwiftMessagesHelper.showMessage(type: Theme.success, text: StringHelper.sessionFinished)
     }
-
-
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.table.reloadData()
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -126,7 +128,7 @@ extension ReviewSessionTableViewController: UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         // return the height of the cell
-        return 100
+        return 150
     }
     
     

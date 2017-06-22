@@ -13,11 +13,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="rIF-vy-Ce7" customClass="CGAAreaTableViewCell" customModule="GeriatricHelper" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="133" id="rIF-vy-Ce7" customClass="CGAAreaTableViewCell" customModule="GeriatricHelper" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="141"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rIF-vy-Ce7" id="MYK-zF-812">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="107.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="140.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Qm-rG-V5N">
@@ -27,14 +27,20 @@
                         </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0wO-tO-KdU">
-                        <rect key="frame" x="8" y="30" width="45" height="46"/>
+                        <rect key="frame" x="8" y="30" width="79" height="80.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="0wO-tO-KdU" secondAttribute="height" multiplier="45:46" id="ewD-V2-cSV"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuy-jX-7lf">
-                        <rect key="frame" x="61" y="43" width="82" height="21"/>
+                        <rect key="frame" x="95" y="60" width="82" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed scales" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NrM-ZJ-iUe">
+                        <rect key="frame" x="95" y="89" width="122.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -46,15 +52,18 @@
                     <constraint firstAttribute="trailingMargin" secondItem="2Qm-rG-V5N" secondAttribute="trailing" constant="8" id="Ckw-HP-bSA"/>
                     <constraint firstItem="iuy-jX-7lf" firstAttribute="leading" secondItem="0wO-tO-KdU" secondAttribute="trailing" constant="8" id="Jza-8N-RXc"/>
                     <constraint firstItem="2Qm-rG-V5N" firstAttribute="top" secondItem="MYK-zF-812" secondAttribute="topMargin" constant="8" id="PWQ-lQ-fCq"/>
+                    <constraint firstItem="NrM-ZJ-iUe" firstAttribute="top" secondItem="iuy-jX-7lf" secondAttribute="bottom" constant="8" id="XhK-Rs-nag"/>
+                    <constraint firstItem="NrM-ZJ-iUe" firstAttribute="leading" secondItem="0wO-tO-KdU" secondAttribute="trailing" constant="8" id="aa7-j1-4dV"/>
                     <constraint firstItem="iuy-jX-7lf" firstAttribute="centerY" secondItem="MYK-zF-812" secondAttribute="centerY" id="atJ-qi-BF2"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="areaIcon" destination="0wO-tO-KdU" id="wvI-o1-A24"/>
                 <outlet property="areaLabel" destination="iuy-jX-7lf" id="ge8-Pm-2NQ"/>
+                <outlet property="completedScales" destination="NrM-ZJ-iUe" id="fUh-cF-txQ"/>
                 <outlet property="infoButton" destination="2Qm-rG-V5N" id="0DN-E5-jnW"/>
             </connections>
-            <point key="canvasLocation" x="14" y="5"/>
+            <point key="canvasLocation" x="14" y="21.5"/>
         </tableViewCell>
     </objects>
 </document>

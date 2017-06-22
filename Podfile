@@ -16,5 +16,6 @@ pod 'SwiftMessages'
 pod ‘Onboard’
 pod ‘SearchTextField’
 pod ‘Charts’
+pod ‘FSCalendar’
 
 end

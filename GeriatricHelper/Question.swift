@@ -112,7 +112,8 @@ class Question: NSObject, Mappable, NSCoding {
             "selectedChoice": selectedChoice,
             "answerNumber": answerNumber,
             "selectedYesNo": selectedYesNo,
-            "scaleID": scaleID
+            "scaleID": scaleID,
+            "answered": answered
         ]
     }
     

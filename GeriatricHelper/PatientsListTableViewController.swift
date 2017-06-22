@@ -228,38 +228,58 @@ class PatientsListTableViewController: UITableViewController {
         // 1 - get cell
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         // 2 - get grocery item
-        let selectedPatient = patients[indexPath.row]
-        // 3 - toogle ckmpletion
-        //        let toggledCompletion = !groceryItem.favorite
-        //        // 4 - update
-        //        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
-        //        // 5 - tell Firebase "I updated my field called completed"
-        //        groceryItem.ref?.updateChildValues([
-        //            "completed": toggledCompletion
-        //            ])
+        
         
         //        // Perform Segue - go to patient's profile
-                performSegue(withIdentifier: SeguePatientViewController, sender: self)
-                tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: SeguePatientViewController, sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // prepare for the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SeguePatientViewController {
             
-            let indexPath = tableView.indexPathForSelectedRow
-            let patient: Patient
-            if searchController.isActive && searchController.searchBar.text != "" {
-                patient = filteredPatients[(indexPath?.row)!]
-            } else {
-                patient = patients[(indexPath?.row)!]
+            let indexPath = tableView.indexPathForSelectedRow!
+            var selectedPatient: Patient?
+            // 3 - toogle ckmpletion
+            //        let toggledCompletion = !groceryItem.favorite
+            //        // 4 - update
+            //        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
+            //        // 5 - tell Firebase "I updated my field called completed"
+            //        groceryItem.ref?.updateChildValues([
+            //            "completed": toggledCompletion
+            //            ])
+            
+            
+            var currentInitial = initials[(indexPath.section)]
+            
+            
+            
+            switch segmentedControl.selectedSegmentIndex
+            {
+            case 0:
+                // all patients
+                if searchController.isActive && searchController.searchBar.text != "" {
+                    selectedPatient = filteredPatients[indexPath.row]
+                } else {
+                    selectedPatient = getPatientsWithInitial(initial: currentInitial, patients: patients)[indexPath.row]
+                }
+            case 1:
+                // favorite patients
+                if searchController.isActive && searchController.searchBar.text != "" {
+                    selectedPatient = filteredPatients[indexPath.row]
+                } else {
+                    selectedPatient = favoritePatients[indexPath.row]
+                }
+            default:
+                break
             }
             
             
             
             let destinationViewController = segue.destination as! PatientProfileViewController
             // set the author
-            destinationViewController.patient = patient
+            destinationViewController.patient = selectedPatient
             
         }
     }
