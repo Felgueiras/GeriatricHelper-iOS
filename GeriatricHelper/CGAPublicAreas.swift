@@ -14,17 +14,17 @@ class CGAPublicAreas: UITableViewController {
     var scales:[GeriatricScale] = []
     
     
-    // cancel public CGA session
+    // cancel CGA session
     @IBAction func cancelButtonPressed(_ sender: Any) {
         
-        let alert = UIAlertController(title: "Cancel Session",
-                                      message: "Do you wish to cancel this CGA Session?",
+        let alert = UIAlertController(title: "Cancelar Sessão",
+                                      message: "Deseja cancelar esta sessão?",
                                       preferredStyle: .alert)
         
         
         // cancel the current session
-        let saveAction = UIAlertAction(title: "Yes",
-                                       style: .default) { _ in
+        let saveAction = UIAlertAction(title: StringHelper.yes,
+                                       style: .destructive) { _ in
                                         
                                         // check if user is logged in
                                         FIRAuth.auth()!.addStateDidChangeListener { auth, user in
@@ -42,7 +42,7 @@ class CGAPublicAreas: UITableViewController {
                                         
         }
         
-        let cancelAction = UIAlertAction(title: "No",
+        let cancelAction = UIAlertAction(title: StringHelper.no,
                                          style: .default)
         
         
@@ -55,8 +55,8 @@ class CGAPublicAreas: UITableViewController {
     
     // finish (and review cga session)
     @IBAction func finishButtonPressed(_ sender: Any) {
-        let alert = UIAlertController(title: "Finish Session",
-                                      message: "Do you wish to finish and review this CGA Session?",
+        let alert = UIAlertController(title: StringHelper.finishSession,
+                                      message: StringHelper.finishSessionQuestion,
                                       preferredStyle: .alert)
         
         

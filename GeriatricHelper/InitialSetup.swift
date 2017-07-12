@@ -105,12 +105,18 @@ class InitialSetup: UIViewController {
         
         let fileType = ".json"
         
-        let scales = ["Escala de Katz-PT", "Recursos sociales-ES",
-                      "Valoración Socio-Familiar de Gijón-ES",
-                      "Barthel Index-ES", "Classificaçao Funcional da Marcha de Holden-PT",
-                      "Clock drawing test-EN","Escala de Depressão Geriátrica de Yesavage – versão curta-PT",
-                      "Escala de Lawton & Brody-PT","Escala de Tinetti-PT",
-                      "Mini mental state examination (Folstein)-PT","Mini nutritional assessment - avaliação global-PT",
+        // TODO go to DB and get only the scales from there
+        let scales = ["Escala de Katz-PT",
+//                      "Recursos sociales-ES",
+//                      "Valoración Socio-Familiar de Gijón-ES",
+//                      "Barthel Index-ES",
+                      "Classificaçao Funcional da Marcha de Holden-PT",
+//                      "Clock drawing test-EN",
+                      "Escala de Depressão Geriátrica de Yesavage – versão curta-PT",
+                      "Escala de Lawton & Brody-PT",
+//                      "Escala de Tinetti-PT",
+                      "Mini mental state examination (Folstein)-PT",
+                      "Mini nutritional assessment - avaliação global-PT",
                       "Mini nutritional assessment - triagem-PT",""]
         
         // fetch every scale
@@ -120,7 +126,7 @@ class InitialSetup: UIViewController {
             //            print(scaleRef.fullPath)
             
             // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-            scaleRef.data(withMaxSize: 1 * 1024 * 1024) { (data, error) -> Void in
+            scaleRef.data(withMaxSize: 4 * 1024 * 1024) { (data, error) -> Void in
                 if (error != nil) {
                     // Uh-oh, an error occurred!
                 } else {
@@ -163,10 +169,123 @@ class InitialSetup: UIViewController {
     }
     
     
+    /**
+     func downloadScales2() {
+        
+     
+     // download scales from that language
+     GsonBuilder builder = new GsonBuilder();
+     builder.excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC).setPrettyPrinting();
+     final Gson gson = builder.create();
+     
+     final FirebaseStorage storage = FirebaseStorage.getInstance();
+     // clear the scales
+     Scales.scales.clear();
+     SharedPreferencesHelper.resetScales(context);
+     FirebaseHelper.scalesCurrent = 0;
+     
+     // default system language
+     final String displayLanguage = Locale.getDefault().getLanguage().toLowerCase();
+     
+     
+     // fetch every existing scale
+     firebaseTablePublic.child("scales").orderByChild("name").addValueEventListener(new ValueEventListener() {
+     @Override
+     public void onDataChange(DataSnapshot dataSnapshot) {
+     FirebaseHelper.scales.clear();
+     for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+     ScaleMetadata scale = postSnapshot.getValue(ScaleMetadata.class);
+     scale.setKey(postSnapshot.getKey());
+     //                    Log.d("Scales", scale.getLanguages().size() + "");
+     
+     final String scaleName = scale.getName();
+     String scaleLanguage = null;
+     
+     // check if we have the scale version for this language
+     if (scale.getLanguages().contains(displayLanguage)) {
+     Log.d("Scales", "Language match " + scale.getName());
+     scaleLanguage = displayLanguage.toUpperCase();
+     
+     } else {
+     Log.d("Scales", "Language mismatch " + scale.getName());
+     if (scale.getLanguages().size() == 1) {
+     // only one available language
+     scaleLanguage = scale.getLanguages().get(0).toUpperCase();
+     } else {
+     // multiple languages
+     if (scale.getLanguages().contains("en")) {
+     // english is available
+     scaleLanguage = "en";
+     } else {
+     // return first one
+     scaleLanguage = scale.getLanguages().get(0);
+     }
+     
+     }
+     }
+     String fileName = scaleName + "-" + scaleLanguage + ".json";
+     
+     StorageReference storageRef = storage.getReferenceFromUrl(FirebaseHelper.firebaseURL).child("scales/" + fileName);
+     
+     try {
+     final File localFile = File.createTempFile("scale", "json");
+     storageRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+     @Override
+     public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+     try {
+     Log.d("Scales", "Downloaded " + scaleName);
+     GeriatricScaleNonDB scaleNonDB = gson.fromJson(new FileReader(localFile), GeriatricScaleNonDB.class);
+     // save to shared preferences
+     SharedPreferencesHelper.addScale(scaleNonDB, context);
+     Scales.scales.add(scaleNonDB);
+     FirebaseHelper.scalesCurrent++;
+     if (FirebaseHelper.scalesCurrent == FirebaseHelper.scalesTotal)
+     FirebaseHelper.canLeaveLaunchScreen = true;
+     } catch (FileNotFoundException e) {
+     e.printStackTrace();
+     }
+     }
+     }).addOnFailureListener(new OnFailureListener() {
+     @Override
+     public void onFailure(@NonNull Exception exception) {
+     if (exception instanceof com.google.firebase.storage.StorageException) {
+     // scale was not found for that language
+     }
+     FirebaseHelper.scalesCurrent++;
+     if (FirebaseHelper.scalesCurrent == FirebaseHelper.scalesTotal)
+     FirebaseHelper.canLeaveLaunchScreen = true;
+     }
+     });
+     } catch (Exception e) {
+     e.printStackTrace();
+     
+     }
+     }
+     Log.d("Fetch", "Patients");
+     }
+     
+     @Override
+     public void onCancelled(DatabaseError databaseError) {
+     // Getting Post failed, log a message
+     }
+     });
+     
+     // get system language
+     //        final String scaleLanguage = Locale.getDefault().getLanguage().toUpperCase();
+     
+     
+     }
+ **/
+ 
+    
+    
     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        // init RemoteConfig
+        FirebaseRemoteConfig().initRemoteConfig()
         
         // test localization
         let welcomeMessage = NSLocalizedString("Welcome", comment: "")
@@ -189,7 +308,7 @@ class InitialSetup: UIViewController {
             }
             // download scales and criteria
             
-            downloadCriteria()
+//            downloadCriteria()
             
             downloadScales()
             defaults.set(true, forKey: "HasLaunchedOnce")

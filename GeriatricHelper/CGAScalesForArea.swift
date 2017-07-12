@@ -54,13 +54,13 @@ class CGAScalesForArea: UITableViewController {
     
     // finish (and review cga session)
     @IBAction func finishButtonPressed(_ sender: Any) {
-        let alert = UIAlertController(title: "Finish Session",
-                                      message: "Do you wish to finish and review this CGA Session?",
+        let alert = UIAlertController(title: StringHelper.finishSession,
+                                      message: StringHelper.finishSessionQuestion,
                                       preferredStyle: .alert)
         
         
         // cancel the current session
-        let saveAction = UIAlertAction(title: "Yes",
+        let saveAction = UIAlertAction(title: StringHelper.yes,
                                        style: .default) { _ in
                                         
                                         // remove all the uncompleted scales
@@ -75,7 +75,7 @@ class CGAScalesForArea: UITableViewController {
                                         
         }
         
-        let cancelAction = UIAlertAction(title: "No",
+        let cancelAction = UIAlertAction(title: StringHelper.no,
                                          style: .default)
         
         
@@ -161,8 +161,31 @@ class CGAScalesForArea: UITableViewController {
         // get cell and selected scale
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         
-        // filter scales by selected
+        // get selected scale
         let scale = Constants.getScalesForAreaFromSession(area: area!, scales: scales!)[indexPath.row]
+        
+        
+        ////
+        
+        
+//        if (scale.scaleName == Constants.test_name_mini_nutritional_assessment_global)) {
+//            // TODO check if triagem is already answered
+//            
+//            GeriatricScaleFirebase triagem = FirebaseDatabaseHelper.getScaleFromSession(session,
+//                                                                                        Constants.test_name_mini_nutritional_assessment_triagem)
+//        }
+        
+        if scale.scoring?.differentMenWomen == true && Constants.patientGender != Constants.MALE && Constants.patientGender != Constants.FEMALE {
+             checkGender()
+            
+        } else {
+            // openScale()
+        }
+        
+
+        
+        ////////
+        
         
         if scale.singleQuestion!{
             // single question scale - display the choices
@@ -265,6 +288,43 @@ class CGAScalesForArea: UITableViewController {
             destinationViewController.scales = scales
             
         }
+    }
+    
+    func checkGender() {
+        // TODO select the patient's gender only when needed
+        
+        let alert = UIAlertController(title: "Género do Paciente",
+                                      message: nil,
+                                      preferredStyle: .alert)
+        
+        
+        let male = UIAlertAction(title: "Masculino",
+                                 style: .default) { _ in
+                                    
+                                    Constants.patientGender = "male"
+                                    
+                                    
+        }
+        
+        let female = UIAlertAction(title: "Feminino",
+                                   style: .default) { _ in
+                                    
+                                    Constants.patientGender = "female"
+                                    
+        }
+        
+        
+        let cancelAction = UIAlertAction(title: "Cancelar",
+                                         style: .cancel)
+        
+        
+        
+        
+        alert.addAction(male)
+        alert.addAction(female)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
     }
     
 }

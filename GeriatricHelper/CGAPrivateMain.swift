@@ -48,7 +48,7 @@ class CGAPrivateMain: UITableViewController {
     
     // finish (and review cga session)
     @IBAction func finishButtonPressed(_ sender: Any) {
-        let alert = UIAlertController(title: "Finish Session",
+        let alert = UIAlertController(title: StringHelper.finishSession,
                                       message: "Do you wish to finish and review this CGA Session?",
                                       preferredStyle: .alert)
         

@@ -49,6 +49,7 @@
 		2B6B56FA1E9FECD000445937 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6B56F91E9FECD000445937 /* AppDelegate.swift */; };
 		2B6B570C1E9FED2400445937 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B6B570B1E9FED2400445937 /* GoogleService-Info.plist */; };
 		2B74803B1EA932B9006E231E /* ReviewSessionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B74803A1EA932B9006E231E /* ReviewSessionTableViewController.swift */; };
+		2B77CAB21F163B6D00FD581C /* FirebaseRemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B77CAB11F163B6D00FD581C /* FirebaseRemoteConfig.swift */; };
 		2B7D68471EA6A36700443D59 /* CGAScalesForArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7D68461EA6A36700443D59 /* CGAScalesForArea.swift */; };
 		2B7D684A1EA6A88700443D59 /* CGAScaleSingleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7D68491EA6A88700443D59 /* CGAScaleSingleChoice.swift */; };
 		2B7D684C1EA6ABB200443D59 /* CGAPublicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7D684B1EA6ABB200443D59 /* CGAPublicInfo.swift */; };
@@ -172,6 +173,7 @@
 		2B6B57051E9FECD000445937 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B6B570B1E9FED2400445937 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2B74803A1EA932B9006E231E /* ReviewSessionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewSessionTableViewController.swift; sourceTree = "<group>"; };
+		2B77CAB11F163B6D00FD581C /* FirebaseRemoteConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfig.swift; sourceTree = "<group>"; };
 		2B7D68461EA6A36700443D59 /* CGAScalesForArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAScalesForArea.swift; sourceTree = "<group>"; };
 		2B7D68491EA6A88700443D59 /* CGAScaleSingleChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAScaleSingleChoice.swift; sourceTree = "<group>"; };
 		2B7D684B1EA6ABB200443D59 /* CGAPublicInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAPublicInfo.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				2B242B271EACC63A0029FFF3 /* PatientsManagement.swift */,
 				2B52C10C1EAFDD3000B5D02E /* FirebaseHelper.swift */,
 				2BD6536E1EB093500029F87B /* FirebaseDatabaseHelper.swift */,
+				2B77CAB11F163B6D00FD581C /* FirebaseRemoteConfig.swift */,
 				2BA7737A1ED1E38200D3E352 /* DatesHandler.swift */,
 			);
 			name = Helpers;
@@ -835,6 +838,7 @@
 				2B59480E1EACB6170052EC98 /* CreatePatientViewController.swift in Sources */,
 				2B7D684C1EA6ABB200443D59 /* CGAPublicInfo.swift in Sources */,
 				2B14B3011EA0D57400F08C05 /* FavoritePatientsCollectionViewController.swift in Sources */,
+				2B77CAB21F163B6D00FD581C /* FirebaseRemoteConfig.swift in Sources */,
 				2BD6536F1EB093500029F87B /* FirebaseDatabaseHelper.swift in Sources */,
 				2B21ABC11E9FEE7B001D6F66 /* PatientsListTableViewController.swift in Sources */,
 				2BEA8D2C1EB0AAE0007E284A /* CGAPrivateQuestions.swift in Sources */,
@@ -1051,7 +1055,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1071,7 +1075,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

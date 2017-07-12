@@ -39,6 +39,7 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
         let descriptionText = aDecoder.decodeObject(forKey: "descriptionText") as! String
         let notes = aDecoder.decodeObject(forKey: "notes") as? String
         let scaleName = aDecoder.decodeObject(forKey: "scaleName") as! String
+        print(scaleName)
         let multipleChoice = aDecoder.decodeObject(forKey: "multipleChoice") as! Bool
         let singleQuestion = aDecoder.decodeObject(forKey: "singleQuestion") as! Bool
         let multipleCategories:Bool? = aDecoder.decodeObject(forKey: "multipleCategories") as? Bool

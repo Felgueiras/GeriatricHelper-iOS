@@ -110,11 +110,20 @@ class SessionPDFComposer: NSObject {
                         
                         // Replace the description and price placeholders with the actual values.
                         itemHTMLContent = itemHTMLContent.replacingOccurrences(of: "#ITEM_DESC#", with: scalesForArea[i].scaleName!)
-                    
+                        
                         itemHTMLContent = itemHTMLContent.replacingOccurrences(of: "#QUALITATIVE#", with: ScaleHelper.getQualitativeResult(scale: scale ))
                         itemHTMLContent = itemHTMLContent.replacingOccurrences(of: "#QUANTITATIVE#", with: ScaleHelper.getQuantitativeResult(scale: scale))
                         
+                        if scale.notes != nil{
+                        
                             itemHTMLContent = itemHTMLContent.replacingOccurrences(of: "#NOTES#", with: scale.notes!)
+                        }
+                        else{
+                            itemHTMLContent = itemHTMLContent.replacingOccurrences(of: "#NOTES#", with: "")
+
+                        }
+                        
+                        
                         
                         
                         

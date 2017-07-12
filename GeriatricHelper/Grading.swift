@@ -23,9 +23,11 @@ class Grading: NSObject, Mappable, NSCoding {
     // decode
     required convenience init(coder aDecoder: NSCoder) {
         let grade = aDecoder.decodeObject(forKey: "grade") as! String
+        print(grade)
         let max = aDecoder.decodeObject(forKey: "max") as! Int
         let min = aDecoder.decodeObject(forKey: "min") as! Int
         let score = aDecoder.decodeObject(forKey: "score") as! String
+        
         let descriptionText:String? = aDecoder.decodeObject(forKey: "description") as? String
         self.init(grade: grade,
                   max: max,

@@ -59,6 +59,22 @@ class ReviewSessionTableViewController: UIViewController {
         self.table.dataSource = self
         
         SwiftMessagesHelper.showMessage(type: Theme.success, text: StringHelper.sessionFinished)
+        
+        // deactivate segmented control areas with no scales
+        for index in 0..<segmentedControl.numberOfSegments{
+        
+            let scalesForArea = Constants.getScalesForAreaFromSession(
+                area: Constants.cgaAreas[index],
+                scales: scales!)
+            
+            if scalesForArea.count == 0{
+                segmentedControl.setEnabled(false, forSegmentAt: index)
+                
+            }
+        }
+        
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -164,11 +180,4 @@ extension ReviewSessionTableViewController: UITableViewDataSource, UITableViewDe
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    
-    
-    
-    
-    
-    
 }

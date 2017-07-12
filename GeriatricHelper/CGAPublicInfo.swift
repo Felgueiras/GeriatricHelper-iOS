@@ -12,45 +12,10 @@ class CGAPublicInfo: UIViewController {
     
     let StartPublicSessionSegue = "StartPublicSession"
     
+    @IBOutlet weak var createSessionButton: UIButton!
     // MARK: Create CGA Session
     @IBAction func startPublicSessionButtonClicked(_ sender: Any) {
-        
-        // select the patient's gender
-        
-        let alert = UIAlertController(title: "Patient's gender",
-                                      message: nil,
-                                      preferredStyle: .alert)
-        
-        
-        let male = UIAlertAction(title: "Male",
-                                 style: .default) { _ in
-                                    
-                                    Constants.patientGender = "male"
-                                    self.performSegue(withIdentifier: self.StartPublicSessionSegue, sender: self)
-                                    
-        }
-        
-        let female = UIAlertAction(title: "Female",
-                                 style: .default) { _ in
-                                    
-                                    Constants.patientGender = "female"
-                                    self.performSegue(withIdentifier: self.StartPublicSessionSegue, sender: self)
-                                    
-        }
-        
-        
-        let cancelAction = UIAlertAction(title: "Cancel",
-                                         style: .default)
-        
-    
-        
-        
-        alert.addAction(male)
-        alert.addAction(female)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true, completion: nil)
-        
+        self.performSegue(withIdentifier: self.StartPublicSessionSegue, sender: self)        
         
     }
     
@@ -60,8 +25,9 @@ class CGAPublicInfo: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
+        let screenSize: CGRect = UIScreen.main.bounds
+        let radius = screenSize.height * 0.5
+        createSessionButton.frame = CGRect(x: 0, y: 0, width: radius, height: radius)
         
     }
     

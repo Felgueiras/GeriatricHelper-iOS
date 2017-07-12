@@ -34,15 +34,23 @@ class CGAAreaTableViewCell: UITableViewCell {
         popover.sourceView = self.infoButton
         popover.sourceRect = self.infoButton.bounds
 
+        // TODO fetch text from Firebase
         switch area! {
-        case Constants.functionalState:
-            popOverVC.displayText = StringHelper.cga_functional
-        case Constants.mentalState:
-            popOverVC.displayText = StringHelper.cga_mental
-        case Constants.socialState:
-            popOverVC.displayText = StringHelper.cga_social
-        case Constants.nutritionalState:
-            popOverVC.displayText = StringHelper.cga_nutritional
+        case Constants.cga_functional:
+            popOverVC.displayText = FirebaseRemoteConfig.getStringFirebase(key: "cga_functional")
+            break;
+        case Constants.cga_afective:
+            popOverVC.displayText = FirebaseRemoteConfig.getStringFirebase(key:"cga_afective")
+            break;
+        case Constants.cga_nutritional:
+            popOverVC.displayText = FirebaseRemoteConfig.getStringFirebase(key:"cga_nutritional")
+            break;
+        case Constants.cga_cognitive:
+            popOverVC.displayText = FirebaseRemoteConfig.getStringFirebase(key:"cga_cognitive")
+            break;
+        case Constants.cga_march:
+            popOverVC.displayText = FirebaseRemoteConfig.getStringFirebase(key:"cga_march")
+            break;
         default:
             popOverVC.displayText = ""
         }
@@ -90,13 +98,15 @@ class CGAAreaTableViewCell: UITableViewCell {
         
         //display area icon
         switch area {
-        case Constants.functionalState:
+        case Constants.cga_functional:
             cell.areaIcon?.image = #imageLiteral(resourceName: "ic_functional")
-        case Constants.mentalState:
+        case Constants.cga_afective:
+            cell.areaIcon?.image = #imageLiteral(resourceName: "ic_functional")
+        case Constants.cga_march:
+            cell.areaIcon?.image = #imageLiteral(resourceName: "ic_functional")
+        case Constants.cga_cognitive:
             cell.areaIcon?.image = #imageLiteral(resourceName: "ic_mental")
-        case Constants.socialState:
-            cell.areaIcon?.image = #imageLiteral(resourceName: "ic_social")
-        case Constants.nutritionalState:
+        case Constants.cga_nutritional:
             cell.areaIcon?.image = #imageLiteral(resourceName: "ic_nutritional")
         default:
             cell.areaIcon?.image = #imageLiteral(resourceName: "icon_small")

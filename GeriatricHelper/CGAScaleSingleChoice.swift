@@ -69,7 +69,6 @@ class CGAScaleSingleChoice: UITableViewController {
         // 2 - get grocery item
         let selectedChoice = choices[indexPath.row]
         
-        
         scale.answer = selectedChoice.grade
         scale.result = Double(selectedChoice.score!)
 

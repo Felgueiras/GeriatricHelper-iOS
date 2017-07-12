@@ -39,6 +39,12 @@ class CGAPublicQuestionOptionsViewController: UITableViewController {
         // set title
         self.title = self.questionNonDB.descriptionText!
         
+        // add gesture recognizer for long clicks
+        let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(CGAPublicQuestionOptionsViewController.longPress(_:)))
+        longPressGesture.minimumPressDuration = 1.0 // 1 second press
+//        longPressGesture.delegate = self
+        self.tableView.addGestureRecognizer(longPressGesture)
+        
     }
     
     // MARK: UITableView Delegate methods
@@ -61,7 +67,23 @@ class CGAPublicQuestionOptionsViewController: UITableViewController {
             cell.accessoryType = .none
         }
         
+        
+        
         return cell
+    }
+    
+    func longPress(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        
+        if longPressGestureRecognizer.state == UIGestureRecognizerState.began {
+            
+            let touchPoint = longPressGestureRecognizer.location(in: self.view)
+            if let indexPath = self.tableView.indexPathForRow(at: touchPoint) {
+                
+                // your code here, get the row for the indexPath or do whatever you want
+                print(indexPath.row)
+            }
+        }
+        
     }
     
     

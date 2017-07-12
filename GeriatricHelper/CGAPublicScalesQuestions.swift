@@ -174,8 +174,51 @@ class  CGAPublicScalesQuestions: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // perform Segue - go to patient's profile
+        // TODO perform Segue - go to patient's profile
         performSegue(withIdentifier: ViewQuestionChoicesSegue, sender: self)
+        
+        
+        ///////////////
+        // VERSION 2
+        ///////////////
+        
+        // get current question
+//        
+//        let question = Constants.getQuestionsForScale(scaleName: scale.scaleName!)[indexPath.row]
+//        
+//        // create action
+//        
+//        
+//        let alert = UIAlertController(title: question.descriptionText!,
+//                                      message: nil,
+//                                      preferredStyle: .alert)
+//        
+//        
+//      
+//        
+//        for choice in question.choices!{
+//            var alertAction = UIAlertAction(title: choice.descriptionText!,
+//                                     style: .default) { _ in
+//                                        
+//                                        //                                    Constants.patientGender = "male"
+//                                        //                                    self.performSegue(withIdentifier: self.StartPublicSessionSegue, sender: self)
+//                                        
+//            }
+//            
+//            alert.addAction(alertAction)
+//        
+//        }
+//        
+//   
+//        
+//        
+//        let cancelAction = UIAlertAction(title: "Cancelar",
+//                                         style: .cancel)
+//        
+//        
+//        alert.addAction(cancelAction)
+//        
+//        present(alert, animated: true, completion: nil)
     }
 
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="scl-CK-nrf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G23a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="scl-CK-nrf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -119,16 +119,16 @@
             </objects>
             <point key="canvasLocation" x="1386" y="-1299"/>
         </scene>
-        <!--SessionSingleQuestionChoices-->
+        <!--Single Choice-->
         <scene sceneID="YOD-HF-9SN">
             <objects>
-                <tableViewController title="SessionSingleQuestionChoices" id="9Yt-du-9hg" customClass="CGAScaleSingleChoice" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="SessionSingleQuestionChoices" id="9Yt-du-9hg" userLabel="Single Choice" customClass="CGAScaleSingleChoice" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="ltc-Zq-d5Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" textLabel="QHL-T8-59E" detailTextLabel="xAn-ha-CeK" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="ltu-E0-2g2">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" textLabel="QHL-T8-59E" detailTextLabel="xAn-ha-CeK" style="IBUITableViewCellStyleSubtitle" id="ltu-E0-2g2">
                                 <rect key="frame" x="0.0" y="22" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ltu-E0-2g2" id="jcY-Xw-7mo">
@@ -167,10 +167,10 @@
             </objects>
             <point key="canvasLocation" x="2073" y="-537"/>
         </scene>
-        <!--Scales Questions-->
+        <!--Scale Questions-->
         <scene sceneID="zYk-li-XO9">
             <objects>
-                <tableViewController title="Scales Questions" id="Peu-5Z-UVe" customClass="CGAPublicScalesQuestions" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Scales Questions" id="Peu-5Z-UVe" userLabel="Scale Questions" customClass="CGAPublicScalesQuestions" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="izG-H4-drX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -294,9 +294,10 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="29"/>
                                 <segments>
                                     <segment title="Estado funcional"/>
-                                    <segment title="Situação social"/>
-                                    <segment title="Estado mental"/>
-                                    <segment title="Estado Nutricional"/>
+                                    <segment title="Estado afectivo"/>
+                                    <segment title="Marcha"/>
+                                    <segment title="Estado cognitivo"/>
+                                    <segment title="Estado nutricional"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentedControlSelectionChanged:" destination="d1D-lX-Ir5" eventType="valueChanged" id="NNI-rN-z16"/>
@@ -362,10 +363,10 @@
             </objects>
             <point key="canvasLocation" x="-1458" y="410"/>
         </scene>
-        <!--Scales Questions-->
+        <!--Yes No Questions-->
         <scene sceneID="B90-D7-YiH">
             <objects>
-                <tableViewController title="Scales Questions" id="gtM-Wm-YaA" customClass="CGAPublicYesNo" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Scales Questions" id="gtM-Wm-YaA" userLabel="Yes No Questions" customClass="CGAPublicYesNo" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="gOF-a6-bkV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -423,7 +424,7 @@
                                 <action selector="cancelButtonPressed:" destination="scl-CK-nrf" id="6NA-aG-20o"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Finish" id="a3J-Qt-sd7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="a3J-Qt-sd7">
                             <connections>
                                 <action selector="finishButtonPressed:" destination="scl-CK-nrf" id="l9f-2f-sPA"/>
                             </connections>
@@ -443,10 +444,10 @@
             </objects>
             <point key="canvasLocation" x="-1045" y="-1161"/>
         </scene>
-        <!--Preview View Controller-->
+        <!--PDF View-->
         <scene sceneID="gic-c3-tgr">
             <objects>
-                <viewController id="GfM-wo-jef" customClass="PreviewViewController" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GfM-wo-jef" userLabel="PDF View" customClass="PreviewViewController" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dcw-aj-aMZ"/>
                         <viewControllerLayoutGuide type="bottom" id="O81-eM-WF1"/>
@@ -482,9 +483,9 @@
         <image name="pill" width="13" height="13"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oqv-rq-zFO"/>
-        <segue reference="I4X-mv-DhB"/>
-        <segue reference="J9u-7k-BWy"/>
-        <segue reference="4ue-RV-T5t"/>
+        <segue reference="vH1-f2-YmV"/>
+        <segue reference="iGh-v3-wOO"/>
+        <segue reference="5sP-Qm-QCY"/>
+        <segue reference="6MQ-Id-j66"/>
     </inferredMetricsTieBreakers>
 </document>
