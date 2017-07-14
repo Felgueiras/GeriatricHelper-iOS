@@ -69,7 +69,12 @@ class ReviewSessionTableViewController: UIViewController {
             
             if scalesForArea.count == 0{
                 segmentedControl.setEnabled(false, forSegmentAt: index)
-                
+            }
+            else
+            {
+                // select this segment
+                segmentedControl.selectedSegmentIndex = index
+            
             }
         }
         
@@ -90,26 +95,30 @@ class ReviewSessionTableViewController: UIViewController {
         if segue.identifier == ViewScaleQuestionsSegue {
             
             let scale = scalesForArea[(table.indexPathForSelectedRow?.row)!]
+
             let destinationViewController = segue.destination as! CGAPublicScalesQuestions
-            // set the author
             destinationViewController.scale = scale
+            destinationViewController.session = session
             
         }
         else if segue.identifier == ViewScaleSingleQuestionChoicesSegue {
             let scale = scalesForArea[(table.indexPathForSelectedRow?.row)!]
+
             let destinationViewController = segue.destination as! CGAScaleSingleChoice
-            // set the author
             destinationViewController.scale = scale
+            destinationViewController.session = session
+            
         }
         else if segue.identifier == ViewScaleYesNoSegue {
             let scale = scalesForArea[(table.indexPathForSelectedRow?.row)!]
-            
+
             let destinationViewController = segue.destination as! CGAPublicYesNo
-            // set the author
             destinationViewController.scale = scale
-            
-            
+            destinationViewController.session = session
+
         }
+        
+        
     }
     
     
@@ -121,6 +130,9 @@ extension ReviewSessionTableViewController: UITableViewDataSource, UITableViewDe
     // number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        if segmentedControl.selectedSegmentIndex == -1{
+        return 0
+        }
         // get the completed scales for the current area
         let scalesForArea = Constants.getScalesForAreaFromSession(
             area: Constants.cgaAreas[segmentedControl.selectedSegmentIndex],
@@ -144,7 +156,7 @@ extension ReviewSessionTableViewController: UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         // return the height of the cell
-        return 150
+        return 175
     }
     
     

@@ -7,6 +7,7 @@ class CGAPublicYesNo: UITableViewController {
     
     // MARK: Constants
     var scale: GeriatricScale!
+       var session: Session?
     
    
     
@@ -79,6 +80,12 @@ class CGAPublicYesNo: UITableViewController {
                                                           scale: scale,
                                                           backend: false)
    
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        // TODO return the height of the cell
+        return 100
     }
 
 }

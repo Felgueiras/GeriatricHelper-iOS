@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G23a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -42,24 +43,32 @@
                                         <rect key="frame" x="0.0" y="28" width="335" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vjc-3L-ptM" id="zSx-Fg-OVz">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhr-35-kTI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="122" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhr-35-kTI">
+                                                    <rect key="frame" x="8" y="0.0" width="234.5" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TU-It-sAC">
-                                                    <rect key="frame" x="130" y="-1" width="205" height="45"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TU-It-sAC">
+                                                    <rect key="frame" x="250.5" y="-1" width="101" height="45"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xhr-35-kTI" firstAttribute="width" secondItem="zSx-Fg-OVz" secondAttribute="width" multiplier="0.7" id="4VV-sx-0ri" userLabel="Result.width = width"/>
+                                                <constraint firstItem="6TU-It-sAC" firstAttribute="width" secondItem="zSx-Fg-OVz" secondAttribute="width" multiplier="0.3" id="IKl-fl-m6n"/>
+                                                <constraint firstItem="6TU-It-sAC" firstAttribute="leading" secondItem="xhr-35-kTI" secondAttribute="trailing" constant="8" symbolic="YES" id="IX8-EU-xSP"/>
+                                                <constraint firstItem="xhr-35-kTI" firstAttribute="baseline" secondItem="6TU-It-sAC" secondAttribute="baseline" id="IkB-AF-0sw"/>
+                                                <constraint firstItem="xhr-35-kTI" firstAttribute="leading" secondItem="zSx-Fg-OVz" secondAttribute="leading" constant="8" id="Xmf-te-v74"/>
+                                                <constraint firstItem="xhr-35-kTI" firstAttribute="top" secondItem="zSx-Fg-OVz" secondAttribute="top" id="bBU-PA-qEs"/>
+                                                <constraint firstItem="xhr-35-kTI" firstAttribute="centerY" secondItem="6TU-It-sAC" secondAttribute="centerY" id="eOT-RD-NLu"/>
+                                                <constraint firstItem="xhr-35-kTI" firstAttribute="centerY" secondItem="zSx-Fg-OVz" secondAttribute="centerY" id="uHe-3b-e8q"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="result" destination="xhr-35-kTI" id="hjz-uK-vOo"/>
@@ -90,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2vG-8c-BgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4870" y="-1093"/>
+            <point key="canvasLocation" x="-4871.1999999999998" y="-1093.4032983508246"/>
         </scene>
         <!--Text Pop Up View Controller-->
         <scene sceneID="xer-vM-f2Z">

@@ -13,6 +13,7 @@ class Question: NSObject, Mappable, NSCoding {
     // other attributes
     var answerNumber: Int?
     var answered: Bool?
+    var onlyForWomen: Bool?
     //    let choicesIDs: Bool
     var descriptionText: String?
     var guid: String?
@@ -37,11 +38,14 @@ class Question: NSObject, Mappable, NSCoding {
         let choices = aDecoder.decodeObject(forKey: "choices") as! [Choice]
         let descriptionText = aDecoder.decodeObject(forKey: "description") as! String
         let rightWrong = aDecoder.decodeObject(forKey: "rightWrong") as! Bool
+        let onlyForWomen = aDecoder.decodeObject(forKey: "onlyForWomen") as! Bool
         let yesOrNo = aDecoder.decodeObject(forKey: "yesOrNo") as! Bool
         self.init(choices: choices,
                   descriptionText: descriptionText,
                   rightWrong: rightWrong,
-                  yesOrNo: yesOrNo)
+                  yesOrNo: yesOrNo,
+                  onlyForWomen: onlyForWomen
+                  )
     }
     
     // encode
@@ -51,17 +55,20 @@ class Question: NSObject, Mappable, NSCoding {
         aCoder.encode(descriptionText, forKey: "description")
         aCoder.encode(rightWrong, forKey: "rightWrong")
         aCoder.encode(yesOrNo, forKey: "yesOrNo")
+        aCoder.encode(onlyForWomen, forKey: "onlyForWomen")
     }
     
     init(choices: [Choice],
          descriptionText: String,
          rightWrong: Bool,
-         yesOrNo: Bool) {
+         yesOrNo: Bool,
+         onlyForWomen: Bool) {
 //        self.answerNumber = answerNumber
         self.choices = choices
         self.descriptionText = descriptionText
         self.rightWrong = rightWrong
         self.yesOrNo = yesOrNo
+        self.onlyForWomen = onlyForWomen
     }
     
     
@@ -83,6 +90,7 @@ class Question: NSObject, Mappable, NSCoding {
         choices  <- map["choices"]
         rightWrong <- map["rightWrong"]
         yesOrNo <- map["yesOrNo"]
+        onlyForWomen <- map["onlyForWomen"]
     }
     
     
@@ -100,6 +108,7 @@ class Question: NSObject, Mappable, NSCoding {
         guid = snapshotValue["guid"] as? String
         selectedChoice = snapshotValue["selectedChoice"] as? String
         scaleID = snapshotValue["scaleID"] as? String
+        onlyForWomen = snapshotValue["onlyForWomen"] as? Bool
         //        choices = snapshotValue["choices"] as! [Choice]
     }
     
@@ -113,7 +122,8 @@ class Question: NSObject, Mappable, NSCoding {
             "answerNumber": answerNumber,
             "selectedYesNo": selectedYesNo,
             "scaleID": scaleID,
-            "answered": answered
+            "answered": answered,
+            "onlyForWomen": onlyForWomen
         ]
     }
     

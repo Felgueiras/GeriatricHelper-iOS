@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Constants{
     
@@ -34,6 +35,9 @@ class Constants{
     static let MALE: String = "male"
     static let FEMALE: String = "female"
     
+    // Color
+    static let cellBackgroundColor: UIColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
+    
     // CGA areas
     static let cgaAreas = [
         cga_functional,
@@ -44,7 +48,9 @@ class Constants{
     ]
     
     
-    static var patientGender: String?
+    
+    
+    static var patientGender: String? = ""
     
     // get the choices for a single question scale
     static func getChoicesSingleQuestionScale(scaleName: String) -> [Grading]{
@@ -76,7 +82,7 @@ class Constants{
     }
     
     
-    //TODO get a scale by its name
+    // get a scale by its name
     static func getScaleByName(scaleName: String) -> GeriatricScale?{
         for scale in self.scales{
             if scale.scaleName == scaleName{

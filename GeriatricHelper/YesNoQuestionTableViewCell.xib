@@ -1,52 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G24b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="46" id="KGk-i7-Jjw" customClass="YesNoQuestionTableViewCell" customModule="GeriatricHelper" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="KGk-i7-Jjw" customClass="YesNoQuestionTableViewCell" customModule="GeriatricHelper" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="45.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X7D-Eg-d2N">
-                        <rect key="frame" x="16" y="12.5" width="42" height="21"/>
+                        <rect key="frame" x="8" y="8" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXV-gj-SVN">
-                        <rect key="frame" x="282" y="8" width="30" height="30"/>
-                        <state key="normal" title="No"/>
-                        <connections>
-                            <action selector="noButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rdD-3Z-3vH"/>
-                        </connections>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mff-YD-CG7">
-                        <rect key="frame" x="244" y="8" width="30" height="30"/>
-                        <state key="normal" title="Yes"/>
-                        <connections>
-                            <action selector="yesButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PBy-qV-Fzg"/>
-                        </connections>
-                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qV-jF-Vmw" userLabel="YesView">
+                        <rect key="frame" x="0.0" y="47" width="160" height="53"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mff-YD-CG7">
+                                <rect key="frame" x="64.5" y="9.5" width="31" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Sim"/>
+                                <connections>
+                                    <action selector="yesButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PBy-qV-Fzg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Mff-YD-CG7" firstAttribute="centerX" secondItem="7qV-jF-Vmw" secondAttribute="centerX" id="MfF-Pk-grp"/>
+                            <constraint firstItem="Mff-YD-CG7" firstAttribute="centerY" secondItem="7qV-jF-Vmw" secondAttribute="centerY" id="nd4-OV-AdP"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6J-tW-a5j" userLabel="NoView">
+                        <rect key="frame" x="165" y="47" width="155" height="53"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXV-gj-SVN">
+                                <rect key="frame" x="60.5" y="9.5" width="33" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Não"/>
+                                <connections>
+                                    <action selector="noButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rdD-3Z-3vH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aXV-gj-SVN" firstAttribute="centerY" secondItem="b6J-tW-a5j" secondAttribute="centerY" id="VEM-pB-uUY"/>
+                            <constraint firstItem="aXV-gj-SVN" firstAttribute="centerX" secondItem="b6J-tW-a5j" secondAttribute="centerX" id="pBf-i5-uAK"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="aXV-gj-SVN" secondAttribute="trailing" constant="8" id="3kL-Aa-kUD"/>
-                    <constraint firstItem="aXV-gj-SVN" firstAttribute="leading" secondItem="Mff-YD-CG7" secondAttribute="trailing" constant="8" id="Moo-nY-PnL"/>
-                    <constraint firstItem="X7D-Eg-d2N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="cof-cr-67I"/>
-                    <constraint firstItem="X7D-Eg-d2N" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="i0u-hp-inz"/>
-                    <constraint firstItem="Mff-YD-CG7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jBM-qd-M0b"/>
-                    <constraint firstItem="aXV-gj-SVN" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="pxN-jP-Xsa"/>
+                    <constraint firstAttribute="topMargin" secondItem="X7D-Eg-d2N" secondAttribute="top" id="2ym-61-Ljl"/>
+                    <constraint firstItem="b6J-tW-a5j" firstAttribute="leading" secondItem="7qV-jF-Vmw" secondAttribute="trailing" constant="5" id="9EC-ox-Kd7"/>
+                    <constraint firstItem="7qV-jF-Vmw" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="23.75" id="9nX-k6-d3g"/>
+                    <constraint firstItem="b6J-tW-a5j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="39" id="OGs-VL-xRQ"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="X7D-Eg-d2N" secondAttribute="leading" id="QaC-1i-OdJ"/>
+                    <constraint firstItem="7qV-jF-Vmw" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.5" id="Tya-DQ-37R"/>
+                    <constraint firstAttribute="trailing" secondItem="b6J-tW-a5j" secondAttribute="trailing" id="YOv-yn-7C2"/>
+                    <constraint firstItem="7qV-jF-Vmw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="hqa-bW-3Yb"/>
+                    <constraint firstItem="b6J-tW-a5j" firstAttribute="top" secondItem="7qV-jF-Vmw" secondAttribute="top" id="kvD-Kf-iOi"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="b6J-tW-a5j" secondAttribute="bottom" constant="-8.5" id="lJn-TW-Yvx"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -54,7 +81,7 @@
                 <outlet property="question" destination="X7D-Eg-d2N" id="gf9-h9-2nc"/>
                 <outlet property="yesButton" destination="Mff-YD-CG7" id="2yh-lT-HB2"/>
             </connections>
-            <point key="canvasLocation" x="-419" y="-81"/>
+            <point key="canvasLocation" x="-419" y="-61"/>
         </tableViewCell>
     </objects>
 </document>

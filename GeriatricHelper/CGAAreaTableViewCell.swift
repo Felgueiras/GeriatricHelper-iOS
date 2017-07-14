@@ -101,9 +101,9 @@ class CGAAreaTableViewCell: UITableViewCell {
         case Constants.cga_functional:
             cell.areaIcon?.image = #imageLiteral(resourceName: "ic_functional")
         case Constants.cga_afective:
-            cell.areaIcon?.image = #imageLiteral(resourceName: "ic_functional")
+            cell.areaIcon?.image = #imageLiteral(resourceName: "cga_afective")
         case Constants.cga_march:
-            cell.areaIcon?.image = #imageLiteral(resourceName: "ic_functional")
+            cell.areaIcon?.image = #imageLiteral(resourceName: "cga_march")
         case Constants.cga_cognitive:
             cell.areaIcon?.image = #imageLiteral(resourceName: "ic_mental")
         case Constants.cga_nutritional:

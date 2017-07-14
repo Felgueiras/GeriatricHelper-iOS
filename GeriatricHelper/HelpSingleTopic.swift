@@ -51,6 +51,24 @@ class HelpSingleTopic: UIViewController {
             text = getStringFirebase(key: "help_sessions_description")
         case HelpTopics.help_topic_cga_guide:
             text = getStringFirebase(key: "help_cga_guide_description")
+      
+  
+        case HelpTopics.help_topic_cga_guide:
+            text = getStringFirebase(key: "help_cga_guide_description")
+        case HelpTopics.help_topic_bibliography:
+            text = getStringFirebase(key: "help_topic_bibliography_description")
+        case HelpTopics.help_topic_cga_definition:
+               text = getStringFirebase(key: "help_cga_definition")
+        case HelpTopics.help_topic_cga_objective:
+            text = getStringFirebase(key: "help_cga_objective")
+        case HelpTopics.help_topic_cga_when:
+            text = getStringFirebase(key: "help_cga_when")
+        case HelpTopics.help_topic_cga_who:
+            text = getStringFirebase(key: "help_cga_who")
+        case HelpTopics.help_topic_cga_how:
+            text = getStringFirebase(key: "help_cga_how")
+        case HelpTopics.help_topic_cga_instruments:
+            text = getStringFirebase(key: "help_cga_instruments")
         default:
             text = ""
         }

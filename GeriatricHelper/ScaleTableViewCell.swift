@@ -21,7 +21,6 @@ class ScaleTableViewCell: UITableViewCell {
     @IBAction func infoButtonClicked(_ sender: Any) {
         
  
-        
         // display popover
         let popOverVC = UIStoryboard(name: "PopOvers", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID") as! PopUpViewController
         
@@ -33,8 +32,6 @@ class ScaleTableViewCell: UITableViewCell {
         popOverVC.scale = scale
         
         self.viewController?.present(popOverVC, animated: true, completion:nil)
-        
-        
     }
     
     var viewController:UIViewController?
@@ -45,6 +42,8 @@ class ScaleTableViewCell: UITableViewCell {
         
     }
     @IBOutlet weak var name: UILabel!
+    
+    @IBOutlet weak var subCategory: UILabel!
     @IBOutlet weak var resultQualitative: UILabel!
     
     @IBOutlet weak var resultQuantitative: UILabel!
@@ -59,6 +58,15 @@ class ScaleTableViewCell: UITableViewCell {
         cell.viewController = viewController
         
         cell.name.text = scale.scaleName
+        
+        // display subcategory for functional area scales
+        print(scale.area!)
+        if scale.area! == Constants.cga_functional {
+            cell.subCategory.text = scale.subCategory!
+        }
+        else{
+            cell.subCategory.isHidden = true
+        }
         
         if scale.completed == true{
             

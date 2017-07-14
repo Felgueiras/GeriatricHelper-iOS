@@ -56,6 +56,7 @@ class QuestionOptionsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         let choice = choices[indexPath.row]
         
+        
         cell.textLabel?.text = String(describing: choice.name)
         cell.detailTextLabel?.text = choice.description
         

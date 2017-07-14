@@ -70,6 +70,7 @@ class ScalesQuestionsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         let question = questions[indexPath.row]
         
+        
         cell.textLabel?.text = question.descriptionText!
         cell.detailTextLabel?.text = question.selectedChoice
 

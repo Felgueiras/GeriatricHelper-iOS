@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G23a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="scl-CK-nrf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G24b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="scl-CK-nrf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,7 +34,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Scales for Area" id="jkC-ZQ-Gaq">
-                        <barButtonItem key="rightBarButtonItem" title="Finish" id="KMm-4L-EaO">
+                        <barButtonItem key="rightBarButtonItem" title="Terminar" id="KMm-4L-EaO">
                             <connections>
                                 <action selector="finishButtonPressed:" destination="Oze-dn-a1N" id="b3Y-HD-rad"/>
                             </connections>
@@ -142,7 +142,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xAn-ha-CeK">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xAn-ha-CeK">
                                             <rect key="frame" x="15" y="33.5" width="44" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -206,7 +206,9 @@
                             <outlet property="delegate" destination="Peu-5Z-UVe" id="TTC-Pp-N8k"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Scale's Questions" id="pfO-hN-GEp"/>
+                    <navigationItem key="navigationItem" title="Scale's Questions" id="pfO-hN-GEp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wTp-GT-ccE"/>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="sZv-8a-aEg" kind="show" identifier="ViewQuestionChoices" id="AzA-x6-MqA"/>
@@ -424,7 +426,7 @@
                                 <action selector="cancelButtonPressed:" destination="scl-CK-nrf" id="6NA-aG-20o"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="a3J-Qt-sd7">
+                        <barButtonItem key="rightBarButtonItem" title="Terminar" id="a3J-Qt-sd7">
                             <connections>
                                 <action selector="finishButtonPressed:" destination="scl-CK-nrf" id="l9f-2f-sPA"/>
                             </connections>
@@ -483,9 +485,9 @@
         <image name="pill" width="13" height="13"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vH1-f2-YmV"/>
         <segue reference="iGh-v3-wOO"/>
-        <segue reference="5sP-Qm-QCY"/>
+        <segue reference="vH1-f2-YmV"/>
         <segue reference="6MQ-Id-j66"/>
+        <segue reference="5sP-Qm-QCY"/>
     </inferredMetricsTieBreakers>
 </document>

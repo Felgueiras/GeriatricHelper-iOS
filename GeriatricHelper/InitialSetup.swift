@@ -9,8 +9,8 @@ class InitialSetup: UIViewController {
     // segue to leave the initial setup area
     let SegueLeaveInitialSetup = "leaveInitialSetup"
     
-    // total number of scales
-    let scalesTotal:Float = 12.0
+    // TODO do not assign like this - total number of scales
+    let scalesTotal:Float = 7.0
     
     // display loading progress
     @IBOutlet weak var progressView: UIProgressView!
@@ -110,7 +110,7 @@ class InitialSetup: UIViewController {
 //                      "Recursos sociales-ES",
 //                      "Valoración Socio-Familiar de Gijón-ES",
 //                      "Barthel Index-ES",
-                      "Classificaçao Funcional da Marcha de Holden-PT",
+                      "Classificaçao Funcional da Marcha de Holden-PT",
 //                      "Clock drawing test-EN",
                       "Escala de Depressão Geriátrica de Yesavage – versão curta-PT",
                       "Escala de Lawton & Brody-PT",
@@ -121,6 +121,7 @@ class InitialSetup: UIViewController {
         
         // fetch every scale
         for scaleName in scales {
+            print("Going to download \(scaleName)")
             // create reference to file
             let scaleRef = scalesRef.child(scaleName+fileType)
             //            print(scaleRef.fullPath)
@@ -140,6 +141,7 @@ class InitialSetup: UIViewController {
                             let scale = Mapper<GeriatricScale>().map(JSONString: String(describing: ipString))
                             // save scale to Constants
                             Constants.scales.append(scale!)
+                            print("Downloaded\(scale?.scaleName)");
                             
                             
                             // write to defaults
@@ -151,8 +153,6 @@ class InitialSetup: UIViewController {
                             // read from defaults
                             let decoded  = defaults.object(forKey: "scales") as! Data
                             let decodedScales = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [GeriatricScale]
-                        
-                            
                         }
                     }
                     catch {

@@ -152,12 +152,14 @@ class CGAScalesForArea: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         // TODO return the height of the cell
-        return 150
+        return 175
     }
     
     
     // select a row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
         // get cell and selected scale
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         
@@ -174,37 +176,44 @@ class CGAScalesForArea: UITableViewController {
 //            GeriatricScaleFirebase triagem = FirebaseDatabaseHelper.getScaleFromSession(session,
 //                                                                                        Constants.test_name_mini_nutritional_assessment_triagem)
 //        }
-        
-        if scale.scoring?.differentMenWomen == true && Constants.patientGender != Constants.MALE && Constants.patientGender != Constants.FEMALE {
-             checkGender()
+   
+        // get scale definition
+        let scaleScoring = Constants.getScaleByName(scaleName: scale.scaleName!)?.scoring
+        // TODO only ask once && Constants.patientGender != Constants.MALE && Constants.patientGender != Constants.FEMALE
+        if scaleScoring?.differentMenWomen == true  {
+            checkGender(scale: scale)
+            return
             
         } else {
-            // openScale()
+            openScale(scale:scale)
         }
         
-
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    /**
+     Open a scale - performSegue
+     **/
+    func openScale(scale:GeriatricScale){
         
-        ////////
-        
-        
-        if scale.singleQuestion!{
-            // single question scale - display the choices
+        // static scale definition
+        let scaleDef = Constants.getScaleByName(scaleName: scale.scaleName!)!
+    
+        // single question scale - display the choices
+        if scaleDef.singleQuestion!{
             performSegue(withIdentifier: ViewScaleSingleQuestionChoicesSegue, sender: self)
-            
         }
         else{
             
-            if scale.multipleCategories == true {
-                print("MULTIPLE")
+            if scaleDef.multipleCategories == true {
                 performSegue(withIdentifier: ViewScaleMultipleCategoriesSegue, sender: self)
             }
-            // multiple choice
-            else if scale.questions?.first?.yesOrNo == true {
+                // multiple choice
+            else if scaleDef.questions?.first?.yesOrNo == true {
                 // yes/no
-                // "normal" multiple choice
                 performSegue(withIdentifier: ViewScaleYesNoSegue, sender: self)
             }
-            
+                
             else
             {
                 // "normal" multiple choice
@@ -212,7 +221,7 @@ class CGAScalesForArea: UITableViewController {
             }
             
         }
-        tableView.deselectRow(at: indexPath, animated: true)
+    
     }
     
     
@@ -286,12 +295,11 @@ class CGAScalesForArea: UITableViewController {
             // set the author
             destinationViewController.session = session
             destinationViewController.scales = scales
-            
+    
         }
     }
     
-    func checkGender() {
-        // TODO select the patient's gender only when needed
+    func checkGender(scale: GeriatricScale) {
         
         let alert = UIAlertController(title: "Género do Paciente",
                                       message: nil,
@@ -302,6 +310,7 @@ class CGAScalesForArea: UITableViewController {
                                  style: .default) { _ in
                                     
                                     Constants.patientGender = "male"
+                                    self.openScale(scale: scale)
                                     
                                     
         }
@@ -310,6 +319,7 @@ class CGAScalesForArea: UITableViewController {
                                    style: .default) { _ in
                                     
                                     Constants.patientGender = "female"
+                                    self.openScale(scale: scale)
                                     
         }
         

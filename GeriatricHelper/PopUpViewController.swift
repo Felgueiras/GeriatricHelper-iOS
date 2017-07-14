@@ -9,18 +9,18 @@
 import UIKit
 
 class TableItem: UITableViewCell{
-
+    
     
     
     @IBOutlet weak var result: UILabel!
     
     @IBOutlet weak var value: UILabel!
-
+    
 }
 
 class PopUpViewController: UIViewController {
     
-
+    
     @IBOutlet weak var name: UILabel!
     
     @IBOutlet weak var text: UILabel?
@@ -37,10 +37,10 @@ class PopUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
-//        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        //        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         
         text?.text = displayText
         
@@ -53,25 +53,26 @@ class PopUpViewController: UIViewController {
         scaleNonDB = Constants.getScaleByName(scaleName: (scale?.scaleName)!)
         
         
-        // create table with info about scoring
-        
-        
+        // add borders to table
+        scoringTable.layer.masksToBounds = true
+        scoringTable.layer.borderColor = UIColor( red: 153/255, green: 153/255, blue:0/255, alpha: 1.0 ).cgColor
+        scoringTable.layer.borderWidth = 2.0
         
         
         
         self.showAnimate()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     @IBAction func closePopUp(_ sender: Any) {
-//        self.view.removeFromSuperview()
+        //        self.view.removeFromSuperview()
         self.removeAnimate()
-
+        
     }
     
     func showAnimate()
@@ -96,7 +97,7 @@ class PopUpViewController: UIViewController {
             }
         });
     }
-
+    
 }
 
 extension PopUpViewController: UITableViewDataSource, UITableViewDelegate  {
@@ -225,21 +226,21 @@ extension PopUpViewController: UITableViewDataSource, UITableViewDelegate  {
      
      
      **/
+    
 
+    
     
     // number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var itemCount = 0
-    
-// TODO different men women
+        
+        // TODO different men women
         return (scaleNonDB?.scoring?.valuesBoth?.count)!
     }
     
     // get cell for row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.scoringTable.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! TableItem
-        
-        
         
         if scaleNonDB?.scoring?.differentMenWomen == false{
             // same score for both genders
@@ -257,16 +258,10 @@ extension PopUpViewController: UITableViewDataSource, UITableViewDelegate  {
             }
             else
             {
-                cell.value.text = String(describing: currentGrading.min)
+                cell.value.text = String(describing: currentGrading.min!)
             }
             
-            
         }
-        
-        
-        
-        
-        
         
         return cell
     }

@@ -44,7 +44,6 @@ class CGAPublicQuestionOptionsViewController: UITableViewController {
         longPressGesture.minimumPressDuration = 1.0 // 1 second press
 //        longPressGesture.delegate = self
         self.tableView.addGestureRecognizer(longPressGesture)
-        
     }
     
     // MARK: UITableView Delegate methods
@@ -57,17 +56,20 @@ class CGAPublicQuestionOptionsViewController: UITableViewController {
         let choice = choices[indexPath.row]
         
         cell.textLabel?.text = String(describing: choice.name!)
-        cell.detailTextLabel?.text = choice.descriptionText!
-    
-        // highlight choice if selected
-        if indexPath.row == selectedChoiceIndex
-        {
-            cell.accessoryType = .checkmark
-        } else {
-            cell.accessoryType = .none
+        if choice.name! != choice.descriptionText!{
+            cell.detailTextLabel?.text = choice.descriptionText!
+        }
+        else{
+            cell.detailTextLabel?.text = ""
         }
         
-        
+        if questionDB.selectedChoice == choice.name{
+            cell.accessoryType = .checkmark
+        }
+        else{
+            cell.accessoryType = .none
+        }
+
         
         return cell
     }
@@ -94,13 +96,6 @@ class CGAPublicQuestionOptionsViewController: UITableViewController {
   
         selectedChoice = choices[indexPath.row]
         
-        
-        //Other row is selected - need to deselect it
-        if let index = selectedChoiceIndex {
-            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
-            cell?.accessoryType = .none
-        }
-        
         // save result
         
         questionDB.selectedChoice = selectedChoice?.name
@@ -112,6 +107,8 @@ class CGAPublicQuestionOptionsViewController: UITableViewController {
         
         // update question
         FirebaseDatabaseHelper.updateQuestion(question: questionDB)
+        
+        tableView.reloadData()
     }
 
     

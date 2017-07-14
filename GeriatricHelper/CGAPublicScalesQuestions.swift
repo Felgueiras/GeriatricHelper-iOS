@@ -25,7 +25,7 @@ class  CGAPublicScalesQuestions: UITableViewController {
         if session?.type == Session.sessionType.privateSession{
             if scale.alreadyOpened == false{
                 // add questions only once
-            addQuestionsToScale()
+                addQuestionsToScale()
             }
             
             // update scale in Firebase
@@ -38,7 +38,7 @@ class  CGAPublicScalesQuestions: UITableViewController {
                 addQuestionsToScale()
             }
         }
-                
+        
         
         
     }
@@ -48,7 +48,27 @@ class  CGAPublicScalesQuestions: UITableViewController {
         // get questions from Constants
         let questionsNonDB = Constants.getQuestionsForScale(scaleName: scale.scaleName!)
         
+        // get scale definition
+        let scaleDefinition = Constants.getScaleByName(scaleName: scale.scaleName!)
+        
         for currentQuestionNonDB in questionsNonDB{
+            
+            // check if question is only for women
+            if scaleDefinition?.scoring != nil {
+                if scaleDefinition?.scoring!.differentMenWomen == true {
+                    if Constants.patientGender == Constants.MALE {
+                        if currentQuestionNonDB.onlyForWomen!{
+                            print(currentQuestionNonDB.descriptionText)
+                            continue
+                        }
+                    }
+                }
+            }
+            
+            print("1")
+            
+            
+            
             var question = Question()
             question.descriptionText = currentQuestionNonDB.descriptionText
             //            question.(false);
@@ -80,7 +100,7 @@ class  CGAPublicScalesQuestions: UITableViewController {
         
     }
     
-
+    
     override func viewDidAppear(_ animated: Bool) {
         
         self.tableView.reloadData()
@@ -108,7 +128,7 @@ class  CGAPublicScalesQuestions: UITableViewController {
             }
         }
         else{
-        
+            
             for question in scale.questions!{
                 if question.answered != true{
                     allQuestionsAnswered = false
@@ -131,15 +151,24 @@ class  CGAPublicScalesQuestions: UITableViewController {
     // MARK: UITableView Delegate methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // get questions for scale
-        return Constants.getQuestionsForScale(scaleName: scale.scaleName!).count
+        
+        return (self.scale.questions?.count)!
+        
+//        return Constants.getQuestionsForScale(scaleName: scale.scaleName!).count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         
-        let questionConstant = Constants.getQuestionsForScale(scaleName: scale.scaleName!)[indexPath.row]
-        cell.textLabel?.text = questionConstant.descriptionText!
+//        let questionConstant = Constants.getQuestionsForScale(scaleName: scale.scaleName!)[indexPath.row]
+        let questionConstant = scale.questions![indexPath.row]
+        
+        cell.textLabel?.text = String(indexPath.row+1) + " -  " + questionConstant.descriptionText!
         cell.detailTextLabel?.text = questionConstant.selectedChoice
+        
+        if indexPath.row % 2 == 0{
+            cell.backgroundColor = Constants.cellBackgroundColor
+        }
         
         
         // check if there is info from Firebase
@@ -171,10 +200,10 @@ class  CGAPublicScalesQuestions: UITableViewController {
         return cell
     }
     
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // TODO perform Segue - go to patient's profile
+        // TODO go to another screen or prompt here the options?
         performSegue(withIdentifier: ViewQuestionChoicesSegue, sender: self)
         
         
@@ -182,45 +211,42 @@ class  CGAPublicScalesQuestions: UITableViewController {
         // VERSION 2
         ///////////////
         
-        // get current question
-//        
-//        let question = Constants.getQuestionsForScale(scaleName: scale.scaleName!)[indexPath.row]
-//        
-//        // create action
-//        
-//        
-//        let alert = UIAlertController(title: question.descriptionText!,
-//                                      message: nil,
-//                                      preferredStyle: .alert)
-//        
-//        
-//      
-//        
-//        for choice in question.choices!{
-//            var alertAction = UIAlertAction(title: choice.descriptionText!,
-//                                     style: .default) { _ in
-//                                        
-//                                        //                                    Constants.patientGender = "male"
-//                                        //                                    self.performSegue(withIdentifier: self.StartPublicSessionSegue, sender: self)
-//                                        
-//            }
-//            
-//            alert.addAction(alertAction)
-//        
-//        }
-//        
-//   
-//        
-//        
-//        let cancelAction = UIAlertAction(title: "Cancelar",
-//                                         style: .cancel)
-//        
-//        
-//        alert.addAction(cancelAction)
-//        
-//        present(alert, animated: true, completion: nil)
+        //        // get current question
+        //
+        //        let question = Constants.getQuestionsForScale(scaleName: scale.scaleName!)[indexPath.row]
+        //
+        //        // create action
+        //
+        //        let alert = UIAlertController(title: question.descriptionText!,
+        //                                      message: nil,
+        //                                      preferredStyle: .alert)
+        //
+        //        // display answer options to the user
+        //        for choice in question.choices!{
+        //            var alertAction = UIAlertAction(title: choice.descriptionText!,
+        //                                     style: .default) { _ in
+        //
+        //                                        //                                    Constants.patientGender = "male"
+        //                                        //                                    self.performSegue(withIdentifier: self.StartPublicSessionSegue, sender: self)
+        //
+        //            }
+        //
+        //            alert.addAction(alertAction)
+        //
+        //        }
+        //
+        //
+        //
+        //
+        //        let cancelAction = UIAlertAction(title: "Cancelar",
+        //                                         style: .cancel)
+        //
+        //
+        //        alert.addAction(cancelAction)
+        //
+        //        present(alert, animated: true, completion: nil)
     }
-
+    
     
     // prepare for the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -242,7 +268,7 @@ class  CGAPublicScalesQuestions: UITableViewController {
                 destinationViewController.questionNonDB = questionNonDB
                 destinationViewController.questionDB = questionNonDB
             }
-
+            
         }
     }
 }

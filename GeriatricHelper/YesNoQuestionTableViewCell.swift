@@ -43,7 +43,7 @@ class YesNoQuestionTableViewCell: UITableViewCell {
         
         questionObj?.selectedYesNo = "no"
         yesButton.backgroundColor = UIColor(white: 1, alpha: 0.0)
-        noButton.backgroundColor = UIColor.green
+        noButton.backgroundColor = UIColor.red
         questionObj?.answered = true
         checkScaleCompleted()
         
@@ -72,10 +72,16 @@ class YesNoQuestionTableViewCell: UITableViewCell {
                            backend:Bool) -> UITableViewCell{
         
         
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.backend = backend
-        cell.question.text = question.descriptionText!
+        
+        
+        
+        let questionIndex = scale.questions!.index(of: question)
+        cell.question.text = String(questionIndex!+1) + " - " + question.descriptionText!
         cell.questionObj = question
         cell.scale = scale
+        
         
         // question already answered
         if question.answered == true {
@@ -84,7 +90,7 @@ class YesNoQuestionTableViewCell: UITableViewCell {
                 cell.yesButton.backgroundColor = UIColor.green
                 
             } else {
-                cell.noButton.backgroundColor = UIColor.green
+                cell.noButton.backgroundColor = UIColor.red
             }
         }
         
