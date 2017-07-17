@@ -27,6 +27,7 @@ class Question: NSObject, Mappable, NSCoding {
     var yesOrNo: Bool?
     var selectedYesNo: String?
     var selectedRightWrong: String?
+    var image: String?
     
     override init(){}
     
@@ -37,6 +38,7 @@ class Question: NSObject, Mappable, NSCoding {
 //        let answerNumber = aDecoder.decodeObject(forKey: "answerNumber") as! Int
         let choices = aDecoder.decodeObject(forKey: "choices") as! [Choice]
         let descriptionText = aDecoder.decodeObject(forKey: "description") as! String
+        let image = aDecoder.decodeObject(forKey: "image") as? String
         let rightWrong = aDecoder.decodeObject(forKey: "rightWrong") as! Bool
         let onlyForWomen = aDecoder.decodeObject(forKey: "onlyForWomen") as! Bool
         let yesOrNo = aDecoder.decodeObject(forKey: "yesOrNo") as! Bool
@@ -44,7 +46,8 @@ class Question: NSObject, Mappable, NSCoding {
                   descriptionText: descriptionText,
                   rightWrong: rightWrong,
                   yesOrNo: yesOrNo,
-                  onlyForWomen: onlyForWomen
+                  onlyForWomen: onlyForWomen,
+                  image:image
                   )
     }
     
@@ -56,19 +59,22 @@ class Question: NSObject, Mappable, NSCoding {
         aCoder.encode(rightWrong, forKey: "rightWrong")
         aCoder.encode(yesOrNo, forKey: "yesOrNo")
         aCoder.encode(onlyForWomen, forKey: "onlyForWomen")
+        aCoder.encode(image, forKey: "image")
     }
     
     init(choices: [Choice],
          descriptionText: String,
          rightWrong: Bool,
          yesOrNo: Bool,
-         onlyForWomen: Bool) {
+         onlyForWomen: Bool,
+         image:String?) {
 //        self.answerNumber = answerNumber
         self.choices = choices
         self.descriptionText = descriptionText
         self.rightWrong = rightWrong
         self.yesOrNo = yesOrNo
         self.onlyForWomen = onlyForWomen
+        self.image = image
     }
     
     
@@ -91,6 +97,8 @@ class Question: NSObject, Mappable, NSCoding {
         rightWrong <- map["rightWrong"]
         yesOrNo <- map["yesOrNo"]
         onlyForWomen <- map["onlyForWomen"]
+        image <- map["image"]
+
     }
     
     
@@ -107,6 +115,7 @@ class Question: NSObject, Mappable, NSCoding {
         descriptionText = snapshotValue["description"] as? String
         guid = snapshotValue["guid"] as? String
         selectedChoice = snapshotValue["selectedChoice"] as? String
+        image = snapshotValue["image"] as? String
         scaleID = snapshotValue["scaleID"] as? String
         onlyForWomen = snapshotValue["onlyForWomen"] as? Bool
         //        choices = snapshotValue["choices"] as! [Choice]
@@ -123,7 +132,8 @@ class Question: NSObject, Mappable, NSCoding {
             "selectedYesNo": selectedYesNo,
             "scaleID": scaleID,
             "answered": answered,
-            "onlyForWomen": onlyForWomen
+            "onlyForWomen": onlyForWomen,
+            "image": image
         ]
     }
     

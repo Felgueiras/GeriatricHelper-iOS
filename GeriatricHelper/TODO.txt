@@ -1,4 +1,9 @@
 - mostrar guia de AGG por área (collection view)
+
 - scale help: improve table
+
 - yes no questions
 
+- multiple categories:
+- retificar info popup
+- auto scroll down

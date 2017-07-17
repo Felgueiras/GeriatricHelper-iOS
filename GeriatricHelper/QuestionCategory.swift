@@ -12,6 +12,7 @@ class QuestionCategory: NSObject, Mappable, NSCoding {
     var key: String?
     var category: String?
     var descriptionText: String?
+    var notes: String?
     var questions: [Question]? = []
 
     
@@ -19,11 +20,13 @@ class QuestionCategory: NSObject, Mappable, NSCoding {
     
     init(category: String?,
          descriptionText: String?,
-         questions: [Question]) {
+         questions: [Question],
+         notes: String?) {
         
         self.category = category
         self.descriptionText = descriptionText
         self.questions = questions
+        self.notes = notes
         
     }
     // encode
@@ -31,17 +34,20 @@ class QuestionCategory: NSObject, Mappable, NSCoding {
         aCoder.encode(category, forKey: "category")
         aCoder.encode(descriptionText, forKey: "description")
         aCoder.encode(questions, forKey: "questions")
+        aCoder.encode(notes, forKey: "notes")
     }
     
     // decode
     required convenience init(coder aDecoder: NSCoder) {
         let category:String? = aDecoder.decodeObject(forKey: "category") as? String
         let descriptionText:String? = aDecoder.decodeObject(forKey: "description") as? String
+        let notes:String? = aDecoder.decodeObject(forKey: "notes") as? String
         let questions = aDecoder.decodeObject(forKey: "questions") as! [Question]
 
         self.init(category: category,
                   descriptionText: descriptionText,
-                  questions: questions)
+                  questions: questions,
+                  notes:notes)
     }
     
     
@@ -66,6 +72,7 @@ class QuestionCategory: NSObject, Mappable, NSCoding {
         descriptionText  <- map["description"]
         category  <- map["category"]
         questions  <- map["questions"]
+        notes  <- map["notes"]
     }
     
     
@@ -87,7 +94,9 @@ class QuestionCategory: NSObject, Mappable, NSCoding {
     func toAnyObject() -> Any {
         return [
             "key": key,
-            "description": descriptionText
+            "description": descriptionText,
+            "notes": notes,
+            
         ]
     }
     

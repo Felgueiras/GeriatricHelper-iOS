@@ -87,4 +87,14 @@ class CGAPublicMultipleCategories: UIPageViewController, UIPageViewControllerDat
         
         return pageContentViewController
     }
+    
+    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+        // TODO
+        return 3
+    }
+    
+    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+        // TODO
+        return 0
+    }
 }

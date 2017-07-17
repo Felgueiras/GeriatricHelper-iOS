@@ -152,8 +152,8 @@ class CGAScalesTableViewController: UITableViewController, UIPopoverPresentation
             
             let scale = Constants.getScalesForArea(area: area)[rowInsideSection!]
             
-            let destinationViewController = segue.destination as! CGAScaleQuestionsTableViewController
-            destinationViewController.scale = scale
+//            let destinationViewController = segue.destination as! CGAScaleQuestionsTableViewController
+//            destinationViewController.scale = scale
             
             
         } else if segue.identifier == "SingleChoiceSegue" {
@@ -166,8 +166,8 @@ class CGAScalesTableViewController: UITableViewController, UIPopoverPresentation
             
             let scale = Constants.getScalesForArea(area: area)[rowInsideSection!]
             
-            let destinationViewController = segue.destination as! CGAGuideScaleSingleQuestionChoices
-            destinationViewController.scale = scale
+//            let destinationViewController = segue.destination as! CGAGuideScaleSingleQuestionChoices
+//            destinationViewController.scale = scale
             
             
         }

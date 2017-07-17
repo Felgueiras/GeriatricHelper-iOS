@@ -7,13 +7,19 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class RightWrongQuestionTableViewCell: UITableViewCell {
     
     var questionObj:Question?
     var scale:GeriatricScale?
     var category:QuestionCategory?
-
+    var categoryLabel: UILabel?
+    
+    @IBOutlet weak var questionImage: UIButton!
+    
+    @IBAction func displayQuestionImage(_ sender: Any) {
+    }
     
     @IBOutlet weak var question: UILabel!
     @IBOutlet weak var rightButton: UIButton!
@@ -23,22 +29,24 @@ class RightWrongQuestionTableViewCell: UITableViewCell {
     @IBAction func rightButtonClicked(_ sender: Any) {
         
         questionObj?.selectedRightWrong = "right"
-//        yesButton.backgroundColor = UIColor.green
-//        noButton.backgroundColor = UIColor(white: 1, alpha: 0.0)
+        rightButton.setImage(UIImage(named: "right selected"), for: .normal)
+        wrongButton.setImage(UIImage(named: "wrong unselected"), for: .normal)
+        
         questionObj?.answered = true
         checkCategoryCompleted()
         checkScaleCompleted()
+        
     }
     
     
     @IBAction func wrongButtonClicked(_ sender: Any) {
         
         questionObj?.selectedRightWrong = "wrong"
-//        yesButton.backgroundColor = UIColor(white: 1, alpha: 0.0)
-//        noButton.backgroundColor = UIColor.green
+        rightButton.setImage(UIImage(named: "right unselected"), for: .normal)
+        wrongButton.setImage(UIImage(named: "wrong selected"), for: .normal)
         questionObj?.answered = true
         checkCategoryCompleted()
-//        checkScaleCompleted()
+        checkScaleCompleted()
     }
     
     func checkCategoryCompleted()
@@ -54,7 +62,9 @@ class RightWrongQuestionTableViewCell: UITableViewCell {
         
         if allQuestionsAnswered == true{
             print("All questions from this category were answered!")
-//            scale?.completed = true
+            
+            // highlight category name
+            categoryLabel!.layer.backgroundColor = UIColor(red: 0/255, green: 100/255, blue: 0/255, alpha: 0.3).cgColor
         }
     }
     
@@ -82,12 +92,38 @@ class RightWrongQuestionTableViewCell: UITableViewCell {
     static func createCell(cell: RightWrongQuestionTableViewCell,
                            question: Question,
                            scale:GeriatricScale,
-                           category:QuestionCategory) -> UITableViewCell{
+                           category:QuestionCategory,
+                           categoryLabel:UILabel) -> UITableViewCell{
         
-        cell.question.text = question.descriptionText!
+        let questionIndex = category.questions!.index(of: question)
+        cell.question.text = String(questionIndex!+1) + " - " + question.descriptionText!
         cell.questionObj = question
         cell.scale = scale
         cell.category = category
+        cell.categoryLabel = categoryLabel
+        
+        // check if question already answered
+        if question.answered == true{
+            if question.selectedRightWrong == "right"
+            {
+                cell.rightButton.setImage(UIImage(named: "right selected"), for: .normal)
+                cell.wrongButton.setImage(UIImage(named: "wrong unselected"), for: .normal)
+            }
+            else
+            {
+                cell.rightButton.setImage(UIImage(named: "right unselected"), for: .normal)
+                cell.wrongButton.setImage(UIImage(named: "wrong selected"), for: .normal)
+            }
+            
+            
+        }
+        
+        if question.image == nil{
+            cell.questionImage.isHidden = true
+        }
+        
+        cell.checkCategoryCompleted()
+        
         
         
         return cell

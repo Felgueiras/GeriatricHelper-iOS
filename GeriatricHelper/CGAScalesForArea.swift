@@ -177,6 +177,15 @@ class CGAScalesForArea: UITableViewController {
 //                                                                                        Constants.test_name_mini_nutritional_assessment_triagem)
 //        }
    
+        // check education level
+        if scale.scaleName == Constants.test_name_mini_mental_state {
+            
+            checkEducationLevel(scale: scale)
+            return
+        }
+        
+        
+        
         // get scale definition
         let scaleScoring = Constants.getScaleByName(scaleName: scale.scaleName!)?.scoring
         // TODO only ask once && Constants.patientGender != Constants.MALE && Constants.patientGender != Constants.FEMALE
@@ -184,47 +193,12 @@ class CGAScalesForArea: UITableViewController {
             checkGender(scale: scale)
             return
             
-        } else {
-            openScale(scale:scale)
         }
+        openScale(scale:scale)
+        
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    /**
-     Open a scale - performSegue
-     **/
-    func openScale(scale:GeriatricScale){
-        
-        // static scale definition
-        let scaleDef = Constants.getScaleByName(scaleName: scale.scaleName!)!
-    
-        // single question scale - display the choices
-        if scaleDef.singleQuestion!{
-            performSegue(withIdentifier: ViewScaleSingleQuestionChoicesSegue, sender: self)
-        }
-        else{
-            
-            if scaleDef.multipleCategories == true {
-                performSegue(withIdentifier: ViewScaleMultipleCategoriesSegue, sender: self)
-            }
-                // multiple choice
-            else if scaleDef.questions?.first?.yesOrNo == true {
-                // yes/no
-                performSegue(withIdentifier: ViewScaleYesNoSegue, sender: self)
-            }
-                
-            else
-            {
-                // "normal" multiple choice
-                performSegue(withIdentifier: ViewScaleQuestionsSegue, sender: self)
-            }
-            
-        }
-    
-    }
-    
-    
     
     // prepare for the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -291,13 +265,94 @@ class CGAScalesForArea: UITableViewController {
             var DestViewController = segue.destination as! UINavigationController
             let destinationViewController = DestViewController.topViewController as! ReviewSessionTableViewController
             
-         
+            
             // set the author
             destinationViewController.session = session
             destinationViewController.scales = scales
-    
+            
         }
     }
+    
+    /**
+     Open a scale - performSegue
+     **/
+    func openScale(scale:GeriatricScale){
+        
+        // static scale definition
+        let scaleDef = Constants.getScaleByName(scaleName: scale.scaleName!)!
+    
+        // single question scale - display the choices
+        if scaleDef.singleQuestion!{
+            performSegue(withIdentifier: ViewScaleSingleQuestionChoicesSegue, sender: self)
+        }
+        else{
+            
+            if scaleDef.multipleCategories == true {
+                performSegue(withIdentifier: ViewScaleMultipleCategoriesSegue, sender: self)
+            }
+                // multiple choice
+            else if scaleDef.questions?.first?.yesOrNo == true {
+                // yes/no
+                performSegue(withIdentifier: ViewScaleYesNoSegue, sender: self)
+            }
+                
+            else
+            {
+                // "normal" multiple choice
+                performSegue(withIdentifier: ViewScaleQuestionsSegue, sender: self)
+            }
+            
+        }
+    
+    }
+    
+    func checkEducationLevel(scale: GeriatricScale) {
+        
+
+        
+        let alert = UIAlertController(title: "Escolaridade do Paciente",
+                                      message: nil,
+                                      preferredStyle: .alert)
+        
+        
+        let level1 = UIAlertAction(title: "Analfabeto",
+                                 style: .default) { _ in
+                                    Constants.EDUCATION_LEVEL = "Analfabetos";
+                                    self.openScale(scale: scale)
+                                    
+                                    
+        }
+        
+        let level2 = UIAlertAction(title: "1 a 11 anos de escolaridade",
+                                   style: .default) { _ in
+                                    Constants.EDUCATION_LEVEL = "1 a 11 anos de escolaridade";
+                                    self.openScale(scale: scale)
+                                    
+        }
+        
+        let level3 = UIAlertAction(title: "Escolaridade superior a 11 anos",
+                                   style: .default) { _ in
+                                    
+                                    Constants.EDUCATION_LEVEL = "Escolaridade superior a 11 anos"
+                                    self.openScale(scale: scale)
+                                    
+        }
+        
+        
+        let cancelAction = UIAlertAction(title: "Cancelar",
+                                         style: .cancel)
+        
+        
+        
+        
+        alert.addAction(level1)
+        alert.addAction(level2)
+        alert.addAction(level3)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+  
     
     func checkGender(scale: GeriatricScale) {
         

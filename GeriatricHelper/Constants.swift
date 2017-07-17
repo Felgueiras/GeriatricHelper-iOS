@@ -11,6 +11,9 @@ import UIKit
 
 class Constants{
     
+    static let test_name_mini_mental_state = "Mini mental state examination (Folstein)"
+    static var EDUCATION_LEVEL: String?
+    
     // scales
     static var scales: [GeriatricScale] = []
     
