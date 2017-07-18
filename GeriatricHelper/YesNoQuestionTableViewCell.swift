@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftMessages
 
 class YesNoQuestionTableViewCell: UITableViewCell {
 
@@ -61,7 +62,8 @@ class YesNoQuestionTableViewCell: UITableViewCell {
         }
         
         if allQuestionsAnswered == true{
-            print("All questions answered!")
+            SwiftMessagesHelper.showMessage(type: Theme.info,
+                                            text: StringHelper.allQuestionsAnswered)
             scale?.completed = true
         }
     }

@@ -50,6 +50,7 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.9)
+  - Instructions (1.0.0)
   - ObjectMapper (2.2.5)
   - Onboard (2.3.1)
   - Protobuf (3.2.1)
@@ -64,6 +65,7 @@ DEPENDENCIES:
   - Firebase/RemoteConfig
   - Firebase/Storage
   - FSCalendar
+  - Instructions (~> 1.0.0)
   - ObjectMapper (~> 2.2)
   - Onboard
   - SearchTextField
@@ -82,12 +84,13 @@ SPEC CHECKSUMS:
   FSCalendar: e95995a746acae531c4a7dd636b8393233125ec5
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
+  Instructions: 11b6744e572b8cab6f61e9445403cb95fcde68f1
   ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
   Onboard: b6871f25ac753175b2ab9a362fb2feb26a81a311
   Protobuf: 2ccbaf193f6c65adc67745453ca0c13234c32796
   SearchTextField: 5daab6cecfd90e06f9b08b2814593656c0c99f3d
   SwiftMessages: 09cea3336e3fb63c3578983c8aac65acaa6d884a
 
-PODFILE CHECKSUM: bfbb28590c87666da1d7c7c1066157d4830c134e
+PODFILE CHECKSUM: 4db21736c4f5b22f9e6b84825ca67ffd6d585f74
 
 COCOAPODS: 1.2.1

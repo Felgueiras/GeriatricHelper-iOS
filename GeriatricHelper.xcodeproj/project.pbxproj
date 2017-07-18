@@ -11,6 +11,7 @@
 		2B036ACD1EAE3FC900E4E6AA /* CGAPublicMultipleCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B036ACC1EAE3FC900E4E6AA /* CGAPublicMultipleCategories.swift */; };
 		2B036ACF1EAE42F900E4E6AA /* QuestionCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B036ACE1EAE42F900E4E6AA /* QuestionCategory.swift */; };
 		2B036AD11EAE4AF700E4E6AA /* QuestionCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B036AD01EAE4AF700E4E6AA /* QuestionCategoryViewController.swift */; };
+		2B0AD75A1F1E065600D8D1C5 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0AD7591F1E065600D8D1C5 /* SettingsTableViewController.swift */; };
 		2B0B7E971F1CD0BF00599486 /* FirebaseStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0B7E961F1CD0BF00599486 /* FirebaseStorageHelper.swift */; };
 		2B14B3011EA0D57400F08C05 /* FavoritePatientsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B14B3001EA0D57400F08C05 /* FavoritePatientsCollectionViewController.swift */; };
 		2B21ABBC1E9FEE3A001D6F66 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B21ABBA1E9FEE3A001D6F66 /* User.swift */; };
@@ -133,6 +134,7 @@
 		2B036ACC1EAE3FC900E4E6AA /* CGAPublicMultipleCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAPublicMultipleCategories.swift; sourceTree = "<group>"; };
 		2B036ACE1EAE42F900E4E6AA /* QuestionCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCategory.swift; sourceTree = "<group>"; };
 		2B036AD01EAE4AF700E4E6AA /* QuestionCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCategoryViewController.swift; sourceTree = "<group>"; };
+		2B0AD7591F1E065600D8D1C5 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		2B0B7E961F1CD0BF00599486 /* FirebaseStorageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStorageHelper.swift; sourceTree = "<group>"; };
 		2B14B3001EA0D57400F08C05 /* FavoritePatientsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritePatientsCollectionViewController.swift; sourceTree = "<group>"; };
 		2B21ABBA1E9FEE3A001D6F66 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -308,6 +310,14 @@
 			name = InitialSetup;
 			sourceTree = "<group>";
 		};
+		2B0AD7581F1E063A00D8D1C5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2B0AD7591F1E065600D8D1C5 /* SettingsTableViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		2B0B7E951F1CCFA300599486 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
@@ -429,6 +439,7 @@
 		2B50F1741EA9497600E4B762 /* PrivateArea */ = {
 			isa = PBXGroup;
 			children = (
+				2B616AE71ED33ED90056590E /* Settings */,
 				2B616AF31ED376120056590E /* Charts */,
 				2BA773741ED1D03500D3E352 /* ScaleQuestions */,
 				2B9BD2B61EFA76090072B854 /* Sessions.storyboard */,
@@ -491,6 +502,7 @@
 		2B6B56F81E9FECD000445937 /* GeriatricHelper */ = {
 			isa = PBXGroup;
 			children = (
+				2B0AD7581F1E063A00D8D1C5 /* Settings */,
 				2B0B7E951F1CCFA300599486 /* Firebase */,
 				2BBF33A41EA3825C008D30EC /* Constants.swift */,
 				2B9819ED1EAFC16E00FBF67D /* Main.storyboard */,
@@ -502,7 +514,6 @@
 				2B7D68481EA6A37000443D59 /* CGA */,
 				2BBF33AB1EA39D1E008D30EC /* CGAGuide */,
 				2BFD7F081ED472DD005663F0 /* Sessions */,
-				2B616AE71ED33ED90056590E /* Settings */,
 				2B9671771ED0D786001DDF90 /* PDF */,
 				2B004F981EB1FAB7003A8CD9 /* Others */,
 				2BAC89C81EA41CCC00EE6CE9 /* Prescriptions */,
@@ -891,6 +902,7 @@
 				2BA773781ED1D0D400D3E352 /* PrescriptionTableViewCell.swift in Sources */,
 				2B5636E81EA406AF00D8E75C /* DetailViewController.swift in Sources */,
 				2B59480E1EACB6170052EC98 /* CreatePatientViewController.swift in Sources */,
+				2B0AD75A1F1E065600D8D1C5 /* SettingsTableViewController.swift in Sources */,
 				2B4BDD921F1CC2B600104D6C /* CGAGuideAreasCollectionViewController.swift in Sources */,
 				2B7D684C1EA6ABB200443D59 /* CGAPublicInfo.swift in Sources */,
 				2B14B3011EA0D57400F08C05 /* FavoritePatientsCollectionViewController.swift in Sources */,

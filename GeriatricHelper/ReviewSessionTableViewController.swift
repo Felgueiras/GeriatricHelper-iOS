@@ -8,9 +8,15 @@
 
 import UIKit
 import SwiftMessages
+import Instructions
 
 class ReviewSessionTableViewController: UIViewController {
     
+    let coachMarksController = CoachMarksController()
+
+    @IBOutlet weak var closeReview: UIBarButtonItem!
+    
+    @IBOutlet weak var createPDFButton: UIBarButtonItem!
     var session: Session?
     
     var scales: [GeriatricScale]? = []
@@ -79,12 +85,34 @@ class ReviewSessionTableViewController: UIViewController {
         }
         
         
+        // handle Instructions
+        self.coachMarksController.overlay.allowTap = true
+        
+        self.coachMarksController.dataSource = self
+        
+        
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
         self.table.reloadData()
+        
+        // check user defaults
+        if UserDefaults.standard.bool(forKey: "instructions") {
+            startInstructions()
+        }
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.coachMarksController.stop(immediately: true)
+    }
+    
+    func startInstructions() {
+        self.coachMarksController.start(on: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -123,6 +151,76 @@ class ReviewSessionTableViewController: UIViewController {
     
     
 
+}
+
+// display Instructions
+extension ReviewSessionTableViewController: CoachMarksControllerDataSource, CoachMarksControllerDelegate {
+    
+    // whre to display the coach mark
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkAt index: Int) -> CoachMark {
+        var coachMarkView: UIView?
+        
+        
+        switch index
+        {
+        case 0:
+            // Review
+            return coachMarksController.helper.makeCoachMark(for: self.navigationController?.navigationBar) { (frame: CGRect) -> UIBezierPath in
+                // This will make a cutoutPath matching the shape of
+                // the component (no padding, no rounded corners).
+                return UIBezierPath(rect: frame)
+            }
+        case 1:
+            // PDF
+            coachMarkView = createPDFButton.customView
+        case 2:
+            // Close
+            coachMarkView = closeReview.customView
+        default:
+            break
+        }
+     
+        
+        
+        return coachMarksController.helper.makeCoachMark(for: coachMarkView)
+    }
+    
+    // number of coach marks
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+        
+       
+            return 3
+   
+    }
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
+        
+        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        
+        
+        switch index
+        {
+        case 0:
+            // Rever sessão
+            coachViews.bodyView.hintLabel.text = "Neste ecrã tem acesso ao resumo da sessão. Pode consultar os resultados de cada escala e, se pretender, gerar um documento PDF."
+            coachViews.bodyView.nextLabel.text = "Ok!"
+        case 1:
+            // PDF
+            coachViews.bodyView.hintLabel.text = "Se quiser gerar um PDF com o resumo da sessão, pode clicar aqui."
+            coachViews.bodyView.nextLabel.text = "Ok!"
+        case 2:
+            // Fechar
+            coachViews.bodyView.hintLabel.text = "Clique neste botão para sair do resumo."
+            coachViews.bodyView.nextLabel.text = "Ok!"
+        default:
+            break
+        }
+        
+        
+        
+        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
+    }
+    
 }
 
 extension ReviewSessionTableViewController: UITableViewDataSource, UITableViewDelegate  {

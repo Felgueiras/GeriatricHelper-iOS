@@ -1,18 +1,23 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
-
+import Instructions
 
 
 // show all scales from CGA
 class CGAPublicAreas: UITableViewController {
     
+    let coachMarksController = CoachMarksController()
+    
     var session: Session?
     
     let ViewAreaScales = "ViewAreaScales"
     
+    let numCoachMarks = 3
+    
     var scales:[GeriatricScale] = []
     
+    @IBOutlet weak var finishScale: UIBarButtonItem!
     
     // cancel CGA session
     @IBAction func cancelButtonPressed(_ sender: Any) {
@@ -37,7 +42,7 @@ class CGAPublicAreas: UITableViewController {
                                                 // private
                                                 self.performSegue(withIdentifier: "CGAPrivateCancelSegue", sender: self)
                                             }
-                              
+                                            
                                         }
                                         
         }
@@ -98,10 +103,15 @@ class CGAPublicAreas: UITableViewController {
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // handle Instructions
+        self.coachMarksController.overlay.allowTap = true
+        
+        self.coachMarksController.dataSource = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
-            
+        
         // check session type
         if session!.type == Session.sessionType.privateSession {
             
@@ -125,6 +135,13 @@ class CGAPublicAreas: UITableViewController {
         }
         
         self.tableView.reloadData()
+        
+        
+        // check user defaults
+        if UserDefaults.standard.bool(forKey: "instructions") {
+            startInstructions()
+        }
+        
     }
     
     // number of rows per section
@@ -144,13 +161,13 @@ class CGAPublicAreas: UITableViewController {
         
         // get scales for area
         
-    
+        
         return CGAAreaTableViewCell.createCell(cell: cell,
                                                area: area,
                                                viewController: self,
                                                scales: Constants.getScalesForAreaFromSession(area: area, scales: scales))
         
-        return cell        
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -169,7 +186,7 @@ class CGAPublicAreas: UITableViewController {
         //        var selectedAreaIndex = segmentedControl.selectedSegmentIndex
         
         // filter scales by selected
-//        let scale = Constants.getScalesForArea(area: Constants.cgaAreas[indexPath.section])[indexPath.row]
+        //        let scale = Constants.getScalesForArea(area: Constants.cgaAreas[indexPath.section])[indexPath.row]
         
         
         performSegue(withIdentifier: ViewAreaScales, sender: self)
@@ -178,6 +195,15 @@ class CGAPublicAreas: UITableViewController {
     }
     
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.coachMarksController.stop(immediately: true)
+    }
+    
+    func startInstructions() {
+        self.coachMarksController.start(on: self)
+    }
     
     // prepare for the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -206,6 +232,75 @@ class CGAPublicAreas: UITableViewController {
         
     }
     
+    
+    
+}
 
+// display Instructions
+extension CGAPublicAreas: CoachMarksControllerDataSource, CoachMarksControllerDelegate {
+
+    // whre to display the coach mark
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkAt index: Int) -> CoachMark {
+        var coachMarkView: UIView?
+        
+        switch index
+        {
+        case 0:
+            // Áreas
+            return coachMarksController.helper.makeCoachMark(for: self.navigationController?.navigationBar) { (frame: CGRect) -> UIBezierPath in
+                // This will make a cutoutPath matching the shape of
+                // the component (no padding, no rounded corners).
+                return UIBezierPath(rect: frame)
+            }
+        case 1:
+            // Info
+            // get cell
+            let ndx = IndexPath(row:1, section: 0)
+            let cell = self.tableView.cellForRow(at: ndx) as! CGAAreaTableViewCell
+            coachMarkView = cell.infoButton
+        case 2:
+            // Área
+            // get cell
+            let ndx = IndexPath(row:1, section: 0)
+            let cell = self.tableView.cellForRow(at: ndx) as! CGAAreaTableViewCell
+            coachMarkView = cell
+        default:
+            break
+        }
+        return coachMarksController.helper.makeCoachMark(for: coachMarkView)
+    }
+    
+    // number of coach marks
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+        return numCoachMarks
+    }
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
+        
+        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        
+        switch index
+        {
+        case 0:
+            // Áreas
+            coachViews.bodyView.hintLabel.text = "A AGG encontra-se dividida por áreas"
+            coachViews.bodyView.nextLabel.text = "Ok!"
+        case 1:
+            // Info
+            coachViews.bodyView.hintLabel.text = "Pode clicar aqui para aceder a informaçoes sobre uma área"
+            coachViews.bodyView.nextLabel.text = "Ok!"
+        case 2:
+            // Área
+            coachViews.bodyView.hintLabel.text = "Clique aqui para selecionar esta área"
+            coachViews.bodyView.nextLabel.text = "Ok!"
+        default:
+            break
+        }
+        
+        
+        
+        
+        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
+    }
     
 }

@@ -4,17 +4,16 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--CGA Guide Scales-->
+        <!--Scales for Area-->
         <scene sceneID="AeB-SH-nul">
             <objects>
-                <tableViewController title="CGA Guide Scales" id="Oze-dn-a1N" customClass="CGAScalesForArea" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="CGA Guide Scales" id="Oze-dn-a1N" userLabel="Scales for Area" customClass="CGAScalesForArea" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="84" sectionHeaderHeight="28" sectionFooterHeight="28" id="tpT-3f-fdP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,6 +43,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="finishSessionButton" destination="KMm-4L-EaO" id="Us6-hr-vQG"/>
                         <segue destination="9Yt-du-9hg" kind="show" identifier="CGAViewSingleQuestionChoices" id="J9u-7k-BWy"/>
                         <segue destination="hDo-LP-lrV" kind="unwind" identifier="CGAPublicCancelSegue" unwindAction="unwindToMenuWithSegue:" id="MpC-KQ-sjL"/>
                         <segue destination="Peu-5Z-UVe" kind="show" identifier="ViewScaleQuestions" id="I4X-mv-DhB"/>
@@ -387,6 +387,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="closeReview" destination="lrn-3Q-MxZ" id="yaG-e1-pW7"/>
+                        <outlet property="createPDFButton" destination="35t-0l-04X" id="Acw-bG-8y7"/>
                         <outlet property="segmentedControl" destination="3Yu-qI-2gA" id="kRm-Vp-e7c"/>
                         <outlet property="table" destination="bim-5J-uJA" id="Vu8-Nn-yHG"/>
                         <segue destination="Peu-5Z-UVe" kind="show" identifier="ViewScaleQuestions" id="iGh-v3-wOO"/>
@@ -397,7 +399,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSn-ta-AdV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nnx-R5-Y9s" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1458" y="1195"/>
+            <point key="canvasLocation" x="-1458" y="1394"/>
         </scene>
         <!--Review Public Session-->
         <scene sceneID="z7P-q8-LDw">
@@ -450,10 +452,10 @@
             </objects>
             <point key="canvasLocation" x="50" y="-555"/>
         </scene>
-        <!--CGA Guide Scales-->
+        <!--CGA Areas-->
         <scene sceneID="Lb9-l5-UrZ">
             <objects>
-                <tableViewController title="CGA Guide Scales" id="scl-CK-nrf" customClass="CGAPublicAreas" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="CGA Guide Scales" id="scl-CK-nrf" userLabel="CGA Areas" customClass="CGAPublicAreas" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="84" sectionHeaderHeight="28" sectionFooterHeight="28" id="cFz-fI-H3o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -488,6 +490,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="finishScale" destination="a3J-Qt-sd7" id="nnt-gI-EQs"/>
                         <segue destination="peO-s4-lRR" kind="unwind" identifier="CGAPublicCancelSegue" unwindAction="unwindToMenuWithSegue:" id="REb-RQ-wTy"/>
                         <segue destination="Oze-dn-a1N" kind="show" identifier="ViewAreaScales" id="srn-AX-W5t"/>
                         <segue destination="pYq-Hd-djC" kind="show" identifier="ReviewPublicSession" id="vH1-f2-YmV"/>
@@ -531,7 +534,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VE2-A8-KQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-658" y="1394"/>
+            <point key="canvasLocation" x="-108" y="1394"/>
         </scene>
     </scenes>
     <resources>
@@ -540,9 +543,9 @@
         <image name="pill" width="13" height="13"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iGh-v3-wOO"/>
+        <segue reference="J9u-7k-BWy"/>
+        <segue reference="oqv-rq-zFO"/>
         <segue reference="4ue-RV-T5t"/>
-        <segue reference="5sP-Qm-QCY"/>
-        <segue reference="6MQ-Id-j66"/>
+        <segue reference="I4X-mv-DhB"/>
     </inferredMetricsTieBreakers>
 </document>

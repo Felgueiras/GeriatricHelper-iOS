@@ -103,11 +103,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeriatricHelper/CGAScalesForArea.swift"
-            timestampString = "521807214.665783"
+            timestampString = "522060934.879673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -135,11 +135,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeriatricHelper/CGAScalesForArea.swift"
-            timestampString = "521807214.665783"
+            timestampString = "522060934.879673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "286"
-            endingLineNumber = "286"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
             landmarkName = "openScale(scale:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -151,11 +151,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeriatricHelper/CGAScalesForArea.swift"
-            timestampString = "521807214.665783"
+            timestampString = "522060934.879673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
             landmarkName = "openScale(scale:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -167,11 +167,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeriatricHelper/CGAScalesForArea.swift"
-            timestampString = "521807214.665783"
+            timestampString = "522060934.879673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "296"
-            endingLineNumber = "296"
+            startingLineNumber = "318"
+            endingLineNumber = "318"
             landmarkName = "openScale(scale:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -183,11 +183,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeriatricHelper/CGAScalesForArea.swift"
-            timestampString = "521807214.665783"
+            timestampString = "522060934.879673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
             landmarkName = "openScale(scale:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -199,11 +199,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeriatricHelper/YesNoQuestionTableViewCell.swift"
-            timestampString = "521742814.654159"
+            timestampString = "522060867.7786"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "createCell(cell:question:scale:backend:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -285,6 +285,22 @@
             startingLineNumber = "99"
             endingLineNumber = "99"
             landmarkName = "createCell(cell:question:scale:category:categoryLabel:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeriatricHelper/CGAPublicAreas.swift"
+            timestampString = "522060961.544875"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -1,12 +1,18 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import Instructions
 
 
 
 // show all scales from CGA
-//TODO - display scales organized by areas
 class CGAScalesForArea: UITableViewController {
+    
+    let coachMarksController = CoachMarksController()
+
+    @IBOutlet weak var finishSessionButton: UIBarButtonItem!
+    
+    let numCoachMarks = 4
     
     var area: String?
     
@@ -93,6 +99,11 @@ class CGAScalesForArea: UITableViewController {
         
         // set title
         self.title = area
+        
+        // handle Instructions
+        self.coachMarksController.overlay.allowTap = true
+        
+        self.coachMarksController.dataSource = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -122,7 +133,22 @@ class CGAScalesForArea: UITableViewController {
         
         self.tableView.reloadData()
         
+        // check user defaults
+        if UserDefaults.standard.bool(forKey: "instructions") {
+            startInstructions()
+        }
         
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.coachMarksController.stop(immediately: true)
+    }
+    
+    func startInstructions() {
+        self.coachMarksController.start(on: self)
     }
     
     // number of rows per section
@@ -390,6 +416,149 @@ class CGAScalesForArea: UITableViewController {
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    let instructionsScaleIndex = 0
+    
+}
+
+// display Instructions
+extension CGAScalesForArea: CoachMarksControllerDataSource, CoachMarksControllerDelegate {
+    
+    // whre to display the coach mark
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkAt index: Int) -> CoachMark {
+        var coachMarkView: UIView?
+        
+        let scale = Constants.getScalesForAreaFromSession(area: area!, scales: scales!)[instructionsScaleIndex]
+        if scale.completed == true
+        {
+            switch index
+            {
+            case 0:
+                let ndx = IndexPath(row:0, section: 0)
+                let cell = self.tableView.cellForRow(at: ndx) as! ScaleTableViewCell
+                coachMarkView = cell.resultQualitative
+                
+            case 1:
+                // Info
+                // get cell
+                let ndx = IndexPath(row:0, section: 0)
+                let cell = self.tableView.cellForRow(at: ndx) as! ScaleTableViewCell
+                coachMarkView = cell.resultQuantitative
+            case 2:
+                coachMarkView = finishSessionButton.customView
+            default:
+                break
+            }
+        }
+        else{
+            
+            switch index
+            {
+            case 0:
+                // Escalas
+                return coachMarksController.helper.makeCoachMark(for: self.navigationController?.navigationBar) { (frame: CGRect) -> UIBezierPath in
+                    // This will make a cutoutPath matching the shape of
+                    // the component (no padding, no rounded corners).
+                    return UIBezierPath(rect: frame)
+                }
+            case 1:
+                // Info
+                // get cell
+                let ndx = IndexPath(row:0, section: 0)
+                let cell = self.tableView.cellForRow(at: ndx) as! ScaleTableViewCell
+                coachMarkView = cell.infoButton
+            case 2:
+                // Notas
+                // get cell
+                let ndx = IndexPath(row:0, section: 0)
+                let cell = self.tableView.cellForRow(at: ndx) as! ScaleTableViewCell
+                coachMarkView = cell.notes
+            case 3:
+                // Escala
+                // get cell
+                let ndx = IndexPath(row:0, section: 0)
+                let cell = self.tableView.cellForRow(at: ndx) as! ScaleTableViewCell
+                coachMarkView = cell
+            default:
+                break
+            }
+        }
+        
+        
+        return coachMarksController.helper.makeCoachMark(for: coachMarkView)
+    }
+    
+    // number of coach marks
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+        
+        let scale = Constants.getScalesForAreaFromSession(area: area!, scales: scales!)[instructionsScaleIndex]
+        if scale.completed == true
+        {
+            return 3
+        }
+        else{
+            
+            return numCoachMarks
+        }
+    }
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
+        
+        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        
+        let scale = Constants.getScalesForAreaFromSession(area: area!, scales: scales!)[instructionsScaleIndex]
+        if scale.completed == true
+        {
+            switch index
+            {
+            case 0:
+                // qualitativo
+                coachViews.bodyView.hintLabel.text = "Resultado qualitativo"
+                coachViews.bodyView.nextLabel.text = "Ok!"
+            case 1:
+                // quantitativo
+                coachViews.bodyView.hintLabel.text = "Resultado quantitativo"
+                coachViews.bodyView.nextLabel.text = "Ok!"
+            case 2:
+                // finish session
+                coachViews.bodyView.hintLabel.text = "Depois de preencher as escalas que pretende, é altura de terminar a sessão. Clique aqui para terminar a sessão."
+                coachViews.bodyView.nextLabel.text = "Ok!"
+            default:
+                break
+            }
+        }
+        else{
+            
+            switch index
+            {
+            case 0:
+                // Escalas
+                coachViews.bodyView.hintLabel.text = "Dentro de cada área há várias escalas"
+                coachViews.bodyView.nextLabel.text = "Ok!"
+            case 1:
+                // Info
+                coachViews.bodyView.hintLabel.text = "Pode clicar aqui para aceder a informaçoes sobre uma escala"
+                coachViews.bodyView.nextLabel.text = "Ok!"
+            case 2:
+                // Notas
+                coachViews.bodyView.hintLabel.text = "Pode adicionar notas sobre uma escala"
+                coachViews.bodyView.nextLabel.text = "Ok!"
+            case 3:
+                // Escala
+                coachViews.bodyView.hintLabel.text = "Selecione esta escala e preencha-a, quando estiver completamente preenchida irá aparecer uma mensagem no ecrã"
+                coachViews.bodyView.nextLabel.text = "Ok!"
+            default:
+                break
+            }
+        }
+        
+        
+        
+        
+        
+        
+        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
     }
     
 }
