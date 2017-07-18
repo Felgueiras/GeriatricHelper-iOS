@@ -6,6 +6,7 @@
 //  Copyright © 2017 felgueiras. All rights reserved.
 //
 
+
 import UIKit
 import FirebaseAuth
 import FirebaseStorage
@@ -16,8 +17,11 @@ class SettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var showInstructionsSwitch: UISwitch!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // hide modules
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -51,6 +55,11 @@ class SettingsTableViewController: UITableViewController {
             
         }
         
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // hide modules section
+        return 2
     }
     
         

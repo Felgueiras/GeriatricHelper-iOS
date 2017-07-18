@@ -22,14 +22,8 @@ class InitialSetup: UIViewController {
             let animated = downloadedScales != 0
             
             progressView.setProgress(fractionalProgress, animated: animated)
-            //            progressLabel.text = ("\(counter)%")
             if(downloadedScales == Int(scalesTotal)){
-                print("Every Scale downloaded")
-                
-                
-                
-                
-                self.performSegue(withIdentifier: "showAppIntro", sender: self)
+                self.showAppIntro()
             }
         }
     }
@@ -168,6 +162,112 @@ class InitialSetup: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // init RemoteConfig
+        FirebaseRemoteConfig().initRemoteConfig()
+        
+        // test localization
+        let welcomeMessage = NSLocalizedString("Welcome", comment: "")
+        
+        
+        // check if first start
+        let defaults = UserDefaults.standard
+        let HasLaunchedOnce = defaults.bool(forKey: "HasLaunchedOnce")
+        if !HasLaunchedOnce{
+            // start the counter
+            for _ in 0..<100 {
+                DispatchQueue.global(qos: .background).async {
+                    sleep(1)
+                    DispatchQueue.main.async {
+                        //                    self.counter += 1
+                        return
+                    }
+                }
+            }
+            // download scales and criteria
+            
+            //            downloadCriteria()
+            
+            downloadScales()
+            defaults.set(true, forKey: "HasLaunchedOnce")
+        }
+        else{
+            // read from defaults and add to Constants
+            let decoded  = defaults.object(forKey: "scales") as! Data
+            let decodedScales = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [GeriatricScale]
+            Constants.scales = decodedScales
+            
+            // check if user is already logged in
+            FIRAuth.auth()!.addStateDidChangeListener { auth, user in
+                guard user != nil else {
+                    
+                    // not logged in
+                    self.performSegue(withIdentifier: self.SegueLeaveInitialSetup, sender: self)
+                    return
+                }
+                
+                // save user ID
+                FirebaseHelper.userID = FIRAuth.auth()?.currentUser?.uid
+                
+                // load questions
+                FirebaseDatabaseHelper.fetchQuestions()
+                // load scales
+                FirebaseDatabaseHelper.fetchScales()
+                // load sessions
+                FirebaseDatabaseHelper.fetchSessions()
+                
+                // navigate automatically to the private area
+                self.performSegue(withIdentifier: "NavigatePersonalArea", sender: self)
+            }
+            
+        }
+        
+        
+    }
+    
+    func showAppIntro()
+    {
+        // Initialize onboarding view controller
+        var onboardingVC = OnboardingViewController()
+        
+        // Create slides
+        let firstPage = OnboardingContentViewController.content(withTitle: "Bem-vindo ao GeriatricHelper", body: "Esta aplicação permite-lhe aplicar a Avaliação Geriátrica Global (AGG).", image: UIImage(named: "icon_original"), buttonText: nil, action: nil)
+        
+        let secondPage = OnboardingContentViewController.content(withTitle: "Sessões AGG", body: "Cada AGG é realizada numa sessão, onde as escalas se encontram divididas por área a avaliar (estado funcional, afetivo, cognitivo, nutricional e marcha)", image: UIImage(named: "cga_areas"), buttonText: nil, action: nil)
+        
+        let thirdPage = OnboardingContentViewController.content(withTitle: "Escalas", body: "À medida que completa as escalas, pode consultar o seu resultado e escrever notas", image: UIImage(named: "screen_session"), buttonText: nil, action: nil)
+        
+        let fourthPage = OnboardingContentViewController.content(withTitle: "Rever uma Sessão", body: "Depois de terminada a sessão, pode rever o resultado de cada teste e criar um documento PDF da sessão", image: UIImage(named: "screen_review"), buttonText: nil, action: nil)
+        
+        let fifthPage = OnboardingContentViewController.content(withTitle: "Módulos", body: "GeriatricHelper irá suportar módulos. Em versões futuras estes poderão ser ativados e desativados nas Definições da aplicação", image: UIImage(named: "image4"), buttonText: nil, action: nil)
+        
+        // Define onboarding view controller properties
+        onboardingVC = OnboardingViewController.onboard(withBackgroundImage: UIImage(named: "blue"), contents: [firstPage, secondPage, thirdPage, fourthPage, fifthPage])
+        onboardingVC.shouldFadeTransitions = true
+        onboardingVC.shouldMaskBackground = false
+        onboardingVC.shouldBlurBackground = false
+        onboardingVC.fadePageControlOnLastPage = false
+        //        onboardingVC.pageControl.pageIndicatorTintColor = UIColor.darkGray
+        onboardingVC.pageControl.currentPageIndicatorTintColor = UIColor.white
+        //        onboardingVC.skipButton.setTitleColor(UIColor.black, for: .normal)
+        onboardingVC.allowSkipping = true
+        onboardingVC.fadeSkipButtonOnLastPage = false
+        
+        let controller = self
+        onboardingVC.skipHandler = {
+            self.dismiss(animated: true, completion: {
+                self.performSegue(withIdentifier: self.SegueLeaveInitialSetup, sender: controller)
+            })
+        }
+        
+        // Present presentation
+        self.present(onboardingVC, animated: true, completion: nil)
+        
+    }
+    
+    
     
     /**
      func downloadScales2() {
@@ -281,80 +381,5 @@ class InitialSetup: UIViewController {
     
     
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        // init RemoteConfig
-        FirebaseRemoteConfig().initRemoteConfig()
-        
-        // test localization
-        let welcomeMessage = NSLocalizedString("Welcome", comment: "")
-        print(welcomeMessage)
-        
-        
-        // check if first start
-        let defaults = UserDefaults.standard
-        let HasLaunchedOnce = defaults.bool(forKey: "HasLaunchedOnce")
-        if !HasLaunchedOnce{
-            // start the counter
-            for _ in 0..<100 {
-                DispatchQueue.global(qos: .background).async {
-                    sleep(1)
-                    DispatchQueue.main.async {
-                        //                    self.counter += 1
-                        return
-                    }
-                }
-            }
-            // download scales and criteria
-            
-//            downloadCriteria()
-            
-            downloadScales()
-            defaults.set(true, forKey: "HasLaunchedOnce")
-            
-            
-            
-           
-            
-        }
-        else{
-            // read from defaults and add to Constants
-            let decoded  = defaults.object(forKey: "scales") as! Data
-            let decodedScales = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [GeriatricScale]
-            Constants.scales = decodedScales
-            
-            // check if user is already logged in
-            FIRAuth.auth()!.addStateDidChangeListener { auth, user in
-                guard user != nil else {
-                    
-                    // not logged in
-                    self.performSegue(withIdentifier: self.SegueLeaveInitialSetup, sender: self)
-                    return
-                }
-                
-                // save user ID
-                FirebaseHelper.userID = FIRAuth.auth()?.currentUser?.uid
-                
-                // load questions
-                FirebaseDatabaseHelper.fetchQuestions()
-                // load scales
-                FirebaseDatabaseHelper.fetchScales()
-                // load sessions
-                FirebaseDatabaseHelper.fetchSessions()
-                
-                // navigate automatically to the private area
-                self.performSegue(withIdentifier: "NavigatePersonalArea", sender: self)
-                
-                
-                
-            }
-            
-        }
-        
-        
-    
-
-    }
     
 }

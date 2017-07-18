@@ -292,7 +292,6 @@
 		2B004F981EB1FAB7003A8CD9 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				2B5B260E1ECF967300A60F14 /* AppIntro.swift */,
 				2BD0FE8F1ECEFFB80024CBA3 /* SwiftMessagesHelper.swift */,
 				2BD0FE911ECF06C60024CBA3 /* StringHelper.swift */,
 				2B6B56F91E9FECD000445937 /* AppDelegate.swift */,
@@ -316,6 +315,14 @@
 				2B0AD7591F1E065600D8D1C5 /* SettingsTableViewController.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		2B0AD75C1F1E0EF000D8D1C5 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				2B5B260E1ECF967300A60F14 /* AppIntro.swift */,
+			);
+			name = Intro;
 			sourceTree = "<group>";
 		};
 		2B0B7E951F1CCFA300599486 /* Firebase */ = {
@@ -502,16 +509,17 @@
 		2B6B56F81E9FECD000445937 /* GeriatricHelper */ = {
 			isa = PBXGroup;
 			children = (
-				2B0AD7581F1E063A00D8D1C5 /* Settings */,
-				2B0B7E951F1CCFA300599486 /* Firebase */,
 				2BBF33A41EA3825C008D30EC /* Constants.swift */,
 				2B9819ED1EAFC16E00FBF67D /* Main.storyboard */,
 				2BA319C31E9FF03100E7A5C9 /* LaunchScreen.xib */,
 				2BDB10AD1EAD4D9800ACD751 /* PopOvers.storyboard */,
 				2BA23ED91EB1F1330006145F /* TODO.txt */,
 				2BA319C11E9FF01E00E7A5C9 /* Images.xcassets */,
-				2B04D5E01F1A620A00D49CBA /* InitialSetup */,
+				2B0AD75C1F1E0EF000D8D1C5 /* Intro */,
 				2B7D68481EA6A37000443D59 /* CGA */,
+				2B0AD7581F1E063A00D8D1C5 /* Settings */,
+				2B0B7E951F1CCFA300599486 /* Firebase */,
+				2B04D5E01F1A620A00D49CBA /* InitialSetup */,
 				2BBF33AB1EA39D1E008D30EC /* CGAGuide */,
 				2BFD7F081ED472DD005663F0 /* Sessions */,
 				2B9671771ED0D786001DDF90 /* PDF */,
