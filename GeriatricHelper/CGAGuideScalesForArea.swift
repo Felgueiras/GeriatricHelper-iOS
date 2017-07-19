@@ -6,7 +6,7 @@ import Instructions
 
 
 // show all scales from CGA
-class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDelegate {
+class CGAGuideScalesForArea: UITableViewController {
     
     let coachMarksController = CoachMarksController()
 
@@ -91,76 +91,24 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
         present(alert, animated: true, completion: nil)
     }
     
+  
+    
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // set title
         self.title = area
-        
-        // handle Instructions
-        self.coachMarksController.overlay.allowTap = true
-        
-        self.coachMarksController.dataSource = self
-        
-        // add BMI index calculator
-        if area == Constants.cga_nutritional{
-            let Nam1BarBtnVar = UIBarButtonItem(title: "IMC", style: .plain, target: self, action: #selector(CGAScalesForArea.Nam1BarBtnKlkFnc(_:)))
-          
-          
-            // TODO preserve other button
-            self.navigationItem.setRightBarButtonItems([Nam1BarBtnVar], animated: true)
-        
-        }
+
     }
-    
-    // open BMI calculator
-    func Nam1BarBtnKlkFnc(_ sender : UIBarButtonItem)
-    {
-        // create popover
-        let popOverVC = UIStoryboard(name: "PopOvers", bundle: nil).instantiateViewController(withIdentifier: "bmiCalculator") as! BMICalculatorPopUpViewController
-        
-        popOverVC.modalPresentationStyle = UIModalPresentationStyle.popover
-        let popover: UIPopoverPresentationController = popOverVC.popoverPresentationController!
-        popover.barButtonItem = sender
-        
-        let minimumSize = self.view.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-        popOverVC.preferredContentSize = CGSize(width: 280, height: 200)
-        
-        // center the popover
-        
-//        popover.sourceRect = CGRect(x:self.view.bounds.midX, y: self.view.bounds.midY,width: 315,height: 230)
-        // remove arrows
-//        controller?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
-        self.present(popOverVC, animated: true, completion:nil)
-    }
-    
-    
     
     override func viewDidAppear(_ animated: Bool) {
         
-        // check session type
-        if session!.type == Session.sessionType.privateSession {
-            
-            // private session
-            FirebaseHelper.ref.child(FirebaseHelper.scalesReferencePath).queryOrdered(byChild: "sessionID").queryEqual(toValue: session?.guid!).observe(.value, with: { snapshot in
-                var scalesFirebase: [GeriatricScale] = []
-                
-                for item in snapshot.children {
-                    let scale = GeriatricScale(snapshot: item as! FIRDataSnapshot)
-                    scalesFirebase.append(scale)
-                }
-                
-                self.scales = scalesFirebase
-                self.tableView.reloadData()
-            })
-        
-        }
-        else{
+       
         // public session
             self.scales = Constants.cgaPublicScales
             self.tableView.reloadData()
-        }
+        
         
         self.tableView.reloadData()
         
@@ -194,7 +142,8 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
         let cell = Bundle.main.loadNibNamed("ScaleTableViewCell", owner: self, options: nil)?.first as! ScaleTableViewCell
         
         let rowInsideSection = indexPath.row
-        let scalesForArea = Constants.getScalesForAreaFromSession(area: area!, scales: scales!)
+        let scalesForArea = Constants.getScalesForArea(area: area!)
+        
         
         
         if rowInsideSection < scalesForArea.count {
@@ -221,7 +170,7 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         
         // get selected scale
-        let scale = Constants.getScalesForAreaFromSession(area: area!, scales: scales!)[indexPath.row]
+        let scale = Constants.getScalesForArea(area: area!)[indexPath.row]
         
         
         ////
@@ -447,158 +396,6 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
-    }
-    
-    let instructionsScaleIndex = 0
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        // return UIModalPresentationStyle.FullScreen
-        return UIModalPresentationStyle.none
-    }
-    
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.none
-    }
-    
-}
-
-// display Instructions
-extension CGAScalesForArea: CoachMarksControllerDataSource, CoachMarksControllerDelegate {
-    
-    // whre to display the coach mark
-    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkAt index: Int) -> CoachMark {
-        var coachMarkView: UIView?
-        
-        let scale = Constants.getScalesForAreaFromSession(area: area!, scales: scales!)[instructionsScaleIndex]
-        if scale.completed == true
-        {
-            switch index
-            {
-            case 0:
-                let ndx = IndexPath(row:0, section: 0)
-                let cell = self.tableView.cellForRow(at: ndx) as! ScaleTableViewCell
-                coachMarkView = cell.resultQualitative
-                
-            case 1:
-                // Info
-                // get cell
-                let ndx = IndexPath(row:0, section: 0)
-                let cell = self.tableView.cellForRow(at: ndx) as! ScaleTableViewCell
-                coachMarkView = cell.resultQuantitative
-            case 2:
-                coachMarkView = finishSessionButton.customView
-            default:
-                break
-            }
-        }
-        else{
-            
-            switch index
-            {
-            case 0:
-                // Escalas
-                return coachMarksController.helper.makeCoachMark(for: self.navigationController?.navigationBar) { (frame: CGRect) -> UIBezierPath in
-                    // This will make a cutoutPath matching the shape of
-                    // the component (no padding, no rounded corners).
-                    return UIBezierPath(rect: frame)
-                }
-            case 1:
-                // Info
-                // get cell
-                let ndx = IndexPath(row:0, section: 0)
-                let cell = self.tableView.cellForRow(at: ndx) as! ScaleTableViewCell
-                coachMarkView = cell.infoButton
-            case 2:
-                // Notas
-                // get cell
-                let ndx = IndexPath(row:0, section: 0)
-                let cell = self.tableView.cellForRow(at: ndx) as! ScaleTableViewCell
-                coachMarkView = cell.notes
-            case 3:
-                // Escala
-                // get cell
-                let ndx = IndexPath(row:0, section: 0)
-                let cell = self.tableView.cellForRow(at: ndx) as! ScaleTableViewCell
-                coachMarkView = cell
-            default:
-                break
-            }
-        }
-        
-        
-        return coachMarksController.helper.makeCoachMark(for: coachMarkView)
-    }
-    
-    // number of coach marks
-    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
-        
-        let scale = Constants.getScalesForAreaFromSession(area: area!, scales: scales!)[instructionsScaleIndex]
-        if scale.completed == true
-        {
-            return 3
-        }
-        else{
-            
-            return numCoachMarks
-        }
-    }
-    
-    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
-        
-        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
-        
-        let scale = Constants.getScalesForAreaFromSession(area: area!, scales: scales!)[instructionsScaleIndex]
-        if scale.completed == true
-        {
-            switch index
-            {
-            case 0:
-                // qualitativo
-                coachViews.bodyView.hintLabel.text = "Resultado qualitativo"
-                coachViews.bodyView.nextLabel.text = "Ok!"
-            case 1:
-                // quantitativo
-                coachViews.bodyView.hintLabel.text = "Resultado quantitativo"
-                coachViews.bodyView.nextLabel.text = "Ok!"
-            case 2:
-                // finish session
-                coachViews.bodyView.hintLabel.text = "Depois de preencher as escalas que pretende, é altura de terminar a sessão. Clique aqui para terminar a sessão."
-                coachViews.bodyView.nextLabel.text = "Ok!"
-            default:
-                break
-            }
-        }
-        else{
-            
-            switch index
-            {
-            case 0:
-                // Escalas
-                coachViews.bodyView.hintLabel.text = "Dentro de cada área há várias escalas"
-                coachViews.bodyView.nextLabel.text = "Ok!"
-            case 1:
-                // Info
-                coachViews.bodyView.hintLabel.text = "Pode clicar aqui para aceder a informaçoes sobre uma escala"
-                coachViews.bodyView.nextLabel.text = "Ok!"
-            case 2:
-                // Notas
-                coachViews.bodyView.hintLabel.text = "Pode adicionar notas sobre uma escala"
-                coachViews.bodyView.nextLabel.text = "Ok!"
-            case 3:
-                // Escala
-                coachViews.bodyView.hintLabel.text = "Selecione esta escala e preencha-a, quando estiver completamente preenchida irá aparecer uma mensagem no ecrã"
-                coachViews.bodyView.nextLabel.text = "Ok!"
-            default:
-                break
-            }
-        }
-        
-        
-        
-        
-        
-        
-        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
     }
     
 }

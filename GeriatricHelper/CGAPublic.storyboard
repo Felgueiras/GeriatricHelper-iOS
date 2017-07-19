@@ -55,7 +55,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PAw-An-1JS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hDo-LP-lrV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-756" y="-634"/>
+            <point key="canvasLocation" x="-1046" y="-331"/>
         </scene>
         <!--Public Multiple Categories-->
         <scene sceneID="Cef-Fl-CSR">
@@ -418,7 +418,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ptu-mX-EKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1458" y="410"/>
+            <point key="canvasLocation" x="-1964" y="-331"/>
         </scene>
         <!--Yes No Questions-->
         <scene sceneID="B90-D7-YiH">
