@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Charts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FSCalendar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GTMSessionFetcher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -14,7 +24,42 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Instructions.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ObjectMapper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Onboard.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-GeriatricHelper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Protobuf.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SearchTextField.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftMessages-SwiftMessages.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftMessages.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,12 +72,57 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7FBE5824BB99D6487B1315D327C39ACE</key>
+		<key>47BF76D6B2611AECE378A9281F662ECD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6FFF9A0488BA9FA46CAC0F6F1BA0A397</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7226A0E60984151AAEAA74B0BD8A2004</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8F5682E0AC126B1910FC04BA8A16F382</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>94D9A6A0BA6F571E3D693BCB81077A31</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B0E02ED8FB2ACF5AD09B243150FE43C4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C5A2DB7A84B7B78E359870D2E1B24AA7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CD6C9FB6B052E1CF663F8A56041EA163</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E654676E44ADAFD95EA32A87DCFA11D7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F307B842FF76B2DE6C55DB67C0885325</key>
 		<dict>
 			<key>primary</key>
 			<true/>
