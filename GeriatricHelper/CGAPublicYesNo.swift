@@ -70,15 +70,13 @@ class CGAPublicYesNo: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        let question = scale.questions?[indexPath.row]
-        
-        
         let cell = Bundle.main.loadNibNamed("YesNoQuestionTableViewCell", owner: self, options: nil)?.first as! YesNoQuestionTableViewCell
         
         return YesNoQuestionTableViewCell.createCell(cell: cell,
-                                                          question: question!,
+                                                     cellIndex: indexPath.row,
                                                           scale: scale,
-                                                          backend: false)
+                                                          backend: false,
+                                                          table: self.tableView)
    
     }
     

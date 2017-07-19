@@ -11,7 +11,7 @@ import SwiftMessages
 
 class StringHelper{
     
-    static let allQuestionsAnswered = "All questions answered"
+    static let allQuestionsAnswered = "Todas as questões foram respondidas."
     static let sessionFinished = "Sessão terminada"
     
     static let cga_mental = "Composto por avaliação Cognitiva e Afetiva. A Cognitiva relaciona-se com o estado cognitivo do paciente, nomeadamente orientação, memória, cálculo, pensamento abstracto, linguagem, etc. A Afetiva é afecta ao estado emocional do paciente, humor, tristeza e depressão."    

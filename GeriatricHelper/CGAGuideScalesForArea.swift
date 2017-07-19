@@ -172,16 +172,6 @@ class CGAGuideScalesForArea: UITableViewController {
         // get selected scale
         let scale = Constants.getScalesForArea(area: area!)[indexPath.row]
         
-        
-        ////
-        
-        
-//        if (scale.scaleName == Constants.test_name_mini_nutritional_assessment_global)) {
-//            // TODO check if triagem is already answered
-//            
-//            GeriatricScaleFirebase triagem = FirebaseDatabaseHelper.getScaleFromSession(session,
-//                                                                                        Constants.test_name_mini_nutritional_assessment_triagem)
-//        }
    
         // check education level
         if scale.scaleName == Constants.test_name_mini_mental_state {
@@ -194,7 +184,6 @@ class CGAGuideScalesForArea: UITableViewController {
         
         // get scale definition
         let scaleScoring = Constants.getScaleByName(scaleName: scale.scaleName!)?.scoring
-        // TODO only ask once && Constants.patientGender != Constants.MALE && Constants.patientGender != Constants.FEMALE
         if scaleScoring?.differentMenWomen == true  {
             checkGender(scale: scale)
             return

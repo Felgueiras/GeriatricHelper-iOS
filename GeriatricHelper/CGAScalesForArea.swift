@@ -40,14 +40,14 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
         
         
         // cancel the current session
-        let saveAction = UIAlertAction(title: "Yes",
+        let saveAction = UIAlertAction(title: "Sim",
                                        style: .default) { _ in
                                         
                                         self.performSegue(withIdentifier: "CGAPublicCancelSegue", sender: self)
                                         
         }
         
-        let cancelAction = UIAlertAction(title: "No",
+        let cancelAction = UIAlertAction(title: "Não",
                                          style: .default)
         
         
@@ -103,14 +103,11 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
         
         self.coachMarksController.dataSource = self
         
-        // add BMI index calculator
+        // add BMI index calculator, preserving other buttons
         if area == Constants.cga_nutritional{
             let Nam1BarBtnVar = UIBarButtonItem(title: "IMC", style: .plain, target: self, action: #selector(CGAScalesForArea.Nam1BarBtnKlkFnc(_:)))
-          
-          
-            // TODO preserve other button
-            self.navigationItem.setRightBarButtonItems([Nam1BarBtnVar], animated: true)
-        
+            
+            self.navigationItem.setRightBarButtonItems([self.navigationItem.rightBarButtonItem!, Nam1BarBtnVar], animated: true)
         }
     }
     

@@ -95,6 +95,16 @@ class Constants{
         return nil
     }
     
+    // get a scale by its name
+    static func getScaleByNamePublicSession(scaleName: String) -> GeriatricScale?{
+        for scale in self.cgaPublicScales!{
+            if scale.scaleName == scaleName{
+                return scale
+            }
+        }
+        return nil
+    }
+    
     
     // get scales from an area
     static func getScalesForArea(area: String) -> [GeriatricScale]{

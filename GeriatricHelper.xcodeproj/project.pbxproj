@@ -57,7 +57,6 @@
 		2B7D684C1EA6ABB200443D59 /* CGAPublicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7D684B1EA6ABB200443D59 /* CGAPublicInfo.swift */; };
 		2B95E3E71F1CC4FE00FEC67F /* CGAGuideAreaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B95E3E61F1CC4FE00FEC67F /* CGAGuideAreaCollectionViewCell.swift */; };
 		2B96717D1ED0D976001DDF90 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B96717C1ED0D976001DDF90 /* PreviewViewController.swift */; };
-		2B96717F1ED0D993001DDF90 /* android_pdf.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2B96717E1ED0D993001DDF90 /* android_pdf.rtf */; };
 		2B9819EB1EAFC16E00FBF67D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B9819ED1EAFC16E00FBF67D /* Main.storyboard */; };
 		2B9819F11EAFC53F00FBF67D /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9819F01EAFC53F00FBF67D /* HelpTableViewController.swift */; };
 		2B9819F41EAFC97B00FBF67D /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B9819F21EAFC97B00FBF67D /* Help.storyboard */; };
@@ -184,7 +183,6 @@
 		2B7D684B1EA6ABB200443D59 /* CGAPublicInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAPublicInfo.swift; sourceTree = "<group>"; };
 		2B95E3E61F1CC4FE00FEC67F /* CGAGuideAreaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAGuideAreaCollectionViewCell.swift; sourceTree = "<group>"; };
 		2B96717C1ED0D976001DDF90 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
-		2B96717E1ED0D993001DDF90 /* android_pdf.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = android_pdf.rtf; sourceTree = "<group>"; };
 		2B9819EC1EAFC16E00FBF67D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2B9819F01EAFC53F00FBF67D /* HelpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		2B9819F31EAFC97B00FBF67D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Help.storyboard; sourceTree = "<group>"; };
@@ -296,8 +294,6 @@
 		2B004F981EB1FAB7003A8CD9 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				2BD0FE8F1ECEFFB80024CBA3 /* SwiftMessagesHelper.swift */,
-				2BD0FE911ECF06C60024CBA3 /* StringHelper.swift */,
 				2B6B56F91E9FECD000445937 /* AppDelegate.swift */,
 				2B6B57051E9FECD000445937 /* Info.plist */,
 				2B6B570B1E9FED2400445937 /* GoogleService-Info.plist */,
@@ -520,6 +516,8 @@
 				2BDB10AD1EAD4D9800ACD751 /* PopOvers.storyboard */,
 				2BA23ED91EB1F1330006145F /* TODO.txt */,
 				2BA319C11E9FF01E00E7A5C9 /* Images.xcassets */,
+				2BD0FE911ECF06C60024CBA3 /* StringHelper.swift */,
+				2BD0FE8F1ECEFFB80024CBA3 /* SwiftMessagesHelper.swift */,
 				2B0AD75C1F1E0EF000D8D1C5 /* Intro */,
 				2B7D68481EA6A37000443D59 /* CGA */,
 				2B0AD7581F1E063A00D8D1C5 /* Settings */,
@@ -568,7 +566,6 @@
 				2B389CC61ED0D9F300C27E6E /* CustomPrintPageRenderer.swift */,
 				2B389CC41ED0D9CB00C27E6E /* SessionPDFComposer.swift */,
 				2B96717C1ED0D976001DDF90 /* PreviewViewController.swift */,
-				2B96717E1ED0D993001DDF90 /* android_pdf.rtf */,
 			);
 			name = PDF;
 			sourceTree = "<group>";
@@ -687,13 +684,21 @@
 		2BCABC961F192B75002B0741 /* MultipleCategories */ = {
 			isa = PBXGroup;
 			children = (
+				2BD21F5D1F1FB943001A6270 /* CategoryQuestions */,
 				2B036ACE1EAE42F900E4E6AA /* QuestionCategory.swift */,
 				2B036ACC1EAE3FC900E4E6AA /* CGAPublicMultipleCategories.swift */,
+			);
+			name = MultipleCategories;
+			sourceTree = "<group>";
+		};
+		2BD21F5D1F1FB943001A6270 /* CategoryQuestions */ = {
+			isa = PBXGroup;
+			children = (
 				2B036AD01EAE4AF700E4E6AA /* QuestionCategoryViewController.swift */,
 				2BEDA0AD1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.swift */,
 				2BEDA0AE1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.xib */,
 			);
-			name = MultipleCategories;
+			name = CategoryQuestions;
 			sourceTree = "<group>";
 		};
 		2BDBF8A61ED0E13B00F412A2 /* Templates */ = {
@@ -818,7 +823,6 @@
 				2B9BD2B81EFA76090072B854 /* Sessions.storyboard in Resources */,
 				2B59480C1EACB3DD0052EC98 /* Patients.storyboard in Resources */,
 				2B2D3A131EACDF04007E7A28 /* PatientInfoCard.xib in Resources */,
-				2B96717F1ED0D993001DDF90 /* android_pdf.rtf in Resources */,
 				2BEDA0B01EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.xib in Resources */,
 				2BDBF8AE1ED0E4C300F412A2 /* area.html in Resources */,
 				2B9819F41EAFC97B00FBF67D /* Help.storyboard in Resources */,

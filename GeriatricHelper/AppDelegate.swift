@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    // TODO update
     let themeColor = #colorLiteral(red: 0.01176470588, green: 0.5215686275, blue: 0.6392156863, alpha: 1)
 
     let currencyCode = "eur"

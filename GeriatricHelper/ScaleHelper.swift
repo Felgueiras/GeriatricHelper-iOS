@@ -25,7 +25,6 @@ class ScaleHelper{
         
         var testNonDB = Constants.getScaleByName(scaleName: scale.scaleName!)
         
-        
         if testNonDB?.scoring != nil {
             if testNonDB?.scoring?.differentMenWomen == false{
                 quantitative += " (" + String(describing: testNonDB!.scoring!.minScore!)

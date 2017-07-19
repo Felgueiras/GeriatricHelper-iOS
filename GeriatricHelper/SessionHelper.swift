@@ -97,29 +97,16 @@ class SessionHelper{
             scale.result =  Double(res)
         }
         
-        /**
-         
-         if (testName.equals(Constants.test_name_mini_nutritional_assessment_global)) {
-         // check if triagem is already answered
-         Log.d("Nutritional", "Global pressed");
-         
-         ArrayList<GeriatricScale> allScales = GeriatricScale.getAllScales();
-         
-         GeriatricScale triagem = session.getScaleByName(Constants.test_name_mini_nutritional_assessment_triagem);
-         res += triagem.generateTestResult();
-         }
-         if (testName.equals(Constants.test_name_set_set)) {
-         // result is the value from the last question (scoring)
-         res = questionsFromTest.get(questionsFromTest.size() - 1).getAnswerNumber();
-         }
-         this.result = res;
-         this.save();
-         
-         return res;
-         
-         **/
+        // global assessment
+        if scale.scaleName == "Mini nutritional assessment - avaliação global"
+        {
         
-        //        return res
+            // get "triagem" score
+            let triagem = Constants.getScaleByNamePublicSession(scaleName: "Mini nutritional assessment - triagem")
+            scale.result = scale.result! + (triagem?.result)!
+            
+        
+        }
     }
     
     

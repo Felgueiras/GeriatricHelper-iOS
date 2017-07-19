@@ -17,6 +17,10 @@ class YesNoQuestionTableViewCell: UITableViewCell {
     var backend:Bool?
     
     var scale:GeriatricScale?
+    
+    var table:UITableView?
+    
+    var questionIndex:Int?
 
     @IBOutlet weak var question: UILabel!
     
@@ -38,6 +42,24 @@ class YesNoQuestionTableViewCell: UITableViewCell {
             // update in backend
             questionObj?.ref?.setValue(questionObj?.toAnyObject())
         }
+        
+        
+        scrollDown()
+        
+        
+    }
+    
+    func scrollDown()
+    {
+        // scroll down to reveal next question
+        if questionIndex!+1 < (scale?.questions?.count)!{
+            let indexPath = IndexPath(row: questionIndex!+1, section: 0)
+            
+            // auto scroll down
+            table?.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
+        
+    
     }
     
     @IBAction func noButtonClicked(_ sender: Any) {
@@ -48,6 +70,7 @@ class YesNoQuestionTableViewCell: UITableViewCell {
         questionObj?.answered = true
         checkScaleCompleted()
         
+        scrollDown()
     }
     
     func checkScaleCompleted()
@@ -69,9 +92,16 @@ class YesNoQuestionTableViewCell: UITableViewCell {
     }
     
     static func createCell(cell: YesNoQuestionTableViewCell,
-                           question: Question,
+                           cellIndex: Int,
                            scale: GeriatricScale,
-                           backend:Bool) -> UITableViewCell{
+                           backend:Bool,
+                           table:UITableView) -> UITableViewCell{
+        
+        cell.questionIndex = cellIndex
+         let question = scale.questions?[cellIndex]
+        
+        
+        cell.table = table
         
         
         cell.selectionStyle = UITableViewCellSelectionStyle.none
@@ -79,16 +109,16 @@ class YesNoQuestionTableViewCell: UITableViewCell {
         
         
         
-        let questionIndex = scale.questions!.index(of: question)
-        cell.question.text = String(questionIndex!+1) + " - " + question.descriptionText!
+        let questionIndex = scale.questions!.index(of: question!)
+        cell.question.text = String(questionIndex!+1) + " - " + (question?.descriptionText!)!
         cell.questionObj = question
         cell.scale = scale
         
         
         // question already answered
-        if question.answered == true {
+        if question?.answered == true {
             //            questionView.setBackgroundResource(R.color.question_answered);
-            if question.selectedYesNo == "yes" {
+            if question?.selectedYesNo == "yes" {
                 cell.yesButton.backgroundColor = UIColor.green
                 
             } else {

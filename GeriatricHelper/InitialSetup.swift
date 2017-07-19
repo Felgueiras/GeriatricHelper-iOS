@@ -22,8 +22,22 @@ class InitialSetup: UIViewController {
             let animated = downloadedScales != 0
             
             progressView.setProgress(fractionalProgress, animated: animated)
+            
             if(downloadedScales == Int(scalesTotal)){
-                self.showAppIntro()
+                // check if launched once
+                
+                let defaults = UserDefaults.standard
+                let hasLaunchedOnce  = defaults.bool(forKey: "HasLaunchedOnce")
+                if hasLaunchedOnce == false
+                {
+                    defaults.set(true, forKey: "HasLaunchedOnce")
+                    defaults.synchronize()
+                    self.showAppIntro()
+                }
+                else
+                {
+                    self.performSegue(withIdentifier: self.SegueLeaveInitialSetup, sender: self)
+                }
             }
         }
     }
@@ -88,9 +102,14 @@ class InitialSetup: UIViewController {
     
     /**
      Download scales if needed.
- **/
+     **/
     func downloadScales(){
-        // TODO fetch only for the first time or when there is a new version
+        
+        // erase stored scales
+        let defaults = UserDefaults.standard
+        defaults.set(nil, forKey: "scales")
+        defaults.synchronize()
+        
         
         // fetch scales from storage
         let storage = FIRStorage.storage()
@@ -101,17 +120,17 @@ class InitialSetup: UIViewController {
         
         // TODO go to DB and get only the scales from there
         let scales = ["Escala de Katz-PT",
-//                      "Recursos sociales-ES",
-//                      "Valoración Socio-Familiar de Gijón-ES",
-//                      "Barthel Index-ES",
-                      "Classificaçao Funcional da Marcha de Holden-PT",
-//                      "Clock drawing test-EN",
-                      "Escala de Depressão Geriátrica de Yesavage – versão curta-PT",
-                      "Escala de Lawton & Brody-PT",
-//                      "Escala de Tinetti-PT",
-                      "Mini mental state examination (Folstein)-PT",
-                      "Mini nutritional assessment - avaliação global-PT",
-                      "Mini nutritional assessment - triagem-PT",""]
+                      //                      "Recursos sociales-ES",
+            //                      "Valoración Socio-Familiar de Gijón-ES",
+            //                      "Barthel Index-ES",
+            "Classificaçao Funcional da Marcha de Holden-PT",
+            //                      "Clock drawing test-EN",
+            "Escala de Depressão Geriátrica de Yesavage – versão curta-PT",
+            "Escala de Lawton & Brody-PT",
+            //                      "Escala de Tinetti-PT",
+            "Mini mental state examination (Folstein)-PT",
+            "Mini nutritional assessment - avaliação global-PT",
+            "Mini nutritional assessment - triagem-PT",""]
         
         // fetch every scale
         for scaleName in scales {
@@ -168,9 +187,6 @@ class InitialSetup: UIViewController {
         // init RemoteConfig
         FirebaseRemoteConfig().initRemoteConfig()
         
-        // test localization
-        let welcomeMessage = NSLocalizedString("Welcome", comment: "")
-        
         
         // check if first start
         let defaults = UserDefaults.standard
@@ -186,41 +202,82 @@ class InitialSetup: UIViewController {
                     }
                 }
             }
-            // download scales and criteria
-            
-            //            downloadCriteria()
             
             downloadScales()
-            defaults.set(true, forKey: "HasLaunchedOnce")
-        }
-        else{
-            // read from defaults and add to Constants
-            let decoded  = defaults.object(forKey: "scales") as! Data
-            let decodedScales = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [GeriatricScale]
-            Constants.scales = decodedScales
             
-            // check if user is already logged in
-            FIRAuth.auth()!.addStateDidChangeListener { auth, user in
-                guard user != nil else {
-                    
-                    // not logged in
-                    self.performSegue(withIdentifier: self.SegueLeaveInitialSetup, sender: self)
-                    return
+            
+            // store scales version
+            let scalesRef = FirebaseHelper.ref.child("public").child("scalesVersion")
+            scalesRef.observeSingleEvent(of:.value, with: { (snapshot) in
+                
+                if let scalesVersion = snapshot.value as? Int{
+                    let defaults = UserDefaults.standard
+                    defaults.set(scalesVersion, forKey: "scalesVersion")
+                    defaults.synchronize()
                 }
                 
-                // save user ID
-                FirebaseHelper.userID = FIRAuth.auth()?.currentUser?.uid
-                
-                // load questions
-                FirebaseDatabaseHelper.fetchQuestions()
-                // load scales
-                FirebaseDatabaseHelper.fetchScales()
-                // load sessions
-                FirebaseDatabaseHelper.fetchSessions()
-                
-                // navigate automatically to the private area
-                self.performSegue(withIdentifier: "NavigatePersonalArea", sender: self)
+            }) { (error) in
+                print(error.localizedDescription)
             }
+        }
+        else{
+            // check if there is a new scales version
+            let scalesRef = FirebaseHelper.ref.child("public").child("scalesVersion")
+            scalesRef.observeSingleEvent(of:.value, with: { (snapshot) in
+                
+                if let scalesVersion = snapshot.value as? Int{
+                    
+                    // compare with stored
+                    let defaults = UserDefaults.standard
+                    let storedScalesVersion  = defaults.integer(forKey: "scalesVersion")
+                    if storedScalesVersion != scalesVersion
+                    {
+                        self.downloadScales()
+                        // update scales version
+                        let defaults = UserDefaults.standard
+                        defaults.set(scalesVersion, forKey: "scalesVersion")
+                        defaults.synchronize()
+                        
+                    }
+                    else{
+                        // read from defaults and add to Constants
+                        let decoded  = defaults.object(forKey: "scales") as! Data
+                        let decodedScales = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [GeriatricScale]
+                        Constants.scales = decodedScales
+                        
+                        // check if user is already logged in
+                        FIRAuth.auth()!.addStateDidChangeListener { auth, user in
+                            guard user != nil else {
+                                
+                                // not logged in
+                                self.performSegue(withIdentifier: self.SegueLeaveInitialSetup, sender: self)
+                                return
+                            }
+                            
+                            // save user ID
+                            FirebaseHelper.userID = FIRAuth.auth()?.currentUser?.uid
+                            
+                            // load questions
+                            FirebaseDatabaseHelper.fetchQuestions()
+                            // load scales
+                            FirebaseDatabaseHelper.fetchScales()
+                            // load sessions
+                            FirebaseDatabaseHelper.fetchSessions()
+                            
+                            // navigate automatically to the private area
+                            self.performSegue(withIdentifier: "NavigatePersonalArea", sender: self)
+                        }
+                    }
+                    
+                    
+                }
+                
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+            
+            
+            
             
         }
         
@@ -271,7 +328,7 @@ class InitialSetup: UIViewController {
     
     /**
      func downloadScales2() {
-        
+     
      
      // download scales from that language
      GsonBuilder builder = new GsonBuilder();
@@ -375,8 +432,8 @@ class InitialSetup: UIViewController {
      
      
      }
- **/
- 
+     **/
+    
     
     
     

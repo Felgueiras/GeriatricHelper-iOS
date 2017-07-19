@@ -223,7 +223,7 @@ class FirebaseDatabaseHelper{
      prescription.setKey(postSnapshot.getKey());
      FirebaseHelper.prescriptions.add(prescription);
      }
-     }
+     }f
      
      @Override
      public void onCancelled(DatabaseError databaseError) {

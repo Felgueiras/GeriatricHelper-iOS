@@ -66,7 +66,7 @@ class CGAPublicAreas: UITableViewController {
         
         
         // cancel the current session
-        let saveAction = UIAlertAction(title: "Yes",
+        let saveAction = UIAlertAction(title: "Sim",
                                        style: .default) { _ in
                                         
                                         // remove all the uncompleted scales
@@ -83,7 +83,7 @@ class CGAPublicAreas: UITableViewController {
                                         
         }
         
-        let cancelAction = UIAlertAction(title: "No",
+        let cancelAction = UIAlertAction(title: "Não",
                                          style: .default)
         
         

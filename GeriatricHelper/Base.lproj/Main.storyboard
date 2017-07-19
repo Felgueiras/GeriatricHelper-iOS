@@ -22,8 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preparing initial setup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8P-RC-0Fm">
-                                <rect key="frame" x="104.5" y="64" width="166" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A preparar..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8P-RC-0Fm">
+                                <rect key="frame" x="140.5" y="64" width="94" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -431,7 +431,7 @@ SESSÃO</string>
                             <constraint firstItem="gYN-cU-myb" firstAttribute="centerY" secondItem="1Lj-NS-pG7" secondAttribute="centerY" id="nT5-xD-JiT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="AGG" image="Info-50" id="SUB-tz-SLt"/>
+                    <tabBarItem key="tabBarItem" title="AGG" image="Health Book-50" id="SUB-tz-SLt"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="createSessionButton" destination="gYN-cU-myb" id="StP-5f-sPU"/>
@@ -781,7 +781,7 @@ SESSÃO</string>
     </scenes>
     <resources>
         <image name="Account" width="25" height="25"/>
-        <image name="Info-50" width="25" height="25"/>
+        <image name="Health Book-50" width="25" height="25"/>
         <image name="Settings-50" width="25" height="25"/>
         <image name="icon_cat" width="16" height="16"/>
         <image name="icon_original" width="512" height="512"/>

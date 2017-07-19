@@ -34,7 +34,6 @@ class CGAAreaTableViewCell: UITableViewCell {
         popover.sourceView = self.infoButton
         popover.sourceRect = self.infoButton.bounds
 
-        // TODO fetch text from Firebase
         switch area! {
         case Constants.cga_functional:
             popOverVC.displayText = FirebaseRemoteConfig.getStringFirebase(key: "cga_functional")

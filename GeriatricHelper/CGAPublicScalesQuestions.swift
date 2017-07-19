@@ -203,7 +203,7 @@ class  CGAPublicScalesQuestions: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // TODO go to another screen or prompt here the options?
+    
         performSegue(withIdentifier: ViewQuestionChoicesSegue, sender: self)
         
         

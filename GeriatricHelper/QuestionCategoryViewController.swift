@@ -108,10 +108,11 @@ extension QuestionCategoryViewController: UITableViewDataSource, UITableViewDele
         
         
         return RightWrongQuestionTableViewCell.createCell(cell: cell,
-                                                          question: question!,
+                                                          cellIndex: indexPath.row,
                                                           scale: scale!,
                                                           category: (scale?.questionsCategories![pageIndex])!,
-                                                          categoryLabel: categoryName)
+                                                          categoryLabel: categoryName,
+                                                          table:self.table)
         
     }
     

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -30,9 +29,10 @@
                         <rect key="frame" x="0.0" y="47" width="160" height="53"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mff-YD-CG7">
-                                <rect key="frame" x="64.5" y="9.5" width="31" height="34"/>
+                                <rect key="frame" x="62.5" y="13.5" width="35" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Sim"/>
+                                <inset key="contentEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
+                                <state key="normal" title="SIM"/>
                                 <connections>
                                     <action selector="yesButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PBy-qV-Fzg"/>
                                 </connections>
@@ -48,9 +48,10 @@
                         <rect key="frame" x="165" y="47" width="155" height="53"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXV-gj-SVN">
-                                <rect key="frame" x="60.5" y="9.5" width="33" height="34"/>
+                                <rect key="frame" x="56.5" y="13.5" width="42" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Não"/>
+                                <inset key="contentEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
+                                <state key="normal" title="NÃO"/>
                                 <connections>
                                     <action selector="noButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rdD-3Z-3vH"/>
                                 </connections>
@@ -81,7 +82,7 @@
                 <outlet property="question" destination="X7D-Eg-d2N" id="gf9-h9-2nc"/>
                 <outlet property="yesButton" destination="Mff-YD-CG7" id="2yh-lT-HB2"/>
             </connections>
-            <point key="canvasLocation" x="-419" y="-61"/>
+            <point key="canvasLocation" x="-281" y="-66"/>
         </tableViewCell>
     </objects>
 </document>

@@ -31,6 +31,7 @@ class HelpSingleTopic: UIViewController {
         // access RemoteConfig
         self.remoteConfig = FIRRemoteConfig.remoteConfig()
         
+        self.title = helpTopic!
         fetchCloudValues()
         
         var text: String?

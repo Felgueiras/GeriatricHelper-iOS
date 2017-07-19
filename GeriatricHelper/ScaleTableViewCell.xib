@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16G24b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G24b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,7 +43,7 @@
                         </connections>
                     </button>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Notas" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7gD-u9-Ft6">
-                        <rect key="frame" x="16" y="131" width="59.5" height="30"/>
+                        <rect key="frame" x="16" y="131" width="296" height="30"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
@@ -68,6 +67,7 @@
                     <constraint firstItem="7gD-u9-Ft6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="OVX-9c-5AR"/>
                     <constraint firstItem="gfY-2M-dl8" firstAttribute="top" secondItem="EA6-d1-j3R" secondAttribute="bottom" constant="7" id="OtW-cZ-mKh"/>
                     <constraint firstItem="Bdj-sq-K4k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="RaY-Ts-WWS"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="7gD-u9-Ft6" secondAttribute="trailing" id="ft8-pj-QxM"/>
                     <constraint firstItem="1C5-Av-VGx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="gZr-5M-Llx"/>
                     <constraint firstItem="7gD-u9-Ft6" firstAttribute="top" secondItem="ZuR-3c-eps" secondAttribute="bottom" constant="8" id="gqC-rh-SNG"/>
                     <constraint firstItem="Bdj-sq-K4k" firstAttribute="top" secondItem="gfY-2M-dl8" secondAttribute="bottom" constant="8" id="hhl-K4-aGz"/>
@@ -82,7 +82,7 @@
                 <outlet property="resultQuantitative" destination="ZuR-3c-eps" id="nfO-so-H5F"/>
                 <outlet property="subCategory" destination="gfY-2M-dl8" id="tH0-m1-seX"/>
             </connections>
-            <point key="canvasLocation" x="-314" y="113"/>
+            <point key="canvasLocation" x="-314" y="112.5"/>
         </tableViewCell>
     </objects>
 </document>

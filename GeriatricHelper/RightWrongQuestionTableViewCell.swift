@@ -15,6 +15,8 @@ class RightWrongQuestionTableViewCell: UITableViewCell {
     var scale:GeriatricScale?
     var category:QuestionCategory?
     var categoryLabel: UILabel?
+    var questionIndex:Int?
+    var table:UITableView?
     
     @IBOutlet weak var questionImage: UIButton!
     
@@ -36,6 +38,19 @@ class RightWrongQuestionTableViewCell: UITableViewCell {
         checkCategoryCompleted()
         checkScaleCompleted()
         
+        scrollDown()
+        
+    }
+    
+    func scrollDown()
+    {
+        // scroll down to reveal next question
+        if questionIndex!+1 < (scale?.questions?.count)!{
+            let indexPath = IndexPath(row: questionIndex!+1, section: 0)
+            
+            // auto scroll down
+            table?.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
     }
     
     
@@ -47,6 +62,8 @@ class RightWrongQuestionTableViewCell: UITableViewCell {
         questionObj?.answered = true
         checkCategoryCompleted()
         checkScaleCompleted()
+        
+        scrollDown()
     }
     
     func checkCategoryCompleted()
@@ -90,21 +107,25 @@ class RightWrongQuestionTableViewCell: UITableViewCell {
     }
     
     static func createCell(cell: RightWrongQuestionTableViewCell,
-                           question: Question,
+                           cellIndex: Int,
                            scale:GeriatricScale,
                            category:QuestionCategory,
-                           categoryLabel:UILabel) -> UITableViewCell{
+                           categoryLabel:UILabel,
+                           table:UITableView) -> UITableViewCell{
         
-        let questionIndex = category.questions!.index(of: question)
-        cell.question.text = String(questionIndex!+1) + " - " + question.descriptionText!
+        cell.table = table
+        cell.questionIndex = cellIndex
+        let question = category.questions?[cellIndex]
+        
+        cell.question.text = String(cellIndex+1) + " - " + (question?.descriptionText!)!
         cell.questionObj = question
         cell.scale = scale
         cell.category = category
         cell.categoryLabel = categoryLabel
         
         // check if question already answered
-        if question.answered == true{
-            if question.selectedRightWrong == "right"
+        if question?.answered == true{
+            if question?.selectedRightWrong == "right"
             {
                 cell.rightButton.setImage(UIImage(named: "right selected"), for: .normal)
                 cell.wrongButton.setImage(UIImage(named: "wrong unselected"), for: .normal)
@@ -118,7 +139,7 @@ class RightWrongQuestionTableViewCell: UITableViewCell {
             
         }
         
-        if question.image == nil{
+        if question?.image == nil{
             cell.questionImage.isHidden = true
         }
         

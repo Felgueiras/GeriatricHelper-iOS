@@ -1,16 +1,14 @@
+- testar em iPhone
+- enviar feedback
+
+- gerar e mostrar PDF com notas
+
 - AGG guide
 
 - scale help: improve table
-- enviar feedback
-- testar em iPhone
-- verificar soma de nutritional
-- gerar e mostrar PDF com notas
-- campo das notas maior
+
 - criar About page
-
-- yes no questions new layout
-- firebase download scales only when needed
-
 - multiple categories:
 - retificar info popup
-- auto scroll down
+
+- nutritional - aparecer tabela de score
