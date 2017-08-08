@@ -91,6 +91,30 @@ class ReviewSessionTableViewController: UIViewController {
         self.coachMarksController.dataSource = self
         
         
+        // change text to icons (if iPhone)
+        
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+        // It's an iPhone
+             print("phone")
+             // functional
+            segmentedControl.setImage(#imageLiteral(resourceName: "ic_functional"), forSegmentAt: 0)
+             // affective
+            segmentedControl.setImage(#imageLiteral(resourceName: "cga_afective"), forSegmentAt: 1)
+             // march
+            segmentedControl.setImage(#imageLiteral(resourceName: "cga_march"), forSegmentAt: 2)
+             // cognitive
+            segmentedControl.setImage(#imageLiteral(resourceName: "ic_mental"), forSegmentAt: 3)
+             // nutritive
+            segmentedControl.setImage(#imageLiteral(resourceName: "ic_nutritional"), forSegmentAt: 4)
+        case .pad:
+            // It's an iPad
+             print("pad")
+        default:
+            break
+        }
+        
+        
         
     }
     
@@ -148,8 +172,6 @@ class ReviewSessionTableViewController: UIViewController {
         
         
     }
-    
-    
 
 }
 

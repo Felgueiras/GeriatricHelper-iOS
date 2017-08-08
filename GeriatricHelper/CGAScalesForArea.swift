@@ -120,17 +120,20 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
         popOverVC.modalPresentationStyle = UIModalPresentationStyle.popover
         let popover: UIPopoverPresentationController = popOverVC.popoverPresentationController!
         popover.barButtonItem = sender
+        popover.delegate = self
         
         let minimumSize = self.view.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
         popOverVC.preferredContentSize = CGSize(width: 280, height: 200)
         
-        // center the popover
-        
-//        popover.sourceRect = CGRect(x:self.view.bounds.midX, y: self.view.bounds.midY,width: 315,height: 230)
-        // remove arrows
-//        controller?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
         self.present(popOverVC, animated: true, completion:nil)
     }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle
+    {
+        return .none
+    }
+    
+    
     
     
     
@@ -447,11 +450,6 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
     }
     
     let instructionsScaleIndex = 0
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        // return UIModalPresentationStyle.FullScreen
-        return UIModalPresentationStyle.none
-    }
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none

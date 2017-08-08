@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScaleTableViewCell: UITableViewCell {
+class ScaleTableViewCell: UITableViewCell, UIPopoverPresentationControllerDelegate {
     
     
     
@@ -20,18 +20,26 @@ class ScaleTableViewCell: UITableViewCell {
     
     @IBAction func infoButtonClicked(_ sender: Any) {
         
- 
         // display popover
         let popOverVC = UIStoryboard(name: "PopOvers", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID") as! PopUpViewController
         
         popOverVC.modalPresentationStyle = UIModalPresentationStyle.popover
+        
+        // access the presentation controller
         let popover: UIPopoverPresentationController = popOverVC.popoverPresentationController!
         popover.sourceView = self.infoButton
         popover.sourceRect = self.infoButton.bounds
+        popover.delegate = self
         
         popOverVC.scale = scale
         
+        // present popover
         self.viewController?.present(popOverVC, animated: true, completion:nil)
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle
+    {
+        return .none
     }
     
     var viewController:UIViewController?
@@ -41,6 +49,7 @@ class ScaleTableViewCell: UITableViewCell {
         scale!.notes = notes.text
         
     }
+    
     @IBOutlet weak var name: UILabel!
     
     @IBOutlet weak var subCategory: UILabel!

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CGAAreaTableViewCell: UITableViewCell {
+class CGAAreaTableViewCell: UITableViewCell, UIPopoverPresentationControllerDelegate {
 
     
     @IBOutlet weak var areaIcon: UIImageView!
@@ -33,6 +33,7 @@ class CGAAreaTableViewCell: UITableViewCell {
         // set the source
         popover.sourceView = self.infoButton
         popover.sourceRect = self.infoButton.bounds
+        popover.delegate = self
 
         switch area! {
         case Constants.cga_functional:
@@ -55,6 +56,11 @@ class CGAAreaTableViewCell: UITableViewCell {
         }
         
         self.viewController?.present(popOverVC, animated: true, completion:nil)
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle
+    {
+        return .none
     }
     
     var viewController:UIViewController?

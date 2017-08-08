@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,8 +19,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="174.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EA6-d1-j3R">
-                        <rect key="frame" x="16" y="16" width="48" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EA6-d1-j3R">
+                        <rect key="frame" x="16" y="16" width="266" height="21"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -38,6 +39,11 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1C5-Av-VGx">
                         <rect key="frame" x="290" y="16" width="22" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="4fz-qH-eUc"/>
+                            <constraint firstAttribute="width" constant="22" id="Fx1-7I-90o"/>
+                            <constraint firstAttribute="width" secondItem="1C5-Av-VGx" secondAttribute="height" multiplier="1:1" id="vye-YE-jTF"/>
+                        </constraints>
                         <connections>
                             <action selector="infoButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sSA-Ag-opv"/>
                         </connections>
@@ -67,6 +73,7 @@
                     <constraint firstItem="7gD-u9-Ft6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="OVX-9c-5AR"/>
                     <constraint firstItem="gfY-2M-dl8" firstAttribute="top" secondItem="EA6-d1-j3R" secondAttribute="bottom" constant="7" id="OtW-cZ-mKh"/>
                     <constraint firstItem="Bdj-sq-K4k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="RaY-Ts-WWS"/>
+                    <constraint firstItem="1C5-Av-VGx" firstAttribute="leading" secondItem="EA6-d1-j3R" secondAttribute="trailing" constant="8" id="exS-lq-cvc"/>
                     <constraint firstAttribute="trailingMargin" secondItem="7gD-u9-Ft6" secondAttribute="trailing" id="ft8-pj-QxM"/>
                     <constraint firstItem="1C5-Av-VGx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="gZr-5M-Llx"/>
                     <constraint firstItem="7gD-u9-Ft6" firstAttribute="top" secondItem="ZuR-3c-eps" secondAttribute="bottom" constant="8" id="gqC-rh-SNG"/>
