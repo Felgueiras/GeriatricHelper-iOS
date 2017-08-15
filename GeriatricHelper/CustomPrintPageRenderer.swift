@@ -36,7 +36,7 @@ class CustomPrintPageRenderer: UIPrintPageRenderer {
     
     override func drawHeaderForPage(at pageIndex: Int, in headerRect: CGRect) {
         // Specify the header text.
-        let headerText: NSString = "Invoice"
+        let headerText: NSString = "TODO"
         
         // Set the desired font.
         let font = UIFont(name: "AmericanTypewriter-Bold", size: 30.0)
@@ -60,7 +60,7 @@ class CustomPrintPageRenderer: UIPrintPageRenderer {
     
     
     override func drawFooterForPage(at pageIndex: Int, in footerRect: CGRect) {
-        let footerText: NSString = "Thank you!"
+        let footerText: NSString = "Geriatric Helper"
         
         let font = UIFont(name: "Noteworthy-Bold", size: 14.0)
         let textSize = getTextSize(text: footerText as String, font: font!)

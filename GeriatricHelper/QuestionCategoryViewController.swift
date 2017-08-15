@@ -29,6 +29,8 @@ class QuestionCategoryViewController: UIViewController {
     
     var scale:GeriatricScale?
     
+    var pageViewController: UIPageViewController?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +73,12 @@ class QuestionCategoryViewController: UIViewController {
         case arrowRight:
             // right
             print("right")
+            
+            // get next view controller
+            let nextView = self.pageViewController?.viewControllers?[pageIndex]
+            // go to next category
+            self.pageViewController?.setViewControllers(
+                [nextView!], direction: .forward, animated: true, completion: nil)
         default:
             // do sth
             print("???")

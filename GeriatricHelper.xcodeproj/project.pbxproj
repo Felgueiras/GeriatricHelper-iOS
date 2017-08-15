@@ -592,13 +592,6 @@
 			name = TableCells;
 			sourceTree = "<group>";
 		};
-		2BA773731ED1D02000D3E352 /* PopUps */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = PopUps;
-			sourceTree = "<group>";
-		};
 		2BA773741ED1D03500D3E352 /* ScaleQuestions */ = {
 			isa = PBXGroup;
 			children = (
@@ -675,7 +668,6 @@
 		2BC583521EAE020D00A4D51B /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				2BA773731ED1D02000D3E352 /* PopUps */,
 				2BA773721ED1D00C00D3E352 /* TableCells */,
 			);
 			name = CustomViews;

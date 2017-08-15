@@ -124,9 +124,6 @@ class SessionPDFComposer: NSObject {
                         }
                         
                         
-                        
-                        
-                        
                         // Add the item's HTML code to the general items string.
                         allItems += itemHTMLContent
                     }
@@ -160,10 +157,17 @@ class SessionPDFComposer: NSObject {
         
         let pdfData = drawPDFUsingPrintPageRenderer(printPageRenderer: printPageRenderer)
         
-        pdfFilename = "\(AppDelegate.getAppDelegate().getDocDir())/Invoice\(invoiceNumber).pdf"
-        pdfData?.write(toFile: pdfFilename, atomically: true)
+        // get date (dd-mm-yyyy_hh:mm:ss)
+        // get the current date and time
+        let currentDateTime = Date()
         
-        print(pdfFilename)
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "dd-MM-yyyy_HH-mm-ss"
+        
+        let dateStr = dateFormatterGet.string(from: currentDateTime)
+    
+        pdfFilename = "\(AppDelegate.getAppDelegate().getDocDir())/geriatric_helper-\(dateStr).pdf"
+        pdfData?.write(toFile: pdfFilename, atomically: true)
     }
     
     

@@ -1,7 +1,5 @@
 - enviar feedback
 
-- gerar e mostrar PDF com notas
-
 - AGG guide
 
 - scale help: improve table
@@ -15,4 +13,4 @@
 - review: disable de botão save
 - vai para review sem escalas completas
 - marcha: altura da célula
-- multiple choice: usar setas para alternar entre categorias
+- multiple categories: usar setas para alternar entre categorias

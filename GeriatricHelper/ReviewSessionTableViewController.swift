@@ -9,9 +9,11 @@
 import UIKit
 import SwiftMessages
 import Instructions
+import MessageUI
 
 class ReviewSessionTableViewController: UIViewController {
     
+    let showPDF:String = "ShowPDFSegue"
     let coachMarksController = CoachMarksController()
 
     @IBOutlet weak var closeReview: UIBarButtonItem!
@@ -26,9 +28,70 @@ class ReviewSessionTableViewController: UIViewController {
     let ViewScaleYesNoSegue = "YesNoQuestion"
     let ViewScaleSingleQuestionChoicesSegue = "CGAViewSingleQuestionChoices"
     
+    var sessionPDFComposer: SessionPDFComposer!
+    
+     var HTMLContent: String!
+    
     // MARK: actions and outlets
     @IBAction func createPdfButtonClicked(_ sender: Any) {
+     // create HTML -> PDF
+        sessionPDFComposer = SessionPDFComposer()
         
+        createInvoiceAsHTML()
+        
+        sessionPDFComposer.exportHTMLContentToPDF(HTMLContent: HTMLContent)
+        
+        showOptionsAlert()
+    }
+    
+    // MARK: Custom Methods
+    /**
+     Generate HTML content and present it in the Web view
+     **/
+    func createInvoiceAsHTML() {
+        if let invoiceHTML = sessionPDFComposer.renderInvoice(scales: Constants.cgaPublicScales!) {
+            
+            HTMLContent = invoiceHTML
+        }
+    }
+    
+    func showOptionsAlert() {
+        let alertController = UIAlertController(title: "Yeah!", message: "Your invoice has been successfully printed to a PDF file.\n\nWhat do you want to do now?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let actionPreview = UIAlertAction(title: "Preview it", style: UIAlertActionStyle.default) { (action) in
+            self.performSegue(withIdentifier: self.showPDF, sender: self)
+
+//            if let filename = self.sessionPDFComposer.pdfFilename, let url = URL(string: filename) {
+//                let request = URLRequest(url: url)
+////                self.webPreview.loadRequest(request)
+//                self.performSegue(withIdentifier: self.showPDF, sender: self)
+//            }
+        }
+        
+        let actionEmail = UIAlertAction(title: "Send by Email", style: UIAlertActionStyle.default) { (action) in
+            DispatchQueue.main.async {
+                self.sendEmail()
+            }
+        }
+        
+        let actionNothing = UIAlertAction(title: "Nothing", style: UIAlertActionStyle.default) { (action) in
+            
+        }
+        
+        alertController.addAction(actionPreview)
+        alertController.addAction(actionEmail)
+        alertController.addAction(actionNothing)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mailComposeViewController = MFMailComposeViewController()
+            mailComposeViewController.setSubject("Invoice")
+            mailComposeViewController.addAttachmentData(NSData(contentsOfFile: sessionPDFComposer.pdfFilename)! as Data, mimeType: "application/pdf", fileName: "Invoice")
+            present(mailComposeViewController, animated: true, completion: nil)
+        }
     }
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -140,6 +203,18 @@ class ReviewSessionTableViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // display PDF
+        if segue.identifier == showPDF {
+            
+            
+            let destinationViewController = segue.destination as! PreviewViewController
+            destinationViewController.HTMLContent = HTMLContent
+            
+            return
+        }
+        
+        
         
         let scalesForArea = Constants.getScalesForAreaFromSession(area: Constants.cgaAreas[segmentedControl.selectedSegmentIndex],scales: scales!)
         

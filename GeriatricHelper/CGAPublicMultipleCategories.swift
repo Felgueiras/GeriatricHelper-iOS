@@ -84,6 +84,7 @@ class CGAPublicMultipleCategories: UIPageViewController, UIPageViewControllerDat
         pageContentViewController.pageIndex = index
         pageContentViewController.scale = scale
         pageContentViewController.descriptionText = scale?.questionsCategories?[index].descriptionText
+        pageContentViewController.pageViewController = self as! UIPageViewController
         
         return pageContentViewController
     }

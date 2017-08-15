@@ -377,7 +377,6 @@
                         <barButtonItem key="leftBarButtonItem" title="PDF" id="35t-0l-04X">
                             <connections>
                                 <action selector="createPdfButtonClicked:" destination="d1D-lX-Ir5" id="KAf-BI-5Cw"/>
-                                <segue destination="GfM-wo-jef" kind="show" id="hBV-pt-Wye"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="lrn-3Q-MxZ">
@@ -394,6 +393,7 @@
                         <segue destination="Peu-5Z-UVe" kind="show" identifier="ViewScaleQuestions" id="iGh-v3-wOO"/>
                         <segue destination="gtM-Wm-YaA" kind="show" identifier="YesNoQuestion" id="6MQ-Id-j66"/>
                         <segue destination="9Yt-du-9hg" kind="show" identifier="CGAViewSingleQuestionChoices" id="5sP-Qm-QCY"/>
+                        <segue destination="GfM-wo-jef" kind="show" identifier="ShowPDFSegue" id="Jnt-6E-uvU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSn-ta-AdV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -527,7 +527,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="MGt-1v-cYB" secondAttribute="trailing" constant="-20" id="d3u-L3-FTK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="8hj-5D-FWG"/>
+                    <navigationItem key="navigationItem" id="8hj-5D-FWG">
+                        <barButtonItem key="rightBarButtonItem" title="Options" id="p4L-Wc-n5U">
+                            <connections>
+                                <action selector="exportToPDF:" destination="GfM-wo-jef" id="fkr-Y5-AoN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="webPreview" destination="MGt-1v-cYB" id="dbt-ht-3Ob"/>
                     </connections>
@@ -543,9 +549,9 @@
         <image name="pill" width="13" height="13"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="J9u-7k-BWy"/>
-        <segue reference="oqv-rq-zFO"/>
+        <segue reference="iGh-v3-wOO"/>
         <segue reference="4ue-RV-T5t"/>
-        <segue reference="I4X-mv-DhB"/>
+        <segue reference="6MQ-Id-j66"/>
+        <segue reference="5sP-Qm-QCY"/>
     </inferredMetricsTieBreakers>
 </document>
