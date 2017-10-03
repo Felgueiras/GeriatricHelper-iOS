@@ -56,7 +56,7 @@ class  CGAPublicScalesQuestions: UITableViewController {
             // check if question is only for women
             if scaleDefinition?.scoring != nil {
                 if scaleDefinition?.scoring!.differentMenWomen == true {
-                    if Constants.patientGender == Constants.MALE {
+                    if Constants.patientGender == Constants.PatientGender.male {
                         if currentQuestionNonDB.onlyForWomen!{
                             print(currentQuestionNonDB.descriptionText)
                             continue

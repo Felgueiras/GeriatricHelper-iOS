@@ -31,7 +31,7 @@ class ScaleHelper{
                 quantitative += "-" + String(describing: testNonDB!.scoring!.maxScore!)
                 quantitative += ")"
             } else {
-                if Constants.patientGender == "male" {
+                if Constants.patientGender == Constants.PatientGender.male {
                     quantitative += " (" + String(describing: testNonDB!.scoring!.minMen!)
                     quantitative += "-" + String(describing: testNonDB!.scoring!.maxMen!)
                     quantitative += ")"

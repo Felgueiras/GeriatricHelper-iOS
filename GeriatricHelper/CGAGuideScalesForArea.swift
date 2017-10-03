@@ -359,7 +359,7 @@ class CGAGuideScalesForArea: UITableViewController {
         let male = UIAlertAction(title: "Masculino",
                                  style: .default) { _ in
                                     
-                                    Constants.patientGender = "male"
+                                    Constants.patientGender = Constants.PatientGender.male
                                     self.openScale(scale: scale)
                                     
                                     
@@ -368,7 +368,7 @@ class CGAGuideScalesForArea: UITableViewController {
         let female = UIAlertAction(title: "Feminino",
                                    style: .default) { _ in
                                     
-                                    Constants.patientGender = "female"
+                                    Constants.patientGender = Constants.PatientGender.female
                                     self.openScale(scale: scale)
                                     
         }

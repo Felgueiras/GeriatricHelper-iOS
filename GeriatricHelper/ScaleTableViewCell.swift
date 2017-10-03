@@ -21,7 +21,7 @@ class ScaleTableViewCell: UITableViewCell, UIPopoverPresentationControllerDelega
     @IBAction func infoButtonClicked(_ sender: Any) {
         
         // display popover
-        let popOverVC = UIStoryboard(name: "PopOvers", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID") as! PopUpViewController
+        let popOverVC = UIStoryboard(name: "PopOvers", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID") as! ScaleInfoViewController
         
         popOverVC.modalPresentationStyle = UIModalPresentationStyle.popover
         

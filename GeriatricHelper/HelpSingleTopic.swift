@@ -15,7 +15,7 @@ class HelpSingleTopic: UIViewController {
     
     var remoteConfig: FIRRemoteConfig?
 
-    @IBOutlet weak var helpTopicText: UILabel!
+    @IBOutlet weak var helpTopicText: UITextView!
     // MARK: - Table view data source
     
     func getStringFirebase(key: String) -> String{

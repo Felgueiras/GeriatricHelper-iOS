@@ -47,7 +47,7 @@ class CGAScalesTableViewController: UITableViewController, UIPopoverPresentation
         let scale = Constants.getScalesForArea(area: area)[rowInsideSection]
         
         // display popover
-        let popOverVC = UIStoryboard(name: "PopOvers", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID") as! PopUpViewController
+        let popOverVC = UIStoryboard(name: "PopOvers", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID") as! ScaleInfoViewController
         
     
         let popover: UIPopoverPresentationController = popOverVC.popoverPresentationController!

@@ -46,12 +46,15 @@ class CGAScaleSingleChoice: UITableViewController {
         let currentGrading = choices[indexPath.row]
         
         cell.textLabel?.text = currentGrading.grade!
-        // TODO detail text with multiple lines
         cell.detailTextLabel?.text = currentGrading.descriptionText!
         
         // if this was the selected choice -> highlight
         if(scale.answer == currentGrading.grade){
             cell.accessoryType = .checkmark
+        }
+        
+        if indexPath.row % 2 == 0{
+            cell.backgroundColor = Constants.cellBackgroundColor
         }
         
         

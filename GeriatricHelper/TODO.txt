@@ -1,8 +1,13 @@
+- intro - scale images
+- save button
+- table row size (single question, question choices)
+- review icons appear really strange
+- PDF: put in Portuguese
+- CGA tour
+
 - enviar feedback
 
-- AGG guide
-
-- scale help: improve table
+- CGA guide
 
 - criar About page
 - multiple categories:
@@ -12,5 +17,4 @@
 
 - review: disable de botão save
 - vai para review sem escalas completas
-- marcha: altura da célula
 - multiple categories: usar setas para alternar entre categorias

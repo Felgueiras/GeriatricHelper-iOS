@@ -50,10 +50,14 @@ class Constants{
         cga_nutritional
     ]
     
+    enum PatientGender {
+        case male
+        case female
+    }
     
     
     
-    static var patientGender: String? = ""
+    static var patientGender: PatientGender?
     
     // get the choices for a single question scale
     static func getChoicesSingleQuestionScale(scaleName: String) -> [Grading]{

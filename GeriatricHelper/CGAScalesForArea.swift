@@ -242,14 +242,12 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
         }
         
         
-        
         // get scale definition
         let scaleScoring = Constants.getScaleByName(scaleName: scale.scaleName!)?.scoring
         // TODO only ask once && Constants.patientGender != Constants.MALE && Constants.patientGender != Constants.FEMALE
         if scaleScoring?.differentMenWomen == true  {
             checkGender(scale: scale)
             return
-            
         }
         openScale(scale:scale)
         
@@ -421,7 +419,7 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
         let male = UIAlertAction(title: "Masculino",
                                  style: .default) { _ in
                                     
-                                    Constants.patientGender = "male"
+                                    Constants.patientGender = Constants.PatientGender.male
                                     self.openScale(scale: scale)
                                     
                                     
@@ -430,7 +428,7 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
         let female = UIAlertAction(title: "Feminino",
                                    style: .default) { _ in
                                     
-                                    Constants.patientGender = "female"
+                                    Constants.patientGender = Constants.PatientGender.female
                                     self.openScale(scale: scale)
                                     
         }

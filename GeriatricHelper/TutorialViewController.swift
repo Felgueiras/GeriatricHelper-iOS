@@ -34,7 +34,7 @@ class TutorialViewController: UIViewController , UIPopoverPresentationController
 
     @IBAction func showPopUp(_ sender: Any) {
         
-        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID") as! PopUpViewController
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID") as! ScaleInfoViewController
         
         
         

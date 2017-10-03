@@ -31,6 +31,10 @@ class CGAPublicInfo: UIViewController {
         
     }
     
+    @IBAction func showHelpScreen(_ sender: Any) {
+        // switch tab to help
+        tabBarController?.selectedIndex = 2
+    }
     
     
     /**
