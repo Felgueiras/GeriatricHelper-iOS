@@ -112,7 +112,7 @@ class CGAGuideScalesForArea: UITableViewController {
         
         self.tableView.reloadData()
         
-        // check user defaults
+        // TODO check user defaults
         if UserDefaults.standard.bool(forKey: "instructions") {
             startInstructions()
         }
@@ -204,7 +204,7 @@ class CGAGuideScalesForArea: UITableViewController {
             
             for scale in scales! {
                 if scale.scaleName == scaleName{
-                    let destinationViewController = segue.destination as! CGAPublicScalesQuestions
+                    let destinationViewController = segue.destination as! ScaleQuestions
                     // set the author
                     destinationViewController.scale = scale
                     destinationViewController.session = session

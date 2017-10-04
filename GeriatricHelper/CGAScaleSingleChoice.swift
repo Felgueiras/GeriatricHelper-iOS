@@ -19,6 +19,47 @@ class CGAScaleSingleChoice: UITableViewController {
     // segue to display a session's questions
     let ViewSessionScalesSegue = "ViewSessionScales"
     
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        // check if scale was completed
+        if scale.completed == false || scale.completed == nil {
+            // show alert
+            let alert = UIAlertController(title: "Cancel Session",
+                                          message: "Escala incompleta, continuar a preencher a escala?",
+                                          preferredStyle: .alert)
+            
+            
+            // cancel the current session
+            let saveAction = UIAlertAction(title: "Sair da escala",
+                                           style: .destructive) { _ in
+                                            
+                                            
+                                            
+                                            _ = self.navigationController?.popViewController(animated: true)
+                                            //                                            self.performSegue(withIdentifier: "CGAPublicCancelSegue", sender: self)
+                                            
+            }
+            
+            let cancelAction = UIAlertAction(title: "Continuar",
+                                             style: .default)
+            
+            
+            alert.addAction(saveAction)
+            alert.addAction(cancelAction)
+            
+            present(alert, animated: true, completion: nil)
+            
+            
+            
+        }
+        else{
+            
+            _ = self.navigationController?.popViewController(animated: true)
+            SwiftMessagesHelper.showMessage(type: Theme.info,
+                                            text: StringHelper.scaleSaved)
+            
+        }
+        
+    }
     
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {

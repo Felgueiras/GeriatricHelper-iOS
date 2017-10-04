@@ -53,6 +53,7 @@ class Constants{
     enum PatientGender {
         case male
         case female
+        case sameBoth
     }
     
     

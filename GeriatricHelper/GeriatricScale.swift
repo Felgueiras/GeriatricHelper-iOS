@@ -31,6 +31,20 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
     var notes: String?
     var subCategory: String?
     
+    /**
+     Get questions only for men.
+ **/
+    func getQuestionsMen() -> [Question]
+    {
+        var questionsMen:[Question] = []
+        for question in self.questions! {
+            if !question.onlyForWomen!{
+                questionsMen.append(question)
+            }
+        }
+        
+        return questionsMen
+    }
     
     
     

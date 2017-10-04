@@ -132,15 +132,15 @@ class Scoring: NSObject, Mappable, NSCoding {
     }
    
     
-    func getGrading(testResult: Double, gender: String) -> Grading? {
+    func getGrading(testResult: Double, gender: Constants.PatientGender) -> Grading? {
         var match: Grading? = nil
         
         var toConsider: [Grading]? = []
-        if gender == "male"{
+        if gender == Constants.PatientGender.male{
             toConsider = valuesMen
         }
             
-        else if gender == "female"
+        else if gender == Constants.PatientGender.female
         {
             toConsider = valuesWomen
         }

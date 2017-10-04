@@ -41,6 +41,7 @@ class ReviewSessionTableViewController: UIViewController {
         
         sessionPDFComposer.exportHTMLContentToPDF(HTMLContent: HTMLContent)
         
+        // display options to user (view PDF, send in email)
         showOptionsAlert()
     }
     
@@ -55,10 +56,14 @@ class ReviewSessionTableViewController: UIViewController {
         }
     }
     
+    /**
+     Prompt user about what option to take regarding
+     PDF (view, send by email, cancel)
+     **/
     func showOptionsAlert() {
-        let alertController = UIAlertController(title: "Yeah!", message: "Your invoice has been successfully printed to a PDF file.\n\nWhat do you want to do now?", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "PDF da sessão", message: "PDF da sessão criado, o que deseja fazer?", preferredStyle: UIAlertControllerStyle.alert)
         
-        let actionPreview = UIAlertAction(title: "Preview it", style: UIAlertActionStyle.default) { (action) in
+        let actionPreview = UIAlertAction(title: "Ver PDF", style: UIAlertActionStyle.default) { (action) in
             self.performSegue(withIdentifier: self.showPDF, sender: self)
 
 //            if let filename = self.sessionPDFComposer.pdfFilename, let url = URL(string: filename) {
@@ -68,13 +73,13 @@ class ReviewSessionTableViewController: UIViewController {
 //            }
         }
         
-        let actionEmail = UIAlertAction(title: "Send by Email", style: UIAlertActionStyle.default) { (action) in
+        let actionEmail = UIAlertAction(title: "Enviar por email", style: UIAlertActionStyle.default) { (action) in
             DispatchQueue.main.async {
                 self.sendEmail()
             }
         }
         
-        let actionNothing = UIAlertAction(title: "Nothing", style: UIAlertActionStyle.default) { (action) in
+        let actionNothing = UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.default) { (action) in
             
         }
         
@@ -223,7 +228,7 @@ class ReviewSessionTableViewController: UIViewController {
             
             let scale = scalesForArea[(table.indexPathForSelectedRow?.row)!]
 
-            let destinationViewController = segue.destination as! CGAPublicScalesQuestions
+            let destinationViewController = segue.destination as! ScaleQuestions
             destinationViewController.scale = scale
             destinationViewController.session = session
             

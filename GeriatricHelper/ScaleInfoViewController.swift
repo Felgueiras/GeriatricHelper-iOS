@@ -39,7 +39,7 @@ class ScaleInfoViewController: UIViewController {
     
     @IBOutlet weak var scoringTable: UITableView!
     
-    @IBOutlet weak var scaleDescription: UILabel!
+    @IBOutlet weak var scaleDescription: UITextView!
     
     var scaleNonDB:GeriatricScale?
     
@@ -141,7 +141,6 @@ extension ScaleInfoViewController: UITableViewDataSource, UITableViewDelegate  {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        
         var gradings:[Grading]
         if scaleNonDB?.scoring?.differentMenWomen == false{
             let cell = self.scoringTable.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ScoreCellEqual
@@ -174,8 +173,7 @@ extension ScaleInfoViewController: UITableViewDataSource, UITableViewDelegate  {
             }
             
             let index = indexPath.row - 1
-            
- 
+    
             
             let gradingsMale = (scaleNonDB?.scoring?.valuesMen)!
             let gradingsFemale = (scaleNonDB?.scoring?.valuesWomen)!

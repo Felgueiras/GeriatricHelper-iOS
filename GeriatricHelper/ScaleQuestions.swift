@@ -3,7 +3,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import SwiftMessages
 
-class  CGAPublicScalesQuestions: UITableViewController {
+class  ScaleQuestions: UITableViewController {
     
     // MARK: Constants
     var scale: GeriatricScale!
@@ -58,14 +58,12 @@ class  CGAPublicScalesQuestions: UITableViewController {
                 if scaleDefinition?.scoring!.differentMenWomen == true {
                     if Constants.patientGender == Constants.PatientGender.male {
                         if currentQuestionNonDB.onlyForWomen!{
-                            print(currentQuestionNonDB.descriptionText)
                             continue
                         }
                     }
                 }
             }
             
-            print("1")
             
             
             
@@ -100,6 +98,50 @@ class  CGAPublicScalesQuestions: UITableViewController {
         
     }
     
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        
+        // check if scale was completed
+        if scale.completed == false || scale.completed == nil {
+            // show alert
+            let alert = UIAlertController(title: "Cancel Session",
+                                          message: "Escala incompleta, continuar a preencher a escala?",
+                                          preferredStyle: .alert)
+            
+            
+            // cancel the current session
+            let saveAction = UIAlertAction(title: "Sair da escala",
+                                           style: .destructive) { _ in
+                                            
+                                            
+                             
+                                            _ = self.navigationController?.popViewController(animated: true)
+//                                            self.performSegue(withIdentifier: "CGAPublicCancelSegue", sender: self)
+                                            
+            }
+            
+            let cancelAction = UIAlertAction(title: "Continuar",
+                                             style: .default)
+            
+            
+            alert.addAction(saveAction)
+            alert.addAction(cancelAction)
+            
+            present(alert, animated: true, completion: nil)
+            
+            
+            
+        }
+        else{
+            
+            _ = self.navigationController?.popViewController(animated: true)
+            SwiftMessagesHelper.showMessage(type: Theme.info,
+                                            text: StringHelper.scaleSaved)
+            
+        }
+        
+        
+        
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -151,7 +193,17 @@ class  CGAPublicScalesQuestions: UITableViewController {
     // MARK: UITableView Delegate methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // get questions for scale
-        
+//        // check if different men women
+//        if self.scale.scoring?.differentMenWomen == true{
+//            if Constants.patientGender == Constants.PatientGender.male{
+//                // check which questions are for men
+//                
+//                // get questions for scale
+//                return (self.scale.getQuestionsMen().count)
+//            }
+//
+//        }
+//        // get questions for scale
         return (self.scale.questions?.count)!
         
 //        return Constants.getQuestionsForScale(scaleName: scale.scaleName!).count
@@ -161,7 +213,22 @@ class  CGAPublicScalesQuestions: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         
 //        let questionConstant = Constants.getQuestionsForScale(scaleName: scale.scaleName!)[indexPath.row]
-        let questionConstant = scale.questions![indexPath.row]
+        var questionsToConsider:[Question] = self.scale.questions!
+        
+//        // check if different men women
+//        if self.scale.scoring?.differentMenWomen == true{
+//            if Constants.patientGender == Constants.PatientGender.male{
+//                // check which questions are for men
+//                
+//                // get questions for scale
+//                questionsToConsider =  self.scale.getQuestionsMen()
+//            }
+//        }
+        
+        
+        
+        
+        let questionConstant = questionsToConsider[indexPath.row]
         
         cell.textLabel?.text = String(indexPath.row+1) + " -  " + questionConstant.descriptionText!
         cell.detailTextLabel?.text = questionConstant.selectedChoice
@@ -185,8 +252,8 @@ class  CGAPublicScalesQuestions: UITableViewController {
         }
         else
         {
-            let question = scale.questions?[indexPath.row]
-            if question?.answered == true{
+            let question = questionsToConsider[indexPath.row]
+            if question.answered == true{
                 cell.accessoryType = .checkmark
                 
             }
@@ -251,7 +318,7 @@ class  CGAPublicScalesQuestions: UITableViewController {
     // prepare for the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == ViewQuestionChoicesSegue {
-            let destinationViewController = segue.destination as! CGAPublicQuestionOptionsViewController
+            let destinationViewController = segue.destination as! QuestionOptions
             
             let indexPath = tableView.indexPathForSelectedRow
             

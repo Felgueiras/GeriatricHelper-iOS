@@ -1,9 +1,8 @@
 - intro - scale images
-- save button
 - table row size (single question, question choices)
 - review icons appear really strange
-- PDF: put in Portuguese
-- CGA tour
+- PDF: file name
+- yes no questions bigger buttons
 
 - enviar feedback
 
@@ -11,9 +10,7 @@
 
 - criar About page
 - multiple categories:
-- retificar info popup
 
-- nutritional - aparecer tabela de score
 
 - review: disable de botão save
 - vai para review sem escalas completas

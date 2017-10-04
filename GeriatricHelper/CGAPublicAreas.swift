@@ -79,6 +79,11 @@ class CGAPublicAreas: UITableViewController {
                                         
                                         Constants.cgaPublicScales = completedScales
                                         
+                                        // if not one scale was completed
+                                        if completedScales?.count == 0{
+                                            self.performSegue(withIdentifier: "CGAPublicCancelSegue", sender: self)
+                                        }
+                                        
                                         self.performSegue(withIdentifier: "ReviewPublicSession", sender: self)
                                         
         }

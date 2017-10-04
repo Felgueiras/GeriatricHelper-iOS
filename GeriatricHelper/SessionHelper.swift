@@ -122,13 +122,13 @@ class SessionHelper{
             return nil
         }
         if (scoring?.differentMenWomen)! {
-            if gender == "male" {
-                match = scoring!.getGrading(testResult: scale.result!, gender: "male")!
+            if Constants.patientGender == Constants.PatientGender.male {
+                match = scoring!.getGrading(testResult: scale.result!, gender: Constants.PatientGender.male)!
             } else {
-                match = scoring!.getGrading(testResult: scale.result!, gender: "female")!
+                match = scoring!.getGrading(testResult: scale.result!, gender: Constants.PatientGender.female)!
             }
         } else {
-            match = scoring!.getGrading(testResult: scale.result!, gender: "both")!
+            match = scoring!.getGrading(testResult: scale.result!, gender: Constants.PatientGender.sameBoth)!
         }
         return match;
     }

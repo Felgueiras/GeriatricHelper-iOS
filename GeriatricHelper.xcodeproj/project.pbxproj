@@ -34,7 +34,7 @@
 		2B4ADBE21EA54ECE00972332 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4ADBE11EA54ECE00972332 /* AccountViewController.swift */; };
 		2B4BDD921F1CC2B600104D6C /* CGAGuideAreasCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4BDD911F1CC2B600104D6C /* CGAGuideAreasCollectionViewController.swift */; };
 		2B50F1731EA9470800E4B762 /* CGAPublic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B50F1721EA9470800E4B762 /* CGAPublic.storyboard */; };
-		2B50F1761EA9498B00E4B762 /* CGAPublicScalesQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B50F1751EA9498B00E4B762 /* CGAPublicScalesQuestions.swift */; };
+		2B50F1761EA9498B00E4B762 /* ScaleQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B50F1751EA9498B00E4B762 /* ScaleQuestions.swift */; };
 		2B52C10D1EAFDD3000B5D02E /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52C10C1EAFDD3000B5D02E /* FirebaseHelper.swift */; };
 		2B5636E61EA4067800D8E75C /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5636E51EA4067800D8E75C /* MasterViewController.swift */; };
 		2B5636E81EA406AF00D8E75C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5636E71EA406AF00D8E75C /* DetailViewController.swift */; };
@@ -81,7 +81,7 @@
 		2BAC89D61EA4257000EE6CE9 /* PrescriptionStopp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC89D51EA4257000EE6CE9 /* PrescriptionStopp.swift */; };
 		2BAC89D81EA4259400EE6CE9 /* StoppCriteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC89D71EA4259400EE6CE9 /* StoppCriteria.swift */; };
 		2BAC89DA1EA4265300EE6CE9 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC89D91EA4265300EE6CE9 /* Issue.swift */; };
-		2BADFB541EAA6B4400277E8A /* CGAPublicQuestionOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BADFB531EAA6B4400277E8A /* CGAPublicQuestionOptionsViewController.swift */; };
+		2BADFB541EAA6B4400277E8A /* QuestionOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BADFB531EAA6B4400277E8A /* QuestionOptions.swift */; };
 		2BAF8E581EA518E60011EA87 /* Prescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAF8E571EA518E60011EA87 /* Prescription.swift */; };
 		2BB42A041EA045E6002C421C /* PatientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB42A031EA045E6002C421C /* PatientProfileViewController.swift */; };
 		2BB992671F1F64BB000EE600 /* BMICalculatorPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB992661F1F64BB000EE600 /* BMICalculatorPopUpViewController.swift */; };
@@ -158,7 +158,7 @@
 		2B4ADBE11EA54ECE00972332 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		2B4BDD911F1CC2B600104D6C /* CGAGuideAreasCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAGuideAreasCollectionViewController.swift; sourceTree = "<group>"; };
 		2B50F1721EA9470800E4B762 /* CGAPublic.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CGAPublic.storyboard; sourceTree = "<group>"; };
-		2B50F1751EA9498B00E4B762 /* CGAPublicScalesQuestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAPublicScalesQuestions.swift; sourceTree = "<group>"; };
+		2B50F1751EA9498B00E4B762 /* ScaleQuestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleQuestions.swift; sourceTree = "<group>"; };
 		2B52C10C1EAFDD3000B5D02E /* FirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		2B5636E51EA4067800D8E75C /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		2B5636E71EA406AF00D8E75C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 		2BAC89D51EA4257000EE6CE9 /* PrescriptionStopp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrescriptionStopp.swift; sourceTree = "<group>"; };
 		2BAC89D71EA4259400EE6CE9 /* StoppCriteria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoppCriteria.swift; sourceTree = "<group>"; };
 		2BAC89D91EA4265300EE6CE9 /* Issue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
-		2BADFB531EAA6B4400277E8A /* CGAPublicQuestionOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAPublicQuestionOptionsViewController.swift; sourceTree = "<group>"; };
+		2BADFB531EAA6B4400277E8A /* QuestionOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionOptions.swift; sourceTree = "<group>"; };
 		2BAF8E571EA518E60011EA87 /* Prescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prescription.swift; sourceTree = "<group>"; };
 		2BB42A031EA045E6002C421C /* PatientProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientProfileViewController.swift; sourceTree = "<group>"; };
 		2BB992661F1F64BB000EE600 /* BMICalculatorPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMICalculatorPopUpViewController.swift; sourceTree = "<group>"; };
@@ -438,8 +438,8 @@
 		2B4BDD901F1CBE4C00104D6C /* MultipleQuestions */ = {
 			isa = PBXGroup;
 			children = (
-				2BADFB531EAA6B4400277E8A /* CGAPublicQuestionOptionsViewController.swift */,
-				2B50F1751EA9498B00E4B762 /* CGAPublicScalesQuestions.swift */,
+				2BADFB531EAA6B4400277E8A /* QuestionOptions.swift */,
+				2B50F1751EA9498B00E4B762 /* ScaleQuestions.swift */,
 			);
 			name = MultipleQuestions;
 			sourceTree = "<group>";
@@ -923,7 +923,7 @@
 				2BE0426C1EA2C33A002D485D /* Question.swift in Sources */,
 				2BC0AC721ECDE23300EE7300 /* HelpTopics.swift in Sources */,
 				2B74803B1EA932B9006E231E /* ReviewSessionTableViewController.swift in Sources */,
-				2BADFB541EAA6B4400277E8A /* CGAPublicQuestionOptionsViewController.swift in Sources */,
+				2BADFB541EAA6B4400277E8A /* QuestionOptions.swift in Sources */,
 				2BAC89D21EA423F200EE6CE9 /* PrescriptionsStopTableViewController.swift in Sources */,
 				2B389CC71ED0D9F300C27E6E /* CustomPrintPageRenderer.swift in Sources */,
 				2B96717D1ED0D976001DDF90 /* PreviewViewController.swift in Sources */,
@@ -955,7 +955,7 @@
 				2B5636E61EA4067800D8E75C /* MasterViewController.swift in Sources */,
 				2BD6CCF31EA563AF007E10FC /* PrescriptionsViewController.swift in Sources */,
 				2BB992671F1F64BB000EE600 /* BMICalculatorPopUpViewController.swift in Sources */,
-				2B50F1761EA9498B00E4B762 /* CGAPublicScalesQuestions.swift in Sources */,
+				2B50F1761EA9498B00E4B762 /* ScaleQuestions.swift in Sources */,
 				2BEDA0AF1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.swift in Sources */,
 				2B3BCD4F1EA4F8910025EF6A /* FavoritePatientCellCollectionViewCell.swift in Sources */,
 				2BDB10B01EAD53CD00ACD751 /* CGAPublicYesNo.swift in Sources */,

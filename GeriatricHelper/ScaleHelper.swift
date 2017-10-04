@@ -46,7 +46,6 @@ class ScaleHelper{
     
     static func getQualitativeResult(scale: GeriatricScale) -> String
     {
-        // TODO get correct gender
         var qualitative:String = ""
         let match = SessionHelper.getGradingForScale(scale: scale, gender: "male")
         if match != nil{

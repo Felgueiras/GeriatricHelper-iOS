@@ -103,6 +103,8 @@ class Question: NSObject, Mappable, NSCoding {
     
     
     
+    
+    
     // initialize GeriatricScale from Firebase snapshot
     init(snapshot: FIRDataSnapshot) {
         ref = snapshot.ref

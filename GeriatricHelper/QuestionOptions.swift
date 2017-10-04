@@ -2,7 +2,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class CGAPublicQuestionOptionsViewController: UITableViewController {
+class QuestionOptions: UITableViewController {
     
     // MARK: Constants
     
@@ -40,7 +40,7 @@ class CGAPublicQuestionOptionsViewController: UITableViewController {
         self.title = self.questionNonDB.descriptionText!
         
         // add gesture recognizer for long clicks
-        let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(CGAPublicQuestionOptionsViewController.longPress(_:)))
+        let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(QuestionOptions.longPress(_:)))
         longPressGesture.minimumPressDuration = 1.0 // 1 second press
 //        longPressGesture.delegate = self
         self.tableView.addGestureRecognizer(longPressGesture)
@@ -68,6 +68,11 @@ class CGAPublicQuestionOptionsViewController: UITableViewController {
         }
         else{
             cell.accessoryType = .none
+        }
+        
+        // alternate shading
+        if indexPath.row % 2 == 0{
+            cell.backgroundColor = Constants.cellBackgroundColor
         }
 
         

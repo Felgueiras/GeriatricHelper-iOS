@@ -264,7 +264,7 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
             
             for scale in scales! {
                 if scale.scaleName == scaleName{
-                    let destinationViewController = segue.destination as! CGAPublicScalesQuestions
+                    let destinationViewController = segue.destination as! ScaleQuestions
                     // set the author
                     destinationViewController.scale = scale
                     destinationViewController.session = session
