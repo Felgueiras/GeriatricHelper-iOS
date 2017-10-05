@@ -139,7 +139,7 @@ class CGAGuideScalesForArea: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = Bundle.main.loadNibNamed("ScaleTableViewCell", owner: self, options: nil)?.first as! ScaleTableViewCell
+        let cell = Bundle.main.loadNibNamed("ScaleTableViewCell", owner: self, options: nil)?.first as! ScaleCardTableViewCell
         
         let rowInsideSection = indexPath.row
         let scalesForArea = Constants.getScalesForArea(area: area!)
@@ -148,7 +148,7 @@ class CGAGuideScalesForArea: UITableViewController {
         
         if rowInsideSection < scalesForArea.count {
             let scale = scalesForArea[rowInsideSection]
-            return ScaleTableViewCell.createCell(cell: cell,
+            return ScaleCardTableViewCell.createCell(cell: cell,
                                                  scale: scale,
                                                  viewController: self)
         }
@@ -248,7 +248,7 @@ class CGAGuideScalesForArea: UITableViewController {
             
             for scale in scales! {
                 if scale.scaleName == scaleName{
-                    let destinationViewController = segue.destination as! CGAPublicMultipleCategories
+                    let destinationViewController = segue.destination as! MultipleCategories
                     // set the author
                     destinationViewController.scale = scale
                 }

@@ -52,11 +52,6 @@ class QuestionCategory: NSObject, Mappable, NSCoding {
     
     
     
-  
-    
-    
-    
-    
     
     /**
      Initialize from JSON.

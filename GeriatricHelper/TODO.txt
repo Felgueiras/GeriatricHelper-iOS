@@ -1,17 +1,8 @@
 - intro - scale images
-- table row size (single question, question choices)
-- review icons appear really strange
-- PDF: file name
-- yes no questions bigger buttons
 
 - enviar feedback
 
 - CGA guide
 
 - criar About page
-- multiple categories:
 
-
-- review: disable de botão save
-- vai para review sem escalas completas
-- multiple categories: usar setas para alternar entre categorias

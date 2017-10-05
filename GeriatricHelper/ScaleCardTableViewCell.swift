@@ -8,10 +8,9 @@
 
 import UIKit
 
-class ScaleTableViewCell: UITableViewCell, UIPopoverPresentationControllerDelegate {
+class ScaleCardTableViewCell: UITableViewCell, UIPopoverPresentationControllerDelegate {
     
-    
-    
+
     var scale:GeriatricScale?
     
     @IBOutlet weak var infoButton: UIButton!
@@ -58,7 +57,7 @@ class ScaleTableViewCell: UITableViewCell, UIPopoverPresentationControllerDelega
     @IBOutlet weak var resultQuantitative: UILabel!
     
     // create the cell
-    static func createCell(cell: ScaleTableViewCell,
+    static func createCell(cell: ScaleCardTableViewCell,
                            scale: GeriatricScale,
                            viewController: UIViewController) -> UITableViewCell{
         
@@ -86,11 +85,9 @@ class ScaleTableViewCell: UITableViewCell, UIPopoverPresentationControllerDelega
             // qualitative result
             let qualitativeResult = ScaleHelper.getQualitativeResult(scale: scale)
             cell.resultQualitative.text = String(describing: qualitativeResult)
-            
         }
         else
         {
-            
             cell.resultQualitative?.text = ""
             cell.resultQuantitative?.text = ""
         }

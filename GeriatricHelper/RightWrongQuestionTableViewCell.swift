@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseStorage
+import SwiftMessages
 
 class RightWrongQuestionTableViewCell: UITableViewCell {
     
@@ -91,9 +92,11 @@ class RightWrongQuestionTableViewCell: UITableViewCell {
         var allQuestionsAnswered = true
         
         for questionCat in (scale?.questionsCategories)!{
+            print("Checking category " + questionCat.category! + " completed")
             for question in questionCat.questions!{
                 if question.answered != true{
                     allQuestionsAnswered = false
+                    print("Category " + questionCat.category! + " not completed")
                     break
                 }
             }
@@ -102,7 +105,13 @@ class RightWrongQuestionTableViewCell: UITableViewCell {
         
         if allQuestionsAnswered == true{
             print("All questions answered!")
+            if scale?.completed == nil{
+                SwiftMessagesHelper.showMessage(type: Theme.info,
+                                                text: StringHelper.allQuestionsAnswered)
+            }
             scale?.completed = true
+            
+//            FirebaseDatabaseHelper.updateScale(scale: scale!)
         }
     }
     

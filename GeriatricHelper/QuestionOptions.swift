@@ -44,6 +44,10 @@ class QuestionOptions: UITableViewController {
         longPressGesture.minimumPressDuration = 1.0 // 1 second press
 //        longPressGesture.delegate = self
         self.tableView.addGestureRecognizer(longPressGesture)
+        
+        // sizable table cell
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 80
     }
     
     // MARK: UITableView Delegate methods

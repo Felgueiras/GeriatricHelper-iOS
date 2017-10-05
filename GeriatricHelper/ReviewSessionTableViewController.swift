@@ -65,12 +65,6 @@ class ReviewSessionTableViewController: UIViewController {
         
         let actionPreview = UIAlertAction(title: "Ver PDF", style: UIAlertActionStyle.default) { (action) in
             self.performSegue(withIdentifier: self.showPDF, sender: self)
-
-//            if let filename = self.sessionPDFComposer.pdfFilename, let url = URL(string: filename) {
-//                let request = URLRequest(url: url)
-////                self.webPreview.loadRequest(request)
-//                self.performSegue(withIdentifier: self.showPDF, sender: self)
-//            }
         }
         
         let actionEmail = UIAlertAction(title: "Enviar por email", style: UIAlertActionStyle.default) { (action) in
@@ -91,11 +85,28 @@ class ReviewSessionTableViewController: UIViewController {
     }
     
     func sendEmail() {
+        
         if MFMailComposeViewController.canSendMail() {
             let mailComposeViewController = MFMailComposeViewController()
-            mailComposeViewController.setSubject("Invoice")
-            mailComposeViewController.addAttachmentData(NSData(contentsOfFile: sessionPDFComposer.pdfFilename)! as Data, mimeType: "application/pdf", fileName: "Invoice")
+            mailComposeViewController.setSubject("GeriatricHelper - PDF de sessão")
+            mailComposeViewController.addAttachmentData(NSData(contentsOfFile: sessionPDFComposer.pdfFilename)! as Data, mimeType: "application/pdf", fileName: sessionPDFComposer.pdfFilename)
+            mailComposeViewController.mailComposeDelegate = self
             present(mailComposeViewController, animated: true, completion: nil)
+
+        }
+        else{
+            let alert = UIAlertController(title: "Enviar PDF",
+                                          message: "Para poder enviar o PDF por email tem de configuar uma conta de mail no seu dispositivo",
+                                          preferredStyle: .alert)
+            
+        
+            
+            let cancelAction = UIAlertAction(title: "Ok",
+                                             style: .default)
+            
+            alert.addAction(cancelAction)
+            
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -111,12 +122,15 @@ class ReviewSessionTableViewController: UIViewController {
     
     
     @IBAction func finishReviewButtonClicked(_ sender: Any) {
+        Constants.reviewingSession = false
         performSegue(withIdentifier: "FinishReviewingPublicSession", sender: self)
     }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Constants.reviewingSession = true
 
         // get the scales that were completed
         var completedScales: [GeriatricScale] = []
@@ -160,30 +174,52 @@ class ReviewSessionTableViewController: UIViewController {
         
         
         // change text to icons (if iPhone)
-        
         switch UIDevice.current.userInterfaceIdiom {
         case .phone:
-        // It's an iPhone
-             print("phone")
-             // functional
-            segmentedControl.setImage(#imageLiteral(resourceName: "ic_functional"), forSegmentAt: 0)
-             // affective
-            segmentedControl.setImage(#imageLiteral(resourceName: "cga_afective"), forSegmentAt: 1)
-             // march
-            segmentedControl.setImage(#imageLiteral(resourceName: "cga_march"), forSegmentAt: 2)
-             // cognitive
-            segmentedControl.setImage(#imageLiteral(resourceName: "ic_mental"), forSegmentAt: 3)
-             // nutritive
-            segmentedControl.setImage(#imageLiteral(resourceName: "ic_nutritional"), forSegmentAt: 4)
+            // functional
+            let targetSize:CGSize = CGSize(width: 200, height: 32)
+            // scale image
+            segmentedControl.setImage(resizeImage(image: #imageLiteral(resourceName: "ic_functional"), targetSize: targetSize), forSegmentAt: 0)
+            // affective - review
+            segmentedControl.setImage(resizeImage(image: #imageLiteral(resourceName: "cga_afective"), targetSize: targetSize), forSegmentAt: 1)
+            // march - review
+            segmentedControl.setImage(resizeImage(image: #imageLiteral(resourceName: "cga_march"), targetSize: targetSize), forSegmentAt: 2)
+            // cognitive
+            segmentedControl.setImage(resizeImage(image: #imageLiteral(resourceName: "ic_mental"), targetSize: targetSize), forSegmentAt: 3)
+            // nutritive
+            segmentedControl.setImage(resizeImage(image: #imageLiteral(resourceName: "ic_nutritional"), targetSize: targetSize), forSegmentAt: 4)
         case .pad:
             // It's an iPad
-             print("pad")
+            print("pad")
         default:
             break
         }
+    }
+    
+    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
         
+        let widthRatio  = targetSize.width  / image.size.width
+        let heightRatio = targetSize.height / image.size.height
         
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+        }
         
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!.withRenderingMode(.alwaysOriginal		)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -325,6 +361,16 @@ extension ReviewSessionTableViewController: CoachMarksControllerDataSource, Coac
     
 }
 
+/**
+ Handle cancel and sending.
+ **/
+extension ReviewSessionTableViewController: MFMailComposeViewControllerDelegate  {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+}
+
 extension ReviewSessionTableViewController: UITableViewDataSource, UITableViewDelegate  {
     
     // number of rows
@@ -343,14 +389,14 @@ extension ReviewSessionTableViewController: UITableViewDataSource, UITableViewDe
     
     // get cell for row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed("ScaleTableViewCell", owner: self, options: nil)?.first as! ScaleTableViewCell
+        let cell = Bundle.main.loadNibNamed("ScaleTableViewCell", owner: self, options: nil)?.first as! ScaleCardTableViewCell
         
         // get scale
         let scalesForArea = Constants.getScalesForAreaFromSession(area: Constants.cgaAreas[segmentedControl.selectedSegmentIndex],scales: scales!)
         let scale = scalesForArea[indexPath.row]
         
         
-        return ScaleTableViewCell.createCell(cell: cell, scale: scale, viewController: self)
+        return ScaleCardTableViewCell.createCell(cell: cell, scale: scale, viewController: self)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -358,7 +404,7 @@ extension ReviewSessionTableViewController: UITableViewDataSource, UITableViewDe
         // return the height of the cell
         return 175
     }
-    
+
     
     // select a row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

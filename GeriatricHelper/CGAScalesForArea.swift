@@ -191,7 +191,7 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = Bundle.main.loadNibNamed("ScaleTableViewCell", owner: self, options: nil)?.first as! ScaleTableViewCell
+        let cell = Bundle.main.loadNibNamed("ScaleTableViewCell", owner: self, options: nil)?.first as! ScaleCardTableViewCell
         
         let rowInsideSection = indexPath.row
         let scalesForArea = Constants.getScalesForAreaFromSession(area: area!, scales: scales!)
@@ -199,7 +199,7 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
         
         if rowInsideSection < scalesForArea.count {
             let scale = scalesForArea[rowInsideSection]
-            return ScaleTableViewCell.createCell(cell: cell,
+            return ScaleCardTableViewCell.createCell(cell: cell,
                                                  scale: scale,
                                                  viewController: self)
         }
@@ -308,7 +308,7 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
             
             for scale in scales! {
                 if scale.scaleName == scaleName{
-                    let destinationViewController = segue.destination as! CGAPublicMultipleCategories
+                    let destinationViewController = segue.destination as! MultipleCategories
                     // set the author
                     destinationViewController.scale = scale
                 }
@@ -364,6 +364,7 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
     func checkEducationLevel(scale: GeriatricScale) {
         
 
+        // TODO create levels and assign them automatically
         
         let alert = UIAlertController(title: "Escolaridade do Paciente",
                                       message: nil,
@@ -469,14 +470,14 @@ extension CGAScalesForArea: CoachMarksControllerDataSource, CoachMarksController
             {
             case 0:
                 let ndx = IndexPath(row:0, section: 0)
-                let cell = self.tableView.cellForRow(at: ndx) as! ScaleTableViewCell
+                let cell = self.tableView.cellForRow(at: ndx) as! ScaleCardTableViewCell
                 coachMarkView = cell.resultQualitative
                 
             case 1:
                 // Info
                 // get cell
                 let ndx = IndexPath(row:0, section: 0)
-                let cell = self.tableView.cellForRow(at: ndx) as! ScaleTableViewCell
+                let cell = self.tableView.cellForRow(at: ndx) as! ScaleCardTableViewCell
                 coachMarkView = cell.resultQuantitative
             case 2:
                 coachMarkView = finishSessionButton.customView
@@ -499,19 +500,19 @@ extension CGAScalesForArea: CoachMarksControllerDataSource, CoachMarksController
                 // Info
                 // get cell
                 let ndx = IndexPath(row:0, section: 0)
-                let cell = self.tableView.cellForRow(at: ndx) as! ScaleTableViewCell
+                let cell = self.tableView.cellForRow(at: ndx) as! ScaleCardTableViewCell
                 coachMarkView = cell.infoButton
             case 2:
                 // Notas
                 // get cell
                 let ndx = IndexPath(row:0, section: 0)
-                let cell = self.tableView.cellForRow(at: ndx) as! ScaleTableViewCell
+                let cell = self.tableView.cellForRow(at: ndx) as! ScaleCardTableViewCell
                 coachMarkView = cell.notes
             case 3:
                 // Escala
                 // get cell
                 let ndx = IndexPath(row:0, section: 0)
-                let cell = self.tableView.cellForRow(at: ndx) as! ScaleTableViewCell
+                let cell = self.tableView.cellForRow(at: ndx) as! ScaleCardTableViewCell
                 coachMarkView = cell
             default:
                 break

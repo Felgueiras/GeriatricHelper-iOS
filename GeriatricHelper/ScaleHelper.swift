@@ -23,7 +23,7 @@ class ScaleHelper{
         var quantitative:String = ""
         quantitative += String(describing: scale.result!)
         
-        var testNonDB = Constants.getScaleByName(scaleName: scale.scaleName!)
+        let testNonDB = Constants.getScaleByName(scaleName: scale.scaleName!)
         
         if testNonDB?.scoring != nil {
             if testNonDB?.scoring?.differentMenWomen == false{
@@ -46,6 +46,21 @@ class ScaleHelper{
     
     static func getQualitativeResult(scale: GeriatricScale) -> String
     {
+        if scale.scaleName == Constants.test_name_mini_mental_state {
+            let scoring = Constants.getScaleByName(scaleName: scale.scaleName!)?.scoring
+            for grading in scoring!.valuesBoth! {
+                if grading.grade == Constants.EDUCATION_LEVEL{
+                    
+                    if scale.result! >= Double(grading.min!) {
+                        return "Resultado dentro do esperado"
+                    }
+                    else{
+                        return "Resultado abaixo do esperado"
+                    }
+                }
+            }
+        }
+        
         var qualitative:String = ""
         let match = SessionHelper.getGradingForScale(scale: scale, gender: "male")
         if match != nil{

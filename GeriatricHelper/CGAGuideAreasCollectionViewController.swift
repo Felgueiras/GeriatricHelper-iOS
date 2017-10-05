@@ -14,7 +14,20 @@ class CGAGuideAreasCollectionViewController: UICollectionViewController {
     
     
     
-    fileprivate let itemsPerRow: CGFloat = 2
+    fileprivate var numberOfColumns = 1
+    
+    fileprivate var cache = [UICollectionViewLayoutAttributes]()
+    
+    // 4
+    fileprivate var contentHeight: CGFloat = 0
+    
+    fileprivate var contentWidth: CGFloat {
+        guard let collectionView = collectionView else {
+            return 0
+        }
+        let insets = collectionView.contentInset
+        return collectionView.bounds.width - (insets.left + insets.right)
+    }
     
     fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
 
@@ -114,20 +127,44 @@ class CGAGuideAreasCollectionViewController: UICollectionViewController {
         selectedArea = Constants.cgaAreas[indexPath.row]
         performSegue(withIdentifier: self.viewCGAGuideScalesForArea, sender: self)
     }
+    
+    // 1
+    weak var delegate: PinterestLayoutDelegate!
+    
+    
+    
 }
 
+protocol PinterestLayoutDelegate: class {
+    func collectionView(_ collectionView:UICollectionView, heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat
+}
+
+//extension CGAGuideAreasCollectionViewController: PinterestLayoutDelegate {
+//    func collectionView(_ collectionView: UICollectionView,
+//                        heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat {
+//        
+//        return photos[indexPath.item].image.size.height
+//    }
+//    
+//    
+//}
+
 extension CGAGuideAreasCollectionViewController : UICollectionViewDelegateFlowLayout {
+    
+
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let paddingSpace = sectionInsets.left * CGFloat((numberOfColumns + 1))
         let availableWidth = view.frame.width - paddingSpace
-        let widthPerItem = availableWidth / itemsPerRow
+        let widthPerItem = Int(availableWidth) / numberOfColumns
         
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
+    
+
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -141,4 +178,6 @@ extension CGAGuideAreasCollectionViewController : UICollectionViewDelegateFlowLa
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
+    
+    
 }

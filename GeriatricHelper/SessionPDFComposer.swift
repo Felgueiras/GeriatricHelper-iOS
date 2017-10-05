@@ -148,7 +148,9 @@ class SessionPDFComposer: NSObject {
         return nil
     }
     
-    
+    /**
+     Export HTML to PDF and save it on the docs folder for this app
+     **/
     func exportHTMLContentToPDF(HTMLContent: String) {
         let printPageRenderer = CustomPrintPageRenderer()
         
@@ -166,7 +168,11 @@ class SessionPDFComposer: NSObject {
         
         let dateStr = dateFormatterGet.string(from: currentDateTime)
     
+        
+        
+        
         pdfFilename = "\(AppDelegate.getAppDelegate().getDocDir())/geriatric_helper-\(dateStr).pdf"
+        print(pdfFilename)
         pdfData?.write(toFile: pdfFilename, atomically: true)
     }
     

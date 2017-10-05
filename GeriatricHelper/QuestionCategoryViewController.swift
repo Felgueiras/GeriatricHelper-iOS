@@ -59,26 +59,22 @@ class QuestionCategoryViewController: UIViewController {
             arrowRight.isHidden = true
         }
         
-        
-        
     }
     
     // handle arrow clicks
     @IBAction func arrowClicked(_ sender: UIButton) {
-        // TODO programatically switch between pages
+        // programatically switch between pages
+        let parent = self.parent as! UIPageViewController
+        
         switch sender{
         case arrowLeft:
             // left
             print("left")
+            parent.goToPreviousPage(animated: true)
         case arrowRight:
             // right
             print("right")
-            
-            // get next view controller
-            let nextView = self.pageViewController?.viewControllers?[pageIndex]
-            // go to next category
-            self.pageViewController?.setViewControllers(
-                [nextView!], direction: .forward, animated: true, completion: nil)
+            parent.goToNextPage(animated: true)
         default:
             // do sth
             print("???")

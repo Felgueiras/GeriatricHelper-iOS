@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G24b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="chf-bG-QDY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="chf-bG-QDY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,17 +18,17 @@
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QcK-Ut-RtY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="FHU-fK-eCt" kind="relationship" relationship="rootViewController" id="ARo-VN-F8O"/>
+                        <segue destination="AIu-tW-7dE" kind="relationship" relationship="rootViewController" id="12T-Zg-CxC"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qv1-fj-gPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2320.8000000000002" y="2659.5202398800602"/>
+            <point key="canvasLocation" x="1826" y="2895"/>
         </scene>
         <!--Guide Areas Collection View Controller-->
         <scene sceneID="mYp-1J-Dha">
@@ -45,42 +46,46 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="Cell" reuseIdentifier="Cell" id="pF6-PW-qlF" customClass="CGAGuideAreaCollectionViewCell" customModule="GeriatricHelper" customModuleProvider="target">
-                                <rect key="frame" x="88" y="0.0" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="0.0" width="200" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Flg-pa-tFV" userLabel="Icon">
-                                            <rect key="frame" x="0.0" y="31" width="200" height="140"/>
+                                            <rect key="frame" x="20" y="20" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="Onz-RR-0Ub"/>
+                                                <constraint firstAttribute="width" secondItem="Flg-pa-tFV" secondAttribute="height" multiplier="1:1" id="QSo-dX-T9c"/>
+                                                <constraint firstAttribute="height" constant="50" id="gXt-nN-HVV"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EqQ-aa-uH7" userLabel="Area">
-                                            <rect key="frame" x="79" y="0.0" width="43" height="23"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BS-pg-LUI">
+                                            <rect key="frame" x="20" y="80" width="160" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BS-pg-LUI">
-                                            <rect key="frame" x="0.0" y="179" width="200" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EqQ-aa-uH7" userLabel="Area">
+                                            <rect key="frame" x="77" y="33" width="103" height="23"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="EqQ-aa-uH7" firstAttribute="centerX" secondItem="pF6-PW-qlF" secondAttribute="centerX" id="459-bI-hJc"/>
-                                    <constraint firstItem="Flg-pa-tFV" firstAttribute="top" secondItem="EqQ-aa-uH7" secondAttribute="bottom" constant="8" id="6f8-jB-eOS"/>
-                                    <constraint firstItem="2BS-pg-LUI" firstAttribute="leading" secondItem="pF6-PW-qlF" secondAttribute="leadingMargin" constant="-8" id="7pM-LA-oXx"/>
-                                    <constraint firstItem="Flg-pa-tFV" firstAttribute="centerX" secondItem="pF6-PW-qlF" secondAttribute="centerX" id="I15-Gp-mBK"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="2BS-pg-LUI" secondAttribute="bottom" constant="-8" id="StA-PF-Bq7"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="2BS-pg-LUI" secondAttribute="trailing" constant="-8" id="Vz4-c5-GE1"/>
-                                    <constraint firstItem="EqQ-aa-uH7" firstAttribute="top" secondItem="pF6-PW-qlF" secondAttribute="topMargin" constant="-8" id="fdT-jx-Pzl"/>
-                                    <constraint firstItem="2BS-pg-LUI" firstAttribute="top" secondItem="Flg-pa-tFV" secondAttribute="bottom" constant="8" id="ipQ-YY-D7f"/>
-                                    <constraint firstItem="2BS-pg-LUI" firstAttribute="centerX" secondItem="pF6-PW-qlF" secondAttribute="centerX" id="wcL-Fo-Hr4"/>
-                                    <constraint firstItem="Flg-pa-tFV" firstAttribute="width" secondItem="pF6-PW-qlF" secondAttribute="width" id="xQT-ft-1go"/>
+                                    <constraint firstAttribute="bottom" secondItem="2BS-pg-LUI" secondAttribute="bottom" constant="20" id="8Vy-FY-kTg"/>
+                                    <constraint firstItem="2BS-pg-LUI" firstAttribute="leading" secondItem="pF6-PW-qlF" secondAttribute="leading" constant="20" id="8tK-mD-QV2"/>
+                                    <constraint firstAttribute="trailing" secondItem="EqQ-aa-uH7" secondAttribute="trailing" constant="20" id="CKF-rz-IDQ"/>
+                                    <constraint firstItem="EqQ-aa-uH7" firstAttribute="centerY" secondItem="Flg-pa-tFV" secondAttribute="centerY" id="GiZ-QY-RRg"/>
+                                    <constraint firstItem="EqQ-aa-uH7" firstAttribute="leading" secondItem="Flg-pa-tFV" secondAttribute="trailing" constant="7" id="KL2-ja-3uY"/>
+                                    <constraint firstAttribute="trailing" secondItem="2BS-pg-LUI" secondAttribute="trailing" constant="20" id="Mfd-HN-LHg"/>
+                                    <constraint firstItem="Flg-pa-tFV" firstAttribute="leading" secondItem="pF6-PW-qlF" secondAttribute="leading" constant="20" id="Msn-94-wyy"/>
+                                    <constraint firstItem="2BS-pg-LUI" firstAttribute="top" secondItem="Flg-pa-tFV" secondAttribute="bottom" constant="10" id="NMj-3t-Zz1"/>
+                                    <constraint firstItem="Flg-pa-tFV" firstAttribute="top" secondItem="pF6-PW-qlF" secondAttribute="top" constant="20" id="vzc-Pd-icT"/>
                                 </constraints>
-                                <size key="customSize" width="200" height="200"/>
+                                <size key="customSize" width="200" height="150"/>
                                 <connections>
                                     <outlet property="areaDescription" destination="2BS-pg-LUI" id="ryE-XU-Nr0"/>
                                     <outlet property="areaIcon" destination="Flg-pa-tFV" id="eAp-JF-q5r"/>
@@ -100,7 +105,36 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3dW-WD-D9y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3285.5999999999999" y="2635.2323838080961"/>
+            <point key="canvasLocation" x="3068" y="2507"/>
+        </scene>
+        <!--Guia da AGG-->
+        <scene sceneID="mpZ-Ku-2Xz">
+            <objects>
+                <tableViewController id="AIu-tW-7dE" customClass="CGAGuideAreas" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qmQ-GJ-JU4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KSM-v7-sIB">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KSM-v7-sIB" id="RPB-lb-z9m">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="AIu-tW-7dE" id="5KP-dd-zOd"/>
+                            <outlet property="delegate" destination="AIu-tW-7dE" id="XhP-Rg-u5F"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Guia da AGG" id="SzT-KT-mP6"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Vx-cr-mhz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2850" y="2878"/>
         </scene>
         <!--Guide Scales For Area-->
         <scene sceneID="7wZ-hX-tvT">

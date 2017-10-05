@@ -21,6 +21,7 @@ class SessionHelper{
         
         let questionsFromTest = scale.questions
         
+        // single question
         if (scale.singleQuestion)! {
             //system.out.println("SINGLE");
             let scoring = Constants.getScaleByName(scaleName: scale.scaleName!)?.scoring
@@ -34,15 +35,32 @@ class SessionHelper{
                     //                    return grade.score!
                 }
             }
+            return
+        }
+        
+        let questionCategories = Constants.getQuestionCategoriesForScale(scaleName: (scale.scaleName)!)
+
+            
+        // check if multiple categories
+        if questionCategories.count > 0 {
+            for questionCat in (scale.questionsCategories)!{
+                for question in questionCat.questions!{
+                    if question.selectedRightWrong == "right"{
+                        res += 1
+                    }
+                }
+            }
+            
+            // save result
+            scale.result =  Double(res)
+            print(res)
+            return
         }
             
-            
+        
         else {
             for question in questionsFromTest! {
-                // in the Hamilton scale, only the first 17 questions make up the result
-                //                if (testName.equals(Constants.test_name_hamilton) &&
-                //                    questionsFromTest.indexOf(question) > 16)
-                //                break;
+                
                 /**
                  * Yes/no Question
                  */
@@ -113,7 +131,7 @@ class SessionHelper{
     static func getGradingForScale(scale: GeriatricScale, gender: String) -> Grading? {
         
         generateScaleResult(scale: scale)
-        var scoring = Constants.getScaleByName(scaleName: scale.scaleName!)?.scoring
+        let scoring = Constants.getScaleByName(scaleName: scale.scaleName!)?.scoring
         
      
         var match: Grading
@@ -123,12 +141,12 @@ class SessionHelper{
         }
         if (scoring?.differentMenWomen)! {
             if Constants.patientGender == Constants.PatientGender.male {
-                match = scoring!.getGrading(testResult: scale.result!, gender: Constants.PatientGender.male)!
+                match = scoring!.getGrading(scale: scale, gender: Constants.PatientGender.male)!
             } else {
-                match = scoring!.getGrading(testResult: scale.result!, gender: Constants.PatientGender.female)!
+                match = scoring!.getGrading(scale: scale, gender: Constants.PatientGender.female)!
             }
         } else {
-            match = scoring!.getGrading(testResult: scale.result!, gender: Constants.PatientGender.sameBoth)!
+            match = scoring!.getGrading(scale: scale, gender: Constants.PatientGender.sameBoth)!
         }
         return match;
     }

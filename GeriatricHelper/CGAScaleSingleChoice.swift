@@ -65,6 +65,11 @@ class CGAScaleSingleChoice: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // disable save button when reviewing session
+        if Constants.reviewingSession == true{
+            self.navigationItem.rightBarButtonItem = nil
+        }
+        
         tableView.allowsMultipleSelectionDuringEditing = false
         
         // set title
@@ -74,6 +79,10 @@ class CGAScaleSingleChoice: UITableViewController {
         // get possible choices for single question scale
         self.choices = Constants.getChoicesSingleQuestionScale(scaleName: self.scale.scaleName!)
         self.tableView.reloadData()
+        
+        // sizable table cell
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 80
         
     }
     
@@ -93,6 +102,10 @@ class CGAScaleSingleChoice: UITableViewController {
         if(scale.answer == currentGrading.grade){
             cell.accessoryType = .checkmark
         }
+        else
+        {
+            cell.accessoryType = .none
+        }
         
         if indexPath.row % 2 == 0{
             cell.backgroundColor = Constants.cellBackgroundColor
@@ -101,9 +114,7 @@ class CGAScaleSingleChoice: UITableViewController {
         
         return cell
     }
-    
-   
-    
+
     
     /**
      Choice was selected
@@ -135,8 +146,7 @@ class CGAScaleSingleChoice: UITableViewController {
             FirebaseDatabaseHelper.updateScale(scale: scale);
         }
         
-        
-
+        tableView.reloadData()
     }
     
     

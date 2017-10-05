@@ -132,8 +132,9 @@ class Scoring: NSObject, Mappable, NSCoding {
     }
    
     
-    func getGrading(testResult: Double, gender: Constants.PatientGender) -> Grading? {
+    func getGrading(scale: GeriatricScale, gender: Constants.PatientGender) -> Grading? {
         var match: Grading? = nil
+        
         
         var toConsider: [Grading]? = []
         if gender == Constants.PatientGender.male{
@@ -150,9 +151,15 @@ class Scoring: NSObject, Mappable, NSCoding {
             toConsider = valuesBoth
         }
         
+    
+        
+        // if scale is multiple categories
+        
         for grading in toConsider! {
+           
+            
             // check the grading for the result we have
-            if grading.containsScore(testResult: testResult) {
+            if grading.containsScore(testResult: scale.result!) {
                 match = grading
                 break
             }

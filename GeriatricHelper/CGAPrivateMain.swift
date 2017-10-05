@@ -129,7 +129,7 @@ class CGAPrivateMain: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = Bundle.main.loadNibNamed("ScaleTableViewCell", owner: self, options: nil)?.first as! ScaleTableViewCell
+        let cell = Bundle.main.loadNibNamed("ScaleTableViewCell", owner: self, options: nil)?.first as! ScaleCardTableViewCell
         
         // get scales for this area
         
@@ -138,7 +138,7 @@ class CGAPrivateMain: UITableViewController {
         
         
         let scale = Constants.getScalesForAreaFromSession(area: selectedArea, scales: scales!)[indexPath.row]
-        return ScaleTableViewCell.createCell(cell: cell,
+        return ScaleCardTableViewCell.createCell(cell: cell,
                                              scale: scale,
                                              viewController: self)
     

@@ -18,6 +18,11 @@ class CGAPublicYesNo: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // disable save button when reviewing session
+        if Constants.reviewingSession == true{
+            self.navigationItem.rightBarButtonItem = nil
+        }
+        
         // set title
         self.title = scale.scaleName
                 

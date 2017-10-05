@@ -33,7 +33,7 @@ class YesNoQuestionTableViewCell: UITableViewCell {
         
         questionObj?.selectedYesNo = "yes"
         yesButton.backgroundColor = UIColor.green
-        noButton.backgroundColor = UIColor(white: 1, alpha: 0.0)
+        noButton.backgroundColor = UIColor(red: 129, green: 129, blue: 129, alpha: 1.0)
         questionObj?.answered = true
         checkScaleCompleted()
         
@@ -65,7 +65,7 @@ class YesNoQuestionTableViewCell: UITableViewCell {
     @IBAction func noButtonClicked(_ sender: Any) {
         
         questionObj?.selectedYesNo = "no"
-        yesButton.backgroundColor = UIColor(white: 1, alpha: 0.0)
+        yesButton.backgroundColor = UIColor(red: 129, green: 129, blue: 129, alpha: 1.0)
         noButton.backgroundColor = UIColor.red
         questionObj?.answered = true
         checkScaleCompleted()

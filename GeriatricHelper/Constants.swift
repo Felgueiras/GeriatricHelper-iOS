@@ -14,6 +14,9 @@ class Constants{
     static let test_name_mini_mental_state = "Mini mental state examination (Folstein)"
     static var EDUCATION_LEVEL: String?
     
+    // revieweing session
+    static var reviewingSession: Bool = false
+    
     // scales
     static var scales: [GeriatricScale] = []
     

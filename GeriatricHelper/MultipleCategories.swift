@@ -9,12 +9,19 @@
 import UIKit
 import SwiftMessages
 
-class CGAPublicMultipleCategories: UIPageViewController, UIPageViewControllerDataSource {
+class MultipleCategories: UIPageViewController, UIPageViewControllerDataSource {
     
     var scale:GeriatricScale?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // disable save button when reviewing session
+        if Constants.reviewingSession == true{
+            self.navigationItem.rightBarButtonItem = nil
+        }
+        
+       
         
         if scale?.questionsCategories?.count == 0{
             // add question categories to scale
@@ -137,4 +144,23 @@ class CGAPublicMultipleCategories: UIPageViewController, UIPageViewControllerDat
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
         return 0
     }
+
+    
+
+}
+
+extension UIPageViewController {
+    
+    func goToNextPage(animated: Bool = true) {
+        guard let currentViewController = self.viewControllers?.first else { return }
+        guard let nextViewController = dataSource?.pageViewController(self, viewControllerAfter: currentViewController) else { return }
+        setViewControllers([nextViewController], direction: .forward, animated: animated, completion: nil)
+    }
+    
+    func goToPreviousPage(animated: Bool = true) {
+        guard let currentViewController = self.viewControllers?.first else { return }
+        guard let previousViewController = dataSource?.pageViewController(self, viewControllerBefore: currentViewController) else { return }
+        setViewControllers([previousViewController], direction: .reverse, animated: animated, completion: nil)
+    }
+    
 }

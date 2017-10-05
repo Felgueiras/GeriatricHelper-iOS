@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2217A7B068C3958B34FC5DE9 /* Pods_GeriatricHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA09AF322E24D40665776C4 /* Pods_GeriatricHelper.framework */; };
-		2B036ACD1EAE3FC900E4E6AA /* CGAPublicMultipleCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B036ACC1EAE3FC900E4E6AA /* CGAPublicMultipleCategories.swift */; };
+		2B036ACD1EAE3FC900E4E6AA /* MultipleCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B036ACC1EAE3FC900E4E6AA /* MultipleCategories.swift */; };
 		2B036ACF1EAE42F900E4E6AA /* QuestionCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B036ACE1EAE42F900E4E6AA /* QuestionCategory.swift */; };
 		2B036AD11EAE4AF700E4E6AA /* QuestionCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B036AD01EAE4AF700E4E6AA /* QuestionCategoryViewController.swift */; };
 		2B0AD75A1F1E065600D8D1C5 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0AD7591F1E065600D8D1C5 /* SettingsTableViewController.swift */; };
@@ -96,7 +96,7 @@
 		2BC5834B1EADF30600A4D51B /* TableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BC583491EADF30600A4D51B /* TableViewCell1.xib */; };
 		2BC5834E1EADF3C000A4D51B /* TableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC5834C1EADF3C000A4D51B /* TableViewCell2.swift */; };
 		2BC5834F1EADF3C000A4D51B /* TableViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BC5834D1EADF3C000A4D51B /* TableViewCell2.xib */; };
-		2BC583571EAE024B00A4D51B /* ScaleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC583551EAE024B00A4D51B /* ScaleTableViewCell.swift */; };
+		2BC583571EAE024B00A4D51B /* ScaleCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC583551EAE024B00A4D51B /* ScaleCardTableViewCell.swift */; };
 		2BC583581EAE024B00A4D51B /* ScaleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BC583561EAE024B00A4D51B /* ScaleTableViewCell.xib */; };
 		2BC60BCC1EA52995007F2839 /* ScaleSingleQuestionChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC60BCB1EA52995007F2839 /* ScaleSingleQuestionChoices.swift */; };
 		2BD0FE901ECEFFB80024CBA3 /* SwiftMessagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD0FE8F1ECEFFB80024CBA3 /* SwiftMessagesHelper.swift */; };
@@ -118,6 +118,9 @@
 		2BDBF8B01ED0E84900F412A2 /* ScaleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBF8AF1ED0E84900F412A2 /* ScaleHelper.swift */; };
 		2BE0426A1EA2C2A1002D485D /* ScalesQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE042691EA2C2A1002D485D /* ScalesQuestionsViewController.swift */; };
 		2BE0426C1EA2C33A002D485D /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE0426B1EA2C33A002D485D /* Question.swift */; };
+		2BE938D31F8632E00083853F /* CGAGuideAreas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE938D21F8632E00083853F /* CGAGuideAreas.swift */; };
+		2BE938D51F86354B0083853F /* CGAGuideAreaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BE938D41F86354B0083853F /* CGAGuideAreaTableViewCell.xib */; };
+		2BE938D71F8635600083853F /* CGAGuideAreaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE938D61F8635600083853F /* CGAGuideAreaTableViewCell.swift */; };
 		2BEA8D2A1EB0A9A2007E284A /* CGAPrivate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BEA8D291EB0A9A2007E284A /* CGAPrivate.storyboard */; };
 		2BEA8D2C1EB0AAE0007E284A /* CGAPrivateQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA8D2B1EB0AAE0007E284A /* CGAPrivateQuestions.swift */; };
 		2BEDA0AF1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEDA0AD1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.swift */; };
@@ -132,7 +135,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2B036ACC1EAE3FC900E4E6AA /* CGAPublicMultipleCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAPublicMultipleCategories.swift; sourceTree = "<group>"; };
+		2B036ACC1EAE3FC900E4E6AA /* MultipleCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleCategories.swift; sourceTree = "<group>"; };
 		2B036ACE1EAE42F900E4E6AA /* QuestionCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCategory.swift; sourceTree = "<group>"; };
 		2B036AD01EAE4AF700E4E6AA /* QuestionCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCategoryViewController.swift; sourceTree = "<group>"; };
 		2B0AD7591F1E065600D8D1C5 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -224,7 +227,7 @@
 		2BC583491EADF30600A4D51B /* TableViewCell1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell1.xib; sourceTree = "<group>"; };
 		2BC5834C1EADF3C000A4D51B /* TableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell2.swift; sourceTree = "<group>"; };
 		2BC5834D1EADF3C000A4D51B /* TableViewCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell2.xib; sourceTree = "<group>"; };
-		2BC583551EAE024B00A4D51B /* ScaleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleTableViewCell.swift; sourceTree = "<group>"; };
+		2BC583551EAE024B00A4D51B /* ScaleCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleCardTableViewCell.swift; sourceTree = "<group>"; };
 		2BC583561EAE024B00A4D51B /* ScaleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScaleTableViewCell.xib; sourceTree = "<group>"; };
 		2BC60BCB1EA52995007F2839 /* ScaleSingleQuestionChoices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleSingleQuestionChoices.swift; sourceTree = "<group>"; };
 		2BD0FE8F1ECEFFB80024CBA3 /* SwiftMessagesHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMessagesHelper.swift; sourceTree = "<group>"; };
@@ -246,6 +249,9 @@
 		2BDBF8AF1ED0E84900F412A2 /* ScaleHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleHelper.swift; sourceTree = "<group>"; };
 		2BE042691EA2C2A1002D485D /* ScalesQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalesQuestionsViewController.swift; sourceTree = "<group>"; };
 		2BE0426B1EA2C33A002D485D /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		2BE938D21F8632E00083853F /* CGAGuideAreas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAGuideAreas.swift; sourceTree = "<group>"; };
+		2BE938D41F86354B0083853F /* CGAGuideAreaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CGAGuideAreaTableViewCell.xib; sourceTree = "<group>"; };
+		2BE938D61F8635600083853F /* CGAGuideAreaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAGuideAreaTableViewCell.swift; sourceTree = "<group>"; };
 		2BEA8D291EB0A9A2007E284A /* CGAPrivate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CGAPrivate.storyboard; sourceTree = "<group>"; };
 		2BEA8D2B1EB0AAE0007E284A /* CGAPrivateQuestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAPrivateQuestions.swift; sourceTree = "<group>"; };
 		2BEDA0AD1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightWrongQuestionTableViewCell.swift; sourceTree = "<group>"; };
@@ -406,7 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				2B7D68461EA6A36700443D59 /* CGAScalesForArea.swift */,
-				2BC583551EAE024B00A4D51B /* ScaleTableViewCell.swift */,
+				2BC583551EAE024B00A4D51B /* ScaleCardTableViewCell.swift */,
 				2BC583561EAE024B00A4D51B /* ScaleTableViewCell.xib */,
 				2BDB10A91EAD3ED900ACD751 /* ScaleInfoViewController.swift */,
 				2BB992661F1F64BB000EE600 /* BMICalculatorPopUpViewController.swift */,
@@ -678,7 +684,7 @@
 			children = (
 				2BD21F5D1F1FB943001A6270 /* CategoryQuestions */,
 				2B036ACE1EAE42F900E4E6AA /* QuestionCategory.swift */,
-				2B036ACC1EAE3FC900E4E6AA /* CGAPublicMultipleCategories.swift */,
+				2B036ACC1EAE3FC900E4E6AA /* MultipleCategories.swift */,
 			);
 			name = MultipleCategories;
 			sourceTree = "<group>";
@@ -722,8 +728,9 @@
 		2BF76B0D1F1E42B5002C7AE0 /* Areas */ = {
 			isa = PBXGroup;
 			children = (
-				2B95E3E61F1CC4FE00FEC67F /* CGAGuideAreaCollectionViewCell.swift */,
-				2B4BDD911F1CC2B600104D6C /* CGAGuideAreasCollectionViewController.swift */,
+				2BE938D61F8635600083853F /* CGAGuideAreaTableViewCell.swift */,
+				2BE938D41F86354B0083853F /* CGAGuideAreaTableViewCell.xib */,
+				2BE938D21F8632E00083853F /* CGAGuideAreas.swift */,
 			);
 			name = Areas;
 			sourceTree = "<group>";
@@ -731,6 +738,8 @@
 		2BF76B0E1F1E42BF002C7AE0 /* Old */ = {
 			isa = PBXGroup;
 			children = (
+				2B95E3E61F1CC4FE00FEC67F /* CGAGuideAreaCollectionViewCell.swift */,
+				2B4BDD911F1CC2B600104D6C /* CGAGuideAreasCollectionViewController.swift */,
 				2BBF33AC1EA39D55008D30EC /* CGAScalesTableViewController.swift */,
 			);
 			name = Old;
@@ -814,6 +823,7 @@
 				2BDB10AE1EAD4D9800ACD751 /* PopOvers.storyboard in Resources */,
 				2B9BD2B81EFA76090072B854 /* Sessions.storyboard in Resources */,
 				2B59480C1EACB3DD0052EC98 /* Patients.storyboard in Resources */,
+				2BE938D51F86354B0083853F /* CGAGuideAreaTableViewCell.xib in Resources */,
 				2B2D3A131EACDF04007E7A28 /* PatientInfoCard.xib in Resources */,
 				2BEDA0B01EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.xib in Resources */,
 				2BDBF8AE1ED0E4C300F412A2 /* area.html in Resources */,
@@ -901,15 +911,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BD0FE901ECEFFB80024CBA3 /* SwiftMessagesHelper.swift in Sources */,
-				2B036ACD1EAE3FC900E4E6AA /* CGAPublicMultipleCategories.swift in Sources */,
+				2B036ACD1EAE3FC900E4E6AA /* MultipleCategories.swift in Sources */,
+				2BE938D31F8632E00083853F /* CGAGuideAreas.swift in Sources */,
 				2B424FF01EA2AE930010E4F8 /* SessionScalesViewController.swift in Sources */,
 				2B036ACF1EAE42F900E4E6AA /* QuestionCategory.swift in Sources */,
 				2B21ABC21E9FEE7B001D6F66 /* LoginViewController.swift in Sources */,
-				2BC583571EAE024B00A4D51B /* ScaleTableViewCell.swift in Sources */,
+				2BC583571EAE024B00A4D51B /* ScaleCardTableViewCell.swift in Sources */,
 				2BD2AC8B1ECDC88B0096AAC9 /* HelpSingleTopic.swift in Sources */,
 				2B4ADBE21EA54ECE00972332 /* AccountViewController.swift in Sources */,
 				2B4957D31EAE5609009DDF91 /* YesNoQuestionTableViewCell.swift in Sources */,
 				2BC5834A1EADF30600A4D51B /* TableViewCell1.swift in Sources */,
+				2BE938D71F8635600083853F /* CGAGuideAreaTableViewCell.swift in Sources */,
 				2BAF8E581EA518E60011EA87 /* Prescription.swift in Sources */,
 				2BFD7F0A1ED473A4005663F0 /* CalendarTutorialViewController.swift in Sources */,
 				2BD0FE921ECF06C60024CBA3 /* StringHelper.swift in Sources */,

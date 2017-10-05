@@ -58,10 +58,10 @@
             </objects>
             <point key="canvasLocation" x="-1046" y="-331"/>
         </scene>
-        <!--Public Multiple Categories-->
+        <!--Multiple Categories-->
         <scene sceneID="Cef-Fl-CSR">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" doubleSided="YES" id="oMo-MT-t55" customClass="CGAPublicMultipleCategories" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" doubleSided="YES" id="oMo-MT-t55" customClass="MultipleCategories" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="D3x-VF-0ft">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Y06-g6-XFK">
                             <connections>
@@ -395,7 +395,7 @@
                                 <action selector="createPdfButtonClicked:" destination="d1D-lX-Ir5" id="KAf-BI-5Cw"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="lrn-3Q-MxZ">
+                        <barButtonItem key="rightBarButtonItem" title="Fechar" id="lrn-3Q-MxZ">
                             <connections>
                                 <segue destination="nnx-R5-Y9s" kind="unwind" unwindAction="unwindToMenuWithSegue:" id="Vhz-Uh-dBh"/>
                             </connections>
@@ -548,13 +548,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="MGt-1v-cYB" secondAttribute="trailing" constant="-20" id="d3u-L3-FTK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="8hj-5D-FWG">
-                        <barButtonItem key="rightBarButtonItem" title="Options" id="p4L-Wc-n5U">
-                            <connections>
-                                <action selector="exportToPDF:" destination="GfM-wo-jef" id="fkr-Y5-AoN"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="8hj-5D-FWG"/>
                     <connections>
                         <outlet property="webPreview" destination="MGt-1v-cYB" id="dbt-ht-3Ob"/>
                     </connections>
@@ -571,7 +565,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6MQ-Id-j66"/>
-        <segue reference="4ue-RV-T5t"/>
+        <segue reference="vH1-f2-YmV"/>
         <segue reference="iGh-v3-wOO"/>
         <segue reference="5sP-Qm-QCY"/>
     </inferredMetricsTieBreakers>
