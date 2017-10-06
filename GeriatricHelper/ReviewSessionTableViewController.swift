@@ -179,15 +179,15 @@ class ReviewSessionTableViewController: UIViewController {
             // functional
             let targetSize:CGSize = CGSize(width: 200, height: 32)
             // scale image
-            segmentedControl.setImage(resizeImage(image: #imageLiteral(resourceName: "ic_functional"), targetSize: targetSize), forSegmentAt: 0)
+            segmentedControl.setImage(ImageOps.resizeImage(image: #imageLiteral(resourceName: "ic_functional"), targetSize: targetSize), forSegmentAt: 0)
             // affective - review
-            segmentedControl.setImage(resizeImage(image: #imageLiteral(resourceName: "cga_afective"), targetSize: targetSize), forSegmentAt: 1)
+            segmentedControl.setImage(ImageOps.resizeImage(image: #imageLiteral(resourceName: "cga_afective"), targetSize: targetSize), forSegmentAt: 1)
             // march - review
-            segmentedControl.setImage(resizeImage(image: #imageLiteral(resourceName: "cga_march"), targetSize: targetSize), forSegmentAt: 2)
+            segmentedControl.setImage(ImageOps.resizeImage(image: #imageLiteral(resourceName: "cga_march"), targetSize: targetSize), forSegmentAt: 2)
             // cognitive
-            segmentedControl.setImage(resizeImage(image: #imageLiteral(resourceName: "ic_mental"), targetSize: targetSize), forSegmentAt: 3)
+            segmentedControl.setImage(ImageOps.resizeImage(image: #imageLiteral(resourceName: "ic_mental"), targetSize: targetSize), forSegmentAt: 3)
             // nutritive
-            segmentedControl.setImage(resizeImage(image: #imageLiteral(resourceName: "ic_nutritional"), targetSize: targetSize), forSegmentAt: 4)
+            segmentedControl.setImage(ImageOps.resizeImage(image: #imageLiteral(resourceName: "ic_nutritional"), targetSize: targetSize), forSegmentAt: 4)
         case .pad:
             // It's an iPad
             print("pad")
@@ -196,31 +196,6 @@ class ReviewSessionTableViewController: UIViewController {
         }
     }
     
-    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
-        let size = image.size
-        
-        let widthRatio  = targetSize.width  / image.size.width
-        let heightRatio = targetSize.height / image.size.height
-        
-        // Figure out what our orientation is, and use that to form the rectangle
-        var newSize: CGSize
-        if(widthRatio > heightRatio) {
-            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
-        } else {
-            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
-        }
-        
-        // This is the rect that we've calculated out and this is what is actually used below
-        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-        
-        // Actually do the resizing to the rect using the ImageContext stuff
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-        image.draw(in: rect)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage!.withRenderingMode(.alwaysOriginal		)
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         

@@ -284,19 +284,30 @@ class InitialSetup: UIViewController {
         
     }
     
+    /**
+     Display app intro, with screens portraying functionalities
+     **/
     func showAppIntro()
     {
         // Initialize onboarding view controller
         var onboardingVC = OnboardingViewController()
         
+        
+        
         // Create slides
-        let firstPage = OnboardingContentViewController.content(withTitle: "Bem-vindo ao GeriatricHelper", body: "Esta aplicação permite-lhe aplicar a Avaliação Geriátrica Global (AGG).", image: UIImage(named: "icon_original"), buttonText: nil, action: nil)
         
-        let secondPage = OnboardingContentViewController.content(withTitle: "Sessões AGG", body: "Cada AGG é realizada numa sessão, onde as escalas se encontram divididas por área a avaliar (estado funcional, afetivo, cognitivo, nutricional e marcha)", image: UIImage(named: "cga_areas"), buttonText: nil, action: nil)
+        // resize when needed
+        let originalImg:UIImage = #imageLiteral(resourceName: "screen_review")
+        print("Size: " + String(describing: originalImg.size.width) + "-" + String(describing: originalImg.size.height))
         
-        let thirdPage = OnboardingContentViewController.content(withTitle: "Escalas", body: "À medida que completa as escalas, pode consultar o seu resultado e escrever notas", image: UIImage(named: "screen_session"), buttonText: nil, action: nil)
         
-        let fourthPage = OnboardingContentViewController.content(withTitle: "Rever uma Sessão", body: "Depois de terminada a sessão, pode rever o resultado de cada teste e criar um documento PDF da sessão", image: UIImage(named: "screen_review"), buttonText: nil, action: nil)
+        let firstPage = OnboardingContentViewController.content(withTitle: "Bem-vindo ao GeriatricHelper", body: "Esta aplicação permite-lhe aplicar a Avaliação Geriátrica Global (AGG).", image: ImageOps.resizeImageInPercentage(image: #imageLiteral(resourceName: "icon_original"), percentage: 70), buttonText: nil, action: nil)
+        
+        let secondPage = OnboardingContentViewController.content(withTitle: "Sessões AGG", body: "Cada AGG é realizada numa sessão, onde as escalas se encontram divididas por área a avaliar (estado funcional, afetivo, cognitivo, nutricional e marcha)", image: ImageOps.resizeImageInPercentage(image: #imageLiteral(resourceName: "cga_areas"), percentage: 70), buttonText: nil, action: nil)
+        
+        let thirdPage = OnboardingContentViewController.content(withTitle: "Escalas", body: "À medida que completa as escalas, pode consultar o seu resultado e escrever notas", image: ImageOps.resizeImageInPercentage(image: #imageLiteral(resourceName: "screen_review"), percentage: 70), buttonText: nil, action: nil)
+        
+        let fourthPage = OnboardingContentViewController.content(withTitle: "Rever uma Sessão", body: "Depois de terminada a sessão, pode rever o resultado de cada teste e criar um documento PDF da sessão", image: ImageOps.resizeImageInPercentage(image: #imageLiteral(resourceName: "screen_session"), percentage: 70), buttonText: nil, action: nil)
         
         let fifthPage = OnboardingContentViewController.content(withTitle: "Módulos", body: "GeriatricHelper irá suportar módulos. Em versões futuras estes poderão ser ativados e desativados nas Definições da aplicação", image: UIImage(named: "image4"), buttonText: nil, action: nil)
         
@@ -310,6 +321,7 @@ class InitialSetup: UIViewController {
         onboardingVC.pageControl.currentPageIndicatorTintColor = UIColor.white
         //        onboardingVC.skipButton.setTitleColor(UIColor.black, for: .normal)
         onboardingVC.allowSkipping = true
+        onboardingVC.skipButton.setTitle("Saltar", for: UIControlState.normal)
         onboardingVC.fadeSkipButtonOnLastPage = false
         
         let controller = self

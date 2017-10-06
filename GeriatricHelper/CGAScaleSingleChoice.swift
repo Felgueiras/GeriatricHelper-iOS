@@ -82,7 +82,7 @@ class CGAScaleSingleChoice: UITableViewController {
         
         // sizable table cell
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 80
+        self.tableView.estimatedRowHeight = 50
         
     }
     

@@ -61,7 +61,7 @@
         <!--Multiple Categories-->
         <scene sceneID="Cef-Fl-CSR">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" doubleSided="YES" id="oMo-MT-t55" customClass="MultipleCategories" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="CGAMultipleCategories" autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" doubleSided="YES" id="oMo-MT-t55" customClass="MultipleCategories" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="D3x-VF-0ft">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Y06-g6-XFK">
                             <connections>
@@ -182,7 +182,7 @@
         <!--Single Choice-->
         <scene sceneID="YOD-HF-9SN">
             <objects>
-                <tableViewController title="SessionSingleQuestionChoices" id="9Yt-du-9hg" userLabel="Single Choice" customClass="CGAScaleSingleChoice" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CGASingleQuestion" title="SessionSingleQuestionChoices" id="9Yt-du-9hg" userLabel="Single Choice" customClass="CGAScaleSingleChoice" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="ltc-Zq-d5Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,7 +235,7 @@
         <!--Scale Questions-->
         <scene sceneID="zYk-li-XO9">
             <objects>
-                <tableViewController title="Scales Questions" id="Peu-5Z-UVe" userLabel="Scale Questions" customClass="ScaleQuestions" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CGAQuestions" title="Scales Questions" id="Peu-5Z-UVe" userLabel="Scale Questions" customClass="ScaleQuestions" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="izG-H4-drX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -290,7 +290,7 @@
         <!--Question Options-->
         <scene sceneID="lDv-mW-3dV">
             <objects>
-                <tableViewController title="Question Options" id="sZv-8a-aEg" customClass="QuestionOptions" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CGAQuestionOptions" title="Question Options" id="sZv-8a-aEg" customClass="QuestionOptions" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="CJi-sa-ppa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -333,7 +333,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IuR-2t-u5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="978" y="484"/>
+            <point key="canvasLocation" x="1385" y="484"/>
         </scene>
         <!--Review Public Session-->
         <scene sceneID="217-eP-XOV">
@@ -439,7 +439,7 @@
         <!--Yes No Questions-->
         <scene sceneID="B90-D7-YiH">
             <objects>
-                <tableViewController title="Scales Questions" id="gtM-Wm-YaA" userLabel="Yes No Questions" customClass="CGAPublicYesNo" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CGAYesNoQuestions" title="Scales Questions" id="gtM-Wm-YaA" userLabel="Yes No Questions" customClass="CGAPublicYesNo" customModule="GeriatricHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="gOF-a6-bkV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -471,7 +471,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="snT-GJ-Urb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="50" y="-555"/>
+            <point key="canvasLocation" x="318" y="-441"/>
         </scene>
         <!--CGA Areas-->
         <scene sceneID="Lb9-l5-UrZ">
@@ -498,6 +498,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Áreas" id="2Ng-zQ-5re">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9zm-kL-CEI">
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="scl-CK-nrf" id="6NA-aG-20o"/>
                             </connections>

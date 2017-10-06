@@ -18,6 +18,7 @@
 		2B21ABC11E9FEE7B001D6F66 /* PatientsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B21ABBE1E9FEE7B001D6F66 /* PatientsListTableViewController.swift */; };
 		2B21ABC21E9FEE7B001D6F66 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B21ABBF1E9FEE7B001D6F66 /* LoginViewController.swift */; };
 		2B242B281EACC63A0029FFF3 /* PatientsManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B242B271EACC63A0029FFF3 /* PatientsManagement.swift */; };
+		2B2B41381F8790BB006DA7C6 /* ImageOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B41371F8790BB006DA7C6 /* ImageOps.swift */; };
 		2B2B8BA71ECF8D17007BC03B /* InitialSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B8BA61ECF8D17007BC03B /* InitialSetup.swift */; };
 		2B2D3A121EACDF04007E7A28 /* PatientInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2D3A101EACDF04007E7A28 /* PatientInfoCard.swift */; };
 		2B2D3A131EACDF04007E7A28 /* PatientInfoCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B2D3A111EACDF04007E7A28 /* PatientInfoCard.xib */; };
@@ -41,7 +42,6 @@
 		2B5636EA1EA406D800D8E75C /* Patient2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5636E91EA406D800D8E75C /* Patient2.swift */; };
 		2B59480C1EACB3DD0052EC98 /* Patients.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B59480B1EACB3DD0052EC98 /* Patients.storyboard */; };
 		2B59480E1EACB6170052EC98 /* CreatePatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B59480D1EACB6170052EC98 /* CreatePatientViewController.swift */; };
-		2B5B260F1ECF967300A60F14 /* AppIntro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B260E1ECF967300A60F14 /* AppIntro.swift */; };
 		2B616AE61ED339580056590E /* PrivateArea.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B616AE41ED339580056590E /* PrivateArea.storyboard */; };
 		2B616AED1ED33F4A0056590E /* PrivateSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B616AEC1ED33F4A0056590E /* PrivateSettingsTableViewController.swift */; };
 		2B616AF01ED35DF10056590E /* ProgressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B616AEF1ED35DF10056590E /* ProgressTableViewController.swift */; };
@@ -145,6 +145,7 @@
 		2B21ABBE1E9FEE7B001D6F66 /* PatientsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsListTableViewController.swift; sourceTree = "<group>"; };
 		2B21ABBF1E9FEE7B001D6F66 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2B242B271EACC63A0029FFF3 /* PatientsManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsManagement.swift; sourceTree = "<group>"; };
+		2B2B41371F8790BB006DA7C6 /* ImageOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageOps.swift; sourceTree = "<group>"; };
 		2B2B8BA61ECF8D17007BC03B /* InitialSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialSetup.swift; sourceTree = "<group>"; };
 		2B2D3A101EACDF04007E7A28 /* PatientInfoCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientInfoCard.swift; sourceTree = "<group>"; };
 		2B2D3A111EACDF04007E7A28 /* PatientInfoCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PatientInfoCard.xib; sourceTree = "<group>"; };
@@ -168,7 +169,6 @@
 		2B5636E91EA406D800D8E75C /* Patient2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Patient2.swift; sourceTree = "<group>"; };
 		2B59480B1EACB3DD0052EC98 /* Patients.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Patients.storyboard; sourceTree = "<group>"; };
 		2B59480D1EACB6170052EC98 /* CreatePatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePatientViewController.swift; sourceTree = "<group>"; };
-		2B5B260E1ECF967300A60F14 /* AppIntro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIntro.swift; sourceTree = "<group>"; };
 		2B616AE51ED339580056590E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PrivateArea.storyboard; sourceTree = "<group>"; };
 		2B616AEC1ED33F4A0056590E /* PrivateSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateSettingsTableViewController.swift; sourceTree = "<group>"; };
 		2B616AEF1ED35DF10056590E /* ProgressTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressTableViewController.swift; sourceTree = "<group>"; };
@@ -326,7 +326,6 @@
 		2B0AD75C1F1E0EF000D8D1C5 /* Intro */ = {
 			isa = PBXGroup;
 			children = (
-				2B5B260E1ECF967300A60F14 /* AppIntro.swift */,
 			);
 			name = Intro;
 			sourceTree = "<group>";
@@ -374,6 +373,7 @@
 			children = (
 				2BD927CB1EAB7C6900EF1381 /* SessionHelper.swift */,
 				2BDBF8AF1ED0E84900F412A2 /* ScaleHelper.swift */,
+				2B2B41371F8790BB006DA7C6 /* ImageOps.swift */,
 				2B242B271EACC63A0029FFF3 /* PatientsManagement.swift */,
 				2BA7737A1ED1E38200D3E352 /* DatesHandler.swift */,
 			);
@@ -524,12 +524,12 @@
 				2BA319C11E9FF01E00E7A5C9 /* Images.xcassets */,
 				2BD0FE911ECF06C60024CBA3 /* StringHelper.swift */,
 				2BD0FE8F1ECEFFB80024CBA3 /* SwiftMessagesHelper.swift */,
+				2BBF33AB1EA39D1E008D30EC /* CGAGuide */,
 				2B0AD75C1F1E0EF000D8D1C5 /* Intro */,
 				2B7D68481EA6A37000443D59 /* CGA */,
 				2B0AD7581F1E063A00D8D1C5 /* Settings */,
 				2B0B7E951F1CCFA300599486 /* Firebase */,
 				2B04D5E01F1A620A00D49CBA /* InitialSetup */,
-				2BBF33AB1EA39D1E008D30EC /* CGAGuide */,
 				2BFD7F081ED472DD005663F0 /* Sessions */,
 				2B9671771ED0D786001DDF90 /* PDF */,
 				2B004F981EB1FAB7003A8CD9 /* Others */,
@@ -925,6 +925,7 @@
 				2BAF8E581EA518E60011EA87 /* Prescription.swift in Sources */,
 				2BFD7F0A1ED473A4005663F0 /* CalendarTutorialViewController.swift in Sources */,
 				2BD0FE921ECF06C60024CBA3 /* StringHelper.swift in Sources */,
+				2B2B41381F8790BB006DA7C6 /* ImageOps.swift in Sources */,
 				2BAC89D81EA4259400EE6CE9 /* StoppCriteria.swift in Sources */,
 				2B616AF01ED35DF10056590E /* ProgressTableViewController.swift in Sources */,
 				2BBF33AA1EA38D1E008D30EC /* Choice.swift in Sources */,
@@ -956,7 +957,6 @@
 				2BD6536F1EB093500029F87B /* FirebaseDatabaseHelper.swift in Sources */,
 				2B21ABC11E9FEE7B001D6F66 /* PatientsListTableViewController.swift in Sources */,
 				2BEA8D2C1EB0AAE0007E284A /* CGAPrivateQuestions.swift in Sources */,
-				2B5B260F1ECF967300A60F14 /* AppIntro.swift in Sources */,
 				2B616AED1ED33F4A0056590E /* PrivateSettingsTableViewController.swift in Sources */,
 				2B5636EA1EA406D800D8E75C /* Patient2.swift in Sources */,
 				2B7D684A1EA6A88700443D59 /* CGAScaleSingleChoice.swift in Sources */,

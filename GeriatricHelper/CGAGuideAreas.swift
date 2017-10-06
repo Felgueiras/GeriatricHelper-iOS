@@ -13,6 +13,8 @@ class CGAGuideAreas: UITableViewController {
     
     let ViewAreaScales = "ViewAreaScales"
     
+    let viewCGAGuideScalesForArea = "ScalesForAreaSegue"
+    
     let numCoachMarks = 3
     
     var scales:[GeriatricScale] = []
@@ -110,8 +112,8 @@ class CGAGuideAreas: UITableViewController {
         super.viewDidLoad()
         
         // sizable table cell
-//        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.rowHeight = 180
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 50
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -163,18 +165,15 @@ class CGAGuideAreas: UITableViewController {
     // select a row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // get cell and selected scale
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+//        guard let cell = tableView.cellForRow(at: indexPath) else { return }
         
-        //        var selectedAreaIndex = segmentedControl.selectedSegmentIndex
-        
-        // filter scales by selected
-        //        let scale = Constants.getScalesForArea(area: Constants.cgaAreas[indexPath.section])[indexPath.row]
-        
-        
-        performSegue(withIdentifier: ViewAreaScales, sender: self)
+        selectedArea = Constants.cgaAreas[indexPath.row]
+        performSegue(withIdentifier: self.viewCGAGuideScalesForArea, sender: self)
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+      var selectedArea: String?
     
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -187,30 +186,15 @@ class CGAGuideAreas: UITableViewController {
         self.coachMarksController.start(on: self)
     }
     
-    // prepare for the segue
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-//        if segue.identifier == ViewAreaScales {
-//            // pass area to the controller
-//            let areaName = Constants.cgaAreas[(tableView.indexPathForSelectedRow?.row)!]
-//
-//
-//            let destinationViewController = segue.destination as! CGAScalesForArea
-//
-//            // create session
-//            destinationViewController.area = areaName
-//            destinationViewController.session = session!
-//        } else if segue.identifier == "ReviewPublicSession" {
-//
-//            var DestViewController = segue.destination as! UINavigationController
-//            let destinationViewController = DestViewController.topViewController as! ReviewSessionTableViewController
-//
-//
-//            // set the author
-//            destinationViewController.session = session
-//            destinationViewController.scales = scales
-//
-//        }
+        // get the selected cell
+        if segue.identifier == viewCGAGuideScalesForArea {
+            let scalesForArea = segue.destination as! CGAGuideScalesForArea
+//            let indexPath = self.collectionView!.indexPathsForSelectedItems?[0]
+            
+            scalesForArea.area = selectedArea!
+        }
         
     }
 

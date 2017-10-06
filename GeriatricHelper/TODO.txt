@@ -1,8 +1,2 @@
-- intro - scale images
-
 - enviar feedback
-
-- CGA guide
-
 - criar About page
-

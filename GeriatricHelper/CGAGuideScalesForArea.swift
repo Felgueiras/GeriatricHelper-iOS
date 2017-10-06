@@ -29,70 +29,6 @@ class CGAGuideScalesForArea: UITableViewController {
     // can be public or private
     var session: Session?
     
-    
-    
-    // cancel public CGA session
-    @IBAction func cancelButtonPressed(_ sender: Any) {
-        
-        let alert = UIAlertController(title: "Cancel Session",
-                                      message: "Do you wish to cancel this CGA Session?",
-                                      preferredStyle: .alert)
-        
-        
-        // cancel the current session
-        let saveAction = UIAlertAction(title: "Yes",
-                                       style: .default) { _ in
-                                        
-                                        self.performSegue(withIdentifier: "CGAPublicCancelSegue", sender: self)
-                                        
-        }
-        
-        let cancelAction = UIAlertAction(title: "No",
-                                         style: .default)
-        
-        
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true, completion: nil)
-        
-    }
-    
-    // finish (and review cga session)
-    @IBAction func finishButtonPressed(_ sender: Any) {
-        let alert = UIAlertController(title: StringHelper.finishSession,
-                                      message: StringHelper.finishSessionQuestion,
-                                      preferredStyle: .alert)
-        
-        
-        // cancel the current session
-        let saveAction = UIAlertAction(title: StringHelper.yes,
-                                       style: .default) { _ in
-                                        
-                                        // remove all the uncompleted scales
-                                        var completedScales: [GeriatricScale]? = []
-                                        for scale in Constants.cgaPublicScales!{
-                                            if scale.completed == true {
-                                                completedScales?.append(scale)
-                                            }
-                                        }
-                                        Constants.cgaPublicScales = completedScales
-                                        self.performSegue(withIdentifier: self.ReviewPublicSession, sender: self)
-                                        
-        }
-        
-        let cancelAction = UIAlertAction(title: StringHelper.no,
-                                         style: .default)
-        
-        
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
-  
-    
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -200,70 +136,33 @@ class CGAGuideScalesForArea: UITableViewController {
         
         if segue.identifier == ViewScaleQuestionsSegue {
             // pass scale to the controller
-            let scaleName = Constants.getScalesForArea(area: area!)[(tableView.indexPathForSelectedRow?.row)!].scaleName
-            
-            for scale in scales! {
-                if scale.scaleName == scaleName{
-                    let destinationViewController = segue.destination as! ScaleQuestions
-                    // set the author
-                    destinationViewController.scale = scale
-                    destinationViewController.session = session
-                }
-            }
+            let scale = Constants.getScalesForArea(area: area!)[(tableView.indexPathForSelectedRow?.row)!]
+        
+            let destinationViewController = segue.destination as! ScaleQuestions
+            destinationViewController.scale = scale
         }
             // single choice
         else if segue.identifier == ViewScaleSingleQuestionChoicesSegue {
             
             // pass scale to the controller
-            let scaleName = Constants.getScalesForArea(area: area!)[(tableView.indexPathForSelectedRow?.row)!].scaleName
-            
-            for scale in scales! {
-                if scale.scaleName == scaleName{
-                    let destinationViewController = segue.destination as! CGAScaleSingleChoice
-                    // set the author
-                    destinationViewController.scale = scale
-                    destinationViewController.session = session!
-                }
-            }
-            
+            let scale = Constants.getScalesForArea(area: area!)[(tableView.indexPathForSelectedRow?.row)!]
+            let destinationViewController = segue.destination as! CGAScaleSingleChoice
+            destinationViewController.scale = scale
         }
         else if segue.identifier == ViewScaleYesNoSegue {
             
             // pass scale to the controller
-            let scaleName = Constants.getScalesForArea(area: area!)[(tableView.indexPathForSelectedRow?.row)!].scaleName
-            
-            for scale in scales! {
-                if scale.scaleName == scaleName{
-                    let destinationViewController = segue.destination as! CGAPublicYesNo
-                    // set the author
-                    destinationViewController.scale = scale
-                }
-            }
+            let scale = Constants.getScalesForArea(area: area!)[(tableView.indexPathForSelectedRow?.row)!]
+            let destinationViewController = segue.destination as! CGAPublicYesNo
+            destinationViewController.scale = scale
             
         }
         else if segue.identifier == ViewScaleMultipleCategoriesSegue {
             
             // pass scale to the controller
-            let scaleName = Constants.getScalesForArea(area: area!)[(tableView.indexPathForSelectedRow?.row)!].scaleName
-            
-            for scale in scales! {
-                if scale.scaleName == scaleName{
-                    let destinationViewController = segue.destination as! MultipleCategories
-                    // set the author
-                    destinationViewController.scale = scale
-                }
-            }
-            
-        }
-        else if segue.identifier == ReviewPublicSession {
-            
-            var DestViewController = segue.destination as! UINavigationController
-            let destinationViewController = DestViewController.topViewController as! ReviewSessionTableViewController
-            
-            
-            // set the author
-            destinationViewController.session = session
-            destinationViewController.scales = scales
+            let scale = Constants.getScalesForArea(area: area!)[(tableView.indexPathForSelectedRow?.row)!]
+            let destinationViewController = segue.destination as! MultipleCategories
+            destinationViewController.scale = scale
             
         }
     }

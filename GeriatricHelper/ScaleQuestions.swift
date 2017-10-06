@@ -95,7 +95,7 @@ class  ScaleQuestions: UITableViewController {
             
             self.scale.questions?.append(question)
             
-            if session!.type == Session.sessionType.privateSession {
+            if session?.type == Session.sessionType.privateSession {
                 FirebaseDatabaseHelper.createQuestion(question: question)
             }
             
@@ -155,7 +155,7 @@ class  ScaleQuestions: UITableViewController {
         // check all questions were answered
         var allQuestionsAnswered = true
         
-        if session!.type == Session.sessionType.privateSession {
+        if session != nil && session!.type == Session.sessionType.privateSession {
             for question in FirebaseDatabaseHelper.getQuestionsFromScale(scale: scale){
                 if question.answered != true{
                     allQuestionsAnswered = false
@@ -244,7 +244,7 @@ class  ScaleQuestions: UITableViewController {
         
         
         // check if there is info from Firebase
-        if session!.type == Session.sessionType.privateSession {
+        if session != nil && session!.type == Session.sessionType.privateSession {
             var questionDB:Question?
             let questions = FirebaseDatabaseHelper.getQuestionsFromScale(scale: scale)
             if indexPath.row < questions.count{
@@ -279,44 +279,6 @@ class  ScaleQuestions: UITableViewController {
         performSegue(withIdentifier: ViewQuestionChoicesSegue, sender: self)
         
         
-        ///////////////
-        // VERSION 2
-        ///////////////
-        
-        //        // get current question
-        //
-        //        let question = Constants.getQuestionsForScale(scaleName: scale.scaleName!)[indexPath.row]
-        //
-        //        // create action
-        //
-        //        let alert = UIAlertController(title: question.descriptionText!,
-        //                                      message: nil,
-        //                                      preferredStyle: .alert)
-        //
-        //        // display answer options to the user
-        //        for choice in question.choices!{
-        //            var alertAction = UIAlertAction(title: choice.descriptionText!,
-        //                                     style: .default) { _ in
-        //
-        //                                        //                                    Constants.patientGender = "male"
-        //                                        //                                    self.performSegue(withIdentifier: self.StartPublicSessionSegue, sender: self)
-        //
-        //            }
-        //
-        //            alert.addAction(alertAction)
-        //
-        //        }
-        //
-        //
-        //
-        //
-        //        let cancelAction = UIAlertAction(title: "Cancelar",
-        //                                         style: .cancel)
-        //
-        //
-        //        alert.addAction(cancelAction)
-        //
-        //        present(alert, animated: true, completion: nil)
     }
     
     
@@ -331,7 +293,7 @@ class  ScaleQuestions: UITableViewController {
             
             let questionNonDB = (self.scale.questions?[(indexPath?.row)!])!
             
-            if session!.type == Session.sessionType.privateSession {
+            if session != nil && session!.type == Session.sessionType.privateSession {
                 questionDB = FirebaseDatabaseHelper.getQuestionsFromScale(scale: scale)[(indexPath?.row)!]
                 destinationViewController.questionNonDB = questionNonDB
                 destinationViewController.questionDB = questionDB

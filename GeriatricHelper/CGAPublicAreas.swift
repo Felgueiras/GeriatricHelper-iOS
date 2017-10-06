@@ -118,7 +118,7 @@ class CGAPublicAreas: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         // check session type
-        if session!.type == Session.sessionType.privateSession {
+        if session?.type == Session.sessionType.privateSession {
             
             // private session
             FirebaseHelper.ref.child(FirebaseHelper.scalesReferencePath).queryOrdered(byChild: "sessionID").queryEqual(toValue: session?.guid!).observe(.value, with: { snapshot in

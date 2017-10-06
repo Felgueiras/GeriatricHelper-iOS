@@ -28,7 +28,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qv1-fj-gPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1826" y="2895"/>
+            <point key="canvasLocation" x="1786" y="3188"/>
         </scene>
         <!--Guide Areas Collection View Controller-->
         <scene sceneID="mYp-1J-Dha">
@@ -105,7 +105,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3dW-WD-D9y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3068" y="2507"/>
+            <point key="canvasLocation" x="2446" y="2389"/>
         </scene>
         <!--Guia da AGG-->
         <scene sceneID="mpZ-Ku-2Xz">
@@ -131,10 +131,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Guia da AGG" id="SzT-KT-mP6"/>
+                    <connections>
+                        <segue destination="w9c-yj-s6N" kind="show" identifier="ScalesForAreaSegue" id="dXY-Xd-3HH"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Vx-cr-mhz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2850" y="2878"/>
+            <point key="canvasLocation" x="2929" y="3188"/>
         </scene>
         <!--Guide Scales For Area-->
         <scene sceneID="7wZ-hX-tvT">
@@ -159,13 +162,54 @@
                             <outlet property="delegate" destination="w9c-yj-s6N" id="yKx-5u-kGb"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="V5P-Ze-Hhb" kind="show" identifier="CGAViewSingleQuestionChoices" id="ecS-w0-IXD"/>
+                        <segue destination="LbV-b8-IB1" kind="show" identifier="ViewScaleQuestions" id="XMN-lO-WoU"/>
+                        <segue destination="nYG-3y-N52" kind="show" identifier="YesNoQuestion" id="fDx-YK-3za"/>
+                        <segue destination="4yg-Rj-E4z" kind="show" identifier="MultipleCategories" id="IEN-To-wXN"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5l9-qB-kam" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3990" y="2643"/>
         </scene>
+        <!--CGASingleQuestion-->
+        <scene sceneID="JkV-eY-6FX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CGAPublic" referencedIdentifier="CGASingleQuestion" id="V5P-Ze-Hhb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Q3-ag-fa3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4644" y="2520"/>
+        </scene>
+        <!--CGAQuestions-->
+        <scene sceneID="3dF-Dc-mdS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CGAPublic" referencedIdentifier="CGAQuestions" id="LbV-b8-IB1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xgb-8Q-iWk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4643" y="2577"/>
+        </scene>
+        <!--CGAYesNoQuestions-->
+        <scene sceneID="XbU-Ha-qHT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CGAPublic" referencedIdentifier="CGAYesNoQuestions" id="nYG-3y-N52" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P11-Re-rJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4698" y="2630"/>
+        </scene>
+        <!--CGAMultipleCategories-->
+        <scene sceneID="ixm-Gm-WDP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CGAPublic" referencedIdentifier="CGAMultipleCategories" id="4yg-Rj-E4z" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Biq-QF-MhG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4859" y="2784"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Folder-50" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="dXY-Xd-3HH"/>
+    </inferredMetricsTieBreakers>
 </document>
