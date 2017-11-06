@@ -66,7 +66,7 @@ class TutorialViewController: UIViewController , UIPopoverPresentationController
         return navigationController
     }
     
-    func dismiss() {
+    @objc func dismiss() {
         self.dismiss(animated: true, completion: nil)
     }
     

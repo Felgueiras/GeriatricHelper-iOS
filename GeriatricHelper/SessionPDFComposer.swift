@@ -167,9 +167,6 @@ class SessionPDFComposer: NSObject {
         dateFormatterGet.dateFormat = "dd-MM-yyyy_HH-mm-ss"
         
         let dateStr = dateFormatterGet.string(from: currentDateTime)
-    
-        
-        
         
         pdfFilename = "\(AppDelegate.getAppDelegate().getDocDir())/geriatric_helper-\(dateStr).pdf"
         print(pdfFilename)

@@ -3,6 +3,7 @@ import FirebaseAuth
 import FirebaseStorage
 import ObjectMapper
 import Onboard
+import SystemConfiguration
 
 class InitialSetup: UIViewController {
     
@@ -181,6 +182,13 @@ class InitialSetup: UIViewController {
         
     }
     
+    fileprivate func loadScalesFromDefaults(_ defaults: UserDefaults) {
+        // read from defaults and add to Constants
+        let decoded  = defaults.object(forKey: "scales") as! Data
+        let decodedScales = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [GeriatricScale]
+        Constants.scales = decodedScales
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -192,6 +200,27 @@ class InitialSetup: UIViewController {
         let defaults = UserDefaults.standard
         let HasLaunchedOnce = defaults.bool(forKey: "HasLaunchedOnce")
         if !HasLaunchedOnce{
+            // check if online
+            if(isInternetAvailable() == false)
+            {
+                let alert = UIAlertController(title: "Primeira utilização",
+                                              message: "Precisa de estar ligado à Internet da primeira vez que usa a app",
+                                              preferredStyle: .alert)
+                
+                
+                // cancel the current session
+                let saveAction = UIAlertAction(title: "OK",
+                                               style: .default) { _ in
+                                                
+                                                // close app
+                                                exit(0)
+                                                
+                }
+                
+                alert.addAction(saveAction)
+                
+                present(alert, animated: true, completion: nil)
+            }
             // start the counter
             for _ in 0..<100 {
                 DispatchQueue.global(qos: .background).async {
@@ -221,6 +250,15 @@ class InitialSetup: UIViewController {
             }
         }
         else{
+            // check if online
+            if(isInternetAvailable() == false)
+            {
+                // load scales from defaults
+                self.loadScalesFromDefaults(defaults)
+                self.performSegue(withIdentifier: self.SegueLeaveInitialSetup, sender: self)
+            }
+            
+            
             // check if there is a new scales version
             let scalesRef = FirebaseHelper.ref.child("public").child("scalesVersion")
             scalesRef.observeSingleEvent(of:.value, with: { (snapshot) in
@@ -240,10 +278,7 @@ class InitialSetup: UIViewController {
                         
                     }
                     else{
-                        // read from defaults and add to Constants
-                        let decoded  = defaults.object(forKey: "scales") as! Data
-                        let decodedScales = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [GeriatricScale]
-                        Constants.scales = decodedScales
+                        self.loadScalesFromDefaults(defaults)
                         
                         // check if user is already logged in
                         FIRAuth.auth()!.addStateDidChangeListener { auth, user in
@@ -282,6 +317,34 @@ class InitialSetup: UIViewController {
         }
         
         
+    }
+    
+    /**
+     Check if network is available
+     **/
+    func isInternetAvailable() -> Bool {
+        
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                SCNetworkReachabilityCreateWithAddress(nil, $0)
+            }
+        }) else {
+            return false
+        }
+        
+        var flags: SCNetworkReachabilityFlags = []
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
+            return false
+        }
+        
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        
+        return (isReachable && !needsConnection)
     }
     
     /**

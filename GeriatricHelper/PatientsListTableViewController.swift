@@ -285,7 +285,7 @@ class PatientsListTableViewController: UITableViewController {
     }
 
     
-    func userCountButtonDidTouch() {
+    @objc func userCountButtonDidTouch() {
         //        performSegue(withIdentifier: listToUsers, sender: nil)
         print("Touched something")
     }

@@ -112,7 +112,7 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
     }
     
     // open BMI calculator
-    func Nam1BarBtnKlkFnc(_ sender : UIBarButtonItem)
+    @objc func Nam1BarBtnKlkFnc(_ sender : UIBarButtonItem)
     {
         // create popover
         let popOverVC = UIStoryboard(name: "PopOvers", bundle: nil).instantiateViewController(withIdentifier: "bmiCalculator") as! BMICalculatorPopUpViewController

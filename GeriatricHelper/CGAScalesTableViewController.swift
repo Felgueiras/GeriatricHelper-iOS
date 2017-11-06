@@ -73,7 +73,7 @@ class CGAScalesTableViewController: UITableViewController, UIPopoverPresentation
         return navigationController
     }
     
-    func dismiss() {
+    @objc func dismiss() {
         self.dismiss(animated: true, completion: nil)
     }
     

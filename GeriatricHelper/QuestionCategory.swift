@@ -80,7 +80,7 @@ class QuestionCategory: NSObject, Mappable, NSCoding {
         
         // assign properties
 
-        descriptionText = snapshotValue["description"] as! String
+        descriptionText = (snapshotValue["description"] as! String)
 
         //        choices = snapshotValue["choices"] as! [Choice]
     }

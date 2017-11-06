@@ -56,13 +56,17 @@
         <scene sceneID="6CN-h8-Ouv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fJr-Uu-Qtt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Ajuda" image="Info-50" id="Fyz-2k-Ivn"/>
+                    <tabBarItem key="tabBarItem" title="Ajuda" image="Help-50" id="7RN-5o-eP6"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PBG-yj-aJH">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nmR-tO-QGl">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="li8-gQ-kOb" kind="relationship" relationship="rootViewController" id="BEM-f0-WBB"/>
                     </connections>
@@ -109,6 +113,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Info-50" width="25" height="25"/>
+        <image name="Help-50" width="25" height="25"/>
     </resources>
 </document>

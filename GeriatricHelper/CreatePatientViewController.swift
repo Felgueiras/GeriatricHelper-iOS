@@ -26,7 +26,7 @@ class CreatePatientViewController: UIViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    func datePickerChanged() {
+    @objc func datePickerChanged() {
         var dateFormatter = DateFormatter()
         
         dateFormatter.dateStyle = DateFormatter.Style.short

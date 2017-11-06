@@ -165,7 +165,7 @@ extension QuestionCategoryViewController: UITableViewDataSource, UITableViewDele
         
     }
     
-    func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = false
         sender.view?.removeFromSuperview()
