@@ -3,16 +3,20 @@ import FirebaseAuth
 import FirebaseDatabase
 import SwiftMessages
 
-class CGAPublicYesNo: UITableViewController {
+class CGAPublicYesNo: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
     // MARK: Constants
     var scale: GeriatricScale!
        var session: Session?
     
-   
+    @IBOutlet weak var table: UITableView!
+    
+    @IBOutlet weak var saveScaleButton: UIButton!
     
     // segue to display the choices for a questions
     let ViewQuestionChoicesSegue = "ViewQuestionChoices"
+    
+    
     
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
@@ -31,13 +35,16 @@ class CGAPublicYesNo: UITableViewController {
             addQuestionsToScale()
         }
         
+        // setup table data source and delegates
+        table.dataSource = self
+        table.delegate = self
     }
     
     @IBAction func saveButtonClicked(_ sender: Any) {
         // check if scale was completed
         if scale.completed == false || scale.completed == nil {
             // show alert
-            let alert = UIAlertController(title: "Cancel Session",
+            let alert = UIAlertController(title: SwiftMessagesHelper.saveScale,
                                           message: "Escala incompleta, continuar a preencher a escala?",
                                           preferredStyle: .alert)
             
@@ -88,32 +95,54 @@ class CGAPublicYesNo: UITableViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        self.tableView.reloadData()
+     func checkScaleCompleted() {
+        var questionsToAnswer = 0
         
         // check all questions were answered
         var allQuestionsAnswered = true
         for question in scale.questions!{
             if question.answered != true{
                 allQuestionsAnswered = false
-                break
+                questionsToAnswer += 1
             }
         }
         
         if allQuestionsAnswered == true{
-            print("All questions answered!")
+            
+            if scale.completed != true{
+                SwiftMessagesHelper.showMessage(type: Theme.info,
+                                                text: StringHelper.allQuestionsAnswered)
+            }
             scale.completed = true
+            let saveButtonTitle = SwiftMessagesHelper.saveScale
+            saveScaleButton.setTitle(saveButtonTitle, for: .normal)
+            
+         
+            
+        }
+        else{
+            let saveButtonTitle = SwiftMessagesHelper.saveScale + " (faltam " + String(questionsToAnswer) + " questões)"
+            self.saveScaleButton.setTitle(saveButtonTitle, for: .normal)
+            
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.table.reloadData()
+        
+        checkScaleCompleted()
+    }
+    
+    
+    
     // MARK: UITableView Delegate methods
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // get questions for scale
         return (scale.questions?.count)!
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
         let cell = Bundle.main.loadNibNamed("YesNoQuestionTableViewCell", owner: self, options: nil)?.first as! YesNoQuestionTableViewCell
@@ -122,11 +151,11 @@ class CGAPublicYesNo: UITableViewController {
                                                      cellIndex: indexPath.row,
                                                           scale: scale,
                                                           backend: false,
-                                                          table: self.tableView)
+                                                          viewController: self)
    
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         // TODO return the height of the cell
         return 100

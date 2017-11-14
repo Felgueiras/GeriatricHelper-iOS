@@ -64,19 +64,7 @@ class QuestionOptionsViewController: UITableViewController {
         
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-//    // remove from Firebase using reference
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            // groceryItem is a Snapshot instance
-//            let choice = choice[indexPath.row]
-//            groceryItem.ref?.removeValue()
-//        }
-//    }
+
     
     // select a choice
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -84,46 +72,10 @@ class QuestionOptionsViewController: UITableViewController {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         // 2 - get grocery item
         let selectedChoice = choices[indexPath.row]
-        // 3 - toogle ckmpletion
-//        let toggledCompletion = !groceryItem.favorite
-//        // 4 - update
-//        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
-//        // 5 - tell Firebase "I updated my field called completed"
-//        groceryItem.ref?.updateChildValues([
-//            "completed": toggledCompletion
-//            ])
-        
-//        // Perform Segue - go to patient's profile
-//        performSegue(withIdentifier: SeguePatientViewController, sender: self)
-//        tableView.deselectRow(at: indexPath, animated: true)
+ 
+        // go back
     }
-    
-    // prepare for the segue
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == ViewSessionScalesSegue {
-//            if let indexPath = tableView.indexPathForSelectedRow,
-//                let patient = questions[indexPath.row] as? Patient  {
-//                let destinationViewController = segue.destination as! PatientProfileViewController
-//                // set the author
-//                destinationViewController.patient = patient
-//            }
-//        }
-//    }
-    
-//    // changeUI depending on item being completed or not
-//    func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
-//        if !isCompleted {
-//            cell.accessoryType = .none
-//            cell.textLabel?.textColor = UIColor.black
-//            cell.detailTextLabel?.textColor = UIColor.black
-//        } else {
-//            cell.accessoryType = .checkmark
-//            cell.textLabel?.textColor = UIColor.gray
-//            cell.detailTextLabel?.textColor = UIColor.gray
-//        }
-//    }
-    
-    // MARK: Add Item
+
     
 
     

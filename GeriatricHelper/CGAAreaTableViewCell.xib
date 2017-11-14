@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,25 +21,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Qm-rG-V5N">
-                        <rect key="frame" x="282" y="16" width="22" height="22"/>
+                        <rect key="frame" x="274" y="19" width="22" height="22"/>
                         <connections>
                             <action selector="infoButtonClicked:" destination="rIF-vy-Ce7" eventType="touchUpInside" id="rVg-I5-oXc"/>
                         </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0wO-tO-KdU">
-                        <rect key="frame" x="8" y="30" width="79" height="80.5"/>
+                        <rect key="frame" x="16" y="33" width="73" height="74.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="0wO-tO-KdU" secondAttribute="height" multiplier="45:46" id="ewD-V2-cSV"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuy-jX-7lf">
-                        <rect key="frame" x="95" y="60" width="82" height="21"/>
+                        <rect key="frame" x="97" y="60" width="82" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed scales" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NrM-ZJ-iUe">
-                        <rect key="frame" x="95" y="89" width="122.5" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed scales" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NrM-ZJ-iUe">
+                        <rect key="frame" x="97" y="89" width="207" height="41"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -50,11 +50,13 @@
                     <constraint firstItem="0wO-tO-KdU" firstAttribute="centerY" secondItem="MYK-zF-812" secondAttribute="centerY" id="3J9-BP-LlF"/>
                     <constraint firstItem="0wO-tO-KdU" firstAttribute="top" secondItem="MYK-zF-812" secondAttribute="topMargin" constant="22" id="8xh-3W-PzP"/>
                     <constraint firstAttribute="trailingMargin" secondItem="2Qm-rG-V5N" secondAttribute="trailing" constant="8" id="Ckw-HP-bSA"/>
+                    <constraint firstAttribute="trailing" secondItem="NrM-ZJ-iUe" secondAttribute="trailing" constant="16" id="HLR-Ti-kbb"/>
                     <constraint firstItem="iuy-jX-7lf" firstAttribute="leading" secondItem="0wO-tO-KdU" secondAttribute="trailing" constant="8" id="Jza-8N-RXc"/>
                     <constraint firstItem="2Qm-rG-V5N" firstAttribute="top" secondItem="MYK-zF-812" secondAttribute="topMargin" constant="8" id="PWQ-lQ-fCq"/>
                     <constraint firstItem="NrM-ZJ-iUe" firstAttribute="top" secondItem="iuy-jX-7lf" secondAttribute="bottom" constant="8" id="XhK-Rs-nag"/>
                     <constraint firstItem="NrM-ZJ-iUe" firstAttribute="leading" secondItem="0wO-tO-KdU" secondAttribute="trailing" constant="8" id="aa7-j1-4dV"/>
                     <constraint firstItem="iuy-jX-7lf" firstAttribute="centerY" secondItem="MYK-zF-812" secondAttribute="centerY" id="atJ-qi-BF2"/>
+                    <constraint firstAttribute="bottom" secondItem="NrM-ZJ-iUe" secondAttribute="bottom" constant="10.5" id="jNK-X7-DUQ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -63,7 +65,7 @@
                 <outlet property="completedScales" destination="NrM-ZJ-iUe" id="fUh-cF-txQ"/>
                 <outlet property="infoButton" destination="2Qm-rG-V5N" id="0DN-E5-jnW"/>
             </connections>
-            <point key="canvasLocation" x="-356" y="13"/>
+            <point key="canvasLocation" x="-356" y="12.5"/>
         </tableViewCell>
     </objects>
 </document>

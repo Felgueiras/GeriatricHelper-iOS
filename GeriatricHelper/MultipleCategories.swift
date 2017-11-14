@@ -40,7 +40,7 @@ class MultipleCategories: UIPageViewController, UIPageViewControllerDataSource {
         // check if scale was completed
         if scale?.completed == false || scale?.completed == nil {
             // show alert
-            let alert = UIAlertController(title: "Cancel Session",
+            let alert = UIAlertController(title: SwiftMessagesHelper.saveScale,
                                           message: "Escala incompleta, continuar a preencher a escala?",
                                           preferredStyle: .alert)
             

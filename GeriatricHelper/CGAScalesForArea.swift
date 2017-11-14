@@ -29,12 +29,12 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
     // can be public or private
     var session: Session?
     
-    
+
     
     // cancel public CGA session
     @IBAction func cancelButtonPressed(_ sender: Any) {
         
-        let alert = UIAlertController(title: "Cancel Session",
+        let alert = UIAlertController(title: SwiftMessagesHelper.saveScale,
                                       message: "Do you wish to cancel this CGA Session?",
                                       preferredStyle: .alert)
         
@@ -109,6 +109,9 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
             
             self.navigationItem.setRightBarButtonItems([self.navigationItem.rightBarButtonItem!, Nam1BarBtnVar], animated: true)
         }
+        
+        // disable icon
+        self.navigationItem.rightBarButtonItem = nil
     }
     
     // open BMI calculator
@@ -223,17 +226,38 @@ class CGAScalesForArea: UITableViewController, UIPopoverPresentationControllerDe
         // get selected scale
         let scale = Constants.getScalesForAreaFromSession(area: area!, scales: scales!)[indexPath.row]
         
+  
         
-        ////
+        // if global assessment
+        if scale.scaleName == "Mini nutritional assessment - avaliação global"
+        {
+            
+            // check if "triagem" is complete
+            let triagem = Constants.getScaleByNamePublicSession(scaleName: "Mini nutritional assessment - triagem")
+            if triagem?.completed != true {
+                let alert = UIAlertController(title: "Mini nutritional assessment",
+                                              message: "Precisa de completar a triagem antes de avançar para a avaliação global ",
+                                              preferredStyle: .alert)
+                
+                
+             
+                
+                // cancel the current session
+                let cancelAction = UIAlertAction(title: "Ok",
+                                               style: .default) { _ in
+                                                
+                                                return
+                                                
+                }
+                
+                
+                alert.addAction(cancelAction)
+                
+                present(alert, animated: true, completion: nil)
+            }
+        }
+       
         
-        
-//        if (scale.scaleName == Constants.test_name_mini_nutritional_assessment_global)) {
-//            // TODO check if triagem is already answered
-//            
-//            GeriatricScaleFirebase triagem = FirebaseDatabaseHelper.getScaleFromSession(session,
-//                                                                                        Constants.test_name_mini_nutritional_assessment_triagem)
-//        }
-   
         // check education level
         if scale.scaleName == Constants.test_name_mini_mental_state {
             

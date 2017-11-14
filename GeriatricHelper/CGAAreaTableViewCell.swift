@@ -90,7 +90,7 @@ class CGAAreaTableViewCell: UITableViewCell, UIPopoverPresentationControllerDele
         
         
         if completedScales!.count > 0{
-            var completionText=""
+            var completionText="Concluído: "
             for scale in completedScales!{
                 completionText += scale.shortName!+"   "
             

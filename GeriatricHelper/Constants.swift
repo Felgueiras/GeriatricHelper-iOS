@@ -28,6 +28,10 @@ class Constants{
     // current on-going public CGA Session
     static var cgaPublicSession: Session?
     
+    // LAST
+    static var lastSession: String = "lastSession"
+    static var lastScales: String = "lastScales"
+    
     static var cgaPublicScales: [GeriatricScale]? = []
     static var cgaPublicQuestions: [Question]? = []
     static var cgaPublicChoices: [Choice]? = []
@@ -43,6 +47,7 @@ class Constants{
     
     // Color
     static let cellBackgroundColor: UIColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
+    static let questionAnswered = #colorLiteral(red: 0.7064534152, green: 1, blue: 0.7454321666, alpha: 1)
     
     // CGA areas
     static let cgaAreas = [

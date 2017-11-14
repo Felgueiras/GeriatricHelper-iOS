@@ -122,10 +122,11 @@ class CGAPrivateQuestions: UITableViewController {
                 
                 let cell = Bundle.main.loadNibNamed("YesNoQuestionTableViewCell", owner: self, options: nil)?.first as! YesNoQuestionTableViewCell
                 
-                return YesNoQuestionTableViewCell.createCell(cell: cell,
-                                                             cellIndex: 0,
-                                                             scale: scale,
-                                                             backend: true, table: self.tableView)
+                return cell
+//                return YesNoQuestionTableViewCell.createCell(cell: cell,
+//                                                             cellIndex: 0,
+//                                                             scale: scale,
+//                                                             backend: true, viewController:  nil)
             }
                 
             else

@@ -126,6 +126,7 @@
 		2BEA8D2C1EB0AAE0007E284A /* CGAPrivateQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA8D2B1EB0AAE0007E284A /* CGAPrivateQuestions.swift */; };
 		2BEDA0AF1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEDA0AD1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.swift */; };
 		2BEDA0B01EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BEDA0AE1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.xib */; };
+		2BF689281FB627800048CDA0 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BF689271FB627700048CDA0 /* About.storyboard */; };
 		2BF76B0B1F1E41F3002C7AE0 /* CGAGuideScalesForArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF76B0A1F1E41F3002C7AE0 /* CGAGuideScalesForArea.swift */; };
 		2BF917FA1EB0EB76004EAA5F /* QuestionChoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF917F81EB0EB76004EAA5F /* QuestionChoiceTableViewCell.swift */; };
 		2BF917FB1EB0EB76004EAA5F /* QuestionChoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BF917F91EB0EB76004EAA5F /* QuestionChoiceTableViewCell.xib */; };
@@ -165,7 +166,6 @@
 		2B50F1721EA9470800E4B762 /* CGAPublic.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CGAPublic.storyboard; sourceTree = "<group>"; };
 		2B50F1751EA9498B00E4B762 /* ScaleQuestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleQuestions.swift; sourceTree = "<group>"; };
 		2B52C10C1EAFDD3000B5D02E /* FirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
-		2B550E891F97642900B60CF2 /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = About.storyboard; path = /Users/felgueiras/Documents/Programming/GeriatricHelper/GeriatricHelper/About.storyboard; sourceTree = "<absolute>"; };
 		2B5636E51EA4067800D8E75C /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		2B5636E71EA406AF00D8E75C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2B5636E91EA406D800D8E75C /* Patient2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Patient2.swift; sourceTree = "<group>"; };
@@ -259,6 +259,7 @@
 		2BEA8D2B1EB0AAE0007E284A /* CGAPrivateQuestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAPrivateQuestions.swift; sourceTree = "<group>"; };
 		2BEDA0AD1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightWrongQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		2BEDA0AE1EAF4D3200EA6772 /* RightWrongQuestionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightWrongQuestionTableViewCell.xib; sourceTree = "<group>"; };
+		2BF689261FB627700048CDA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/About.storyboard; sourceTree = "<group>"; };
 		2BF76B0A1F1E41F3002C7AE0 /* CGAGuideScalesForArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAGuideScalesForArea.swift; sourceTree = "<group>"; };
 		2BF917F81EB0EB76004EAA5F /* QuestionChoiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionChoiceTableViewCell.swift; sourceTree = "<group>"; };
 		2BF917F91EB0EB76004EAA5F /* QuestionChoiceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionChoiceTableViewCell.xib; sourceTree = "<group>"; };
@@ -678,7 +679,7 @@
 		2BC208E61F9761C500975B71 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				2B550E891F97642900B60CF2 /* About.storyboard */,
+				2BF689271FB627700048CDA0 /* About.storyboard */,
 				2BC208E71F9761F600975B71 /* About.swift */,
 			);
 			name = About;
@@ -807,6 +808,9 @@
 							com.apple.Keychain = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 				};
@@ -866,6 +870,7 @@
 				2B616AF71ED376410056590E /* ProgressChartTableViewCell.xib in Resources */,
 				2BC583581EAE024B00A4D51B /* ScaleTableViewCell.xib in Resources */,
 				2B6B570C1E9FED2400445937 /* GoogleService-Info.plist in Resources */,
+				2BF689281FB627800048CDA0 /* About.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1095,6 +1100,15 @@
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
+		};
+		2BF689271FB627700048CDA0 /* About.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BF689261FB627700048CDA0 /* Base */,
+			);
+			name = About.storyboard;
+			path = /Users/felgueiras/Documents/Programming/GeriatricHelper/GeriatricHelper;
+			sourceTree = "<absolute>";
 		};
 /* End PBXVariantGroup section */
 

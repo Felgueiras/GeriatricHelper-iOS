@@ -12,8 +12,6 @@ import UIKit
 
 class TextPopUpViewController: UIViewController {
     
-
-
     @IBOutlet weak var text: UILabel?
     
     var displayText: String?
@@ -24,19 +22,14 @@ class TextPopUpViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 //         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
-        self.view.backgroundColor = UIColor.clear
-        self.view.isOpaque = false
+//        self.view.backgroundColor = UIColor.clear
+//        self.view.isOpaque = false
         
         text?.text = displayText
         
         self.showAnimate()
         
         // TODO set size
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 

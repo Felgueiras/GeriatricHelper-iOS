@@ -68,16 +68,14 @@ class QuestionOptions: UITableViewController {
         }
         
         if questionDB.selectedChoice == choice.name{
-            cell.accessoryType = .checkmark
-        }
-        else{
-            cell.accessoryType = .none
+            cell.backgroundColor = Constants.questionAnswered
         }
         
+        
         // alternate shading
-        if indexPath.row % 2 == 0{
-            cell.backgroundColor = Constants.cellBackgroundColor
-        }
+//        if indexPath.row % 2 == 0{
+//            cell.backgroundColor = Constants.cellBackgroundColor
+//        }
 
         
         return cell
@@ -111,13 +109,16 @@ class QuestionOptions: UITableViewController {
         questionDB.answered = true
         
 
-        //update the checkmark for the current row
-        cell.accessoryType = .checkmark
+        //update the color for the current row
+//        cell.backgroundColor = Constants.questionAnswered
         
         // update question
         FirebaseDatabaseHelper.updateQuestion(question: questionDB)
         
         tableView.reloadData()
+        
+        // go back to questions list
+        _ = self.navigationController?.popViewController(animated: true)
     }
 
     

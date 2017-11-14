@@ -54,11 +54,11 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
         let descriptionText = aDecoder.decodeObject(forKey: "descriptionText") as! String
         let notes = aDecoder.decodeObject(forKey: "notes") as? String
         let scaleName = aDecoder.decodeObject(forKey: "scaleName") as! String
-        let multipleChoice = aDecoder.decodeObject(forKey: "multipleChoice") as! Bool
+        let multipleChoice = aDecoder.decodeObject(forKey: "multipleChoice") as! Bool?
         let singleQuestion = aDecoder.decodeObject(forKey: "singleQuestion") as! Bool
         let multipleCategories:Bool? = aDecoder.decodeObject(forKey: "multipleCategories") as? Bool
         let shortName = aDecoder.decodeObject(forKey: "shortName") as! String
-        let scoring = aDecoder.decodeObject(forKey: "scoring") as! Scoring
+        let scoring = aDecoder.decodeObject(forKey: "scoring") as! Scoring?
         let subCategory = aDecoder.decodeObject(forKey: "subCategory") as! String
         let questions = aDecoder.decodeObject(forKey: "questions") as! [Question]
         let questionsCategories:[QuestionCategory]? = aDecoder.decodeObject(forKey: "questionsCategories") as? [QuestionCategory]
@@ -96,7 +96,7 @@ class GeriatricScale: NSObject, Mappable, NSCoding {
          scaleName: String,
          questions: [Question],
          shortName: String,
-         scoring: Scoring,
+         scoring: Scoring?,
          multipleCategories: Bool?,
          questionsCategories: [QuestionCategory]?,
          notes: String?,

@@ -20,7 +20,7 @@ class CGAPrivateMain: UITableViewController {
     // cancel public CGA session
     @IBAction func cancelButtonPressed(_ sender: Any) {
         
-        let alert = UIAlertController(title: "Cancel Session",
+        let alert = UIAlertController(title: SwiftMessagesHelper.saveScale,
                                       message: "Do you wish to cancel this CGA Session?",
                                       preferredStyle: .alert)
         

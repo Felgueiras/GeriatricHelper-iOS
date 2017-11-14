@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G24b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -21,16 +22,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Roa-7H-7w8">
-                        <rect key="frame" x="8" y="8" width="42" height="21"/>
+                        <rect key="frame" x="16" y="11" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWY-8J-K9a" userLabel="RightView">
-                        <rect key="frame" x="0.0" y="37" width="160" height="65.5"/>
+                        <rect key="frame" x="8" y="40" width="160" height="60"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Dp-O6-Pvd">
-                                <rect key="frame" x="55" y="8" width="50" height="50"/>
+                                <rect key="frame" x="55" y="5.5" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="6ND-JS-feq"/>
                                     <constraint firstAttribute="height" constant="50" id="EMa-aR-eWN"/>
@@ -48,10 +49,10 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="38U-eg-Q3r" userLabel="WrongView">
-                        <rect key="frame" x="159" y="37" width="160" height="65.5"/>
+                        <rect key="frame" x="151" y="40" width="160" height="60"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Asq-mn-wYa">
-                                <rect key="frame" x="55" y="8" width="50" height="50"/>
+                                <rect key="frame" x="55" y="5.5" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="D9m-91-8c9"/>
                                     <constraint firstAttribute="width" constant="50" id="tKF-NR-6rG"/>
@@ -69,13 +70,13 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TG1-rG-vr1">
-                        <rect key="frame" x="58" y="1" width="35" height="35"/>
+                        <rect key="frame" x="66" y="4" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="4kX-wq-Fbx"/>
                             <constraint firstAttribute="width" secondItem="TG1-rG-vr1" secondAttribute="height" multiplier="1:1" id="lMt-rQ-3DF"/>
                             <constraint firstAttribute="height" constant="35" id="wiv-ZB-wi3"/>
                         </constraints>
-                        <state key="normal" title="Button" image="Info-50"/>
+                        <state key="normal" title="Button" image="picture-icon"/>
                         <connections>
                             <action selector="displayQuestionImage:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Kbd-F4-TFb"/>
                         </connections>
@@ -106,7 +107,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Info-50" width="25" height="25"/>
+        <image name="picture-icon" width="64" height="64"/>
         <image name="right unselected" width="100" height="100"/>
         <image name="wrong unselected" width="100" height="100"/>
     </resources>

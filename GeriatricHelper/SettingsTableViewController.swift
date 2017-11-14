@@ -37,7 +37,6 @@ class SettingsTableViewController: UITableViewController {
         }
     }
     
-    
     @IBAction func showInstructionsSwitchValueChanged(_ sender: Any) {
         if showInstructionsSwitch.isOn{
         // enable instructions

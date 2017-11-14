@@ -35,7 +35,8 @@ class YesNoQuestionTableViewCell: UITableViewCell {
         yesButton.backgroundColor = UIColor.green
         noButton.backgroundColor = UIColor(red: 129, green: 129, blue: 129, alpha: 1.0)
         questionObj?.answered = true
-        checkScaleCompleted()
+        
+        viewController?.checkScaleCompleted()
         
         if backend == true {
             
@@ -68,40 +69,27 @@ class YesNoQuestionTableViewCell: UITableViewCell {
         yesButton.backgroundColor = UIColor(red: 129, green: 129, blue: 129, alpha: 1.0)
         noButton.backgroundColor = UIColor.red
         questionObj?.answered = true
-        checkScaleCompleted()
+        
+        viewController?.checkScaleCompleted()
         
         scrollDown()
     }
     
-    func checkScaleCompleted()
-    {
-        // check all questions were answered
-        var allQuestionsAnswered = true
-        for question in (scale?.questions!)!{
-            if question.answered != true{
-                allQuestionsAnswered = false
-                break
-            }
-        }
-        
-        if allQuestionsAnswered == true{
-            SwiftMessagesHelper.showMessage(type: Theme.info,
-                                            text: StringHelper.allQuestionsAnswered)
-            scale?.completed = true
-        }
-    }
+    var viewController :CGAPublicYesNo?
+    
     
     static func createCell(cell: YesNoQuestionTableViewCell,
                            cellIndex: Int,
                            scale: GeriatricScale,
                            backend:Bool,
-                           table:UITableView) -> UITableViewCell{
+                           viewController:CGAPublicYesNo) -> UITableViewCell{
         
         cell.questionIndex = cellIndex
          let question = scale.questions?[cellIndex]
         
+        cell.viewController = viewController
         
-        cell.table = table
+        cell.table = viewController.table
         
         
         cell.selectionStyle = UITableViewCellSelectionStyle.none

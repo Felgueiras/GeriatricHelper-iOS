@@ -117,20 +117,31 @@ class CGAGuideAreas: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        
-        
+    
         // public session
         self.scales = Constants.cgaPublicScales!
         
         
         self.tableView.reloadData()
         
+        let defaults = UserDefaults.standard
+        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: Constants.scales)
+        defaults.set(encodedData, forKey: "patients")
+        defaults.synchronize()
         
         // check user defaults
+        if UserDefaults.standard.bool(forKey: "disableInstructions") {
+            UserDefaults.standard.set(false, forKey: "instructions")
+            UserDefaults.standard.set(false, forKey: "disableInstructions")
+            defaults.synchronize()
+        }
         if UserDefaults.standard.bool(forKey: "instructions") {
             startInstructions()
+            UserDefaults.standard.set(true, forKey: "disableInstructions")
+            defaults.synchronize()
         }
+        
+        
         
     }
     

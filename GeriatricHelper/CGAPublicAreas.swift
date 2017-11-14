@@ -2,10 +2,11 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import Instructions
+import SwiftMessages
 
 
 // show all scales from CGA
-class CGAPublicAreas: UITableViewController {
+class CGAPublicAreas: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let coachMarksController = CoachMarksController()
     
@@ -15,6 +16,9 @@ class CGAPublicAreas: UITableViewController {
     
     let numCoachMarks = 3
     
+    @IBOutlet weak var tableView: UITableView!
+    
+    
     var scales:[GeriatricScale] = []
     
     @IBOutlet weak var finishScale: UIBarButtonItem!
@@ -23,12 +27,11 @@ class CGAPublicAreas: UITableViewController {
     @IBAction func cancelButtonPressed(_ sender: Any) {
         
         let alert = UIAlertController(title: "Cancelar Sessão",
-                                      message: "Deseja cancelar esta sessão?",
+                                      message: "Deseja cancelar esta sessão? Ao fazê-lo vai perder todos os dados da sessão",
                                       preferredStyle: .alert)
         
-        
         // cancel the current session
-        let saveAction = UIAlertAction(title: StringHelper.yes,
+        let saveAction = UIAlertAction(title: "Descartar" ,
                                        style: .destructive) { _ in
                                         
                                         // check if user is logged in
@@ -36,6 +39,8 @@ class CGAPublicAreas: UITableViewController {
                                             if user == nil{
                                                 // public
                                                 self.performSegue(withIdentifier: "CGAPublicCancelSegue", sender: self)
+                                                
+                                                SwiftMessagesHelper.showMessage(type: Theme.info, text: StringHelper.sessionCanceled)
                                             }
                                             else
                                             {
@@ -47,7 +52,7 @@ class CGAPublicAreas: UITableViewController {
                                         
         }
         
-        let cancelAction = UIAlertAction(title: StringHelper.no,
+        let cancelAction = UIAlertAction(title: "Continuar",
                                          style: .default)
         
         
@@ -82,6 +87,7 @@ class CGAPublicAreas: UITableViewController {
                                         // if not one scale was completed
                                         if completedScales?.count == 0{
                                             self.performSegue(withIdentifier: "CGAPublicCancelSegue", sender: self)
+                                            SwiftMessagesHelper.showMessage(type: Theme.info, text: StringHelper.sessionFinishedNoScaleCompleted)
                                         }
                                         
                                         self.performSegue(withIdentifier: "ReviewPublicSession", sender: self)
@@ -99,7 +105,7 @@ class CGAPublicAreas: UITableViewController {
     }
     
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
@@ -116,6 +122,10 @@ class CGAPublicAreas: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        // set delegate
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         
         // check session type
         if session?.type == Session.sessionType.privateSession {
@@ -143,14 +153,20 @@ class CGAPublicAreas: UITableViewController {
         
         
         // check user defaults
+        if UserDefaults.standard.bool(forKey: "disableInstructions") {
+            UserDefaults.standard.set(false, forKey: "instructions")
+            UserDefaults.standard.set(false, forKey: "disableInstructions")
+        }
         if UserDefaults.standard.bool(forKey: "instructions") {
             startInstructions()
+            UserDefaults.standard.set(true, forKey: "disableInstructions")
+
         }
         
     }
     
     // number of rows per section
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // number of CGA areas
         return Constants.cgaAreas.count
@@ -159,7 +175,7 @@ class CGAPublicAreas: UITableViewController {
     /**
      Load custom cell to display area,
      **/
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = Bundle.main.loadNibNamed("CGAAreaTableViewCell", owner: self, options: nil)?.first as! CGAAreaTableViewCell
         let area = Constants.cgaAreas[indexPath.row]
@@ -175,7 +191,7 @@ class CGAPublicAreas: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
         return 100
     }
@@ -183,7 +199,7 @@ class CGAPublicAreas: UITableViewController {
     
     
     // select a row
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // get cell and selected scale
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         

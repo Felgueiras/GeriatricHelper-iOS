@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="40w-Gb-5Ay">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="40w-Gb-5Ay">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -72,22 +72,22 @@
                         <segue destination="HZw-ZX-5Jx" kind="relationship" relationship="viewControllers" id="Jiz-Vq-dY3"/>
                         <segue destination="6JO-WD-3s3" kind="relationship" relationship="viewControllers" id="ECV-rY-VHf"/>
                         <segue destination="UO9-3S-htB" kind="relationship" relationship="viewControllers" id="24Z-B8-JKP"/>
-                        <segue destination="GKn-Dh-ZyD" kind="relationship" relationship="viewControllers" id="269-Yd-J6c"/>
+                        <segue destination="JRN-iV-3ae" kind="relationship" relationship="viewControllers" id="WSb-94-od6"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6NG-Ba-U4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3015" y="-382"/>
         </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="9F6-8b-2GI">
+        <!--About-->
+        <scene sceneID="tQJ-Kr-JXh">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="About" id="GKn-Dh-ZyD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="seG-Nk-cme"/>
+                <viewControllerPlaceholder storyboardName="About" id="JRN-iV-3ae" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="XC2-Qq-WIL"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dOD-qC-MmP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Whk-TB-dsA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2948" y="-1183"/>
+            <point key="canvasLocation" x="-2579" y="-986"/>
         </scene>
         <!--CGAGuide-->
         <scene sceneID="x6l-Vk-bsz">
@@ -301,7 +301,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHD-lj-BdL">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            <rect key="frame" x="8" y="8" width="184" height="184"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -418,12 +418,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gYN-cU-myb">
-                                <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
+                                <rect key="frame" x="87" y="233" width="200" height="200"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="5tD-QL-96E"/>
+                                    <constraint firstAttribute="width" secondItem="gYN-cU-myb" secondAttribute="height" multiplier="1:1" id="CTC-Uu-mdF"/>
                                     <constraint firstAttribute="width" secondItem="gYN-cU-myb" secondAttribute="height" multiplier="1:1" id="SS6-my-OUU"/>
-                                    <constraint firstAttribute="height" constant="200" id="Wbg-QK-V8u"/>
+                                    <constraint firstAttribute="height" constant="200" id="T5W-xa-CkS"/>
+                                    <constraint firstAttribute="width" constant="200" id="equ-0c-7x6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal">
@@ -443,18 +444,52 @@ SESSÃO</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XhS-Hy-y0V">
-                                <rect key="frame" x="144" y="509" width="87" height="30"/>
+                                <rect key="frame" x="144" y="451" width="87" height="30"/>
                                 <state key="normal" title="SABER MAIS"/>
                                 <connections>
                                     <action selector="showHelpScreen:" destination="T6I-32-vHK" eventType="touchUpInside" id="ljy-Ag-yRx"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="icon_original" translatesAutoresizingMaskIntoConstraints="NO" id="ejp-2C-gfI">
+                                <rect key="frame" x="87.5" y="61" width="200" height="106.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ejp-2C-gfI" secondAttribute="height" multiplier="15:8" id="4Hu-2q-Q6Q"/>
+                                    <constraint firstAttribute="width" constant="200" id="Bnu-ge-YVO"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="RAR-4e-Lo2" userLabel="Previous">
+                                <rect key="frame" x="278" y="414" width="52.5" height="52.5"/>
+                                <color key="backgroundColor" red="0.0" green="0.65604088358853652" blue="1" alpha="0.62978653169014087" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="RAR-4e-Lo2" secondAttribute="height" multiplier="1:1" id="gv3-zD-kcU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Última"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="titleLabel.textAlignment">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resumePreviousSession:" destination="T6I-32-vHK" eventType="touchUpInside" id="mh8-bC-PKB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gYN-cU-myb" firstAttribute="centerY" secondItem="1Lj-NS-pG7" secondAttribute="centerY" id="4d4-En-hBP"/>
+                            <constraint firstAttribute="trailing" secondItem="RAR-4e-Lo2" secondAttribute="trailing" constant="176" id="6bs-nW-bX7"/>
+                            <constraint firstItem="RAR-4e-Lo2" firstAttribute="width" secondItem="RAR-4e-Lo2" secondAttribute="height" multiplier="1:1" id="6cm-3T-8F4"/>
+                            <constraint firstItem="gYN-cU-myb" firstAttribute="centerX" secondItem="1Lj-NS-pG7" secondAttribute="centerX" id="LwU-f9-xiu"/>
+                            <constraint firstItem="RAR-4e-Lo2" firstAttribute="leading" secondItem="gYN-cU-myb" secondAttribute="trailing" constant="-88" id="W47-AX-iVG"/>
                             <constraint firstItem="XhS-Hy-y0V" firstAttribute="centerX" secondItem="1Lj-NS-pG7" secondAttribute="centerX" id="bFQ-B1-GxS"/>
-                            <constraint firstItem="gYN-cU-myb" firstAttribute="centerX" secondItem="1Lj-NS-pG7" secondAttribute="centerX" id="k6d-91-uRo"/>
-                            <constraint firstItem="XhS-Hy-y0V" firstAttribute="top" secondItem="gYN-cU-myb" secondAttribute="bottom" constant="75.5" id="kR8-Mw-klt"/>
+                            <constraint firstItem="ejp-2C-gfI" firstAttribute="top" secondItem="zfn-wL-R6H" secondAttribute="bottom" constant="41" id="fMw-ic-CVv"/>
+                            <constraint firstItem="RAR-4e-Lo2" firstAttribute="top" secondItem="gYN-cU-myb" secondAttribute="bottom" constant="-101" id="jnx-sm-Vg7"/>
+                            <constraint firstItem="XhS-Hy-y0V" firstAttribute="top" secondItem="gYN-cU-myb" secondAttribute="bottom" constant="18" id="kR8-Mw-klt"/>
+                            <constraint firstItem="ejp-2C-gfI" firstAttribute="centerX" secondItem="1Lj-NS-pG7" secondAttribute="centerX" id="n0c-Wo-0uB"/>
                             <constraint firstItem="gYN-cU-myb" firstAttribute="centerY" secondItem="1Lj-NS-pG7" secondAttribute="centerY" id="nT5-xD-JiT"/>
                         </constraints>
                     </view>
@@ -462,12 +497,13 @@ SESSÃO</string>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="createSessionButton" destination="gYN-cU-myb" id="StP-5f-sPU"/>
+                        <outlet property="previousSessionButton" destination="RAR-4e-Lo2" id="WWw-F9-PRG"/>
                         <segue destination="MMc-R0-YKt" kind="show" identifier="StartPublicSession" id="4G1-GS-APR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1HX-Ri-oM5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1817" y="-285"/>
+            <point key="canvasLocation" x="-1818.4000000000001" y="-285.60719640179911"/>
         </scene>
         <!--Item-->
         <scene sceneID="NAT-jh-mJh">
@@ -655,13 +691,13 @@ SESSÃO</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mostrar guia inicial de AGG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNW-17-1d2">
-                                                    <rect key="frame" x="8" y="11" width="207" height="21"/>
+                                                    <rect key="frame" x="16" y="11" width="207" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pNl-A2-UBI">
-                                                    <rect key="frame" x="318" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="310" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="showInstructionsSwitchValueChanged:" destination="UO9-3S-htB" eventType="valueChanged" id="CU3-av-Rmu"/>
                                                     </connections>
@@ -687,7 +723,7 @@ SESSÃO</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_original" translatesAutoresizingMaskIntoConstraints="NO" id="otf-zs-oq1">
-                                                    <rect key="frame" x="0.0" y="-2" width="375" height="153.5"/>
+                                                    <rect key="frame" x="0.0" y="1" width="375" height="147.5"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -711,13 +747,13 @@ SESSÃO</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Consultar critérios de prescriçao para pacientes geriátricos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEA-fU-Ihi">
-                                                    <rect key="frame" x="8" y="11" width="451.5" height="21"/>
+                                                    <rect key="frame" x="16" y="11" width="451.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sLe-tc-wY2">
-                                                    <rect key="frame" x="318" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="310" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="showInstructionsSwitchValueChanged:" destination="UO9-3S-htB" eventType="valueChanged" id="lOx-AV-7w2"/>
                                                     </connections>
@@ -739,13 +775,13 @@ SESSÃO</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Criar e consultar processo de paciente" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TvO-b9-TLh">
-                                                    <rect key="frame" x="8" y="11" width="295" height="21"/>
+                                                    <rect key="frame" x="16" y="11" width="295" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C6a-qq-L6S">
-                                                    <rect key="frame" x="318" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="310" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="showInstructionsSwitchValueChanged:" destination="UO9-3S-htB" eventType="valueChanged" id="dO3-bO-bCZ"/>
                                                     </connections>
@@ -767,13 +803,13 @@ SESSÃO</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avaliar o paciente por outra escala" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="klZ-9Z-gxf">
-                                                    <rect key="frame" x="8" y="11" width="262.5" height="21"/>
+                                                    <rect key="frame" x="16" y="11" width="262.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KDH-Z4-avr">
-                                                    <rect key="frame" x="318" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="310" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="showInstructionsSwitchValueChanged:" destination="UO9-3S-htB" eventType="valueChanged" id="y1f-xR-0CK"/>
                                                     </connections>

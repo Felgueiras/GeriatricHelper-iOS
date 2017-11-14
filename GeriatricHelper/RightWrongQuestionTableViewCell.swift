@@ -41,12 +41,29 @@ class RightWrongQuestionTableViewCell: UITableViewCell {
         
         scrollDown()
         
+        
+        
+        
     }
     
     func scrollDown()
     {
         // scroll down to reveal next question
-        if questionIndex!+1 < (scale?.questions?.count)!{
+        var questionCount: Int = 0
+        if scale!.multipleCategories! == true{
+                for question in category!.questions!{
+                        questionCount += 1
+                }
+
+        }
+        else
+        {
+            questionCount = (scale!.questions?.count)!
+        }
+        print(questionIndex)
+        print(questionCount)
+        
+        if (questionIndex!+1) < questionCount{
             let indexPath = IndexPath(row: questionIndex!+1, section: 0)
             
             // auto scroll down
@@ -88,20 +105,19 @@ class RightWrongQuestionTableViewCell: UITableViewCell {
     
     func checkScaleCompleted()
     {
+        var questionsToAnswer = 0
+        
         // check all questions for every QuestionCategory
         var allQuestionsAnswered = true
         
         for questionCat in (scale?.questionsCategories)!{
-            print("Checking category " + questionCat.category! + " completed")
             for question in questionCat.questions!{
                 if question.answered != true{
                     allQuestionsAnswered = false
-                    print("Category " + questionCat.category! + " not completed")
-                    break
+                    questionsToAnswer += 1
                 }
             }
         }
-        
         
         if allQuestionsAnswered == true{
             print("All questions answered!")
@@ -111,18 +127,29 @@ class RightWrongQuestionTableViewCell: UITableViewCell {
             }
             scale?.completed = true
             
+            let saveButtonTitle = SwiftMessagesHelper.saveScale
+            viewController?.saveButton.setTitle(saveButtonTitle, for: .normal)
+            
 //            FirebaseDatabaseHelper.updateScale(scale: scale!)
         }
+        else
+        {
+            let saveButtonTitle = SwiftMessagesHelper.saveScale + " (faltam " + String(questionsToAnswer) + " questões)"
+            viewController?.saveButton.setTitle(saveButtonTitle, for: .normal)
+        }
     }
+    
+    var viewController: QuestionCategoryViewController?
     
     static func createCell(cell: RightWrongQuestionTableViewCell,
                            cellIndex: Int,
                            scale:GeriatricScale,
                            category:QuestionCategory,
                            categoryLabel:UILabel,
-                           table:UITableView) -> UITableViewCell{
+                           viewController:QuestionCategoryViewController) -> UITableViewCell{
         
-        cell.table = table
+        cell.viewController = viewController
+        cell.table = viewController.table
         cell.questionIndex = cellIndex
         let question = category.questions?[cellIndex]
         
@@ -144,8 +171,6 @@ class RightWrongQuestionTableViewCell: UITableViewCell {
                 cell.rightButton.setImage(UIImage(named: "right unselected"), for: .normal)
                 cell.wrongButton.setImage(UIImage(named: "wrong selected"), for: .normal)
             }
-            
-            
         }
         
         if question?.image == nil{
@@ -153,8 +178,6 @@ class RightWrongQuestionTableViewCell: UITableViewCell {
         }
         
         cell.checkCategoryCompleted()
-        
-        
         
         return cell
         

@@ -18,6 +18,7 @@ class SwiftMessagesHelper{
     static let help_topic_prescriptions = "Prescrições"
     static let help_topic_sessions = "Sessões"
     static let help_topic_cga_guide = "Guia da AGG"
+    static let saveScale = "Guardar Escala"
     
     static let helpTopics:[String] = [
         help_topic_cga,help_topic_functionalities,help_topic_personal_area,
@@ -51,7 +52,6 @@ class SwiftMessagesHelper{
         // get default config
         let config = defaultConfig()
         
-        
         // Show the message.
         SwiftMessages.show(config: config, view: view)
     
@@ -64,7 +64,7 @@ class SwiftMessagesHelper{
         var config = SwiftMessages.Config()
         
         // Slide up from the bottom.
-        config.presentationStyle = .bottom
+        config.presentationStyle = .top
         
         // Display in a window at the specified window level: UIWindowLevelStatusBar
         // displays over the status bar while UIWindowLevelNormal displays under.

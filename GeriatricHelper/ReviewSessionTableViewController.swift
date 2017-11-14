@@ -13,10 +13,12 @@ import MessageUI
 
 class ReviewSessionTableViewController: UIViewController {
     
+    let ViewScaleMultipleCategoriesSegue = "MultipleCategories"
+    
     let showPDF:String = "ShowPDFSegue"
     let coachMarksController = CoachMarksController()
 
-    @IBOutlet weak var closeReview: UIBarButtonItem!
+    @IBOutlet weak var closeReview: UIButton!
     
     @IBOutlet weak var createPDFButton: UIBarButtonItem!
     var session: Session?
@@ -194,6 +196,10 @@ class ReviewSessionTableViewController: UIViewController {
         default:
             break
         }
+        
+        // sizable table cell
+        self.table.rowHeight = UITableViewAutomaticDimension
+        self.table.estimatedRowHeight = 200
     }
     
     
@@ -260,8 +266,12 @@ class ReviewSessionTableViewController: UIViewController {
             destinationViewController.session = session
 
         }
-        
-        
+        else if segue.identifier == ViewScaleMultipleCategoriesSegue {
+            let scale = scalesForArea[(table.indexPathForSelectedRow?.row)!]
+            
+            let destinationViewController = segue.destination as! MultipleCategories
+            destinationViewController.scale = scale
+        }
     }
 
 }
@@ -288,7 +298,7 @@ extension ReviewSessionTableViewController: CoachMarksControllerDataSource, Coac
             coachMarkView = createPDFButton.customView
         case 2:
             // Close
-            coachMarkView = closeReview.customView
+            coachMarkView = closeReview
         default:
             break
         }
@@ -375,9 +385,8 @@ extension ReviewSessionTableViewController: UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         // return the height of the cell
-        return 175
+        return 200
     }
 
     
@@ -391,6 +400,7 @@ extension ReviewSessionTableViewController: UITableViewDataSource, UITableViewDe
         let scalesForArea = Constants.getScalesForAreaFromSession(area: Constants.cgaAreas[segmentedControl.selectedSegmentIndex],scales: scales!)
         let scale = scalesForArea[indexPath.row]
         
+        
         if scale.singleQuestion!{
             // single question scale - display the choices
             performSegue(withIdentifier: ViewScaleSingleQuestionChoicesSegue, sender: self)
@@ -398,8 +408,12 @@ extension ReviewSessionTableViewController: UITableViewDataSource, UITableViewDe
         }
         else{
             // multiple choice
+            if scale.multipleCategories == true {
+                performSegue(withIdentifier: ViewScaleMultipleCategoriesSegue, sender: self)
+    
+            }
             
-            if scale.questions?.first?.yesOrNo == true {
+            else if scale.questions?.first?.yesOrNo == true {
                 // yes/no
                 // "normal" multiple choice
                 performSegue(withIdentifier: ViewScaleYesNoSegue, sender: self)

@@ -12,11 +12,23 @@ class CGAPublicInfo: UIViewController {
     
     let StartPublicSessionSegue = "StartPublicSession"
     
+    
+    @IBOutlet weak var previousSessionButton: UIButton!
+    
+    @IBAction func resumePreviousSession(_ sender: Any) {
+        reviewLast = true
+        self.performSegue(withIdentifier: self.StartPublicSessionSegue, sender: self)
+        
+    }
+    
+    var reviewLast = false
+    
+    
     @IBOutlet weak var createSessionButton: UIButton!
+    
     // MARK: Create CGA Session
     @IBAction func startPublicSessionButtonClicked(_ sender: Any) {
-        self.performSegue(withIdentifier: self.StartPublicSessionSegue, sender: self)        
-        
+        self.performSegue(withIdentifier: self.StartPublicSessionSegue, sender: self)
     }
     
     // unwind segue
@@ -29,6 +41,18 @@ class CGAPublicInfo: UIViewController {
         let radius = screenSize.height * 0.5
         createSessionButton.frame = CGRect(x: 0, y: 0, width: radius, height: radius)
         
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // enable/disable last session button)
+        let defaults = UserDefaults.standard
+        let decoded  = defaults.object(forKey: Constants.lastSession) as? Data?
+        if(decoded! == nil)
+        {
+            // disable button
+            previousSessionButton.isHidden = true
+        }
     }
     
     @IBAction func showHelpScreen(_ sender: Any) {
@@ -45,17 +69,40 @@ class CGAPublicInfo: UIViewController {
         
         if segue.identifier == StartPublicSessionSegue {
             
- 
-            
-            // create a new Session
-            createNewSession()
-            // add Scales to the Session
-            addScalesToSession()
-            
-            // pass Session to the destination controller
-            let DestViewController = segue.destination as! UINavigationController
-            let destinationViewController = DestViewController.topViewController as! CGAPublicAreas
-            destinationViewController.session = Constants.cgaPublicSession
+            if(reviewLast==false)
+            {
+                // create a new Session
+                createNewSession()
+                // add Scales to the Session
+                addScalesToSession()
+                
+                // pass Session to the destination controller
+                let DestViewController = segue.destination as! UINavigationController
+                let destinationViewController = DestViewController.topViewController as! CGAPublicAreas
+                destinationViewController.session = Constants.cgaPublicSession
+            }
+            else
+            {
+                // fetch previous Session
+                let defaults = UserDefaults.standard
+                let decoded  = defaults.object(forKey: Constants.lastSession) as! Data
+                let prevSession = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! Session
+                
+                Constants.cgaPublicSession = prevSession
+                
+                // fetch cga public scales, questions and choices from nsuserdefauls
+                let decodedScales  = defaults.object(forKey: Constants.lastScales) as! Data
+                Constants.cgaPublicScales = NSKeyedUnarchiver.unarchiveObject(with: decodedScales) as! [GeriatricScale]
+  
+                // check if any was completed
+                for scale : GeriatricScale in Constants.cgaPublicScales!{
+                    print(scale.completed!)
+                }
+                // pass Session to the destination controller
+                let DestViewController = segue.destination as! UINavigationController
+                let destinationViewController = DestViewController.topViewController as! CGAPublicAreas
+                destinationViewController.session = prevSession
+            }
         }
         
     }
@@ -120,6 +167,7 @@ class CGAPublicInfo: UIViewController {
             scale.descriptionText = testNonDB.descriptionText
             scale.singleQuestion = testNonDB.singleQuestion
             scale.subCategory = testNonDB.subCategory
+            scale.multipleCategories = testNonDB.multipleCategories
             
 //            if testNonDB.scaleName == Constants.test_name_clock_drawing))
 //            scale.setContainsPhoto(true);
@@ -129,8 +177,6 @@ class CGAPublicInfo: UIViewController {
             scale.alreadyOpened = false
             
             Constants.cgaPublicScales?.append(scale)
-            print(scale.scaleName)
-            print(Constants.cgaPublicScales?.count)
         }
     }
     

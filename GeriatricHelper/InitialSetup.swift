@@ -155,8 +155,39 @@ class InitialSetup: UIViewController {
                             let scale = Mapper<GeriatricScale>().map(JSONString: String(describing: ipString))
                             // save scale to Constants
                             Constants.scales.append(scale!)
-                            print("Downloaded\(scale?.scaleName)");
                             
+                            // check if scale contains images
+                            if scale?.multipleCategories == true
+                            {
+                                // iterate through every question
+                                for cat in (scale?.questionsCategories)!
+                                {
+                                    for quest in cat.questions!{
+                                        if quest.image != nil{
+                                            
+                                            // load image from Firebase
+                                            let storage = FIRStorage.storage()
+                                            let storageRef = storage.reference(forURL: "gs://appprototype-bdd27.appspot.com")
+                                            let criteriaRef = storageRef.child("images")
+                                            
+                                            // create reference to file
+                                            let fileInFirebase = criteriaRef.child(quest.image!)
+                                            
+                                            // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+                                            fileInFirebase.data(withMaxSize: 4 * 1024 * 1024) { (data, error) -> Void in
+                                                if (error != nil) {
+                                                    // Uh-oh, an error occurred!
+                                                } else {
+                                                    let firebaseImage: UIImage! = UIImage(data: data!)
+                                                    
+                                                    // save image
+                                                    self.saveImageDocumentDirectory(image: firebaseImage, name: quest.image!)
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                             
                             // write to defaults
                             let defaults = UserDefaults.standard
@@ -164,9 +195,7 @@ class InitialSetup: UIViewController {
                             defaults.set(encodedData, forKey: "scales")
                             defaults.synchronize()
                             
-                            // read from defaults
-                            let decoded  = defaults.object(forKey: "scales") as! Data
-                            let decodedScales = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [GeriatricScale]
+                    
                         }
                     }
                     catch {
@@ -399,7 +428,16 @@ class InitialSetup: UIViewController {
         
     }
     
-    
+    /**
+    Save an image to the document directory
+     **/
+    func saveImageDocumentDirectory(image: UIImage, name: String){
+        let fileManager = FileManager.default
+        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(name)
+        print(paths)
+        let imageData = UIImageJPEGRepresentation(image, 0.5)
+        fileManager.createFile(atPath: paths as String, contents: imageData, attributes: nil)
+    }
     
     /**
      func downloadScales2() {

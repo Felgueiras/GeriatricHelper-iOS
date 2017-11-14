@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseStorage
+import SwiftMessages
 
 class QuestionCategoryViewController: UIViewController {
     
@@ -29,7 +30,9 @@ class QuestionCategoryViewController: UIViewController {
     
     var scale:GeriatricScale?
     
+    @IBOutlet weak var saveButton: UIButton!
     var pageViewController: UIPageViewController?
+    
     
     
     override func viewDidLoad() {
@@ -59,6 +62,41 @@ class QuestionCategoryViewController: UIViewController {
             arrowRight.isHidden = true
         }
         
+        // disable item selection
+        table.allowsSelection = false
+        
+    }
+    func checkScaleCompleted()
+    {
+        var questionsToAnswer = 0
+        
+        // check all questions for every QuestionCategory
+        var allQuestionsAnswered = true
+        
+        for questionCat in (scale?.questionsCategories)!{
+            for question in questionCat.questions!{
+                if question.answered != true{
+                    allQuestionsAnswered = false
+                    questionsToAnswer += 1
+                }
+            }
+        }
+        
+        if allQuestionsAnswered == true{
+          
+            let saveButtonTitle = SwiftMessagesHelper.saveScale
+            saveButton.setTitle(saveButtonTitle, for: .normal)
+        }
+        else
+        {
+            let saveButtonTitle = SwiftMessagesHelper.saveScale + " (faltam " + String(questionsToAnswer) + " questões)"
+            saveButton.setTitle(saveButtonTitle, for: .normal)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // display number of questions to answer
+        checkScaleCompleted()
     }
     
     // handle arrow clicks
@@ -78,6 +116,47 @@ class QuestionCategoryViewController: UIViewController {
         default:
             // do sth
             print("???")
+        }
+    }
+    
+    @IBAction func saveButtonClicked(_ sender: Any) {
+        // check if scale was completed
+        if scale?.completed == false || scale?.completed == nil {
+            // show alert
+            let alert = UIAlertController(title: SwiftMessagesHelper.saveScale,
+                                          message: "Escala incompleta, continuar a preencher a escala?",
+                                          preferredStyle: .alert)
+            
+            
+            // cancel the current session
+            let saveAction = UIAlertAction(title: "Sair da escala",
+                                           style: .destructive) { _ in
+                                            
+                                            
+                                            
+                                            _ = self.navigationController?.popViewController(animated: true)
+                                            //                                            self.performSegue(withIdentifier: "CGAPublicCancelSegue", sender: self)
+                                            
+            }
+            
+            let cancelAction = UIAlertAction(title: "Continuar",
+                                             style: .default)
+            
+            
+            alert.addAction(saveAction)
+            alert.addAction(cancelAction)
+            
+            present(alert, animated: true, completion: nil)
+            
+            
+            
+        }
+        else{
+            
+            _ = self.navigationController?.popViewController(animated: true)
+            SwiftMessagesHelper.showMessage(type: Theme.info,
+                                            text: StringHelper.scaleSaved)
+            
         }
     }
     
@@ -102,68 +181,55 @@ extension QuestionCategoryViewController: UITableViewDataSource, UITableViewDele
         if question!.image != ""
         {
             // add gesture recognizer to the cell's image
-            
             let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(QuestionCategoryViewController.imageTapped(_:)))
-            
             
             cell.questionImage.addGestureRecognizer(tapRecognizer)
         }
-        
-        
         
         return RightWrongQuestionTableViewCell.createCell(cell: cell,
                                                           cellIndex: indexPath.row,
                                                           scale: scale!,
                                                           category: (scale?.questionsCategories![pageIndex])!,
                                                           categoryLabel: categoryName,
-                                                          table:self.table)
+                                                          viewController:self)
+        
+    }
+    
+    func questionAnswered(){
         
     }
     
     
-    @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
-        // sender is button inside cell
+    func imageTapped(_ sender: UITapGestureRecognizer) {
+        // load from internal memory
         
         // access cell question
         let cell = sender.view?.superview?.superview as! RightWrongQuestionTableViewCell
         
-        // load image from Firebase
-        let storage = FIRStorage.storage()
-        let storageRef = storage.reference(forURL: "gs://appprototype-bdd27.appspot.com")
-        let criteriaRef = storageRef.child("images")
+        let imageName = cell.questionObj!.image!
         
-        
-        
-        // create reference to file
-        let criteria = criteriaRef.child(cell.questionObj!.image!)
-        
-        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-        criteria.data(withMaxSize: 4 * 1024 * 1024) { (data, error) -> Void in
-            if (error != nil) {
-                // Uh-oh, an error occurred!
-            } else {
-                let firebaseImage: UIImage! = UIImage(data: data!)
-                
-                let newImageView = UIImageView(image: firebaseImage)
-                newImageView.frame = UIScreen.main.bounds
-                newImageView.backgroundColor = .white
-                newImageView.contentMode = .scaleAspectFit
-                newImageView.isUserInteractionEnabled = true
-                let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissFullscreenImage))
-                newImageView.addGestureRecognizer(tap)
-                self.view.addSubview(newImageView)
-                self.navigationController?.isNavigationBarHidden = false
-                self.tabBarController?.tabBar.isHidden = false
-                
-                
-            }
+        let fileManager = FileManager.default
+        let imagePAth = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName)
+        if fileManager.fileExists(atPath: imagePAth){
+            let firebaseImage = UIImage(contentsOfFile: imagePAth)
+            
+            let newImageView = UIImageView(image: firebaseImage)
+            newImageView.frame = UIScreen.main.bounds
+            newImageView.backgroundColor = .white
+            newImageView.contentMode = .scaleAspectFit
+            newImageView.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissFullscreenImage))
+            newImageView.addGestureRecognizer(tap)
+            self.view.addSubview(newImageView)
+            self.navigationController?.isNavigationBarHidden = false
+            self.tabBarController?.tabBar.isHidden = false
+  
+        }else{
+            print("No Image")
         }
-        
-        
-        
-        
-        
+
     }
+    
     
     @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
         self.navigationController?.isNavigationBarHidden = false

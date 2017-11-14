@@ -39,9 +39,9 @@ class Question: NSObject, Mappable, NSCoding {
         let choices = aDecoder.decodeObject(forKey: "choices") as! [Choice]
         let descriptionText = aDecoder.decodeObject(forKey: "description") as! String
         let image = aDecoder.decodeObject(forKey: "image") as? String
-        let rightWrong = aDecoder.decodeObject(forKey: "rightWrong") as! Bool
-        let onlyForWomen = aDecoder.decodeObject(forKey: "onlyForWomen") as! Bool
-        let yesOrNo = aDecoder.decodeObject(forKey: "yesOrNo") as! Bool
+        let rightWrong = aDecoder.decodeObject(forKey: "rightWrong") as! Bool?
+        let onlyForWomen = aDecoder.decodeObject(forKey: "onlyForWomen") as! Bool?
+        let yesOrNo = aDecoder.decodeObject(forKey: "yesOrNo") as! Bool?
         self.init(choices: choices,
                   descriptionText: descriptionText,
                   rightWrong: rightWrong,
@@ -64,9 +64,9 @@ class Question: NSObject, Mappable, NSCoding {
     
     init(choices: [Choice],
          descriptionText: String,
-         rightWrong: Bool,
-         yesOrNo: Bool,
-         onlyForWomen: Bool,
+         rightWrong: Bool?,
+         yesOrNo: Bool?,
+         onlyForWomen: Bool?,
          image:String?) {
 //        self.answerNumber = answerNumber
         self.choices = choices

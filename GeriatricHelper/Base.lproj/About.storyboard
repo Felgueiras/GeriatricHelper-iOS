@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JBX-se-UvJ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sobre-->
+        <scene sceneID="BrG-xR-8Le">
+            <objects>
+                <viewController id="aTb-OZ-apC" customClass="About" customModule="GeriatricHelper" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uy3-QQ-QCv"/>
+                        <viewControllerLayoutGuide type="bottom" id="SRy-Q9-oeN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ItF-Is-mkW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_original" translatesAutoresizingMaskIntoConstraints="NO" id="zQI-yh-7xS">
+                                <rect key="frame" x="0.0" y="66.5" width="375" height="200.5"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MyX-yC-vjd">
+                                <rect key="frame" x="16" y="275" width="343" height="277"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Aplicação desenvolvida por Rafael Salgueiro Felgueiras Pinto, fruto da parceria entro o IEETA e GERMI.   
+
+Baseada no documento do GERMI sobre Avaliação Geriátrica.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZvX-so-Jh2">
+                                <rect key="frame" x="102.5" y="560" width="170" height="30"/>
+                                <state key="normal" title="Consultar PDF do GERMI"/>
+                                <connections>
+                                    <action selector="openPDF:" destination="aTb-OZ-apC" eventType="touchUpInside" id="UDq-VY-QqG"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xv-8m-89g">
+                                <rect key="frame" x="317" y="589" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MyX-yC-vjd" firstAttribute="top" secondItem="zQI-yh-7xS" secondAttribute="bottom" constant="8.5" id="11h-SD-dQY"/>
+                            <constraint firstItem="MyX-yC-vjd" firstAttribute="leading" secondItem="ItF-Is-mkW" secondAttribute="leadingMargin" id="54i-2n-Rwb"/>
+                            <constraint firstItem="zQI-yh-7xS" firstAttribute="height" relation="lessThanOrEqual" secondItem="ItF-Is-mkW" secondAttribute="height" multiplier="0.3" id="EgS-S7-h6p"/>
+                            <constraint firstItem="SRy-Q9-oeN" firstAttribute="top" secondItem="MyX-yC-vjd" secondAttribute="bottom" constant="66" id="FPA-eS-Z1y"/>
+                            <constraint firstItem="zQI-yh-7xS" firstAttribute="centerY" secondItem="ItF-Is-mkW" secondAttribute="centerY" multiplier="0.5" id="KzG-R9-F0i"/>
+                            <constraint firstItem="ZvX-so-Jh2" firstAttribute="top" secondItem="MyX-yC-vjd" secondAttribute="bottom" constant="8" id="OR2-G9-aDa"/>
+                            <constraint firstAttribute="trailing" secondItem="2xv-8m-89g" secondAttribute="trailing" constant="16" id="dvz-2b-OYH"/>
+                            <constraint firstItem="SRy-Q9-oeN" firstAttribute="top" secondItem="2xv-8m-89g" secondAttribute="bottom" constant="8" id="eQq-SW-Bwo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MyX-yC-vjd" secondAttribute="trailing" id="k6V-Ue-d4y"/>
+                            <constraint firstItem="zQI-yh-7xS" firstAttribute="width" secondItem="ItF-Is-mkW" secondAttribute="height" multiplier="375:667" id="noh-7Y-Rm2"/>
+                            <constraint firstItem="MyX-yC-vjd" firstAttribute="centerX" secondItem="ItF-Is-mkW" secondAttribute="centerX" id="ov8-DR-FKe"/>
+                            <constraint firstItem="zQI-yh-7xS" firstAttribute="centerX" secondItem="ItF-Is-mkW" secondAttribute="centerX" id="t8x-0Q-e9m"/>
+                            <constraint firstItem="ZvX-so-Jh2" firstAttribute="centerX" secondItem="ItF-Is-mkW" secondAttribute="centerX" id="uB0-fq-RsS"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sobre" id="yRK-km-BgJ"/>
+                    <connections>
+                        <outlet property="aboutText" destination="MyX-yC-vjd" id="cnj-ud-N7I"/>
+                        <outlet property="appVersion" destination="2xv-8m-89g" id="9Sn-2o-uOe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a0i-Ka-xmp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2306.4000000000001" y="-1260.7196401799101"/>
+        </scene>
+        <!--Sobre-->
+        <scene sceneID="fF0-Hr-Hn4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JBX-se-UvJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Sobre" image="Info-50" id="UeW-sL-i6M"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4rE-da-p9q">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="aTb-OZ-apC" kind="relationship" relationship="rootViewController" id="Z2V-eQ-RMl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Urr-iq-mky" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3016" y="-1258.4707646176912"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Info-50" width="25" height="25"/>
+        <image name="icon_original" width="512" height="512"/>
+    </resources>
+</document>

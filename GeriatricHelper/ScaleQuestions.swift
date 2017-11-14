@@ -3,12 +3,13 @@ import FirebaseAuth
 import FirebaseDatabase
 import SwiftMessages
 
-class  ScaleQuestions: UITableViewController {
+class  ScaleQuestions: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: Constants
     var scale: GeriatricScale!
     var session: Session!
     
+    @IBOutlet weak var table: UITableView!
     var opt1: String?
     
     // segue to display the choices for a questions
@@ -17,6 +18,10 @@ class  ScaleQuestions: UITableViewController {
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // table delegates and data source
+        self.table.dataSource = self
+        self.table.delegate = self
         
         // disable save button when reviewing session
         if Constants.reviewingSession == true{
@@ -48,6 +53,8 @@ class  ScaleQuestions: UITableViewController {
         
     }
     
+    @IBOutlet weak var saveButton: UIButton!
+    
     // add questions to this scale
     func addQuestionsToScale(){
         // get questions from Constants
@@ -69,21 +76,20 @@ class  ScaleQuestions: UITableViewController {
                 }
             }
             
+        
             
-            
-            
-            var question = Question()
+            let question = Question()
             question.descriptionText = currentQuestionNonDB.descriptionText
             //            question.(false);
             question.scaleID = scale.guid
             
             
             // create Choices
-            var choicesNonDB: [Choice] = currentQuestionNonDB.choices!
+            let choicesNonDB: [Choice] = currentQuestionNonDB.choices!
             
             for currentChoiceNonDB in choicesNonDB {
                 
-                var choice = Choice()
+                let choice = Choice()
                 choice.descriptionText = currentChoiceNonDB.descriptionText
                 choice.name = currentChoiceNonDB.name
                 choice.score = currentChoiceNonDB.score
@@ -108,7 +114,7 @@ class  ScaleQuestions: UITableViewController {
         // check if scale was completed
         if scale.completed == false || scale.completed == nil {
             // show alert
-            let alert = UIAlertController(title: "Cancel Session",
+            let alert = UIAlertController(title: SwiftMessagesHelper.saveScale,
                                           message: "Escala incompleta, continuar a preencher a escala?",
                                           preferredStyle: .alert)
             
@@ -150,10 +156,12 @@ class  ScaleQuestions: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        self.tableView.reloadData()
+        self.table.reloadData()
         
         // check all questions were answered
         var allQuestionsAnswered = true
+        
+        var questionsToAnswer = 0
         
         if session != nil && session!.type == Session.sessionType.privateSession {
             for question in FirebaseDatabaseHelper.getQuestionsFromScale(scale: scale){
@@ -171,7 +179,10 @@ class  ScaleQuestions: UITableViewController {
                 }
                 scale.completed = true
                 
+                
                 FirebaseDatabaseHelper.updateScale(scale: scale)
+                
+                
             }
         }
         else{
@@ -179,24 +190,52 @@ class  ScaleQuestions: UITableViewController {
             for question in scale.questions!{
                 if question.answered != true{
                     allQuestionsAnswered = false
+                    
+                    // check how many left to answer
+                    for quest in scale.questions!{
+                        
+                        if quest.answered == nil
+                        {
+                            questionsToAnswer += 1
+                        }
+                    }
+                    let saveButtonTitle = SwiftMessagesHelper.saveScale + " (faltam " + String(questionsToAnswer) + " questões)"
+                    saveButton.setTitle(saveButtonTitle, for: .normal)
                     break
                 }
             }
             
             if allQuestionsAnswered == true{
-                print("All questions answered!")
                 if scale.completed == nil{
                     SwiftMessagesHelper.showMessage(type: Theme.info,
                                                     text: StringHelper.allQuestionsAnswered)
                 }
                 scale.completed = true
+                let saveButtonTitle = SwiftMessagesHelper.saveScale
+                saveButton.setTitle(saveButtonTitle, for: .normal)
             }
+        }
+        
+        // store session on defaults
+        let defaults = UserDefaults.standard
+        if(session != nil)
+        {
+            // store Cga public scales
+            
+            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: session!)
+            defaults.set(encodedData, forKey: Constants.lastSession)
+            
+            let encodedScales: Data = NSKeyedArchiver.archivedData(withRootObject: Constants.cgaPublicScales!)
+            defaults.set(encodedScales, forKey: Constants.lastScales)
+            
+            defaults.synchronize()
+            
         }
         
     }
     
     // MARK: UITableView Delegate methods
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // get questions for scale
 //        // check if different men women
 //        if self.scale.scoring?.differentMenWomen == true{
@@ -214,7 +253,7 @@ class  ScaleQuestions: UITableViewController {
 //        return Constants.getQuestionsForScale(scaleName: scale.scaleName!).count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         
 //        let questionConstant = Constants.getQuestionsForScale(scaleName: scale.scaleName!)[indexPath.row]
@@ -236,11 +275,19 @@ class  ScaleQuestions: UITableViewController {
         let questionConstant = questionsToConsider[indexPath.row]
         
         cell.textLabel?.text = String(indexPath.row+1) + " -  " + questionConstant.descriptionText!
-        cell.detailTextLabel?.text = questionConstant.selectedChoice
-        
-        if indexPath.row % 2 == 0{
-            cell.backgroundColor = Constants.cellBackgroundColor
+        if(questionConstant.answered == true)
+        {
+            cell.detailTextLabel?.text = "R: " + questionConstant.selectedChoice!
         }
+        else{
+           cell.detailTextLabel?.text = ""
+        }
+        
+        
+        
+//        if indexPath.row % 2 == 0{
+//            cell.backgroundColor = Constants.cellBackgroundColor
+//        }
         
         
         // check if there is info from Firebase
@@ -259,12 +306,12 @@ class  ScaleQuestions: UITableViewController {
         {
             let question = questionsToConsider[indexPath.row]
             if question.answered == true{
-                cell.accessoryType = .checkmark
-                
+//                cell.accessoryType = .checkmark
+                cell.backgroundColor = Constants.questionAnswered
             }
             else
             {
-                cell.accessoryType = .none
+//                cell.accessoryType = .none
             }
         }
         
@@ -273,7 +320,7 @@ class  ScaleQuestions: UITableViewController {
     }
     
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     
         performSegue(withIdentifier: ViewQuestionChoicesSegue, sender: self)
@@ -287,7 +334,7 @@ class  ScaleQuestions: UITableViewController {
         if segue.identifier == ViewQuestionChoicesSegue {
             let destinationViewController = segue.destination as! QuestionOptions
             
-            let indexPath = tableView.indexPathForSelectedRow
+            let indexPath = self.table.indexPathForSelectedRow
             
             var questionDB:Question
             

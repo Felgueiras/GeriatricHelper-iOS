@@ -3,16 +3,7 @@
    import Firebase
    import FirebaseDatabase
    
-   class Session {
- 
-    
-    enum sessionType {
-        case publicSession
-        case privateSession
-    }
-    
-    init(){}
-    
+   class Session: NSObject, NSCoding {
     
     var date: Date?
     var guid: String?
@@ -23,6 +14,41 @@
     
     var scales: [GeriatricScale]? = []
     var scalesIDS: [String] = []
+    
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(date, forKey: "date")
+        aCoder.encode(guid, forKey: "guid")
+        aCoder.encode(scales, forKey: "scales")
+        aCoder.encode(scalesIDS, forKey: "scalesIDS")
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let date = aDecoder.decodeObject(forKey: "date") as? Date
+        let guid = aDecoder.decodeObject(forKey: "guid") as! String
+        let scales : [GeriatricScale] = aDecoder.decodeObject(forKey: "scales") as! [GeriatricScale]
+        self.init(date: date, guid: guid, scales: scales)
+    }
+    
+    
+    
+    enum sessionType {
+        case publicSession
+        case privateSession
+    }
+    
+    init(date: Date?, guid: String, scales: [GeriatricScale]){
+        self.date = date
+        self.guid = guid
+        self.scales = scales
+    }
+    
+    override init(){
+        
+    }
+    
+    
+    
     
     
     
@@ -40,7 +66,7 @@
         else
         {
             scalesIDS = snapshotValue["scalesIDS"] as! [String]
-        
+            
         }
     }
     
@@ -63,3 +89,4 @@
     }
     
    }
+   

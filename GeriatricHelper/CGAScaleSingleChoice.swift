@@ -3,7 +3,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import SwiftMessages
 
-class CGAScaleSingleChoice: UITableViewController {
+class CGAScaleSingleChoice: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: properties
     var scale: GeriatricScale!
@@ -23,7 +23,7 @@ class CGAScaleSingleChoice: UITableViewController {
         // check if scale was completed
         if scale.completed == false || scale.completed == nil {
             // show alert
-            let alert = UIAlertController(title: "Cancel Session",
+            let alert = UIAlertController(title: SwiftMessagesHelper.saveScale,
                                           message: "Escala incompleta, continuar a preencher a escala?",
                                           preferredStyle: .alert)
             
@@ -61,6 +61,7 @@ class CGAScaleSingleChoice: UITableViewController {
         
     }
     
+    @IBOutlet weak var table: UITableView!
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +71,7 @@ class CGAScaleSingleChoice: UITableViewController {
             self.navigationItem.rightBarButtonItem = nil
         }
         
-        tableView.allowsMultipleSelectionDuringEditing = false
+        self.table.allowsMultipleSelectionDuringEditing = false
         
         // set title
         self.title = scale.scaleName
@@ -78,20 +79,24 @@ class CGAScaleSingleChoice: UITableViewController {
         
         // get possible choices for single question scale
         self.choices = Constants.getChoicesSingleQuestionScale(scaleName: self.scale.scaleName!)
-        self.tableView.reloadData()
+        self.table.reloadData()
         
         // sizable table cell
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 50
+        self.table.rowHeight = UITableViewAutomaticDimension
+        self.table.estimatedRowHeight = 80
+        
+        // table data source and delegates
+        self.table.delegate = self
+        self.table.dataSource = self
         
     }
     
     // MARK: UITableView Delegate methods
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return choices.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         let currentGrading = choices[indexPath.row]
         
@@ -100,16 +105,17 @@ class CGAScaleSingleChoice: UITableViewController {
         
         // if this was the selected choice -> highlight
         if(scale.answer == currentGrading.grade){
-            cell.accessoryType = .checkmark
+             cell.backgroundColor = Constants.questionAnswered
         }
         else
         {
-            cell.accessoryType = .none
+            cell.backgroundColor = UIColor.white
         }
         
-        if indexPath.row % 2 == 0{
-            cell.backgroundColor = Constants.cellBackgroundColor
-        }
+        
+//        if indexPath.row % 2 == 0{
+//            cell.backgroundColor = Constants.cellBackgroundColor
+//        }
         
         
         return cell
@@ -119,7 +125,7 @@ class CGAScaleSingleChoice: UITableViewController {
     /**
      Choice was selected
      **/
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 1 - get cell
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         // 2 - get grocery item
